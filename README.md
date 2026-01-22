@@ -13,13 +13,14 @@ This project explores modern web development workflows with AI assistance, featu
 ### Features
 
 - 🌐 Multilingual (DE, EN, DA) with automatic language detection
-- 🎨 Dark mode with system preference detection
-- 📱 Responsive design
-- 🔒 GDPR compliant (no cookies, no tracking)
-- ⚡ Optimized for performance (local assets, GZIP, caching)
-- 🖼️ Hover previews for external links
-- 🔍 SEO optimized with sitemap and hreflang
-- 🎊 Confetti effect on contact interaction (lazy-loaded)
+- 🎨 Dark mode with system preference detection and CSS custom properties
+- 📱 Responsive design with mobile-optimized layout
+- 🔒 Privacy-first (no cookies, no tracking, no analytics)
+- ⚡ Performance optimized (CSS variables, vendor prefixes, optimized JS)
+- 🖼️ Hover previews for external links (desktop only)
+- 🔍 SEO optimized with structured data, sitemap, and hreflang
+- 🎊 Easter eggs: Confetti (shake/timer), photo animation (space/double-click)
+- ♿ Accessibility: ARIA labels, keyboard navigation, reduced motion support
 
 ### Tech Stack
 
@@ -35,10 +36,11 @@ This project explores modern web development workflows with AI assistance, featu
 ├── .github/
 │   └── workflows/
 │       └── update-sitemap.yml   # GitHub Action for sitemap updates
-├── .gitignore                   # Git ignore rules
+├── .gitignore                   # Git ignore rules (includes .webhook-secret)
 ├── .htaccess                    # Server config (GZIP, caching, security)
-├── deploy.php                   # Webhook handler for automated deployment
-├── index.html                   # Main page
+├── deploy.php                   # Webhook handler (reads secret from file)
+├── DEPLOY-SETUP.md              # Deployment setup instructions
+├── index.html                   # Main page (optimized CSS/JS)
 ├── robots.txt                   # Crawler control
 ├── sitemap.xml                  # Sitemap with hreflang
 ├── favicon.ico                  # Multi-resolution favicon
@@ -46,7 +48,7 @@ This project explores modern web development workflows with AI assistance, featu
 ├── js/
 │   └── confetti.min.js          # Canvas-Confetti library (lazy-loaded)
 └── images/
-    ├── favicons/                # Favicon variants (16x16 to 192x192)
+    ├── favicons/                # Favicon variants (16x16 to 512x512)
     ├── hover/                   # Link preview screenshots
     │   ├── blog-preview.webp           # Blog preview (DE)
     │   ├── blog-preview-en.webp        # Blog preview (EN)
@@ -85,29 +87,33 @@ python -m http.server 8000
 Every push to `main` automatically deploys the website to the server:
 
 1. **GitHub** sends push notification to `deploy.php` on the server
-2. **Server** executes `git pull` and updates files
+2. **Server** validates webhook signature and executes `git pull`
 3. **Logs** are saved in `.deploy-log.txt`
 
 ##### Setup Instructions
 
+**Detailed setup instructions are in [`DEPLOY-SETUP.md`](DEPLOY-SETUP.md)**
+
+Quick summary:
+
 **On the server:**
 ```bash
-# Navigate to web root directory
 cd /path/to/webroot
-
-# Clone repository
 git clone https://github.com/ollrich/eichhof.me.git .
 
-# Generate secret token and add to deploy.php
-# Line 9: $secret = 'YOUR_SECRET_TOKEN';
+# Generate and store webhook secret
+openssl rand -hex 32 > .webhook-secret
+chmod 600 .webhook-secret
 ```
 
 **In GitHub:**
-1. Go to Repository Settings → Webhooks → Add webhook
+1. Repository Settings → Webhooks → Add webhook
 2. **Payload URL:** `https://eichhof.me/deploy.php`
 3. **Content type:** `application/json`
-4. **Secret:** The same token as in `deploy.php`
+4. **Secret:** Content from `.webhook-secret` file
 5. **Events:** Only "Just the push event"
+
+⚠️ **Security Note:** The webhook secret is stored in `.webhook-secret` (not in the repository) for security reasons.
 
 ##### Manual Deployment
 
@@ -131,13 +137,14 @@ Dieses Projekt erkundet moderne Webentwicklungs-Workflows mit KI-Unterstützung 
 ## Features
 
 - 🌐 Mehrsprachig (DE, EN, DA) mit automatischer Spracherkennung
-- 🎨 Dark Mode mit System-Präferenz-Erkennung
-- 📱 Responsive Design
-- 🔒 DSGVO-konform (keine Cookies, kein Tracking)
-- ⚡ Optimiert für Performance (lokale Assets, GZIP, Caching)
-- 🖼️ Hover-Previews für externe Links
-- 🔍 SEO-optimiert mit Sitemap und hreflang
-- 🎊 Konfetti-Effekt bei Kontakt-Interaktion (lazy-loaded)
+- 🎨 Dark Mode mit System-Präferenz-Erkennung und CSS Custom Properties
+- 📱 Responsive Design mit mobil-optimiertem Layout
+- 🔒 Privacy-First (keine Cookies, kein Tracking, keine Analytik)
+- ⚡ Performance-optimiert (CSS-Variablen, Vendor-Präfixe, optimiertes JS)
+- 🖼️ Hover-Previews für externe Links (nur Desktop)
+- 🔍 SEO-optimiert mit strukturierten Daten, Sitemap und hreflang
+- 🎊 Easter Eggs: Konfetti (schütteln/Timer), Foto-Animation (Leertaste/Doppelklick)
+- ♿ Barrierefreiheit: ARIA-Labels, Tastaturnavigation, Reduced-Motion-Support
 
 ## Tech Stack
 
@@ -153,10 +160,11 @@ Dieses Projekt erkundet moderne Webentwicklungs-Workflows mit KI-Unterstützung 
 ├── .github/
 │   └── workflows/
 │       └── update-sitemap.yml   # GitHub Action für Sitemap-Updates
-├── .gitignore                   # Git-Ignore-Regeln
+├── .gitignore                   # Git-Ignore-Regeln (inkl. .webhook-secret)
 ├── .htaccess                    # Server-Konfiguration (GZIP, Caching, Security)
-├── deploy.php                   # Webhook-Handler für automatisches Deployment
-├── index.html                   # Hauptseite
+├── deploy.php                   # Webhook-Handler (liest Secret aus Datei)
+├── DEPLOY-SETUP.md              # Deployment-Setup-Anleitung
+├── index.html                   # Hauptseite (optimiertes CSS/JS)
 ├── robots.txt                   # Crawler-Steuerung
 ├── sitemap.xml                  # Sitemap mit hreflang
 ├── favicon.ico                  # Multi-Resolution Favicon
@@ -164,7 +172,7 @@ Dieses Projekt erkundet moderne Webentwicklungs-Workflows mit KI-Unterstützung 
 ├── js/
 │   └── confetti.min.js          # Canvas-Confetti Library (lazy-loaded)
 └── images/
-    ├── favicons/                # Favicon-Varianten (16x16 bis 192x192)
+    ├── favicons/                # Favicon-Varianten (16x16 bis 512x512)
     ├── hover/                   # Link-Preview-Screenshots
     │   ├── blog-preview.webp           # Blog-Preview (DE)
     │   ├── blog-preview-en.webp        # Blog-Preview (EN)
@@ -203,29 +211,33 @@ python -m http.server 8000
 Bei jedem Push auf `main` wird die Website automatisch auf den Server deployed:
 
 1. **GitHub** sendet Push-Notification an `deploy.php` auf dem Server
-2. **Server** führt `git pull` aus und aktualisiert die Dateien
+2. **Server** validiert Webhook-Signatur und führt `git pull` aus
 3. **Logs** werden in `.deploy-log.txt` gespeichert
 
 #### Setup-Anleitung
 
+**Detaillierte Anleitung in [`DEPLOY-SETUP.md`](DEPLOY-SETUP.md)**
+
+Kurzübersicht:
+
 **Auf dem Server:**
 ```bash
-# In das Web-Root-Verzeichnis wechseln
 cd /pfad/zum/webroot
-
-# Repository clonen
 git clone git@github.com:ollrich/eichhof.me.git .
 
-# Secret-Token generieren und in deploy.php eintragen
-# Zeile 9: $secret = 'DEIN_GEHEIMER_TOKEN';
+# Webhook-Secret generieren und speichern
+openssl rand -hex 32 > .webhook-secret
+chmod 600 .webhook-secret
 ```
 
 **In GitHub:**
-1. Gehe zu Repository Settings → Webhooks → Add webhook
+1. Repository Settings → Webhooks → Add webhook
 2. **Payload URL:** `https://eichhof.me/deploy.php`
 3. **Content type:** `application/json`
-4. **Secret:** Das gleiche Token wie in `deploy.php`
+4. **Secret:** Inhalt aus `.webhook-secret`-Datei
 5. **Events:** Nur "Just the push event"
+
+⚠️ **Sicherheitshinweis:** Das Webhook-Secret wird aus Sicherheitsgründen in `.webhook-secret` (nicht im Repository) gespeichert.
 
 #### Manuelles Deployment
 
