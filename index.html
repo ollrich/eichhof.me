@@ -1003,7 +1003,8 @@
             <h2 id="overlay-title">Impressum</h2>
             <p id="overlay-text-1">Diese Website wird betrieben von:</p>
             <p id="overlay-text-2">Oliver Eichhof<br>Eismeerweg 9E<br>22145 Hamburg</p>
-            <p id="overlay-text-3">Inhaltlich verantwortlich gemäß § 55 Abs. 2 RStV.</p>
+            <p id="overlay-text-3">Kontakt: <a href="#" id="overlay-email-link" style="color: inherit; text-decoration: underline;"></a></p>
+            <p id="overlay-text-3b">Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV.</p>
             <h3 id="overlay-subtitle">Datenverarbeitung</h3>
             <p id="overlay-text-4">Diese Website verarbeitet keine personenbezogenen Daten.</p>
             <p id="overlay-text-5">Es werden keine Cookies gesetzt, keine Logfiles gespeichert und keine Tracking-Tools verwendet. Lediglich Ihre Farbschema-Präferenz wird lokal in Ihrem Browser gespeichert.</p>
@@ -1044,7 +1045,8 @@
                     link: "Impressum & Datenverarbeitung",
                     text1: "Diese Website wird betrieben von:",
                     text2: "Oliver Eichhof<br>Eismeerweg 9E<br>22145 Hamburg",
-                    text3: "Inhaltlich verantwortlich gemäß § 55 Abs. 2 RStV.",
+                    text3: "Kontakt:",
+                    text3b: "Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV.",
                     subtitle: "Datenverarbeitung",
                     text4: "Diese Website verarbeitet keine personenbezogenen Daten.",
                     text5: "Es werden keine Cookies gesetzt, keine Logfiles gespeichert und keine Tracking-Tools verwendet. Lediglich Ihre Farbschema-Präferenz wird lokal in Ihrem Browser gespeichert.",
@@ -1064,7 +1066,8 @@
                     link: "Legal Notice & Data Processing",
                     text1: "This website is operated by:",
                     text2: "Oliver Eichhof<br>Eismeerweg 9E<br>22145 Hamburg, Germany",
-                    text3: "Responsible for content according to § 55 para. 2 German Interstate Broadcasting Treaty (RStV).",
+                    text3: "Contact:",
+                    text3b: "Responsible for content according to § 18 para. 2 German Interstate Media Treaty (MStV).",
                     subtitle: "Data Processing",
                     text4: "This website does not process any personal data.",
                     text5: "No cookies are set, no log files are stored, and no tracking tools are used. Only your color scheme preference is stored locally in your browser.",
@@ -1084,7 +1087,8 @@
                     link: "Kolofon & Databehandling",
                     text1: "Denne hjemmeside drives af:",
                     text2: "Oliver Eichhof<br>Eismeerweg 9E<br>22145 Hamburg, Tyskland",
-                    text3: "Ansvarlig for indhold i henhold til § 55 stk. 2 tysk statslig radio- og tv-aftale (RStV).",
+                    text3: "Kontakt:",
+                    text3b: "Ansvarlig for indhold i henhold til § 18 stk. 2 tysk statslig medieaftale (MStV).",
                     subtitle: "Databehandling",
                     text4: "Denne hjemmeside behandler ingen personoplysninger.",
                     text5: "Der sættes ingen cookies, ingen logfiler gemmes, og ingen sporingsværktøjer anvendes. Kun din farvevalg-præference gemmes lokalt i din browser.",
@@ -1118,9 +1122,11 @@
             const overlayText1 = document.getElementById('overlay-text-1');
             const overlayText2 = document.getElementById('overlay-text-2');
             const overlayText3 = document.getElementById('overlay-text-3');
+            const overlayText3b = document.getElementById('overlay-text-3b');
             const overlayText4 = document.getElementById('overlay-text-4');
             const overlayText5 = document.getElementById('overlay-text-5');
             const overlayText6 = document.getElementById('overlay-text-6');
+            const overlayEmailLink = document.getElementById('overlay-email-link');
             const footerLink = document.getElementById('footer-link');
             const footerLinkMobile = document.getElementById('footer-link-mobile');
             const emailText = document.getElementById('email-text');
@@ -1157,10 +1163,15 @@
                 overlaySubtitle.textContent = overlayContent.subtitle;
                 overlayText1.textContent = overlayContent.text1;
                 overlayText2.innerHTML = overlayContent.text2;
-                overlayText3.innerHTML = overlayContent.text3;
+                overlayText3.textContent = overlayContent.text3;
+                overlayText3b.textContent = overlayContent.text3b;
                 overlayText4.textContent = overlayContent.text4;
                 overlayText5.textContent = overlayContent.text5;
                 overlayText6.textContent = overlayContent.text6;
+
+                const email = overlayContent.emailPrefix + '@' + CONFIG.emailDomain[0] + '.' + CONFIG.emailDomain[1];
+                overlayEmailLink.textContent = email;
+                overlayEmailLink.href = 'mailto:' + email;
                 footerLink.textContent = overlayContent.link;
                 if (footerLinkMobile) footerLinkMobile.textContent = overlayContent.link;
                 emailText.textContent = overlayContent.email;
