@@ -1001,7 +1001,7 @@
         
         <div class="mobile-footer">
             <a id="footer-link-mobile">Impressum & Datenverarbeitung</a>
-            <span>Vibe coded with <span aria-hidden="true">♥</span><span class="sr-only">love</span></span>
+            <span>Made with <span aria-hidden="true">♥</span><span class="sr-only">love</span> and <a href="https://github.com/ollrich/eichhof.me" target="_blank" rel="noopener noreferrer">AI</a></span>
         </div>
     </div>
 
@@ -1279,62 +1279,6 @@
                 frame();
             };
 
-            const initShakeDetection = () => {
-                if (!('DeviceMotionEvent' in window)) return;
-                
-                let lastShake = 0;
-                let shakeThreshold = 15;
-                let lastX = null, lastY = null, lastZ = null;
-                let motionListenerAdded = false;
-
-                const handleMotion = (e) => {
-                    if (confettiTriggered) return;
-                    
-                    const acc = e.accelerationIncludingGravity;
-                    if (!acc || acc.x === null) return;
-                    
-                    if (lastX !== null) {
-                        const deltaX = Math.abs(acc.x - lastX);
-                        const deltaY = Math.abs(acc.y - lastY);
-                        const deltaZ = Math.abs(acc.z - lastZ);
-                        
-                        if ((deltaX > shakeThreshold && deltaY > shakeThreshold) || 
-                            (deltaX > shakeThreshold && deltaZ > shakeThreshold) || 
-                            (deltaY > shakeThreshold && deltaZ > shakeThreshold)) {
-                            
-                            const now = Date.now();
-                            if (now - lastShake > 1000) {
-                                lastShake = now;
-                                loadConfetti(fireConfetti);
-                            }
-                        }
-                    }
-                    
-                    lastX = acc.x;
-                    lastY = acc.y;
-                    lastZ = acc.z;
-                };
-
-                const addMotionListener = () => {
-                    if (motionListenerAdded) return;
-                    motionListenerAdded = true;
-                    window.addEventListener('devicemotion', handleMotion);
-                };
-
-                if (typeof DeviceMotionEvent.requestPermission === 'function') {
-                    document.body.addEventListener('click', function requestPerm() {
-                        DeviceMotionEvent.requestPermission().then((state) => {
-                            if (state === 'granted') {
-                                addMotionListener();
-                            }
-                        });
-                        document.body.removeEventListener('click', requestPerm);
-                    }, { once: true });
-                } else {
-                    document.body.addEventListener('click', addMotionListener, { once: true });
-                    document.body.addEventListener('touchstart', addMotionListener, { once: true });
-                }
-            };
 
             const initConfettiTimer = () => {
                 setTimeout(() => {
@@ -1680,8 +1624,7 @@
             initLinkPreviews();
 
             startHintLoop();
-            
-            initShakeDetection();
+
             initConfettiTimer();
 
             document.getElementById('theme-toggle').addEventListener('click', function() {

@@ -19,7 +19,7 @@ This project explores modern web development workflows with AI assistance, featu
 - ⚡ Performance optimized (CSS variables, vendor prefixes, optimized JS)
 - 🖼️ Hover previews for external links (desktop only)
 - 🔍 SEO optimized with structured data, sitemap, and hreflang
-- 🎊 Easter eggs: Confetti (shake/timer), photo animation (space/double-click)
+- 🎊 Easter eggs: Confetti (timer), photo animation (space/double-click)
 - ♿ Accessibility: ARIA labels, keyboard navigation, reduced motion support
 
 ### Tech Stack
@@ -143,7 +143,7 @@ Dieses Projekt erkundet moderne Webentwicklungs-Workflows mit KI-Unterstützung 
 - ⚡ Performance-optimiert (CSS-Variablen, Vendor-Präfixe, optimiertes JS)
 - 🖼️ Hover-Previews für externe Links (nur Desktop)
 - 🔍 SEO-optimiert mit strukturierten Daten, Sitemap und hreflang
-- 🎊 Easter Eggs: Konfetti (schütteln/Timer), Foto-Animation (Leertaste/Doppelklick)
+- 🎊 Easter Eggs: Konfetti (Timer), Foto-Animation (Leertaste/Doppelklick)
 - ♿ Barrierefreiheit: ARIA-Labels, Tastaturnavigation, Reduced-Motion-Support
 
 ## Tech Stack
