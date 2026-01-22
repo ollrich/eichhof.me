@@ -29,9 +29,94 @@ This project explores modern web development workflows with AI assistance, featu
 - APIFlash for screenshot generation
 - GitHub Actions for automation
 
-### Automated Deployment
+### Structure
 
-Every push to `main` automatically deploys the website to the server via GitHub webhook.
+```
+├── .github/
+│   └── workflows/
+│       └── update-sitemap.yml   # GitHub Action for sitemap updates
+├── .gitignore                   # Git ignore rules
+├── .htaccess                    # Server config (GZIP, caching, security)
+├── deploy.php                   # Webhook handler for automated deployment
+├── index.html                   # Main page
+├── robots.txt                   # Crawler control
+├── sitemap.xml                  # Sitemap with hreflang
+├── favicon.ico                  # Multi-resolution favicon
+├── README.md                    # This file
+├── js/
+│   └── confetti.min.js          # Canvas-Confetti library (lazy-loaded)
+└── images/
+    ├── favicons/                # Favicon variants (16x16 to 192x192)
+    ├── hover/                   # Link preview screenshots
+    │   ├── blog-preview.webp           # Blog preview (DE)
+    │   ├── blog-preview-en.webp        # Blog preview (EN)
+    │   ├── soundcloud-preview.webp     # SoundCloud preview
+    │   ├── update-previews.php         # Screenshot update script
+    │   └── update-log.txt              # Screenshot update log
+    ├── og-image.png             # Open Graph image for social media
+    ├── oliver-eichhof.jpg       # Profile photo (original)
+    └── oliver-eichhof.webp      # Profile photo (optimized)
+```
+
+### Automation
+
+#### Sitemap Date (GitHub Actions)
+Every push to `main` automatically updates the `<lastmod>` date in the sitemap via GitHub Action. The action ignores changes to README and `.github/` files.
+
+#### Link Preview Screenshots
+The script `images/hover/update-previews.php` automatically generates screenshots of linked websites (blog, SoundCloud) for hover previews. Uses the APIFlash API for high-quality WebP screenshots (1280x720, 80% quality).
+
+### Local Development
+
+For local testing with PHP:
+```bash
+php -S localhost:8000
+```
+
+Or with Python:
+```bash
+python -m http.server 8000
+```
+
+### Deployment
+
+#### Automated Deployment via GitHub Webhook ✅
+
+Every push to `main` automatically deploys the website to the server:
+
+1. **GitHub** sends push notification to `deploy.php` on the server
+2. **Server** executes `git pull` and updates files
+3. **Logs** are saved in `.deploy-log.txt`
+
+##### Setup Instructions
+
+**On the server:**
+```bash
+# Navigate to web root directory
+cd /path/to/webroot
+
+# Clone repository
+git clone https://github.com/ollrich/eichhof.me.git .
+
+# Generate secret token and add to deploy.php
+# Line 9: $secret = 'YOUR_SECRET_TOKEN';
+```
+
+**In GitHub:**
+1. Go to Repository Settings → Webhooks → Add webhook
+2. **Payload URL:** `https://eichhof.me/deploy.php`
+3. **Content type:** `application/json`
+4. **Secret:** The same token as in `deploy.php`
+5. **Events:** Only "Just the push event"
+
+##### Manual Deployment
+
+Alternatively, deploy manually:
+```bash
+ssh yourserver
+cd /path/to/webroot
+git pull
+```
 
 ---
 
@@ -153,4 +238,4 @@ git pull
 
 ---
 
-Made with ♥ in Hamburg
+Made with ♥ in Hamburg • Built with AI assistance
