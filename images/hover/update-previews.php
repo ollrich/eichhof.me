@@ -1,4 +1,13 @@
 <?php
+/**
+ * Link Preview Screenshot Update Script
+ *
+ * Automatically generates preview screenshots for blog links.
+ * SoundCloud preview is manually maintained due to bot detection.
+ *
+ * Schedule: Weekly on Mondays at 10:10 AM
+ */
+
 $config = [
     'access_key' => $api_key,
     'screenshots' => [
@@ -9,16 +18,15 @@ $config = [
         [
             'url' => 'https://schongeil.de/en/',
             'filename' => 'blog-preview-en.webp'
-        ],
-        [
-            'url' => 'https://soundcloud.com/livicxyz',
-            'filename' => 'soundcloud-preview.webp'
         ]
+        // SoundCloud preview is manually maintained (soundcloud-preview.webp)
+        // to avoid bot detection from daily automated requests
     ],
     'width' => 1280,
     'height' => 720,
     'format' => 'webp',
-    'quality' => 80
+    'quality' => 80,
+    'user_agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
 ];
 
 $logFile = __DIR__ . '/update-log.txt';
@@ -32,10 +40,20 @@ foreach ($config['screenshots'] as $screenshot) {
         'height' => $config['height'],
         'format' => $config['format'],
         'quality' => $config['quality'],
-        'fresh' => 'true'
+        'fresh' => 'true',
+        'no_cookie_banners' => 'true',
+        'no_ads' => 'true',
+        'no_tracking' => 'true',
+        'user_agent' => $config['user_agent']
     ]);
 
-    $imageData = @file_get_contents($apiUrl);
+    $context = stream_context_create([
+        'http' => [
+            'header' => "User-Agent: {$config['user_agent']}\r\n"
+        ]
+    ]);
+
+    $imageData = @file_get_contents($apiUrl, false, $context);
     
     if ($imageData !== false) {
         $savePath = __DIR__ . '/' . $screenshot['filename'];
