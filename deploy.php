@@ -6,7 +6,8 @@
  */
 
 // Konfiguration
-$secret = '***REMOVED***'; // GitHub Webhook Secret
+$secret_file = __DIR__ . '/.webhook-secret';
+$secret = file_exists($secret_file) ? trim(file_get_contents($secret_file)) : '';
 $repo_dir = __DIR__; // Verzeichnis des Git-Repositories
 $branch = 'main'; // Branch der deployed werden soll
 $log_file = __DIR__ . '/.deploy-log.txt'; // Log-Datei
