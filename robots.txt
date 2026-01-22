@@ -1,0 +1,18 @@
+User-agent: *
+Allow: /
+
+User-agent: Yandex
+User-agent: YandexBot
+User-agent: Baiduspider
+User-agent: Sogou
+User-agent: SogouSpider
+User-agent: PetalBot
+User-agent: Bytespider
+User-agent: AhrefsBot
+User-agent: SemrushBot
+User-agent: MJ12bot
+User-agent: DotBot
+User-agent: BLEXBot
+Disallow: /
+
+Sitemap: https://eichhof.me/sitemap.xml

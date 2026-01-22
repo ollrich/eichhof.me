@@ -1,0 +1,28 @@
+name: Update Sitemap Date
+
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - '.github/**'
+      - 'README.md'
+
+jobs:
+  update-sitemap:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Update lastmod dates in sitemap
+        run: |
+          TODAY=$(date -u +"%Y-%m-%d")
+          sed -i "s/<lastmod>[0-9]\{4\}-[0-9]\{2\}-[0-9]\{2\}<\/lastmod>/<lastmod>${TODAY}<\/lastmod>/g" sitemap.xml
+
+      - name: Commit and push if changed
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git diff --quiet sitemap.xml || (git add sitemap.xml && git commit -m "Update sitemap lastmod to $(date -u +%Y-%m-%d)" && git push)
