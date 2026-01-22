@@ -19,7 +19,11 @@ Desktop.ini
 
 # Logs
 *.log
+.deploy-log.txt
 
 # Temporary files
 *.tmp
 *.temp
+
+# Deployment (contains secrets on server)
+deploy-config.php

@@ -67,7 +67,43 @@ python -m http.server 8000
 
 ## Deployment
 
-Die Seite wird manuell oder per FTP auf den Webserver deployed.
+### Automatisches Deployment via GitHub Webhook
+
+Bei jedem Push auf `main` wird die Website automatisch auf den Server deployed:
+
+1. **GitHub** sendet Push-Notification an `deploy.php` auf dem Server
+2. **Server** führt `git pull` aus und aktualisiert die Dateien
+3. **Logs** werden in `.deploy-log.txt` gespeichert
+
+#### Setup-Anleitung
+
+**Auf dem Server:**
+```bash
+# In das Web-Root-Verzeichnis wechseln
+cd /pfad/zum/webroot
+
+# Repository clonen
+git clone git@github.com:ollrich/eichhof.me.git .
+
+# Secret-Token generieren und in deploy.php eintragen
+# Zeile 10: $secret = 'DEIN_GEHEIMER_TOKEN';
+```
+
+**In GitHub:**
+1. Gehe zu Repository Settings → Webhooks → Add webhook
+2. **Payload URL:** `https://eichhof.me/deploy.php`
+3. **Content type:** `application/json`
+4. **Secret:** Das gleiche Token wie in `deploy.php`
+5. **Events:** Nur "Just the push event"
+
+#### Manuelles Deployment
+
+Alternativ kann auch manuell deployed werden:
+```bash
+ssh deinserver
+cd /pfad/zum/webroot
+git pull
+```
 
 ---
 
