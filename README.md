@@ -14,9 +14,9 @@ This project explores modern web development workflows with AI assistance, featu
 
 This is a personal website built as an exploration of modern web development practices. While the code is open source for learning and inspiration:
 
-- **Not production-ready for direct use**: API keys and configuration are intentionally visible in the repository for transparency and educational purposes
-- **Use as inspiration**: Feel free to study the implementation patterns, copy specific features, or adapt the approach for your own projects
-- **For production use**: Externalize all secrets (see setup instructions), adjust security practices, and review the code for your specific needs
+- **Use as reference**: Study the implementation patterns, copy specific features, or adapt the approach for your own projects
+- **Production deployment requires setup**: You'll need to configure your own API keys and secrets (see [DEPLOY-SETUP.md](DEPLOY-SETUP.md))
+- **Educational focus**: This project demonstrates modern web development workflows with AI assistance, automated deployment, and privacy-first design
 
 ### Features
 
