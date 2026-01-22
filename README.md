@@ -217,7 +217,7 @@ cd /pfad/zum/webroot
 git clone git@github.com:ollrich/eichhof.me.git .
 
 # Secret-Token generieren und in deploy.php eintragen
-# Zeile 10: $secret = 'DEIN_GEHEIMER_TOKEN';
+# Zeile 9: $secret = 'DEIN_GEHEIMER_TOKEN';
 ```
 
 **In GitHub:**
