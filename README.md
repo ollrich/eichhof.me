@@ -57,7 +57,7 @@ This is a personal website built as an exploration of modern web development pra
 ├── js/
 │   └── confetti.min.js          # Canvas-Confetti library (lazy-loaded)
 └── images/
-    ├── favicons/                # Favicon variants (16x16 to 512x512)
+    ├── favicons/                # Favicon variants (180x180, 192x192, 512x512)
     ├── hover/                   # Link preview screenshots
     │   ├── blog-preview.webp           # Blog preview (DE)
     │   ├── blog-preview-en.webp        # Blog preview (EN)
@@ -192,7 +192,7 @@ Dies ist eine persönliche Website, die als Exploration moderner Webentwicklungs
 ├── js/
 │   └── confetti.min.js          # Canvas-Confetti Library (lazy-loaded)
 └── images/
-    ├── favicons/                # Favicon-Varianten (16x16 bis 512x512)
+    ├── favicons/                # Favicon-Varianten (180x180, 192x192, 512x512)
     ├── hover/                   # Link-Preview-Screenshots
     │   ├── blog-preview.webp           # Blog-Preview (DE)
     │   ├── blog-preview-en.webp        # Blog-Preview (EN)
@@ -327,7 +327,7 @@ Dette er en personlig hjemmeside bygget som en udforskning af moderne webudvikli
 ├── js/
 │   └── confetti.min.js          # Canvas-Confetti library (lazy-loaded)
 └── images/
-    ├── favicons/                # Favicon-varianter (16x16 til 512x512)
+    ├── favicons/                # Favicon-varianter (180x180, 192x192, 512x512)
     ├── hover/                   # Link-preview screenshots
     │   ├── blog-preview.webp           # Blog-preview (DE)
     │   ├── blog-preview-en.webp        # Blog-preview (EN)
