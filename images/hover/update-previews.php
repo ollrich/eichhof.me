@@ -2,8 +2,7 @@
 /**
  * Link Preview Screenshot Update Script
  *
- * Automatically generates preview screenshots for blog links.
- * SoundCloud preview is manually maintained due to bot detection.
+ * Automatically generates preview screenshots for blog and SoundCloud links.
  *
  * Schedule: Weekly on Mondays at 10:10 AM
  */
@@ -26,9 +25,11 @@ $config = [
         [
             'url' => 'https://schongeil.de/en/',
             'filename' => 'blog-preview-en.webp'
+        ],
+        [
+            'url' => 'https://soundcloud.com/ollie-eichhof',
+            'filename' => 'soundcloud-preview.webp'
         ]
-        // SoundCloud preview is manually maintained (soundcloud-preview.webp)
-        // to avoid bot detection from daily automated requests
     ],
     'width' => 1280,
     'height' => 720,

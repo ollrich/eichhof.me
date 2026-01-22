@@ -45,7 +45,7 @@ This is a personal website built as an exploration of modern web development pra
 ├── .github/
 │   └── workflows/
 │       └── update-sitemap.yml   # GitHub Action for sitemap updates
-├── .gitignore                   # Git ignore rules (includes .webhook-secret)
+├── .gitignore                   # Git ignore rules (includes .webhook-secret, .apiflash-key)
 ├── .htaccess                    # Server config (GZIP, caching, security)
 ├── deploy.php                   # Webhook handler (reads secret from file)
 ├── DEPLOY-SETUP.md              # Deployment setup instructions
@@ -153,7 +153,7 @@ Dies ist eine persönliche Website, die als Exploration moderner Webentwicklungs
 - **Produktiv-Deployment erfordert Setup**: API-Keys und Secrets müssen selbst konfiguriert werden (siehe [DEPLOY-SETUP.md](DEPLOY-SETUP.md))
 - **Bildungsfokus**: Dieses Projekt demonstriert moderne Webentwicklungs-Workflows mit KI-Unterstützung, automatisiertem Deployment und datenschutzfreundlichem Design
 
-## Features
+### Features
 
 - 🌐 Mehrsprachig (DE, EN, DA) mit automatischer Spracherkennung
 - 🎨 Dark Mode mit System-Präferenz-Erkennung und CSS Custom Properties
@@ -165,7 +165,7 @@ Dies ist eine persönliche Website, die als Exploration moderner Webentwicklungs
 - 🎊 Easter Eggs: Konfetti (Timer), Foto-Animation (Leertaste/Doppelklick)
 - ♿ Barrierefreiheit: ARIA-Labels, Tastaturnavigation, Reduced-Motion-Support
 
-## Tech Stack
+### Tech Stack
 
 - Pure HTML/CSS/JavaScript (keine Frameworks)
 - Schema.org strukturierte Daten (JSON-LD) für bessere Suchmaschinen-Sichtbarkeit
@@ -174,13 +174,13 @@ Dies ist eine persönliche Website, die als Exploration moderner Webentwicklungs
 - [APIFlash](https://apiflash.com/) für Screenshot-Generierung
 - GitHub Actions für Automatisierung
 
-## Struktur
+### Struktur
 
 ```
 ├── .github/
 │   └── workflows/
 │       └── update-sitemap.yml   # GitHub Action für Sitemap-Updates
-├── .gitignore                   # Git-Ignore-Regeln (inkl. .webhook-secret)
+├── .gitignore                   # Git-Ignore-Regeln (inkl. .webhook-secret, .apiflash-key)
 ├── .htaccess                    # Server-Konfiguration (GZIP, Caching, Security)
 ├── deploy.php                   # Webhook-Handler (liest Secret aus Datei)
 ├── DEPLOY-SETUP.md              # Deployment-Setup-Anleitung
@@ -204,17 +204,17 @@ Dies ist eine persönliche Website, die als Exploration moderner Webentwicklungs
     └── oliver-eichhof.webp      # Profilbild (optimiert)
 ```
 
-## Automatisierungen
+### Automatisierungen
 
-### Sitemap-Datum (GitHub Actions)
+#### Sitemap-Datum (GitHub Actions)
 Bei jedem Push auf `main` wird das `<lastmod>`-Datum in der Sitemap automatisch über eine GitHub Action aktualisiert. Die Action ignoriert dabei Änderungen an der README und `.github/`-Dateien.
 
-### Link-Preview Screenshots
+#### Link-Preview Screenshots
 Das Script `images/hover/update-previews.php` generiert automatisch Screenshots von verlinkten Websites (Blog, SoundCloud) für die Hover-Previews. Nutzt die [APIFlash](https://apiflash.com/) API für hochwertige WebP-Screenshots (1280x720, 80% Qualität).
 
 **Sicherheitshinweis**: Der API-Key wird in `.apiflash-key` (nicht im Repository) gespeichert. Diese Datei auf dem Server mit dem eigenen APIFlash-API-Key erstellen.
 
-## Lokale Entwicklung
+### Lokale Entwicklung
 
 Für lokales Testen mit PHP:
 ```bash
@@ -226,9 +226,9 @@ Oder mit Python:
 python -m http.server 8000
 ```
 
-## Deployment
+### Deployment
 
-### Automatisches Deployment via GitHub Webhook ✅
+#### Automatisches Deployment via GitHub Webhook ✅
 
 Bei jedem Push auf `main` wird die Website automatisch auf den Server deployed:
 
@@ -236,7 +236,7 @@ Bei jedem Push auf `main` wird die Website automatisch auf den Server deployed:
 2. **Server** validiert Webhook-Signatur und führt `git pull` aus
 3. **Logs** werden in `.deploy-log.txt` gespeichert
 
-#### Setup-Anleitung
+##### Setup-Anleitung
 
 **Detaillierte Anleitung in [`DEPLOY-SETUP.md`](DEPLOY-SETUP.md)**
 
@@ -261,7 +261,7 @@ chmod 600 .webhook-secret
 
 ⚠️ **Sicherheitshinweis:** Das Webhook-Secret wird aus Sicherheitsgründen in `.webhook-secret` (nicht im Repository) gespeichert.
 
-#### Manuelles Deployment
+##### Manuelles Deployment
 
 Alternativ kann auch manuell deployed werden:
 ```bash
@@ -315,7 +315,7 @@ Dette er en personlig hjemmeside bygget som en udforskning af moderne webudvikli
 ├── .github/
 │   └── workflows/
 │       └── update-sitemap.yml   # GitHub Action til sitemap-opdateringer
-├── .gitignore                   # Git ignore-regler (inkl. .webhook-secret)
+├── .gitignore                   # Git ignore-regler (inkl. .webhook-secret, .apiflash-key)
 ├── .htaccess                    # Server-konfiguration (GZIP, caching, security)
 ├── deploy.php                   # Webhook-handler (læser secret fra fil)
 ├── DEPLOY-SETUP.md              # Deployment setup-instruktioner
