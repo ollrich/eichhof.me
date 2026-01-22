@@ -1,9 +1,5 @@
 # eichhof.me
 
-*[Deutsch](#deutsch) | [Dansk](#dansk)*
-
----
-
 <a name="english"></a>
 ## English
 
