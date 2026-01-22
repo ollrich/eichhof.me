@@ -1,6 +1,6 @@
 # eichhof.me
 
-[🇬🇧 English](#english) | [🇩🇪 Deutsch](#deutsch)
+[🇬🇧 English](#english) | [🇩🇪 Deutsch](#deutsch) | [🇩🇰 Dansk](#dansk)
 
 ---
 
@@ -149,9 +149,9 @@ Dieses Projekt erkundet moderne Webentwicklungs-Workflows mit KI-Unterstützung 
 
 Dies ist eine persönliche Website, die als Exploration moderner Webentwicklungspraktiken entstanden ist. Der Code ist Open Source zum Lernen und zur Inspiration:
 
-- **Nicht produktionsreif für direkte Nutzung**: API-Keys und Konfiguration sind bewusst im Repository sichtbar aus Transparenz- und Bildungsgründen
-- **Als Inspiration nutzen**: Gerne Implementierungsmuster studieren, spezifische Features kopieren oder den Ansatz für eigene Projekte adaptieren
-- **Für Produktiveinsatz**: Alle Secrets auslagern (siehe Setup-Anleitung), Sicherheitspraktiken anpassen und Code für die eigenen Anforderungen prüfen
+- **Als Referenz nutzen**: Implementierungsmuster studieren, spezifische Features kopieren oder den Ansatz für eigene Projekte adaptieren
+- **Produktiv-Deployment erfordert Setup**: API-Keys und Secrets müssen selbst konfiguriert werden (siehe [DEPLOY-SETUP.md](DEPLOY-SETUP.md))
+- **Bildungsfokus**: Dieses Projekt demonstriert moderne Webentwicklungs-Workflows mit KI-Unterstützung, automatisiertem Deployment und datenschutzfreundlichem Design
 
 ## Features
 
@@ -267,6 +267,141 @@ Alternativ kann auch manuell deployed werden:
 ```bash
 ssh deinserver
 cd /pfad/zum/webroot
+git pull
+```
+
+---
+
+<a name="dansk"></a>
+
+## Dansk
+
+Personlig hjemmeside for Oliver Eichhof – Kommunikationsspecialist fra Hamborg.
+
+Dette projekt udforsker moderne webudviklingsprocesser med AI-assistance og omfatter automatiseret deployment, flersproget support og privacy-first design.
+
+### Om dette projekt
+
+Dette er en personlig hjemmeside bygget som en udforskning af moderne webudviklingspraksis. Koden er open source til læring og inspiration:
+
+- **Brug som reference**: Studér implementeringsmønstre, kopiér specifikke funktioner eller tilpas tilgangen til dine egne projekter
+- **Produktions-deployment kræver opsætning**: Du skal konfigurere dine egne API-nøgler og secrets (se [DEPLOY-SETUP.md](DEPLOY-SETUP.md))
+- **Uddannelsesfokus**: Dette projekt demonstrerer moderne webudviklingsprocesser med AI-assistance, automatiseret deployment og privacy-first design
+
+### Features
+
+- 🌐 Flersproget (DE, EN, DA) med automatisk sprogdetektion
+- 🎨 Dark mode med systempræferencedetektering og CSS custom properties
+- 📱 Responsivt design med mobil-optimeret layout
+- 🔒 Privacy-first (ingen cookies, ingen tracking, ingen analytics)
+- ⚡ Performance-optimeret (CSS-variabler, vendor-præfikser, optimeret JS)
+- 🖼️ Hover-previews for eksterne links (kun desktop)
+- 🔍 SEO-optimeret med schema.org strukturerede data (Person, WebSite, WebPage), sitemap og hreflang
+- 🎊 Easter eggs: Konfetti (timer), foto-animation (mellemrum/dobbeltklik)
+- ♿ Tilgængelighed: ARIA-labels, tastaturnavigation, reduced-motion support
+
+### Tech Stack
+
+- Pure HTML/CSS/JavaScript (ingen frameworks)
+- Schema.org strukturerede data (JSON-LD) for forbedret søgemaskinesynlighed
+- WebP-billeder for optimal performance
+- [Canvas-Confetti](https://github.com/catdad/canvas-confetti) til visuelle effekter
+- [APIFlash](https://apiflash.com/) til screenshot-generering
+- GitHub Actions til automatisering
+
+### Struktur
+
+```
+├── .github/
+│   └── workflows/
+│       └── update-sitemap.yml   # GitHub Action til sitemap-opdateringer
+├── .gitignore                   # Git ignore-regler (inkl. .webhook-secret)
+├── .htaccess                    # Server-konfiguration (GZIP, caching, security)
+├── deploy.php                   # Webhook-handler (læser secret fra fil)
+├── DEPLOY-SETUP.md              # Deployment setup-instruktioner
+├── index.html                   # Hovedside (optimeret CSS/JS)
+├── robots.txt                   # Crawler-kontrol
+├── sitemap.xml                  # Sitemap med hreflang
+├── favicon.ico                  # Multi-resolution favicon
+├── README.md                    # Denne fil
+├── js/
+│   └── confetti.min.js          # Canvas-Confetti library (lazy-loaded)
+└── images/
+    ├── favicons/                # Favicon-varianter (16x16 til 512x512)
+    ├── hover/                   # Link-preview screenshots
+    │   ├── blog-preview.webp           # Blog-preview (DE)
+    │   ├── blog-preview-en.webp        # Blog-preview (EN)
+    │   ├── soundcloud-preview.webp     # SoundCloud-preview
+    │   ├── update-previews.php         # Script til opdatering af screenshots
+    │   └── update-log.txt              # Log-fil for screenshot-opdateringer
+    ├── og-image.png             # Open Graph-billede til sociale medier
+    ├── oliver-eichhof.jpg       # Profilbillede (original)
+    └── oliver-eichhof.webp      # Profilbillede (optimeret)
+```
+
+### Automatiseringer
+
+#### Sitemap-dato (GitHub Actions)
+Ved hvert push til `main` opdateres `<lastmod>`-datoen i sitemappen automatisk via en GitHub Action. Actionen ignorerer ændringer i README og `.github/`-filer.
+
+#### Link-preview screenshots
+Scriptet `images/hover/update-previews.php` genererer automatisk screenshots af linkede websites (blog, SoundCloud) til hover-previews. Bruger [APIFlash](https://apiflash.com/) API til high-quality WebP-screenshots (1280x720, 80% kvalitet).
+
+**Sikkerhedsnotat**: API-nøglen gemmes i `.apiflash-key` (ikke i repository). Opret denne fil på serveren med din egen APIFlash API-nøgle.
+
+### Lokal udvikling
+
+Til lokal test med PHP:
+```bash
+php -S localhost:8000
+```
+
+Eller med Python:
+```bash
+python -m http.server 8000
+```
+
+### Deployment
+
+#### Automatisk deployment via GitHub Webhook ✅
+
+Ved hvert push til `main` deployes hjemmesiden automatisk til serveren:
+
+1. **GitHub** sender push-notifikation til `deploy.php` på serveren
+2. **Server** validerer webhook-signatur og udfører `git pull`
+3. **Logs** gemmes i `.deploy-log.txt`
+
+##### Setup-instruktioner
+
+**Detaljerede instruktioner i [`DEPLOY-SETUP.md`](DEPLOY-SETUP.md)**
+
+Hurtig oversigt:
+
+**På serveren:**
+```bash
+cd /sti/til/webroot
+git clone https://github.com/ollrich/eichhof.me.git .
+
+# Generér og gem webhook-secret
+openssl rand -hex 32 > .webhook-secret
+chmod 600 .webhook-secret
+```
+
+**I GitHub:**
+1. Repository Settings → Webhooks → Add webhook
+2. **Payload URL:** `https://eichhof.me/deploy.php`
+3. **Content type:** `application/json`
+4. **Secret:** Indhold fra `.webhook-secret`-fil
+5. **Events:** Kun "Just the push event"
+
+⚠️ **Sikkerhedsnotat:** Webhook-secreten gemmes af sikkerhedsgrunde i `.webhook-secret` (ikke i repository).
+
+##### Manuelt deployment
+
+Alternativt kan der deployes manuelt:
+```bash
+ssh dinserver
+cd /sti/til/webroot
 git pull
 ```
 
