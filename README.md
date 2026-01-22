@@ -26,7 +26,7 @@ This project explores modern web development workflows with AI assistance, featu
 - Pure HTML/CSS/JavaScript (no frameworks)
 - WebP images for optimal performance
 - [Canvas-Confetti](https://github.com/catdad/canvas-confetti) for visual effects
-- APIFlash for screenshot generation
+- [APIFlash](https://apiflash.com/) for screenshot generation
 - GitHub Actions for automation
 
 ### Structure
@@ -64,7 +64,7 @@ This project explores modern web development workflows with AI assistance, featu
 Every push to `main` automatically updates the `<lastmod>` date in the sitemap via GitHub Action. The action ignores changes to README and `.github/` files.
 
 #### Link Preview Screenshots
-The script `images/hover/update-previews.php` automatically generates screenshots of linked websites (blog, SoundCloud) for hover previews. Uses the APIFlash API for high-quality WebP screenshots (1280x720, 80% quality).
+The script `images/hover/update-previews.php` automatically generates screenshots of linked websites (blog, SoundCloud) for hover previews. Uses the [APIFlash](https://apiflash.com/) API for high-quality WebP screenshots (1280x720, 80% quality).
 
 ### Local Development
 
@@ -144,7 +144,7 @@ Dieses Projekt erkundet moderne Webentwicklungs-Workflows mit KI-Unterstützung 
 - Pure HTML/CSS/JavaScript (keine Frameworks)
 - WebP-Bilder für optimale Performance
 - [Canvas-Confetti](https://github.com/catdad/canvas-confetti) für visuelle Effekte
-- APIFlash für Screenshot-Generierung
+- [APIFlash](https://apiflash.com/) für Screenshot-Generierung
 - GitHub Actions für Automatisierung
 
 ## Struktur
@@ -182,7 +182,7 @@ Dieses Projekt erkundet moderne Webentwicklungs-Workflows mit KI-Unterstützung 
 Bei jedem Push auf `main` wird das `<lastmod>`-Datum in der Sitemap automatisch über eine GitHub Action aktualisiert. Die Action ignoriert dabei Änderungen an der README und `.github/`-Dateien.
 
 ### Link-Preview Screenshots
-Das Script `images/hover/update-previews.php` generiert automatisch Screenshots von verlinkten Websites (Blog, SoundCloud) für die Hover-Previews. Nutzt die APIFlash API für hochwertige WebP-Screenshots (1280x720, 80% Qualität).
+Das Script `images/hover/update-previews.php` generiert automatisch Screenshots von verlinkten Websites (Blog, SoundCloud) für die Hover-Previews. Nutzt die [APIFlash](https://apiflash.com/) API für hochwertige WebP-Screenshots (1280x720, 80% Qualität).
 
 ## Lokale Entwicklung
 
