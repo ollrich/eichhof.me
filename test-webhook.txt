@@ -1,2 +1,0 @@
-Test file to verify webhook deployment works
-Webhook test Thu Jan 22 12:05:54 CET 2026
