@@ -11,11 +11,13 @@ Persönliche Website von Oliver Eichhof – Kommunikationsspezialist aus Hamburg
 - ⚡ Optimiert für Performance (lokale Assets, GZIP, Caching)
 - 🖼️ Hover-Previews für externe Links
 - 🔍 SEO-optimiert mit Sitemap und hreflang
+- 🎊 Konfetti-Effekt bei Kontakt-Interaktion (lazy-loaded)
 
 ## Tech Stack
 
 - Pure HTML/CSS/JavaScript (keine Frameworks)
 - WebP-Bilder für optimale Performance
+- Canvas-Confetti für visuelle Effekte
 - APIFlash für Screenshot-Generierung
 - GitHub Actions für Automatisierung
 
@@ -27,11 +29,14 @@ Persönliche Website von Oliver Eichhof – Kommunikationsspezialist aus Hamburg
 │       └── update-sitemap.yml   # GitHub Action für Sitemap-Updates
 ├── .gitignore                   # Git-Ignore-Regeln
 ├── .htaccess                    # Server-Konfiguration (GZIP, Caching, Security)
+├── deploy.php                   # Webhook-Handler für automatisches Deployment
 ├── index.html                   # Hauptseite
 ├── robots.txt                   # Crawler-Steuerung
 ├── sitemap.xml                  # Sitemap mit hreflang
 ├── favicon.ico                  # Multi-Resolution Favicon
 ├── README.md                    # Diese Datei
+├── js/
+│   └── confetti.min.js          # Canvas-Confetti Library (lazy-loaded)
 └── images/
     ├── favicons/                # Favicon-Varianten (16x16 bis 192x192)
     ├── hover/                   # Link-Preview-Screenshots
