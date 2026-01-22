@@ -17,7 +17,7 @@ Persönliche Website von Oliver Eichhof – Kommunikationsspezialist aus Hamburg
 
 - Pure HTML/CSS/JavaScript (keine Frameworks)
 - WebP-Bilder für optimale Performance
-- Canvas-Confetti für visuelle Effekte
+- [Canvas-Confetti](https://github.com/catdad/canvas-confetti) für visuelle Effekte
 - APIFlash für Screenshot-Generierung
 - GitHub Actions für Automatisierung
 
