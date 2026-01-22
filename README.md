@@ -67,7 +67,7 @@ python -m http.server 8000
 
 ## Deployment
 
-### Automatisches Deployment via GitHub Webhook
+### Automatisches Deployment via GitHub Webhook ✅
 
 Bei jedem Push auf `main` wird die Website automatisch auf den Server deployed:
 
