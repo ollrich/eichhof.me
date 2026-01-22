@@ -1,6 +1,47 @@
 # eichhof.me
 
+[🇬🇧 English](#english) | [🇩🇪 Deutsch](#deutsch)
+
+---
+
+## English
+
+Personal website of Oliver Eichhof – Communication Specialist from Hamburg.
+
+This project explores modern web development workflows with AI assistance, featuring automated deployment, multilingual support, and privacy-first design.
+
+### Features
+
+- 🌐 Multilingual (DE, EN, DA) with automatic language detection
+- 🎨 Dark mode with system preference detection
+- 📱 Responsive design
+- 🔒 GDPR compliant (no cookies, no tracking)
+- ⚡ Optimized for performance (local assets, GZIP, caching)
+- 🖼️ Hover previews for external links
+- 🔍 SEO optimized with sitemap and hreflang
+- 🎊 Confetti effect on contact interaction (lazy-loaded)
+
+### Tech Stack
+
+- Pure HTML/CSS/JavaScript (no frameworks)
+- WebP images for optimal performance
+- [Canvas-Confetti](https://github.com/catdad/canvas-confetti) for visual effects
+- APIFlash for screenshot generation
+- GitHub Actions for automation
+
+### Automated Deployment
+
+Every push to `main` automatically deploys the website to the server via GitHub webhook.
+
+---
+
+<a name="deutsch"></a>
+
+## Deutsch
+
 Persönliche Website von Oliver Eichhof – Kommunikationsspezialist aus Hamburg.
+
+Dieses Projekt erkundet moderne Webentwicklungs-Workflows mit KI-Unterstützung und umfasst automatisiertes Deployment, mehrsprachige Unterstützung und datenschutzfreundliches Design.
 
 ## Features
 
