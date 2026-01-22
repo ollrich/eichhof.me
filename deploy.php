@@ -6,7 +6,7 @@
  */
 
 // Konfiguration
-$secret = 'CHANGE_THIS_SECRET_TOKEN'; // Später in GitHub als Webhook Secret eintragen
+$secret = '***REMOVED***'; // GitHub Webhook Secret
 $repo_dir = __DIR__; // Verzeichnis des Git-Repositories
 $branch = 'main'; // Branch der deployed werden soll
 $log_file = __DIR__ . '/.deploy-log.txt'; // Log-Datei
