@@ -33,3 +33,7 @@ openssl rand -hex 32
 ## Deploy Script
 
 The `deploy.php` script automatically pulls changes when GitHub sends a webhook after each push to the `main` branch.
+
+### Testing the Webhook
+
+After setup, push a commit to test the webhook. Check `.deploy-log.txt` on the server for deployment logs.
