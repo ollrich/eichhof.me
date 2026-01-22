@@ -1,10 +1,13 @@
 # eichhof.me
 
-[🇬🇧 English](#english) | [🇩🇪 Deutsch](#deutsch) | [🇩🇰 Dansk](#dansk)
+*[Deutsch](#deutsch) | [Dansk](#dansk)*
 
 ---
 
+<a name="english"></a>
 ## English
+
+*[Deutsch](#deutsch) | [Dansk](#dansk)*
 
 Personal website of Oliver Eichhof – Communication Specialist from Hamburg.
 
@@ -138,8 +141,9 @@ git pull
 ---
 
 <a name="deutsch"></a>
-
 ## Deutsch
+
+*[English](#english) | [Dansk](#dansk)*
 
 Persönliche Website von Oliver Eichhof – Kommunikationsspezialist aus Hamburg.
 
@@ -273,8 +277,9 @@ git pull
 ---
 
 <a name="dansk"></a>
-
 ## Dansk
+
+*[English](#english) | [Deutsch](#deutsch)*
 
 Personlig hjemmeside for Oliver Eichhof – Kommunikationsspecialist fra Hamborg.
 
