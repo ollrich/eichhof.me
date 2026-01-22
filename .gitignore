@@ -28,3 +28,4 @@ Desktop.ini
 # Deployment (contains secrets on server)
 deploy-config.php
 .webhook-secret
+.apiflash-key

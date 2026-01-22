@@ -10,6 +10,14 @@ Personal website of Oliver Eichhof – Communication Specialist from Hamburg.
 
 This project explores modern web development workflows with AI assistance, featuring automated deployment, multilingual support, and privacy-first design.
 
+### About This Project
+
+This is a personal website built as an exploration of modern web development practices. While the code is open source for learning and inspiration:
+
+- **Not production-ready for direct use**: API keys and configuration are intentionally visible in the repository for transparency and educational purposes
+- **Use as inspiration**: Feel free to study the implementation patterns, copy specific features, or adapt the approach for your own projects
+- **For production use**: Externalize all secrets (see setup instructions), adjust security practices, and review the code for your specific needs
+
 ### Features
 
 - 🌐 Multilingual (DE, EN, DA) with automatic language detection
@@ -18,13 +26,14 @@ This project explores modern web development workflows with AI assistance, featu
 - 🔒 Privacy-first (no cookies, no tracking, no analytics)
 - ⚡ Performance optimized (CSS variables, vendor prefixes, optimized JS)
 - 🖼️ Hover previews for external links (desktop only)
-- 🔍 SEO optimized with structured data, sitemap, and hreflang
+- 🔍 SEO optimized with schema.org structured data (Person, WebSite, WebPage), sitemap, and hreflang
 - 🎊 Easter eggs: Confetti (timer), photo animation (space/double-click)
 - ♿ Accessibility: ARIA labels, keyboard navigation, reduced motion support
 
 ### Tech Stack
 
 - Pure HTML/CSS/JavaScript (no frameworks)
+- Schema.org structured data (JSON-LD) for enhanced search engine visibility
 - WebP images for optimal performance
 - [Canvas-Confetti](https://github.com/catdad/canvas-confetti) for visual effects
 - [APIFlash](https://apiflash.com/) for screenshot generation
@@ -67,6 +76,8 @@ Every push to `main` automatically updates the `<lastmod>` date in the sitemap v
 
 #### Link Preview Screenshots
 The script `images/hover/update-previews.php` automatically generates screenshots of linked websites (blog, SoundCloud) for hover previews. Uses the [APIFlash](https://apiflash.com/) API for high-quality WebP screenshots (1280x720, 80% quality).
+
+**Security Note**: The API key is stored in `.apiflash-key` (not in the repository). Create this file on your server with your own APIFlash API key.
 
 ### Local Development
 
@@ -134,6 +145,14 @@ Persönliche Website von Oliver Eichhof – Kommunikationsspezialist aus Hamburg
 
 Dieses Projekt erkundet moderne Webentwicklungs-Workflows mit KI-Unterstützung und umfasst automatisiertes Deployment, mehrsprachige Unterstützung und datenschutzfreundliches Design.
 
+### Über dieses Projekt
+
+Dies ist eine persönliche Website, die als Exploration moderner Webentwicklungspraktiken entstanden ist. Der Code ist Open Source zum Lernen und zur Inspiration:
+
+- **Nicht produktionsreif für direkte Nutzung**: API-Keys und Konfiguration sind bewusst im Repository sichtbar aus Transparenz- und Bildungsgründen
+- **Als Inspiration nutzen**: Gerne Implementierungsmuster studieren, spezifische Features kopieren oder den Ansatz für eigene Projekte adaptieren
+- **Für Produktiveinsatz**: Alle Secrets auslagern (siehe Setup-Anleitung), Sicherheitspraktiken anpassen und Code für die eigenen Anforderungen prüfen
+
 ## Features
 
 - 🌐 Mehrsprachig (DE, EN, DA) mit automatischer Spracherkennung
@@ -142,13 +161,14 @@ Dieses Projekt erkundet moderne Webentwicklungs-Workflows mit KI-Unterstützung 
 - 🔒 Privacy-First (keine Cookies, kein Tracking, keine Analytik)
 - ⚡ Performance-optimiert (CSS-Variablen, Vendor-Präfixe, optimiertes JS)
 - 🖼️ Hover-Previews für externe Links (nur Desktop)
-- 🔍 SEO-optimiert mit strukturierten Daten, Sitemap und hreflang
+- 🔍 SEO-optimiert mit schema.org strukturierten Daten (Person, WebSite, WebPage), Sitemap und hreflang
 - 🎊 Easter Eggs: Konfetti (Timer), Foto-Animation (Leertaste/Doppelklick)
 - ♿ Barrierefreiheit: ARIA-Labels, Tastaturnavigation, Reduced-Motion-Support
 
 ## Tech Stack
 
 - Pure HTML/CSS/JavaScript (keine Frameworks)
+- Schema.org strukturierte Daten (JSON-LD) für bessere Suchmaschinen-Sichtbarkeit
 - WebP-Bilder für optimale Performance
 - [Canvas-Confetti](https://github.com/catdad/canvas-confetti) für visuelle Effekte
 - [APIFlash](https://apiflash.com/) für Screenshot-Generierung
@@ -191,6 +211,8 @@ Bei jedem Push auf `main` wird das `<lastmod>`-Datum in der Sitemap automatisch 
 
 ### Link-Preview Screenshots
 Das Script `images/hover/update-previews.php` generiert automatisch Screenshots von verlinkten Websites (Blog, SoundCloud) für die Hover-Previews. Nutzt die [APIFlash](https://apiflash.com/) API für hochwertige WebP-Screenshots (1280x720, 80% Qualität).
+
+**Sicherheitshinweis**: Der API-Key wird in `.apiflash-key` (nicht im Repository) gespeichert. Diese Datei auf dem Server mit dem eigenen APIFlash-API-Key erstellen.
 
 ## Lokale Entwicklung
 

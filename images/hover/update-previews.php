@@ -8,6 +8,14 @@
  * Schedule: Weekly on Mondays at 10:10 AM
  */
 
+// Load API key from external file for security
+$api_key_file = __DIR__ . '/.apiflash-key';
+$api_key = file_exists($api_key_file) ? trim(file_get_contents($api_key_file)) : '';
+
+if (empty($api_key)) {
+    die('ERROR: API key not found. Please create .apiflash-key file.');
+}
+
 $config = [
     'access_key' => $api_key,
     'screenshots' => [
