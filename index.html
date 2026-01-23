@@ -1,28 +1,46 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
+    <!-- Character encoding and viewport configuration for responsive design -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Theme color for browser UI (address bar on mobile) -->
     <meta name="theme-color" content="#764ba2">
+
+    <!-- SEO meta tags for search engines -->
     <meta name="description" content="Ich helfe Unternehmen, ihre Zielgruppen zu verstehen und klarer zu kommunizieren.">
     <meta name="robots" content="index, follow">
     <meta name="author" content="Oliver Eichhof">
+    <!-- Open Graph meta tags for rich social media sharing (Facebook, LinkedIn) -->
     <meta property="og:title" content="Oliver Eichhof – Kommunikationsspezialist aus Hamburg">
     <meta property="og:description" content="Ich helfe Unternehmen, ihre Zielgruppen zu verstehen und klarer zu kommunizieren.">
     <meta property="og:image" content="https://eichhof.me/images/og-image.png">
     <meta property="og:url" content="https://eichhof.me/">
     <meta property="og:type" content="profile">
     <meta property="og:locale" content="de_DE">
+
+    <!-- Twitter Card meta tags for rich Twitter sharing -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Oliver Eichhof – Kommunikationsspezialist aus Hamburg">
     <meta name="twitter:description" content="Ich helfe Unternehmen, ihre Zielgruppen zu verstehen und klarer zu kommunizieren.">
     <meta name="twitter:image" content="https://eichhof.me/images/og-image.png">
+    <!-- Canonical URL to prevent duplicate content issues in SEO -->
     <link rel="canonical" href="https://eichhof.me/">
+
+    <!-- Multilingual alternate links for international SEO -->
     <link rel="alternate" hreflang="de" href="https://eichhof.me/?lang=de">
     <link rel="alternate" hreflang="en" href="https://eichhof.me/?lang=en">
     <link rel="alternate" hreflang="da" href="https://eichhof.me/?lang=da">
     <link rel="alternate" hreflang="x-default" href="https://eichhof.me/">
+
     <title>Oliver Eichhof – Kommunikationsspezialist aus Hamburg</title>
+
+    <!--
+        JSON-LD structured data for rich search results (Google Knowledge Panel)
+        This schema.org Person markup helps search engines understand the content
+        and can lead to enhanced search result displays
+    -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -95,11 +113,27 @@
         ]
     }
     </script>
+
+    <!-- Favicon configuration for various devices and contexts -->
     <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
     <link rel="icon" type="image/png" sizes="192x192" href="/images/favicons/favicon192.png">
     <link rel="icon" type="image/png" sizes="512x512" href="/images/favicons/favicon512.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/images/favicons/favicon180.png">
+
+    <!--
+        ==========================================
+        EMBEDDED CSS STYLES
+        ==========================================
+        Inline CSS is used here for performance - eliminates an HTTP request
+        and ensures styles load immediately with the HTML
+    -->
     <style>
+        /* ========================================
+           CSS RESET
+           ========================================
+           Universal reset to ensure consistent rendering across browsers
+           box-sizing: border-box makes width/height include padding and border
+        */
         *,
         *::before,
         *::after {
@@ -108,6 +142,10 @@
             box-sizing: border-box;
         }
 
+        /* Screen reader only class for accessibility
+           Content is hidden visually but still available to screen readers
+           Uses the "visually-hidden" pattern recommended by WebAIM
+        */
         .sr-only {
             position: absolute;
             width: 1px;
@@ -120,6 +158,13 @@
             border: 0;
         }
 
+        /* ========================================
+           CSS CUSTOM PROPERTIES (CSS Variables)
+           ========================================
+           These define the color scheme for the entire site.
+           Using RGB values (without 'rgb()') allows us to add alpha
+           transparency later with rgba(var(--color), alpha)
+        */
         html {
             --accent-purple: 118, 75, 162;
             --bg-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -146,9 +191,16 @@
             --preview-border: rgba(255, 255, 255, 0.1);
             --preview-shadow: rgba(0, 0, 0, 0.5);
             background: var(--bg-gradient);
-            min-height: 100%;
+            min-height: 100%; /* Ensures gradient fills entire viewport */
         }
 
+        /* ========================================
+           DARK MODE COLOR SCHEME
+           ========================================
+           When .dark-mode class is added to <html>, these variables override
+           the default light mode colors. This approach keeps all theming
+           logic centralized and easy to maintain.
+        */
         html.dark-mode {
             --bg-gradient: linear-gradient(135deg, #0d0d14 0%, #1a1a2e 100%);
             --photo-border: rgba(var(--accent-purple), 0.3);
@@ -175,9 +227,16 @@
             --preview-shadow: rgba(0, 0, 0, 0.7);
         }
 
+        /* ========================================
+           BASE LAYOUT
+           ========================================
+           Flexbox centering for the main content
+           System font stack ensures fast loading and native appearance
+        */
         body {
+            /* System font stack - uses the default font for each OS */
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            background: transparent;
+            background: transparent; /* Background comes from html element */
             min-height: 100vh;
             display: flex;
             justify-content: center;
@@ -185,12 +244,19 @@
             padding: 2rem 1rem 15px;
         }
 
+        /* Main content container with maximum width for readability */
         .container {
             max-width: 375px;
             width: 100%;
             text-align: center;
         }
 
+        /* ========================================
+           PROFILE PHOTO WITH HOVER EFFECT
+           ========================================
+           Interactive profile photo with scale animation on hover
+           Uses transform for better performance than width/height animation
+        */
         .profile-photo {
             width: 160px;
             height: 160px;
@@ -202,12 +268,12 @@
             box-shadow: 0 8px 32px var(--photo-shadow);
             transition: transform 0.3s ease;
             cursor: default;
-            transform-origin: 50% 50%;
-            will-change: transform;
+            transform-origin: 50% 50%; /* Scale from center */
+            will-change: transform; /* Optimization hint for browser compositor */
         }
 
         .profile-photo:hover {
-            transform: scale(1.24);
+            transform: scale(1.24); /* 24% larger on hover */
         }
 
         .name {
@@ -240,12 +306,20 @@
             text-underline-offset: 2px;
         }
 
+        /* Keyboard focus styles for accessibility */
         .tagline a:focus-visible {
             outline: 2px solid rgba(255, 255, 255, 0.5);
             outline-offset: 2px;
             border-radius: 2px;
         }
 
+        /* ========================================
+           LINK PREVIEW TOOLTIP
+           ========================================
+           Floating preview window that appears on hover over certain links
+           Shows a screenshot preview of the linked content
+           Positioned dynamically via JavaScript to avoid viewport edges
+        */
         .link-preview {
             position: fixed;
             width: 400px;
@@ -254,15 +328,16 @@
             border: 2px solid var(--preview-border);
             border-radius: 12px;
             box-shadow: 0 20px 60px var(--preview-shadow);
-            z-index: 10000;
+            z-index: 10000; /* Above all other content */
             pointer-events: auto;
-            opacity: 0;
+            opacity: 0; /* Start hidden */
             transition: opacity 0.3s ease;
             overflow: hidden;
-            display: none;
-            cursor: pointer;
+            display: none; /* Removed from layout when inactive */
+            cursor: pointer; /* Clickable to visit the link */
         }
 
+        /* Active state - preview is visible */
         .link-preview.active {
             display: block;
             opacity: 1;
@@ -314,12 +389,19 @@
             outline-offset: 2px;
         }
 
+        /* ========================================
+           SOCIAL LINK CARDS
+           ========================================
+           Glassmorphism design with backdrop blur effects
+           Cards have hover animations and brand-specific colors
+        */
         .links {
             display: flex;
             flex-direction: column;
             gap: 1rem;
         }
 
+        /* Individual link card with glassmorphism effect */
         .link-card {
             background: var(--card-bg);
             border: 1px solid var(--card-border);
@@ -333,10 +415,12 @@
             color: var(--card-color);
             transition: background 0.3s ease, border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
             cursor: pointer;
+            /* Backdrop blur creates the "frosted glass" effect */
             -webkit-backdrop-filter: blur(10px);
             backdrop-filter: blur(10px);
         }
 
+        /* Hover state with lift effect */
         .link-card:hover {
             background: var(--card-hover-bg);
             border-color: var(--card-hover-border);
@@ -344,6 +428,7 @@
             box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
         }
 
+        /* Active state - returns to original position when clicked */
         .link-card:active {
             transform: translateY(0);
         }
@@ -356,17 +441,22 @@
         .icon {
             width: 24px;
             height: 24px;
-            flex-shrink: 0;
+            flex-shrink: 0; /* Prevents icon from shrinking */
         }
 
         .link-text {
-            width: 80px;
+            width: 80px; /* Fixed width for consistent alignment */
             font-size: 1rem;
             font-weight: 400;
             letter-spacing: 0.3px;
             text-align: left;
         }
 
+        /* ========================================
+           BRAND-SPECIFIC HOVER COLORS
+           ========================================
+           Each social platform gets its brand color on hover
+        */
         .link-card.linkedin:hover {
             background: rgba(10, 102, 194, 0.15);
             border-color: rgba(10, 102, 194, 0.3);
@@ -387,15 +477,17 @@
             border-color: rgba(99, 100, 255, 0.3);
         }
 
+        /* Two-column row for Bluesky and Mastodon */
         .social-row {
             display: flex;
             gap: 1rem;
         }
 
         .social-row .link-card {
-            flex: 1;
+            flex: 1; /* Equal width cards */
         }
 
+        /* For German visitors, Mastodon appears first (more popular in Germany) */
         .social-row.mastodon-first #mastodon-btn {
             order: 1;
         }
@@ -409,7 +501,13 @@
             border-color: rgba(255, 140, 0, 0.3);
         }
 
+        /* ========================================
+           RESPONSIVE DESIGN - TABLET AND BELOW
+           ========================================
+           Adjustments for screens 768px and smaller
+        */
         @media (max-width: 768px) {
+            /* Disable link previews on mobile - better UX for touch devices */
             .link-preview {
                 display: none !important;
             }
@@ -473,10 +571,16 @@
             }
         }
 
+        /* Mobile footer hidden by default, shown only on small screens */
         .mobile-footer {
             display: none;
         }
 
+        /* ========================================
+           RESPONSIVE DESIGN - MOBILE
+           ========================================
+           Adjustments for screens 480px and smaller
+        */
         @media (max-width: 480px) {
             body {
                 padding: 0 1rem 15px;
@@ -519,10 +623,12 @@
                 font-size: 0.9rem;
             }
 
+            /* Hide desktop footers on mobile */
             .footer, .footer-left {
                 display: none;
             }
 
+            /* Show mobile footer with different layout */
             .mobile-footer {
                 display: flex;
                 justify-content: space-between;
@@ -563,6 +669,11 @@
             }
         }
 
+        /* ========================================
+           FOOTER ELEMENTS
+           ========================================
+           Fixed positioning for desktop footer elements
+        */
         .footer,
         .footer-left {
             position: fixed;
@@ -607,11 +718,13 @@
             color: rgba(255, 255, 255, 1) !important;
         }
 
+        /* Wrapper for GitHub link with tooltip */
         .github-link-wrapper {
             position: relative;
             display: inline-block;
         }
 
+        /* Tooltip that appears above GitHub link on hover */
         .github-tooltip {
             position: absolute;
             bottom: calc(100% + 10px);
@@ -629,6 +742,7 @@
             backdrop-filter: blur(8px);
         }
 
+        /* Tooltip arrow pointing down */
         .github-tooltip::after {
             content: '';
             position: absolute;
@@ -638,6 +752,7 @@
             border-top-color: var(--tooltip-bg);
         }
 
+        /* Only show tooltip on devices with hover capability (excludes touch devices) */
         @media (hover: hover) {
             .github-link-wrapper:hover .github-tooltip {
                 opacity: 1;
@@ -650,20 +765,26 @@
             }
         }
 
+        /* ========================================
+           EASTER EGG HINT
+           ========================================
+           Centered hint text that appears periodically to encourage interaction
+           Controlled by JavaScript timer
+        */
         .footer-hint {
             position: fixed;
             bottom: 15px;
             left: 50%;
-            transform: translateX(-50%);
+            transform: translateX(-50%); /* Center horizontally */
             font-size: 11px;
             color: var(--footer-color);
             z-index: 100;
-            opacity: 0;
+            opacity: 0; /* Hidden by default */
             transition: opacity 0.5s ease;
         }
 
         .footer-hint.visible {
-            opacity: 1;
+            opacity: 1; /* Shown when JavaScript adds this class */
         }
 
         .footer-left {
@@ -687,6 +808,12 @@
             outline-offset: 2px;
         }
 
+        /* ========================================
+           MODAL OVERLAY SYSTEM
+           ========================================
+           Full-screen overlay for legal notice (Impressum) and privacy policy
+           Uses backdrop blur for modern glassmorphism effect
+        */
         .overlay {
             position: fixed;
             top: 0;
@@ -699,12 +826,13 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            z-index: 2000;
+            z-index: 2000; /* Above all other content */
             opacity: 0;
-            pointer-events: none;
+            pointer-events: none; /* Invisible and non-interactive when hidden */
             transition: opacity 0.3s ease;
         }
 
+        /* Active state - overlay is visible and interactive */
         .overlay.active {
             opacity: 1;
             pointer-events: all;
@@ -721,10 +849,11 @@
             width: 90%;
             color: white;
             position: relative;
-            transform: scale(0.9);
+            transform: scale(0.9); /* Starts slightly smaller */
             transition: transform 0.3s ease;
         }
 
+        /* Scale up to full size when overlay becomes active */
         .overlay.active .overlay-content {
             transform: scale(1);
         }
@@ -787,6 +916,12 @@
             outline-offset: 2px;
         }
 
+        /* ========================================
+           ACCESSIBILITY - REDUCED MOTION
+           ========================================
+           Respects user's preference for reduced motion (motion sickness, vestibular disorders)
+           Removes all animations and transitions for users who prefer reduced motion
+        */
         @media (prefers-reduced-motion: reduce) {
             * {
                 animation-duration: 0.01ms !important;
@@ -803,6 +938,12 @@
             }
         }
 
+        /* ========================================
+           THEME TOGGLE BUTTON
+           ========================================
+           Fixed button in top-right corner for switching between light/dark mode
+           Uses CSS custom properties to change entire color scheme
+        */
         .theme-toggle {
             position: fixed;
             top: 20px;
@@ -810,10 +951,11 @@
             z-index: 1000;
         }
 
+        /* Theme toggle button - subtle by default */
         .theme-toggle-btn {
             width: 26px;
             height: 26px;
-            opacity: var(--toggle-opacity);
+            opacity: var(--toggle-opacity); /* Semi-transparent when not hovered */
             cursor: pointer;
             transition: opacity 0.3s ease, transform 0.2s ease;
             background: none;
@@ -823,7 +965,7 @@
 
         .theme-toggle-btn:hover,
         .theme-toggle-btn:focus-visible {
-            opacity: var(--toggle-hover);
+            opacity: var(--toggle-hover); /* More visible on hover */
             transform: scale(1.1);
         }
 
@@ -838,6 +980,7 @@
             height: 100%;
         }
 
+        /* Light mode: show moon icon (click to enable dark mode) */
         .theme-toggle-btn .icon-sun {
             display: none;
         }
@@ -876,16 +1019,22 @@
             }
         }
 
+        /* Hide "light mode" tooltip text in light mode */
         .theme-tooltip .tooltip-light {
             display: none;
         }
 
+        /* ========================================
+           DARK MODE ICON SWITCHING
+           ========================================
+           When dark mode is active, swap icons and tooltip text
+        */
         html.dark-mode .theme-toggle-btn .icon-moon {
             display: none;
         }
 
         html.dark-mode .theme-toggle-btn .icon-sun {
-            display: block;
+            display: block; /* Show sun icon (click to enable light mode) */
         }
 
         html.dark-mode .theme-tooltip .tooltip-dark {
@@ -893,9 +1042,10 @@
         }
 
         html.dark-mode .theme-tooltip .tooltip-light {
-            display: inline;
+            display: inline; /* Show "light mode" tooltip */
         }
 
+        /* Dark mode specific hover color for link preview */
         html.dark-mode .link-preview:hover {
             border-color: rgba(var(--accent-purple), 0.5);
         }
@@ -904,6 +1054,13 @@
 </head>
 <body>
     <main>
+    <!--
+        ==========================================
+        THEME TOGGLE BUTTON
+        ==========================================
+        Fixed top-right button for switching color schemes
+        Includes tooltip that shows contextual text based on current mode
+    -->
     <div class="theme-toggle">
         <span class="theme-tooltip"><span class="tooltip-dark" id="tooltip-dark">Licht aus</span><span class="tooltip-light" id="tooltip-light">Licht an</span></span>
         <button class="theme-toggle-btn" id="theme-toggle" aria-label="Farbschema wechseln">
@@ -923,13 +1080,24 @@
             </svg>
         </button>
     </div>
+
+    <!--
+        ==========================================
+        MAIN CONTENT CONTAINER
+        ==========================================
+        Profile information and social links
+        Content is dynamically updated based on detected language
+    -->
     <div class="container">
+        <!-- Profile photo with Easter egg animation (double-click or spacebar) -->
         <img src="https://eichhof.me/images/oliver-eichhof.webp" alt="Porträt von Oliver Eichhof, Kommunikationsspezialist aus Hamburg" class="profile-photo">
-        
+
         <h1 class="name">Oliver Eichhof</h1>
-        
+
+        <!-- Tagline with inline links - content replaced by JavaScript based on language -->
         <p class="tagline" id="tagline">Ich arbeite in der Medienbranche und rede im Job gern über gute Kommunikation und was Zielgruppen brauchen. Ab und zu <a href="https://www.schongeil.de/" target="_blank" rel="noopener noreferrer">blogge</a> ich und <a href="https://soundcloud.com/livicxyz" target="_blank" rel="noopener noreferrer">lege</a> Platten auf.</p>
 
+        <!-- Social media and contact links -->
         <nav class="links" aria-label="Social Links">
             <a href="https://de.linkedin.com/in/olivereichhof" target="_blank" rel="noopener noreferrer me" class="link-card linkedin">
                 <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
@@ -949,6 +1117,8 @@
                 </div>
             </a>
 
+            <!-- Two-column row for Bluesky and Mastodon
+                 Order changes based on language (Mastodon first for German) -->
             <div class="social-row" id="social-row">
                 <a href="https://bsky.app/profile/ollri.ch" target="_blank" rel="noopener noreferrer me" class="link-card bluesky" id="bluesky-btn">
                     <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
@@ -969,6 +1139,7 @@
                 </a>
             </div>
 
+            <!-- Email link - address is obfuscated and constructed by JavaScript -->
             <a href="#" id="email-link" class="link-card email" aria-label="E-Mail senden">
                 <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
@@ -979,21 +1150,37 @@
                 </div>
             </a>
         </nav>
-        
+
+        <!-- Mobile-only footer (shown on small screens) -->
         <div class="mobile-footer">
             <a id="footer-link-mobile">Impressum & Datenverarbeitung</a>
             <span id="footer-text-mobile">Mit <span aria-hidden="true">♥</span><span class="sr-only">Liebe</span> und KI realisiert</span>
         </div>
     </div>
 
+    <!--
+        ==========================================
+        FOOTER ELEMENTS
+        ==========================================
+        Fixed positioning at bottom of viewport
+        Separate desktop and mobile layouts
+    -->
     <div class="footer-left">
         <a id="footer-link">Impressum & Datenverarbeitung</a>
     </div>
 
     <div class="footer"><span id="footer-text-desktop">Mit <span aria-hidden="true">♥</span><span class="sr-only">Liebe</span> und KI in Hamburg erstellt</span> <span class="github-link-wrapper">• <span class="github-tooltip" id="github-tooltip">Quellcode auf GitHub</span><a href="https://github.com/ollrich/eichhof.me" target="_blank" rel="noopener noreferrer" class="footer-link"><svg style="width: 1em; height: 1em; vertical-align: -0.125em;" viewBox="0 0 16 16" fill="currentColor" aria-label="Quellcode auf GitHub"><path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"/></svg></a></span></div>
-    
+
+    <!-- Hint text that appears periodically to encourage Easter egg discovery -->
     <div class="footer-hint" id="footer-hint">drücke leertaste</div>
 
+    <!--
+        ==========================================
+        MODAL OVERLAY (IMPRESSUM/LEGAL NOTICE)
+        ==========================================
+        Full-screen overlay with legal information and privacy policy
+        Opened by clicking footer links or via ?impressum URL parameter
+    -->
     <div class="overlay" id="overlay">
         <div class="overlay-content">
             <button class="close-overlay" id="close-overlay-btn" aria-label="Close">
@@ -1013,6 +1200,14 @@
         </div>
     </div>
 
+    <!--
+        ==========================================
+        LINK PREVIEW TOOLTIP
+        ==========================================
+        Floating preview window that appears when hovering over certain links
+        Shows screenshots of blog and SoundCloud pages
+        Desktop only - hidden on mobile devices
+    -->
     <div class="link-preview" id="link-preview">
         <button class="preview-close" id="preview-close" aria-label="Close preview">
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
@@ -1021,25 +1216,53 @@
         </button>
     </div>
 
+    <!--
+        ==========================================
+        JAVASCRIPT - MAIN APPLICATION LOGIC
+        ==========================================
+        All functionality is wrapped in an IIFE (Immediately Invoked Function Expression)
+        to avoid polluting the global namespace and prevent variable conflicts
+    -->
     <script>
         (function() {
-            'use strict';
+            'use strict'; // Enforce stricter JavaScript parsing for better error catching
 
+            /* ========================================
+               THEME PERSISTENCE
+               ========================================
+               Restore user's theme preference from localStorage
+               Applied immediately to prevent flash of wrong theme
+            */
             const savedTheme = localStorage.getItem('theme');
             if (savedTheme === 'dark') {
                 document.documentElement.classList.add('dark-mode');
             }
 
+            /* ========================================
+               EMAIL OBFUSCATION CONFIGURATION
+               ========================================
+               Email address stored in parts to prevent simple scraping by bots
+               Reassembled in JavaScript when needed for mailto: links
+               This is a basic privacy measure to reduce spam
+            */
             const CONFIG = {
                 emailDomain: ['eichhof', 'me']
             };
 
+            /* ========================================
+               MULTILINGUAL CONTENT
+               ========================================
+               Taglines and overlay text in three languages: German, English, Danish
+               Language detection happens automatically based on browser settings
+               or explicit ?lang= URL parameter
+            */
             const taglines = {
                 de: 'Ich arbeite in der Medienbranche und rede im Job gern über gute Kommunikation und was Zielgruppen brauchen. Ab und zu <a href="https://www.schongeil.de/" target="_blank" rel="noopener noreferrer">blogge</a> ich und <a href="https://soundcloud.com/livicxyz" target="_blank" rel="noopener noreferrer">lege</a> Platten auf.',
                 en: 'I work in media and like talking about good communication and what audiences need. Every now and then I <a href="https://www.schongeil.de/en/" target="_blank" rel="noopener noreferrer">blog</a> and <a href="https://soundcloud.com/livicxyz" target="_blank" rel="noopener noreferrer">spin records</a>.',
                 da: 'Jeg arbejder i mediebranchen og taler gerne om god kommunikation og hvad målgrupper har brug for. Af og til <a href="https://www.schongeil.de/en/" target="_blank" rel="noopener noreferrer">blogger</a> jeg og <a href="https://soundcloud.com/livicxyz" target="_blank" rel="noopener noreferrer">spiller plader</a>.'
             };
 
+            // Complete translations for legal notice overlay, email text, and UI elements
             const overlayTexts = {
                 de: {
                     title: "Impressum",
@@ -1118,14 +1341,26 @@
                 }
             };
 
-            let isEasterEggActive = false;
-            let lastTap = 0;
-            let currentEmailPrefix = 'hallo';
-            let currentLang = 'de';
-            let confettiTriggered = false;
-            let confettiLoaded = false;
+            /* ========================================
+               STATE MANAGEMENT
+               ========================================
+               Global state variables for tracking application status
+            */
+            let isEasterEggActive = false; // Prevents multiple concurrent Easter egg animations
+            let lastTap = 0; // Timestamp for double-tap detection on mobile
+            let currentEmailPrefix = 'hallo'; // Current language's email prefix (hallo/hello/hej)
+            let currentLang = 'de'; // Currently active language code
+            let confettiTriggered = false; // Prevents confetti from firing multiple times
+            let confettiLoaded = false; // Tracks whether confetti.js library has been loaded
+
+            // Safari detection - Easter egg disabled on Safari due to rendering issues
             const isSafari = /safari/i.test(navigator.userAgent) && !/chrome|chromium|android/i.test(navigator.userAgent);
 
+            /* ========================================
+               DOM ELEMENT REFERENCES
+               ========================================
+               Cache DOM queries for better performance
+            */
             const profilePhoto = document.querySelector('.profile-photo');
             const overlay = document.getElementById('overlay');
             const taglineElement = document.getElementById('tagline');
@@ -1149,19 +1384,34 @@
             const socialRow = document.getElementById('social-row');
             const urlParams = new URLSearchParams(window.location.search);
 
+            /* ========================================
+               EMAIL FUNCTIONALITY
+               ========================================
+               Constructs email address from obfuscated parts
+               Opens default email client with mailto: link
+            */
             const openEmail = () => {
                 const email = currentEmailPrefix + '@' + CONFIG.emailDomain[0] + '.' + CONFIG.emailDomain[1];
                 window.location.href = 'mailto:' + email;
             };
 
+            /* ========================================
+               LANGUAGE DETECTION AND CONTENT SWITCHING
+               ========================================
+               Detects user language from URL parameter or browser settings
+               Updates all text content to match selected language
+               Priority: URL param > Browser language > Default (German)
+            */
             const setTagline = () => {
                 const urlLang = urlParams.get('lang');
                 
                 let langCode = 'de';
-                
+
+                // Check URL parameter first (explicit user choice)
                 if (urlLang && ['de', 'en', 'da'].includes(urlLang)) {
                     langCode = urlLang;
                 } else {
+                    // Fall back to browser language detection
                     const userLang = (navigator.language || navigator.userLanguage).toLowerCase().split('-')[0];
                     if (userLang === 'en') {
                         langCode = 'en';
@@ -1169,9 +1419,10 @@
                         langCode = 'da';
                     }
                 }
-                
+
+                // Update tagline content with selected language
                 taglineElement.innerHTML = taglines[langCode];
-                document.documentElement.lang = langCode;
+                document.documentElement.lang = langCode; // Update HTML lang attribute for accessibility
                 
                 const overlayContent = overlayTexts[langCode];
                 overlayTitle.textContent = overlayContent.title;
@@ -1184,6 +1435,7 @@
                 overlayText5.textContent = overlayContent.text5;
                 overlayText6.textContent = overlayContent.text6;
 
+                // Construct email address from language-specific prefix and domain parts
                 const email = overlayContent.emailPrefix + '@' + CONFIG.emailDomain[0] + '.' + CONFIG.emailDomain[1];
                 overlayEmailLink.textContent = email;
                 overlayEmailLink.href = 'mailto:' + email;
@@ -1202,7 +1454,8 @@
                 if (tooltipDark) tooltipDark.textContent = overlayContent.themeDark;
                 if (tooltipLight) tooltipLight.textContent = overlayContent.themeLight;
                 if (themeToggle) themeToggle.setAttribute('aria-label', overlayContent.themeToggleLabel);
-                
+
+                // For German visitors, show Mastodon before Bluesky (more popular in Germany)
                 if (langCode === 'de') {
                     socialRow.classList.add('mastodon-first');
                 } else {
@@ -1221,6 +1474,11 @@
                 currentLang = langCode;
             };
 
+            /* ========================================
+               OVERLAY (MODAL) CONTROLS
+               ========================================
+               Functions to show/hide the legal notice overlay
+            */
             const openOverlay = () => {
                 overlay.classList.add('active');
             };
@@ -1229,6 +1487,12 @@
                 overlay.classList.remove('active');
             };
 
+            /* ========================================
+               EASTER EGG - DOUBLE TAP DETECTION
+               ========================================
+               Detects double-tap on mobile devices (< 300ms between taps)
+               Triggers the profile photo heartbeat animation
+            */
             const handleDoubleTap = (e) => {
                 const currentTime = Date.now();
                 const tapLength = currentTime - lastTap;
@@ -1240,11 +1504,18 @@
                 lastTap = currentTime;
             };
 
+            /* ========================================
+               CONFETTI SYSTEM - LAZY LOADING
+               ========================================
+               Dynamically loads confetti.js library only when needed
+               This reduces initial page load time (performance optimization)
+            */
             const loadConfetti = (callback) => {
                 if (confettiLoaded) {
                     callback();
                     return;
                 }
+                // Create script tag and inject it into the page
                 const script = document.createElement('script');
                 script.src = 'js/confetti.min.js';
                 script.onload = () => {
@@ -1257,6 +1528,12 @@
                 document.head.appendChild(script);
             };
 
+            /* ========================================
+               CONFETTI ANIMATION
+               ========================================
+               Creates a 3-second confetti animation from both sides of screen
+               Only fires once per session to avoid annoying repeat visitors
+            */
             const fireConfetti = () => {
                 if (confettiTriggered) return;
                 if (document.hidden) return;
@@ -1266,7 +1543,9 @@
                 const end = Date.now() + duration;
                 const colors = ['#667eea', '#764ba2', '#ffffff', '#ffd700', '#ff6b6b'];
 
+                // Animation loop using requestAnimationFrame for smooth 60fps animation
                 const frame = () => {
+                    // Fire confetti from left side
                     confetti({
                         particleCount: 3,
                         angle: 60,
@@ -1274,6 +1553,7 @@
                         origin: { x: 0 },
                         colors: colors
                     });
+                    // Fire confetti from right side
                     confetti({
                         particleCount: 3,
                         angle: 120,
@@ -1282,6 +1562,7 @@
                         colors: colors
                     });
 
+                    // Continue animation until duration expires
                     if (Date.now() < end) {
                         requestAnimationFrame(frame);
                     }
@@ -1289,35 +1570,55 @@
                 frame();
             };
 
-
+            /* ========================================
+               CONFETTI AUTO-TRIGGER TIMER
+               ========================================
+               Automatically triggers confetti after 111 seconds (1:51)
+               Rewards users who stay on the page - a "thank you" Easter egg
+            */
             const initConfettiTimer = () => {
                 setTimeout(() => {
                     if (confettiTriggered) return;
-                    if (document.hidden) return;
+                    if (document.hidden) return; // Don't trigger if tab is not visible
                     loadConfetti(fireConfetti);
-                }, 111000);
+                }, 111000); // 111 seconds
             };
 
+            /* ========================================
+               EASTER EGG - HEARTBEAT ANIMATION
+               ========================================
+               Complex animation sequence:
+               1. Photo scales up in stages (3x, then 5x)
+               2. Heartbeat pulse effect at each stage
+               3. Returns to normal position with spin
+               Disabled on Safari due to rendering issues
+               Respects prefers-reduced-motion accessibility setting
+            */
             const triggerEasterEgg = () => {
                 if (isEasterEggActive) return;
                 if (isSafari) return;
                 
                 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-                if (prefersReducedMotion) return;
-                
+                if (prefersReducedMotion) return; // Respect accessibility preference
+
                 isEasterEggActive = true;
-                
+
+                // Get current position and size, accounting for potential hover scaling
                 const rect = profilePhoto.getBoundingClientRect();
                 const computedStyle = window.getComputedStyle(profilePhoto);
                 const cssWidth = parseFloat(computedStyle.width);
-                const isScaled = rect.width > cssWidth + 1;
-                
+                const isScaled = rect.width > cssWidth + 1; // Check if hover scale is active
+
                 const originalWidth = isScaled ? cssWidth : rect.width;
                 const originalHeight = isScaled ? cssWidth : rect.height;
                 const offsetX = isScaled ? (rect.width - originalWidth) / 2 : 0;
                 const offsetY = isScaled ? (rect.height - originalHeight) / 2 : 0;
                 
+                // Disable pointer events during animation
                 profilePhoto.style.pointerEvents = 'none';
+
+                // Create phantom div to hold the space where photo was
+                // This prevents layout shift when photo becomes position:fixed
                 const phantom = document.createElement('div');
                 phantom.id = 'photo-phantom';
                 phantom.style.width = originalWidth + 'px';
@@ -1326,51 +1627,61 @@
                 phantom.style.display = 'block';
                 phantom.style.borderRadius = '50%';
                 profilePhoto.parentNode.insertBefore(phantom, profilePhoto);
-                
+
+                // Convert photo to fixed positioning for animation
                 profilePhoto.style.position = 'fixed';
                 profilePhoto.style.left = (rect.left + offsetX) + 'px';
                 profilePhoto.style.top = (rect.top + offsetY) + 'px';
                 profilePhoto.style.zIndex = '10000';
                 profilePhoto.style.margin = '0';
                 profilePhoto.style.transform = 'scale(1)';
-                
+
+                // Animation stages: scale to 3x, then 5x
                 const scales = [3, 5];
                 let step = 0;
                 
+                // Single heartbeat: expand slightly, compress, return to base
                 const singleBeat = (baseScale, callback) => {
+                    // Expand phase (12% larger than current scale)
                     profilePhoto.style.transition = 'transform 0.08s cubic-bezier(0.4, 0, 0.2, 1)';
                     profilePhoto.style.transform = 'scale(' + (baseScale * 1.12) + ')';
-                    
+
                     setTimeout(() => {
+                        // Compress phase (3% smaller than base)
                         profilePhoto.style.transition = 'transform 0.1s cubic-bezier(0.4, 0, 0.2, 1)';
                         profilePhoto.style.transform = 'scale(' + (baseScale * 0.97) + ')';
-                        
+
                         setTimeout(() => {
+                            // Return to base scale
                             profilePhoto.style.transition = 'transform 0.15s ease-out';
                             profilePhoto.style.transform = 'scale(' + baseScale + ')';
                             setTimeout(callback, 180);
                         }, 100);
                     }, 80);
                 };
-                
+
+                // Double heartbeat: two beats in quick succession (like "lub-dub")
                 const doubleBeat = (baseScale, callback) => {
                     singleBeat(baseScale, () => {
                         setTimeout(() => {
                             singleBeat(baseScale, callback);
-                        }, 60);
+                        }, 60); // Short pause between beats
                     });
                 };
                 
+                // Return photo to original position with spinning animation
                 const resetPhoto = () => {
                     const phantomEl = document.getElementById('photo-phantom');
                     const phantomRect = phantomEl.getBoundingClientRect();
-                    
+
+                    // Animate back to original position with 720-degree spin (two full rotations)
                     profilePhoto.style.transition = 'left 0.8s cubic-bezier(0.4, 0, 0.2, 1), top 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.8, 0, 0.2, 1)';
                     profilePhoto.style.left = phantomRect.left + 'px';
                     profilePhoto.style.top = phantomRect.top + 'px';
                     profilePhoto.style.transform = 'scale(1) rotate(-720deg)';
-                    
+
                     setTimeout(() => {
+                        // Clean up: remove phantom and reset all inline styles
                         phantomEl.remove();
                         profilePhoto.style.position = '';
                         profilePhoto.style.left = '';
@@ -1383,20 +1694,25 @@
                     }, 800);
                 };
                 
+                // Recursive function: heartbeat at current size, then grow to next size
                 const doHeartbeatAndGrow = () => {
                     const currentScale = step === 0 ? 1 : scales[step - 1];
                     const targetScale = scales[step];
-                    
+
+                    // Perform double heartbeat at current scale
                     doubleBeat(currentScale, () => {
                         setTimeout(() => {
+                            // Grow to next scale
                             profilePhoto.style.transition = 'transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
                             profilePhoto.style.transform = 'scale(' + targetScale + ')';
-                            
+
                             setTimeout(() => {
                                 step++;
                                 if (step < scales.length) {
+                                    // Continue to next stage
                                     doHeartbeatAndGrow();
                                 } else {
+                                    // Final heartbeat at max size, then reset
                                     doubleBeat(5, () => {
                                         setTimeout(resetPhoto, 300);
                                     });
@@ -1405,38 +1721,52 @@
                         }, 200);
                     });
                 };
-                
+
+                // Start animation after short delay
                 setTimeout(doHeartbeatAndGrow, 400);
             };
 
+            /* ========================================
+               EVENT LISTENERS
+               ========================================
+               Set up all interaction handlers
+            */
+
+            // Easter egg triggers: double-click (desktop) or double-tap (mobile)
             profilePhoto.addEventListener('dblclick', triggerEasterEgg);
             profilePhoto.addEventListener('touchend', handleDoubleTap);
-            
+
+            // Close overlay when clicking outside the content box
             overlay.addEventListener('click', (e) => {
                 if (e.target === overlay) closeOverlay();
             });
-            
+
+            // Prevent clicks inside overlay content from closing it
             document.querySelector('.overlay-content').addEventListener('click', (e) => {
                 e.stopPropagation();
             });
-            
+
+            // Close button in overlay
             document.getElementById('close-overlay-btn').addEventListener('click', closeOverlay);
-            
+
+            // Keyboard shortcuts
             document.addEventListener('keydown', (e) => {
                 if (e.key === 'Escape') {
-                    closeOverlay();
+                    closeOverlay(); // ESC closes overlay
                 }
                 if (e.key === ' ' && e.target === document.body) {
-                    e.preventDefault();
-                    triggerEasterEgg();
+                    e.preventDefault(); // Prevent page scroll
+                    triggerEasterEgg(); // SPACEBAR triggers Easter egg
                 }
             });
 
+            // Email link opens mailto with obfuscated address
             document.getElementById('email-link').addEventListener('click', (e) => {
                 e.preventDefault();
                 openEmail();
             });
 
+            // Legal notice links in footer
             footerLink.addEventListener('click', (e) => {
                 e.preventDefault();
                 openOverlay();
@@ -1449,41 +1779,67 @@
                 });
             }
 
+            /* ========================================
+               INITIALIZATION
+               ========================================
+               Run setup functions when page loads
+            */
+
+            // Detect and set language, update all text content
             setTagline();
-            
+
+            // Open legal notice if ?impressum or ?legal parameter is present
             if (urlParams.get('impressum') !== null || urlParams.get('legal') !== null) {
                 openOverlay();
             }
 
+            /* ========================================
+               HINT ANIMATION LOOP
+               ========================================
+               Periodically shows "press space" hint to encourage Easter egg discovery
+               Only on desktop (>768px) and non-Safari browsers
+            */
             const startHintLoop = () => {
                 if (window.innerWidth <= 768) return;
                 if (isSafari) return;
                 
                 const showHint = () => {
+                    // Skip if tab is not visible
                     if (document.hidden) {
                         setTimeout(showHint, 42000);
                         return;
                     }
-                    
+
+                    // Show hint for 3 seconds
                     footerHint.classList.add('visible');
-                    
+
                     setTimeout(() => {
+                        // Hide and schedule next appearance
                         footerHint.classList.remove('visible');
-                        setTimeout(showHint, 42000);
+                        setTimeout(showHint, 42000); // Show every 42 seconds
                     }, 3000);
                 };
-                setTimeout(showHint, 42000);
+                setTimeout(showHint, 42000); // First hint after 42 seconds
             };
-            
+
+            /* ========================================
+               LINK PREVIEW SYSTEM
+               ========================================
+               Shows hoverable preview images for certain links in the tagline
+               Desktop only - disabled on mobile/touch devices
+               Previews appear after 500ms hover delay to avoid accidental triggers
+            */
             const preview = document.getElementById('link-preview');
             const previewClose = document.getElementById('preview-close');
             let previewTimeout;
             let hideTimeout;
             let currentPreviewElement = null;
             let currentUrl = null;
-            
+
+            // Touch device detection - disables preview on tablets and phones
             const isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
 
+            // Map of URLs to their preview images (with language-specific variants)
             const previewImages = {
                 'schongeil.de': {
                     'de': 'images/hover/blog-preview.webp',
@@ -1493,10 +1849,12 @@
                 'soundcloud.com': 'images/hover/soundcloud-preview.webp'
             };
 
+            // Returns the preview image path for a given URL (null if no preview available)
             const getPreviewImage = (url) => {
                 for (const key in previewImages) {
                     if (url.includes(key)) {
                         const value = previewImages[key];
+                        // Handle language-specific previews
                         if (typeof value === 'object') {
                             return value[currentLang] || value['de'];
                         }
@@ -1506,58 +1864,68 @@
                 return null;
             };
 
+            // Shows link preview after 500ms hover delay
             const showLinkPreview = (url, linkElement) => {
                 clearTimeout(previewTimeout);
                 clearTimeout(hideTimeout);
-                
+
                 const previewImage = getPreviewImage(url);
-                if (!previewImage) return;
+                if (!previewImage) return; // No preview available for this URL
 
                 currentUrl = url;
 
+                // Delay showing preview to avoid accidental triggers
                 previewTimeout = setTimeout(() => {
+                    // Remove old preview image if present
                     if (currentPreviewElement) {
                         preview.removeChild(currentPreviewElement);
                     }
-                    
+
+                    // Create and insert new preview image
                     const img = document.createElement('img');
                     img.src = previewImage;
                     img.alt = 'Preview';
                     currentPreviewElement = img;
                     preview.appendChild(img);
-                    
+
+                    // Calculate optimal position (centered below link by default)
                     const rect = linkElement.getBoundingClientRect();
                     const previewWidth = 400;
                     const previewHeight = 240;
-                    
+
                     let left = rect.left + rect.width / 2 - previewWidth / 2;
                     let top = rect.bottom + 20;
-                    
+
+                    // Keep preview within viewport bounds
                     if (left + previewWidth > window.innerWidth - 20) {
                         left = window.innerWidth - previewWidth - 20;
                     }
                     if (left < 20) {
                         left = 20;
                     }
-                    
+
+                    // If no space below, show above link
                     if (top + previewHeight > window.innerHeight - 20) {
                         top = rect.top - previewHeight - 20;
                     }
-                    
+
                     preview.style.left = left + 'px';
                     preview.style.top = top + 'px';
                     preview.classList.add('active');
-                }, 500);
+                }, 500); // 500ms hover delay
             };
 
+            // Track hover state to keep preview visible when hovering between link and preview
             let isOverPreview = false;
             let isOverLink = false;
 
+            // Hides preview with fade-out animation
             const hideLinkPreview = (force) => {
                 clearTimeout(previewTimeout);
                 clearTimeout(hideTimeout);
-                
+
                 if (force === true) {
+                    // Immediate hide (used by close button)
                     preview.classList.remove('active');
                     setTimeout(() => {
                         if (currentPreviewElement && !isOverPreview && !isOverLink) {
@@ -1565,10 +1933,11 @@
                             currentPreviewElement = null;
                             currentUrl = null;
                         }
-                    }, 300);
+                    }, 300); // Wait for fade-out animation
                     return;
                 }
-                
+
+                // Delayed hide (allows moving cursor from link to preview)
                 hideTimeout = setTimeout(() => {
                     if (!isOverPreview && !isOverLink) {
                         preview.classList.remove('active');
@@ -1583,25 +1952,29 @@
                 }, 300);
             };
 
+            // Keep preview visible when hovering over it
             const keepPreviewVisible = () => {
                 isOverPreview = true;
                 clearTimeout(hideTimeout);
                 clearTimeout(previewTimeout);
             };
 
+            // Preview hover events
             preview.addEventListener('mouseenter', keepPreviewVisible);
             preview.addEventListener('mouseleave', () => {
                 isOverPreview = false;
                 hideLinkPreview();
             });
-            
+
+            // Clicking preview opens the link in new tab
             preview.addEventListener('click', (e) => {
                 if (e.target === previewClose || e.target.closest('.preview-close')) return;
                 if (currentUrl) {
                     window.open(currentUrl, '_blank', 'noopener,noreferrer');
                 }
             });
-            
+
+            // Close button in top-right of preview
             previewClose.addEventListener('click', (e) => {
                 e.stopPropagation();
                 isOverPreview = false;
@@ -1609,15 +1982,16 @@
                 hideLinkPreview(true);
             });
 
+            // Initialize preview system for links in tagline
             const initLinkPreviews = () => {
-                if (isTouchDevice || window.innerWidth <= 768) return;
+                if (isTouchDevice || window.innerWidth <= 768) return; // Desktop only
                 if (!taglineElement) return;
-                
+
                 const links = taglineElement.querySelectorAll('a');
                 links.forEach((link) => {
                     const url = link.getAttribute('href');
-                    if (!getPreviewImage(url)) return;
-                    
+                    if (!getPreviewImage(url)) return; // Skip if no preview available
+
                     link.addEventListener('mouseenter', () => {
                         isOverLink = true;
                         clearTimeout(hideTimeout);
@@ -1625,7 +1999,7 @@
                             showLinkPreview(url, link);
                         }
                     });
-                    
+
                     link.addEventListener('mouseleave', () => {
                         isOverLink = false;
                         hideLinkPreview();
@@ -1633,17 +2007,22 @@
                 });
             };
 
+            // Initialize all systems
             initLinkPreviews();
-
             startHintLoop();
-
             initConfettiTimer();
 
+            /* ========================================
+               THEME TOGGLE
+               ========================================
+               Toggles between light and dark mode
+               Saves preference to localStorage for persistence
+            */
             document.getElementById('theme-toggle').addEventListener('click', function() {
                 document.documentElement.classList.toggle('dark-mode');
                 const isDark = document.documentElement.classList.contains('dark-mode');
                 localStorage.setItem('theme', isDark ? 'dark' : 'light');
-                this.blur();
+                this.blur(); // Remove focus to hide focus outline
             });
 
         })();
