@@ -12,6 +12,10 @@ RewriteRule ^(.*)$ https://eichhof.me/$1 [L,R=301]
 <FilesMatch "\.(env|log|bak|sql|ini|sh|php)$">
     Require all denied
 </FilesMatch>
+# Ausnahme für deploy.php (GitHub Webhook)
+<Files "deploy.php">
+    Require all granted
+</Files>
 RedirectMatch 404 /\.git
 
 # Content-Type für sitemap.xml
