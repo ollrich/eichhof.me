@@ -41,7 +41,7 @@ $config = [
             'filename' => 'blog-preview-en.webp'
         ],
         [
-            'url' => 'https://soundcloud.com/ollie-eichhof',
+            'url' => 'https://soundcloud.com/livicxyz',
             'filename' => 'soundcloud-preview.webp'
         ]
     ],

@@ -96,9 +96,9 @@
     }
     </script>
     <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
-    <link rel="icon" type="image/png" sizes="192x192" href="https://eichhof.me/images/favicons/favicon192.png">
-    <link rel="icon" type="image/png" sizes="512x512" href="https://eichhof.me/images/favicons/favicon512.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="https://eichhof.me/images/favicons/favicon180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/images/favicons/favicon192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/images/favicons/favicon512.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/favicons/favicon180.png">
     <style>
         *,
         *::before,
@@ -203,6 +203,7 @@
             transition: transform 0.3s ease;
             cursor: default;
             transform-origin: 50% 50%;
+            will-change: transform;
         }
 
         .profile-photo:hover {
@@ -1123,7 +1124,6 @@
             let currentLang = 'de';
             let confettiTriggered = false;
             let confettiLoaded = false;
-            let pageLoadTime = Date.now();
             const isSafari = /safari/i.test(navigator.userAgent) && !/chrome|chromium|android/i.test(navigator.userAgent);
 
             const profilePhoto = document.querySelector('.profile-photo');
@@ -1225,8 +1225,7 @@
                 overlay.classList.add('active');
             };
 
-            const closeOverlay = (event) => {
-                if (event && event.target !== overlay) return;
+            const closeOverlay = () => {
                 overlay.classList.remove('active');
             };
 
@@ -1308,8 +1307,6 @@
                 
                 isEasterEggActive = true;
                 
-                profilePhoto.style.willChange = 'transform';
-                
                 const rect = profilePhoto.getBoundingClientRect();
                 const computedStyle = window.getComputedStyle(profilePhoto);
                 const cssWidth = parseFloat(computedStyle.width);
@@ -1382,7 +1379,6 @@
                         profilePhoto.style.margin = '';
                         profilePhoto.style.transition = '';
                         profilePhoto.style.pointerEvents = '';
-                        profilePhoto.style.willChange = '';
                         isEasterEggActive = false;
                     }, 800);
                 };
@@ -1416,15 +1412,15 @@
             profilePhoto.addEventListener('dblclick', triggerEasterEgg);
             profilePhoto.addEventListener('touchend', handleDoubleTap);
             
-            overlay.addEventListener('click', closeOverlay);
+            overlay.addEventListener('click', (e) => {
+                if (e.target === overlay) closeOverlay();
+            });
             
             document.querySelector('.overlay-content').addEventListener('click', (e) => {
                 e.stopPropagation();
             });
             
-            document.getElementById('close-overlay-btn').addEventListener('click', () => {
-                closeOverlay();
-            });
+            document.getElementById('close-overlay-btn').addEventListener('click', closeOverlay);
             
             document.addEventListener('keydown', (e) => {
                 if (e.key === 'Escape') {
@@ -1464,6 +1460,11 @@
                 if (isSafari) return;
                 
                 const showHint = () => {
+                    if (document.hidden) {
+                        setTimeout(showHint, 42000);
+                        return;
+                    }
+                    
                     footerHint.classList.add('visible');
                     
                     setTimeout(() => {
