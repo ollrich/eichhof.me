@@ -981,7 +981,7 @@
         
         <div class="mobile-footer">
             <a id="footer-link-mobile">Impressum & Datenverarbeitung</a>
-            <span>Made with <span aria-hidden="true">♥</span><span class="sr-only">love</span> and <a href="https://github.com/ollrich/eichhof.me" target="_blank" rel="noopener noreferrer">AI</a></span>
+            <span id="footer-text-mobile">Mit <span aria-hidden="true">♥</span><span class="sr-only">Liebe</span> und KI realisiert</span>
         </div>
     </div>
 
@@ -989,7 +989,7 @@
         <a id="footer-link">Impressum & Datenverarbeitung</a>
     </div>
 
-    <div class="footer">Made with <span aria-hidden="true">♥</span><span class="sr-only">love</span> and AI in Hamburg <span class="github-link-wrapper">• <span class="github-tooltip" id="github-tooltip">View source on GitHub</span><a href="https://github.com/ollrich/eichhof.me" target="_blank" rel="noopener noreferrer" class="footer-link"><svg style="width: 1em; height: 1em; vertical-align: -0.125em;" viewBox="0 0 16 16" fill="currentColor" aria-label="View source on GitHub"><path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"/></svg></a></span></div>
+    <div class="footer"><span id="footer-text-desktop">Mit <span aria-hidden="true">♥</span><span class="sr-only">Liebe</span> und KI in Hamburg erstellt</span> <span class="github-link-wrapper">• <span class="github-tooltip" id="github-tooltip">Quellcode auf GitHub</span><a href="https://github.com/ollrich/eichhof.me" target="_blank" rel="noopener noreferrer" class="footer-link"><svg style="width: 1em; height: 1em; vertical-align: -0.125em;" viewBox="0 0 16 16" fill="currentColor" aria-label="Quellcode auf GitHub"><path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"/></svg></a></span></div>
     
     <div class="footer-hint" id="footer-hint">drücke space</div>
 
@@ -1059,7 +1059,11 @@
                     themeLight: "Licht an",
                     themeToggleLabel: "Farbschema wechseln",
                     closeOverlay: "Schließen",
-                    closePreview: "Vorschau schließen"
+                    closePreview: "Vorschau schließen",
+                    footerDesktop: 'Mit <span aria-hidden="true">♥</span><span class="sr-only">Liebe</span> und KI in Hamburg erstellt',
+                    footerMobile: 'Mit <span aria-hidden="true">♥</span><span class="sr-only">Liebe</span> und KI realisiert',
+                    githubTooltip: "Quellcode auf GitHub",
+                    githubAriaLabel: "Quellcode auf GitHub"
                 },
                 en: {
                     title: "Legal Notice",
@@ -1080,7 +1084,11 @@
                     themeLight: "Lights on",
                     themeToggleLabel: "Toggle color scheme",
                     closeOverlay: "Close",
-                    closePreview: "Close preview"
+                    closePreview: "Close preview",
+                    footerDesktop: 'Made with <span aria-hidden="true">♥</span><span class="sr-only">love</span> and AI in Hamburg',
+                    footerMobile: 'Made with <span aria-hidden="true">♥</span><span class="sr-only">love</span> and AI',
+                    githubTooltip: "View source on GitHub",
+                    githubAriaLabel: "View source on GitHub"
                 },
                 da: {
                     title: "Kolofon",
@@ -1101,7 +1109,11 @@
                     themeLight: "Tænd lyset",
                     themeToggleLabel: "Skift farveskema",
                     closeOverlay: "Luk",
-                    closePreview: "Luk forhåndsvisning"
+                    closePreview: "Luk forhåndsvisning",
+                    footerDesktop: 'Lavet med <span aria-hidden="true">♥</span><span class="sr-only">kærlighed</span> og AI i Hamburg',
+                    footerMobile: 'Lavet med <span aria-hidden="true">♥</span><span class="sr-only">kærlighed</span> og AI',
+                    githubTooltip: "Se kildekoden på GitHub",
+                    githubAriaLabel: "Se kildekoden på GitHub"
                 }
             };
 
@@ -1129,6 +1141,9 @@
             const overlayEmailLink = document.getElementById('overlay-email-link');
             const footerLink = document.getElementById('footer-link');
             const footerLinkMobile = document.getElementById('footer-link-mobile');
+            const footerTextDesktop = document.getElementById('footer-text-desktop');
+            const footerTextMobile = document.getElementById('footer-text-mobile');
+            const githubTooltip = document.getElementById('github-tooltip');
             const emailText = document.getElementById('email-text');
             const footerHint = document.getElementById('footer-hint');
             const socialRow = document.getElementById('social-row');
@@ -1174,6 +1189,9 @@
                 overlayEmailLink.href = 'mailto:' + email;
                 footerLink.textContent = overlayContent.link;
                 if (footerLinkMobile) footerLinkMobile.textContent = overlayContent.link;
+                if (footerTextDesktop) footerTextDesktop.innerHTML = overlayContent.footerDesktop;
+                if (footerTextMobile) footerTextMobile.innerHTML = overlayContent.footerMobile;
+                if (githubTooltip) githubTooltip.textContent = overlayContent.githubTooltip;
                 emailText.textContent = overlayContent.email;
                 currentEmailPrefix = overlayContent.emailPrefix;
                 footerHint.textContent = overlayContent.hint;
@@ -1194,9 +1212,11 @@
                 const closeOverlayBtn = document.getElementById('close-overlay-btn');
                 const closePreviewBtn = document.getElementById('preview-close');
                 const emailLink = document.getElementById('email-link');
+                const githubIcon = document.querySelector('.github-link-wrapper .footer-link svg');
                 if (closeOverlayBtn) closeOverlayBtn.setAttribute('aria-label', overlayContent.closeOverlay);
                 if (closePreviewBtn) closePreviewBtn.setAttribute('aria-label', overlayContent.closePreview);
                 if (emailLink) emailLink.setAttribute('aria-label', overlayContent.emailAriaLabel);
+                if (githubIcon) githubIcon.setAttribute('aria-label', overlayContent.githubAriaLabel);
                 
                 currentLang = langCode;
             };
