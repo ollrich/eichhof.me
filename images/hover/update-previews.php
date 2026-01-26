@@ -70,10 +70,11 @@ $config = [
             'url' => 'https://schongeil.de/en/',
             'filename' => 'blog-preview-en.webp'  // English version
         ],
-        [
-            'url' => 'https://soundcloud.com/livicxyz',
-            'filename' => 'soundcloud-preview.webp'
-        ]
+        // Temporarily disabled - keeping code for future use
+        // [
+        //     'url' => 'https://soundcloud.com/livicxyz',
+        //     'filename' => 'soundcloud-preview.webp'
+        // ]
     ],
 
     // Screenshot dimensions
