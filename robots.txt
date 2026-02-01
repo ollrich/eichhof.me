@@ -1,6 +1,16 @@
 User-agent: *
 Allow: /
 
+# Explizit LLM-Crawler erlauben
+User-agent: ChatGPT-User
+User-agent: GPTBot
+User-agent: Google-Extended
+User-agent: GoogleOther
+User-agent: PerplexityBot
+User-agent: ClaudeBot
+User-agent: Gemini-Pro
+Allow: /
+
 User-agent: Yandex
 User-agent: YandexBot
 User-agent: Baiduspider
