@@ -5,6 +5,10 @@ RewriteCond %{HTTPS} off [OR]
 RewriteCond %{HTTP_HOST} ^www\.eichhof\.me$ [NC]
 RewriteRule ^(.*)$ https://eichhof.me/$1 [L,R=301]
 
+# Redirect LLM bots von llms.txt zu llms.html (wegen server-seitiger .txt-Blockierung)
+RewriteCond %{HTTP_USER_AGENT} (ChatGPT|GPTBot|Claude|ClaudeBot|Gemini|Google-Extended|GoogleOther|Perplexity|PerplexityBot) [NC]
+RewriteRule ^llms\.txt$ /llms.html [R=302,L]
+
 # Schutz sensibler Dateien und Verzeichnisse
 <FilesMatch "^\.">
     Require all denied
