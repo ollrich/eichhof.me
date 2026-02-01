@@ -26,7 +26,7 @@ This is a personal website built as an exploration of modern web development pra
 - ⚡ Performance optimized (CSS variables, vendor prefixes, optimized JS)
 - 🖼️ Hover previews for external links (desktop only)
 - 🔍 SEO optimized with schema.org structured data (Person, WebSite, WebPage), sitemap, and hreflang
-- 🤖 AI-optimized discovery with llms.txt (UTF-8 BOM for proper umlaut display)
+- 🤖 AI-optimized discovery with llms.txt/html/md (multiple formats due to server-side bot blocking of .txt files from datacenter IPs)
 - 🎊 Easter eggs: Confetti (timer), photo animation (space/double-click)
 - ♿ Accessibility: ARIA labels, keyboard navigation, reduced motion support
 
@@ -53,6 +53,8 @@ This is a personal website built as an exploration of modern web development pra
 ├── robots.txt                   # Crawler control
 ├── sitemap.xml                  # Sitemap with hreflang
 ├── llms.txt                     # LLM-optimized profile (AI discovery)
+├── llms.html                    # LLM profile as HTML (workaround for bot blocking)
+├── llms.md                      # LLM profile as Markdown
 ├── favicon.ico                  # Multi-resolution favicon
 ├── README.md                    # This file
 ├── js/
@@ -164,7 +166,7 @@ Dies ist eine persönliche Website, die als Exploration moderner Webentwicklungs
 - ⚡ Performance-optimiert (CSS-Variablen, Vendor-Präfixe, optimiertes JS)
 - 🖼️ Hover-Previews für externe Links (nur Desktop)
 - 🔍 SEO-optimiert mit schema.org strukturierten Daten (Person, WebSite, WebPage), Sitemap und hreflang
-- 🤖 KI-optimierte Discovery mit llms.txt (UTF-8 BOM für korrekte Umlaut-Darstellung)
+- 🤖 KI-optimierte Discovery mit llms.txt/html/md (mehrere Formate wegen Server-seitiger Bot-Blockierung von .txt-Dateien aus Rechenzentrum-IPs)
 - 🎊 Easter Eggs: Konfetti (Timer), Foto-Animation (Leertaste/Doppelklick)
 - ♿ Barrierefreiheit: ARIA-Labels, Tastaturnavigation, Reduced-Motion-Support
 
@@ -191,6 +193,8 @@ Dies ist eine persönliche Website, die als Exploration moderner Webentwicklungs
 ├── robots.txt                   # Crawler-Steuerung
 ├── sitemap.xml                  # Sitemap mit hreflang
 ├── llms.txt                     # LLM-optimiertes Profil (KI-Discovery)
+├── llms.html                    # LLM-Profil als HTML (Workaround für Bot-Blocking)
+├── llms.md                      # LLM-Profil als Markdown
 ├── favicon.ico                  # Multi-Resolution Favicon
 ├── README.md                    # Diese Datei
 ├── js/
@@ -302,7 +306,7 @@ Dette er en personlig hjemmeside bygget som en udforskning af moderne webudvikli
 - ⚡ Performance-optimeret (CSS-variabler, vendor-præfikser, optimeret JS)
 - 🖼️ Hover-previews for eksterne links (kun desktop)
 - 🔍 SEO-optimeret med schema.org strukturerede data (Person, WebSite, WebPage), sitemap og hreflang
-- 🤖 AI-optimeret discovery med llms.txt (UTF-8 BOM for korrekt umlaut-visning)
+- 🤖 AI-optimeret discovery med llms.txt/html/md (flere formater pga. server-side bot-blokering af .txt-filer fra datacenter-IP'er)
 - 🎊 Easter eggs: Konfetti (timer), foto-animation (mellemrum/dobbeltklik)
 - ♿ Tilgængelighed: ARIA-labels, tastaturnavigation, reduced-motion support
 
@@ -329,6 +333,8 @@ Dette er en personlig hjemmeside bygget som en udforskning af moderne webudvikli
 ├── robots.txt                   # Crawler-kontrol
 ├── sitemap.xml                  # Sitemap med hreflang
 ├── llms.txt                     # LLM-optimeret profil (AI-discovery)
+├── llms.html                    # LLM-profil som HTML (workaround for bot-blokering)
+├── llms.md                      # LLM-profil som Markdown
 ├── favicon.ico                  # Multi-resolution favicon
 ├── README.md                    # Denne fil
 ├── js/
