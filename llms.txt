@@ -16,7 +16,7 @@ Seit den späten 2000er-Jahren in Hamburg im Bereich Kommunikation und Marketing
 
 **Stationen:** Scholz & Friends, beebop media, DOKYO, rock&stars digital, wirDesign, REGIOCAST
 
-**Kunden & Projekte:** Vodafone, PayPal, Samsung, Unilever, Beiersdorf, RAD RACE, FUNKE Digital
+**Kunden & Projekte (Auswahl):** Vodafone, PayPal, Samsung, Unilever, Beiersdorf, RAD RACE, FUNKE Digital u. a.
 
 ## Expertise
 
