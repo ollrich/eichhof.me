@@ -26,6 +26,11 @@ RedirectMatch 404 /\.git
     Header set Content-Type "application/xml"
 </Files>
 
+# Content-Type für llms.txt (wichtig für LLM-Crawler wie ChatGPT/Gemini)
+<Files "llms.txt">
+    Header set Content-Type "text/plain; charset=utf-8"
+</Files>
+
 # ETags deaktivieren (unnötig bei statischen Seiten mit Cache-Control)
 <IfModule mod_headers.c>
     Header unset ETag
