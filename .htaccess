@@ -29,6 +29,8 @@ RedirectMatch 404 /\.git
 # Content-Type für llms.txt (wichtig für LLM-Crawler wie ChatGPT/Gemini)
 <Files "llms.txt">
     Header set Content-Type "text/plain; charset=utf-8"
+    Header set Cross-Origin-Resource-Policy "cross-origin"
+    Header set Access-Control-Allow-Origin "*"
 </Files>
 
 # ETags deaktivieren (unnötig bei statischen Seiten mit Cache-Control)
