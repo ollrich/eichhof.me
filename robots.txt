@@ -1,6 +1,15 @@
 User-agent: *
 Allow: /
 
+# Google Search Crawlers explizit erlauben (wichtig für Indexierung)
+User-agent: Googlebot
+User-agent: Googlebot-Image
+User-agent: Googlebot-Video
+User-agent: Googlebot-News
+User-agent: Google-InspectionTool
+User-agent: Storebot-Google
+Allow: /
+
 # Explizit LLM-Crawler erlauben
 User-agent: ChatGPT-User
 User-agent: GPTBot
