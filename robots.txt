@@ -1,35 +1,36 @@
 User-agent: *
 Allow: /
 
-# Google Search Crawlers explizit erlauben (wichtig für Indexierung)
-User-agent: Googlebot
-User-agent: Googlebot-Image
-User-agent: Googlebot-Video
-User-agent: Googlebot-News
-User-agent: Google-InspectionTool
-User-agent: Storebot-Google
-Allow: /
-
-# Explizit LLM-Crawler erlauben
-User-agent: ChatGPT-User
-User-agent: GPTBot
-User-agent: Google-Extended
-User-agent: GoogleOther
-User-agent: PerplexityBot
-User-agent: ClaudeBot
-User-agent: Gemini-Pro
-Allow: /
-
+# Blockierte Bots
 User-agent: Yandex
+Disallow: /
+
 User-agent: YandexBot
+Disallow: /
+
 User-agent: Baiduspider
+Disallow: /
+
 User-agent: Sogou
+Disallow: /
+
 User-agent: SogouSpider
+Disallow: /
+
 User-agent: AhrefsBot
+Disallow: /
+
 User-agent: SemrushBot
+Disallow: /
+
 User-agent: MJ12bot
+Disallow: /
+
 User-agent: DotBot
+Disallow: /
+
 User-agent: BLEXBot
 Disallow: /
 
 Sitemap: https://eichhof.me/sitemap.xml
+Sitemap: https://eichhof.me/sitemap-images.xml
