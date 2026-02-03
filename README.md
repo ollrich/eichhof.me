@@ -49,7 +49,7 @@ This is a personal website built as an exploration of modern web development pra
 ├── .htaccess                    # Server config (GZIP, caching, security)
 ├── deploy.php                   # Webhook handler (reads secret from file)
 ├── DEPLOY-SETUP.md              # Deployment setup instructions
-├── index.html                   # Main page (optimized CSS/JS)
+├── index.html                   # Main page
 ├── robots.txt                   # Crawler control
 ├── sitemap.xml                  # Sitemap
 ├── sitemap-images.xml           # Google Image Sitemap
@@ -58,7 +58,15 @@ This is a personal website built as an exploration of modern web development pra
 ├── llms.md                      # LLM profile as Markdown
 ├── favicon.ico                  # Multi-resolution favicon
 ├── README.md                    # This file
+├── css/
+│   ├── shared.css               # Shared styles (reset, variables, theme toggle)
+│   └── index.css                # Index page-specific styles
 ├── js/
+│   ├── theme.js                 # Dark mode with system preference fallback
+│   ├── language.js              # Multilingual content switching
+│   ├── overlay.js               # Modal (Impressum) with focus trap
+│   ├── easter-egg.js            # Heartbeat animation + confetti
+│   ├── link-preview.js          # Hover previews for tagline links
 │   └── confetti.min.js          # Canvas-Confetti library (lazy-loaded)
 └── images/
     ├── favicons/                # Favicon variants (180x180, 192x192, 512x512)
@@ -68,9 +76,9 @@ This is a personal website built as an exploration of modern web development pra
     │   ├── soundcloud-preview.webp     # SoundCloud preview
     │   ├── update-previews.php         # Screenshot update script
     │   └── update-log.txt              # Screenshot update log
-    ├── og-image.png             # Open Graph image for social media
-    ├── oliver-eichhof.jpg       # Profile photo (original)
-    └── oliver-eichhof.webp      # Profile photo (optimized)
+    ├── icons.svg                # SVG icon sprite
+    ├── og-image.webp            # Open Graph image for social media
+    └── oliver-eichhof.webp      # Profile photo
 ```
 
 ### Automation
@@ -190,7 +198,7 @@ Dies ist eine persönliche Website, die als Exploration moderner Webentwicklungs
 ├── .htaccess                    # Server-Konfiguration (GZIP, Caching, Security)
 ├── deploy.php                   # Webhook-Handler (liest Secret aus Datei)
 ├── DEPLOY-SETUP.md              # Deployment-Setup-Anleitung
-├── index.html                   # Hauptseite (optimiertes CSS/JS)
+├── index.html                   # Hauptseite
 ├── robots.txt                   # Crawler-Steuerung
 ├── sitemap.xml                  # Sitemap
 ├── sitemap-images.xml           # Google Image Sitemap
@@ -199,7 +207,15 @@ Dies ist eine persönliche Website, die als Exploration moderner Webentwicklungs
 ├── llms.md                      # LLM-Profil als Markdown
 ├── favicon.ico                  # Multi-Resolution Favicon
 ├── README.md                    # Diese Datei
+├── css/
+│   ├── shared.css               # Gemeinsame Styles (Reset, Variablen, Theme-Toggle)
+│   └── index.css                # Index-spezifische Styles
 ├── js/
+│   ├── theme.js                 # Dark Mode mit System-Präferenz-Fallback
+│   ├── language.js              # Mehrsprachiger Content-Switch
+│   ├── overlay.js               # Modal (Impressum) mit Focus-Trap
+│   ├── easter-egg.js            # Heartbeat-Animation + Konfetti
+│   ├── link-preview.js          # Hover-Previews für Tagline-Links
 │   └── confetti.min.js          # Canvas-Confetti Library (lazy-loaded)
 └── images/
     ├── favicons/                # Favicon-Varianten (180x180, 192x192, 512x512)
@@ -209,9 +225,9 @@ Dies ist eine persönliche Website, die als Exploration moderner Webentwicklungs
     │   ├── soundcloud-preview.webp     # SoundCloud-Preview
     │   ├── update-previews.php         # Script zum Aktualisieren der Screenshots
     │   └── update-log.txt              # Log-Datei der Screenshot-Updates
-    ├── og-image.png             # Open Graph Image für Social Media
-    ├── oliver-eichhof.jpg       # Profilbild (Original)
-    └── oliver-eichhof.webp      # Profilbild (optimiert)
+    ├── icons.svg                # SVG-Icon-Sprite
+    ├── og-image.webp            # Open Graph Image für Social Media
+    └── oliver-eichhof.webp      # Profilbild
 ```
 
 ### Automatisierungen
@@ -331,7 +347,7 @@ Dette er en personlig hjemmeside bygget som en udforskning af moderne webudvikli
 ├── .htaccess                    # Server-konfiguration (GZIP, caching, security)
 ├── deploy.php                   # Webhook-handler (læser secret fra fil)
 ├── DEPLOY-SETUP.md              # Deployment setup-instruktioner
-├── index.html                   # Hovedside (optimeret CSS/JS)
+├── index.html                   # Hovedside
 ├── robots.txt                   # Crawler-kontrol
 ├── sitemap.xml                  # Sitemap
 ├── sitemap-images.xml           # Google Image Sitemap
@@ -340,7 +356,15 @@ Dette er en personlig hjemmeside bygget som en udforskning af moderne webudvikli
 ├── llms.md                      # LLM-profil som Markdown
 ├── favicon.ico                  # Multi-resolution favicon
 ├── README.md                    # Denne fil
+├── css/
+│   ├── shared.css               # Fælles styles (reset, variabler, tema-skiftebytter)
+│   └── index.css                # Hovedside-specifikke styles
 ├── js/
+│   ├── theme.js                 # Dark mode med systempræference-fallback
+│   ├── language.js              # Flersproget content-skift
+│   ├── overlay.js               # Modal (Kolofon) med focus-trap
+│   ├── easter-egg.js            # Heartbeat-animation + konfetti
+│   ├── link-preview.js          # Hover-previews for tagline-links
 │   └── confetti.min.js          # Canvas-Confetti library (lazy-loaded)
 └── images/
     ├── favicons/                # Favicon-varianter (180x180, 192x192, 512x512)
@@ -350,9 +374,9 @@ Dette er en personlig hjemmeside bygget som en udforskning af moderne webudvikli
     │   ├── soundcloud-preview.webp     # SoundCloud-preview
     │   ├── update-previews.php         # Script til opdatering af screenshots
     │   └── update-log.txt              # Log-fil for screenshot-opdateringer
-    ├── og-image.png             # Open Graph-billede til sociale medier
-    ├── oliver-eichhof.jpg       # Profilbillede (original)
-    └── oliver-eichhof.webp      # Profilbillede (optimeret)
+    ├── icons.svg                # SVG-icon-sprite
+    ├── og-image.webp            # Open Graph-billede til sociale medier
+    └── oliver-eichhof.webp      # Profilbillede
 ```
 
 ### Automatiseringer
