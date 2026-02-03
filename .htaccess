@@ -25,8 +25,11 @@ RewriteRule ^llms\.txt$ /llms.html [R=302,L]
 </Files>
 RedirectMatch 404 /\.git
 
-# Content-Type für sitemap.xml
+# Content-Type für Sitemaps
 <Files "sitemap.xml">
+    Header set Content-Type "application/xml"
+</Files>
+<Files "sitemap-images.xml">
     Header set Content-Type "application/xml"
 </Files>
 
@@ -84,10 +87,8 @@ FileETag None
     AddOutputFilterByType DEFLATE application/xml
     AddOutputFilterByType DEFLATE application/xhtml+xml
     AddOutputFilterByType DEFLATE image/svg+xml
-    AddOutputFilterByType DEFLATE font/woff
-    AddOutputFilterByType DEFLATE font/woff2
-    AddOutputFilterByType DEFLATE application/font-woff
-    AddOutputFilterByType DEFLATE application/font-woff2
+    # Note: WOFF/WOFF2 fonts are already compressed, DEFLATE has minimal effect
+    # Removed font compression rules as site uses system font stack
 </IfModule>
 
 # Expires Headers für Browser-Caching
@@ -104,8 +105,7 @@ FileETag None
     ExpiresByType image/gif "access plus 1 year"
     ExpiresByType image/svg+xml "access plus 1 year"
     ExpiresByType image/x-icon "access plus 1 year"
-    ExpiresByType font/woff2 "access plus 1 year"
-    ExpiresByType font/woff "access plus 1 year"
+    # Note: Font rules removed - site uses system font stack
     ExpiresByType application/json "access plus 1 month"
     ExpiresByType application/ld+json "access plus 1 month"
 </IfModule>
@@ -118,9 +118,7 @@ FileETag None
     <FilesMatch "\.(css|js)$">
         Header set Cache-Control "public, max-age=31536000"
     </FilesMatch>
-    <FilesMatch "\.(woff|woff2)$">
-        Header set Cache-Control "public, max-age=31536000"
-    </FilesMatch>
+    # Note: Font rules removed - site uses system font stack
     <FilesMatch "\.(html)$">
         Header set Cache-Control "public, max-age=3600, must-revalidate"
     </FilesMatch>
