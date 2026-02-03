@@ -25,7 +25,7 @@ This is a personal website built as an exploration of modern web development pra
 - 🔒 Privacy-first (no cookies, no tracking, no analytics)
 - ⚡ Performance optimized (CSS variables, vendor prefixes, optimized JS)
 - 🖼️ Hover previews for external links (desktop only)
-- 🔍 SEO optimized with schema.org structured data (Person, WebSite, WebPage), sitemap, and hreflang
+- 🔍 SEO optimized with schema.org structured data (Person, WebSite, WebPage) and sitemap
 - 🤖 AI-optimized discovery with llms.txt/html/md (multiple formats due to server-side bot blocking of .txt files from datacenter IPs)
 - 🎊 Easter eggs: Confetti (timer), photo animation (space/double-click)
 - ♿ Accessibility: ARIA labels, keyboard navigation, reduced motion support
@@ -51,7 +51,8 @@ This is a personal website built as an exploration of modern web development pra
 ├── DEPLOY-SETUP.md              # Deployment setup instructions
 ├── index.html                   # Main page (optimized CSS/JS)
 ├── robots.txt                   # Crawler control
-├── sitemap.xml                  # Sitemap with hreflang
+├── sitemap.xml                  # Sitemap
+├── sitemap-images.xml           # Google Image Sitemap
 ├── llms.txt                     # LLM-optimized profile (AI discovery)
 ├── llms.html                    # LLM profile as HTML (workaround for bot blocking)
 ├── llms.md                      # LLM profile as Markdown
@@ -165,7 +166,7 @@ Dies ist eine persönliche Website, die als Exploration moderner Webentwicklungs
 - 🔒 Privacy-First (keine Cookies, kein Tracking, keine Analytik)
 - ⚡ Performance-optimiert (CSS-Variablen, Vendor-Präfixe, optimiertes JS)
 - 🖼️ Hover-Previews für externe Links (nur Desktop)
-- 🔍 SEO-optimiert mit schema.org strukturierten Daten (Person, WebSite, WebPage), Sitemap und hreflang
+- 🔍 SEO-optimiert mit schema.org strukturierten Daten (Person, WebSite, WebPage) und Sitemap
 - 🤖 KI-optimierte Discovery mit llms.txt/html/md (mehrere Formate wegen Server-seitiger Bot-Blockierung von .txt-Dateien aus Rechenzentrum-IPs)
 - 🎊 Easter Eggs: Konfetti (Timer), Foto-Animation (Leertaste/Doppelklick)
 - ♿ Barrierefreiheit: ARIA-Labels, Tastaturnavigation, Reduced-Motion-Support
@@ -191,7 +192,8 @@ Dies ist eine persönliche Website, die als Exploration moderner Webentwicklungs
 ├── DEPLOY-SETUP.md              # Deployment-Setup-Anleitung
 ├── index.html                   # Hauptseite (optimiertes CSS/JS)
 ├── robots.txt                   # Crawler-Steuerung
-├── sitemap.xml                  # Sitemap mit hreflang
+├── sitemap.xml                  # Sitemap
+├── sitemap-images.xml           # Google Image Sitemap
 ├── llms.txt                     # LLM-optimiertes Profil (KI-Discovery)
 ├── llms.html                    # LLM-Profil als HTML (Workaround für Bot-Blocking)
 ├── llms.md                      # LLM-Profil als Markdown
@@ -305,7 +307,7 @@ Dette er en personlig hjemmeside bygget som en udforskning af moderne webudvikli
 - 🔒 Privacy-first (ingen cookies, ingen tracking, ingen analytics)
 - ⚡ Performance-optimeret (CSS-variabler, vendor-præfikser, optimeret JS)
 - 🖼️ Hover-previews for eksterne links (kun desktop)
-- 🔍 SEO-optimeret med schema.org strukturerede data (Person, WebSite, WebPage), sitemap og hreflang
+- 🔍 SEO-optimeret med schema.org strukturerede data (Person, WebSite, WebPage) og sitemap
 - 🤖 AI-optimeret discovery med llms.txt/html/md (flere formater pga. server-side bot-blokering af .txt-filer fra datacenter-IP'er)
 - 🎊 Easter eggs: Konfetti (timer), foto-animation (mellemrum/dobbeltklik)
 - ♿ Tilgængelighed: ARIA-labels, tastaturnavigation, reduced-motion support
@@ -331,7 +333,8 @@ Dette er en personlig hjemmeside bygget som en udforskning af moderne webudvikli
 ├── DEPLOY-SETUP.md              # Deployment setup-instruktioner
 ├── index.html                   # Hovedside (optimeret CSS/JS)
 ├── robots.txt                   # Crawler-kontrol
-├── sitemap.xml                  # Sitemap med hreflang
+├── sitemap.xml                  # Sitemap
+├── sitemap-images.xml           # Google Image Sitemap
 ├── llms.txt                     # LLM-optimeret profil (AI-discovery)
 ├── llms.html                    # LLM-profil som HTML (workaround for bot-blokering)
 ├── llms.md                      # LLM-profil som Markdown
