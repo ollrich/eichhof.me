@@ -59,8 +59,7 @@ This is a personal website built as an exploration of modern web development pra
 ├── favicon.ico                  # Multi-resolution favicon
 ├── README.md                    # This file
 ├── css/
-│   ├── shared.css               # Shared styles (reset, variables, theme toggle)
-│   └── index.css                # Index page-specific styles
+│   └── styles.css               # Main stylesheet (reset, variables, theme, components)
 ├── js/
 │   ├── theme.js                 # Dark mode with system preference fallback
 │   ├── language.js              # Multilingual content switching
@@ -208,8 +207,7 @@ Dies ist eine persönliche Website, die als Exploration moderner Webentwicklungs
 ├── favicon.ico                  # Multi-Resolution Favicon
 ├── README.md                    # Diese Datei
 ├── css/
-│   ├── shared.css               # Gemeinsame Styles (Reset, Variablen, Theme-Toggle)
-│   └── index.css                # Index-spezifische Styles
+│   └── styles.css               # Hauptstylesheet (Reset, Variablen, Theme, Komponenten)
 ├── js/
 │   ├── theme.js                 # Dark Mode mit System-Präferenz-Fallback
 │   ├── language.js              # Mehrsprachiger Content-Switch
@@ -357,8 +355,7 @@ Dette er en personlig hjemmeside bygget som en udforskning af moderne webudvikli
 ├── favicon.ico                  # Multi-resolution favicon
 ├── README.md                    # Denne fil
 ├── css/
-│   ├── shared.css               # Fælles styles (reset, variabler, tema-skiftebytter)
-│   └── index.css                # Hovedside-specifikke styles
+│   └── styles.css               # Hoved-stylesheet (reset, variabler, tema, komponenter)
 ├── js/
 │   ├── theme.js                 # Dark mode med systempræference-fallback
 │   ├── language.js              # Flersproget content-skift
