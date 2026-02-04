@@ -34,3 +34,6 @@ Disallow: /
 
 Sitemap: https://eichhof.me/sitemap.xml
 Sitemap: https://eichhof.me/sitemap-images.xml
+
+# LLM-readable content
+LLMs-txt: https://eichhof.me/llms.txt
