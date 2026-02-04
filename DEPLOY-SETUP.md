@@ -2,59 +2,44 @@
 
 *[Deutsch](#deployment-setup-de) | [Dansk](#deployment-setup-da)*
 
-## Security Configuration
+This project uses a PHP-based auto-deployment triggered by GitHub webhooks, plus an optional screenshot generation service.
 
-The deployment and screenshot automation require external secret files for security.
+## Webhook Secret
 
-### 1. Webhook Secret (Required for Auto-Deployment)
+The `deploy.php` script validates incoming requests using HMAC signatures. Both the server and GitHub must share the same secret.
 
-### Server Setup
-
-1. Create the secret file on your server:
+**Server setup:**
 ```bash
-echo "YOUR_NEW_SECRET_HERE" > .webhook-secret
+# Generate a secure secret
+openssl rand -hex 32
+
+# Save it (not in the repo!)
+echo "YOUR_SECRET" > .webhook-secret
 chmod 600 .webhook-secret
 ```
 
-2. Generate a new secure secret:
+**GitHub setup:**
+Repository → Settings → Webhooks → Add/Edit webhook → Enter the same secret in the "Secret" field.
+
+**Security:** The `.webhook-secret` file is gitignored. Change immediately if exposed.
+
+## APIFlash Key (Optional)
+
+For link preview screenshots via `update-previews.php`:
+
 ```bash
-openssl rand -hex 32
-```
-
-3. Update the GitHub webhook settings with the new secret:
-   - Go to: https://github.com/ollrich/eichhof.me/settings/hooks
-   - Edit the webhook
-   - Update the "Secret" field with your new secret
-   - Save changes
-
-**Security Notes:**
-- **NEVER** commit `.webhook-secret` to the repository
-- The file is already in `.gitignore`
-- Change the secret immediately if it's ever exposed
-- Use a strong random secret (at least 32 bytes)
-
-### 2. APIFlash Key (Required for Screenshot Generation)
-
-1. Create the API key file in the screenshots directory:
-```bash
-echo "YOUR_APIFLASH_API_KEY" > images/hover/.apiflash-key
+echo "YOUR_API_KEY" > images/hover/.apiflash-key
 chmod 600 images/hover/.apiflash-key
 ```
 
-2. Get your API key from [APIFlash](https://apiflash.com/)
+Get a key at [apiflash.com](https://apiflash.com/). The file is gitignored.
 
-**Security Notes:**
-- **NEVER** commit `.apiflash-key` to the repository
-- The file is already in `.gitignore`
-- If exposed, generate a new key at APIFlash and update the file
+## How It Works
 
-## Deploy Script
-
-The `deploy.php` script automatically pulls changes when GitHub sends a webhook after each push to the `main` branch.
-
-### Testing the Webhook
-
-After setup, push a commit to test the webhook. Check `.deploy-log.txt` on the server for deployment logs.
+1. Push to `main` → GitHub sends POST to `deploy.php`
+2. Script validates signature against `.webhook-secret`
+3. If valid: `git pull` is executed
+4. Logs written to `.deploy-log.txt`
 
 ---
 
@@ -63,59 +48,44 @@ After setup, push a commit to test the webhook. Check `.deploy-log.txt` on the s
 
 *[English](#deployment-setup) | [Dansk](#deployment-setup-da)*
 
-## Sicherheitskonfiguration
+Dieses Projekt nutzt PHP-basiertes Auto-Deployment via GitHub-Webhooks, plus optionale Screenshot-Generierung.
 
-Das Deployment und die Screenshot-Automatisierung benötigen externe Secret-Dateien aus Sicherheitsgründen.
+## Webhook-Secret
 
-### 1. Webhook-Secret (Erforderlich für Auto-Deployment)
+Das `deploy.php`-Script validiert eingehende Requests per HMAC-Signatur. Server und GitHub müssen dasselbe Secret kennen.
 
-### Server-Einrichtung
-
-1. Erstelle die Secret-Datei auf deinem Server:
+**Server-Einrichtung:**
 ```bash
-echo "DEIN_NEUES_SECRET_HIER" > .webhook-secret
+# Sicheres Secret generieren
+openssl rand -hex 32
+
+# Speichern (nicht im Repo!)
+echo "DEIN_SECRET" > .webhook-secret
 chmod 600 .webhook-secret
 ```
 
-2. Generiere ein neues sicheres Secret:
+**GitHub-Einrichtung:**
+Repository → Settings → Webhooks → Webhook hinzufügen/bearbeiten → Gleiches Secret im "Secret"-Feld eintragen.
+
+**Sicherheit:** Die `.webhook-secret`-Datei ist gitignored. Bei Offenlegung sofort ändern.
+
+## APIFlash-Key (Optional)
+
+Für Link-Preview-Screenshots via `update-previews.php`:
+
 ```bash
-openssl rand -hex 32
-```
-
-3. Aktualisiere die GitHub-Webhook-Einstellungen mit dem neuen Secret:
-   - Gehe zu: https://github.com/ollrich/eichhof.me/settings/hooks
-   - Bearbeite den Webhook
-   - Aktualisiere das "Secret"-Feld mit deinem neuen Secret
-   - Speichere die Änderungen
-
-**Sicherheitshinweise:**
-- Committe **NIEMALS** `.webhook-secret` ins Repository
-- Die Datei steht bereits in `.gitignore`
-- Ändere das Secret sofort, wenn es jemals offengelegt wurde
-- Verwende ein starkes zufälliges Secret (mindestens 32 Bytes)
-
-### 2. APIFlash-Key (Erforderlich für Screenshot-Generierung)
-
-1. Erstelle die API-Key-Datei im Screenshots-Verzeichnis:
-```bash
-echo "DEIN_APIFLASH_API_KEY" > images/hover/.apiflash-key
+echo "DEIN_API_KEY" > images/hover/.apiflash-key
 chmod 600 images/hover/.apiflash-key
 ```
 
-2. Hole dir deinen API-Key von [APIFlash](https://apiflash.com/)
+Key gibt's bei [apiflash.com](https://apiflash.com/). Die Datei ist gitignored.
 
-**Sicherheitshinweise:**
-- Committe **NIEMALS** `.apiflash-key` ins Repository
-- Die Datei steht bereits in `.gitignore`
-- Bei Offenlegung generiere einen neuen Key bei APIFlash und aktualisiere die Datei
+## Funktionsweise
 
-## Deploy-Script
-
-Das `deploy.php`-Script pullt automatisch Änderungen, wenn GitHub einen Webhook nach jedem Push auf den `main`-Branch sendet.
-
-### Webhook testen
-
-Nach der Einrichtung pushe einen Commit, um den Webhook zu testen. Prüfe `.deploy-log.txt` auf dem Server für Deployment-Logs.
+1. Push auf `main` → GitHub sendet POST an `deploy.php`
+2. Script validiert Signatur gegen `.webhook-secret`
+3. Bei Erfolg: `git pull` wird ausgeführt
+4. Logs in `.deploy-log.txt`
 
 ---
 
@@ -124,56 +94,41 @@ Nach der Einrichtung pushe einen Commit, um den Webhook zu testen. Prüfe `.depl
 
 *[English](#deployment-setup) | [Deutsch](#deployment-setup-de)*
 
-## Sikkerhedskonfiguration
+Dette projekt bruger PHP-baseret auto-deployment via GitHub webhooks, plus valgfri screenshot-generering.
 
-Deployment og screenshot-automatisering kræver eksterne secret-filer af sikkerhedsmæssige årsager.
+## Webhook Secret
 
-### 1. Webhook Secret (Påkrævet til auto-deployment)
+`deploy.php`-scriptet validerer indkommende requests via HMAC-signatur. Server og GitHub skal dele samme secret.
 
-### Server-opsætning
-
-1. Opret secret-filen på din server:
+**Server-opsætning:**
 ```bash
-echo "DIT_NYE_SECRET_HER" > .webhook-secret
+# Generer sikkert secret
+openssl rand -hex 32
+
+# Gem det (ikke i repo'et!)
+echo "DIT_SECRET" > .webhook-secret
 chmod 600 .webhook-secret
 ```
 
-2. Generer et nyt sikkert secret:
+**GitHub-opsætning:**
+Repository → Settings → Webhooks → Tilføj/rediger webhook → Indtast samme secret i "Secret"-feltet.
+
+**Sikkerhed:** `.webhook-secret`-filen er gitignored. Skift straks ved eksponering.
+
+## APIFlash Key (Valgfri)
+
+Til link preview-screenshots via `update-previews.php`:
+
 ```bash
-openssl rand -hex 32
-```
-
-3. Opdater GitHub webhook-indstillingerne med det nye secret:
-   - Gå til: https://github.com/ollrich/eichhof.me/settings/hooks
-   - Rediger webhooken
-   - Opdater "Secret"-feltet med dit nye secret
-   - Gem ændringerne
-
-**Sikkerhedsnoter:**
-- Commit **ALDRIG** `.webhook-secret` til repositoriet
-- Filen står allerede i `.gitignore`
-- Skift secret'et straks, hvis det nogensinde er blevet eksponeret
-- Brug et stærkt tilfældigt secret (mindst 32 bytes)
-
-### 2. APIFlash Key (Påkrævet til screenshot-generering)
-
-1. Opret API-key-filen i screenshots-mappen:
-```bash
-echo "DIN_APIFLASH_API_KEY" > images/hover/.apiflash-key
+echo "DIN_API_KEY" > images/hover/.apiflash-key
 chmod 600 images/hover/.apiflash-key
 ```
 
-2. Hent din API-key fra [APIFlash](https://apiflash.com/)
+Hent key på [apiflash.com](https://apiflash.com/). Filen er gitignored.
 
-**Sikkerhedsnoter:**
-- Commit **ALDRIG** `.apiflash-key` til repositoriet
-- Filen står allerede i `.gitignore`
-- Ved eksponering generer en ny key hos APIFlash og opdater filen
+## Sådan fungerer det
 
-## Deploy-script
-
-`deploy.php`-scriptet puller automatisk ændringer, når GitHub sender en webhook efter hvert push til `main`-branchen.
-
-### Test webhooken
-
-Efter opsætning push et commit for at teste webhooken. Tjek `.deploy-log.txt` på serveren for deployment-logs.
+1. Push til `main` → GitHub sender POST til `deploy.php`
+2. Script validerer signatur mod `.webhook-secret`
+3. Ved succes: `git pull` udføres
+4. Logs i `.deploy-log.txt`
