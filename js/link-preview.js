@@ -21,8 +21,10 @@
     let isOverPreview = false;
     let isOverLink = false;
 
-    // Touch device detection
-    const isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+    // Mobile OS detection: only disable previews on iOS/iPadOS and Android
+    // Windows/macOS touchscreens with mouse should still get previews
+    const isMobileOS = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent) ||
+                       (/Macintosh/i.test(navigator.userAgent) && navigator.maxTouchPoints > 1); // iPadOS
 
     /**
      * Map of URLs to their preview images
@@ -169,7 +171,7 @@
      */
     function initLinkPreviews() {
         // Desktop only
-        if (isTouchDevice || window.innerWidth <= 768) return;
+        if (isMobileOS || window.innerWidth <= 768) return;
         if (!taglineElement) return;
 
         const links = taglineElement.querySelectorAll('a');

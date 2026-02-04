@@ -91,13 +91,13 @@
         // Prevent body scroll
         document.body.style.overflow = 'hidden';
 
-        // Focus the close button (or first focusable element)
+        // Focus the overlay content container (not a specific button)
+        // to satisfy accessibility without triggering a visible focus ring on X
         setTimeout(function() {
             focusableElements = getFocusableElements();
-            if (closeButton) {
-                closeButton.focus();
-            } else if (focusableElements.length > 0) {
-                focusableElements[0].focus();
+            if (overlayContent) {
+                overlayContent.setAttribute('tabindex', '-1');
+                overlayContent.focus({ preventScroll: true });
             }
         }, 100); // Small delay for transition
 
