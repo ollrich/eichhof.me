@@ -64,7 +64,7 @@
             contactErrorEmail: "Bitte gib eine gültige E-Mail-Adresse ein.",
             contactErrorMessage: "Bitte gib eine Nachricht ein (mind. 10 Zeichen).",
             contactErrorRateLimit: "Zu viele Anfragen. Bitte warte einige Minuten.",
-            contactPrivacy: "Deine Daten werden ausschließlich zur Beantwortung deiner Anfrage verwendet.",
+            contactPrivacy: "Deine Daten werden nur zur Beantwortung verwendet. Zur Spam-Abwehr wird deine IP temporär verarbeitet, aber nicht gespeichert.",
             contactFallback: "Oder direkt per E-Mail:"
         },
         en: {
@@ -104,7 +104,7 @@
             contactErrorEmail: "Please enter a valid email address.",
             contactErrorMessage: "Please enter a message (at least 10 characters).",
             contactErrorRateLimit: "Too many requests. Please wait a few minutes.",
-            contactPrivacy: "Your data will only be used to respond to your inquiry.",
+            contactPrivacy: "Your data will only be used to respond. Your IP is temporarily processed for spam protection but not stored.",
             contactFallback: "Or email directly:"
         },
         da: {
@@ -144,7 +144,7 @@
             contactErrorEmail: "Indtast venligst en gyldig e-mailadresse.",
             contactErrorMessage: "Indtast venligst en besked (mindst 10 tegn).",
             contactErrorRateLimit: "For mange anmodninger. Vent venligst et par minutter.",
-            contactPrivacy: "Dine data bruges kun til at besvare din henvendelse.",
+            contactPrivacy: "Dine data bruges kun til at besvare. Din IP behandles midlertidigt til spam-beskyttelse, men gemmes ikke.",
             contactFallback: "Eller send e-mail direkte:"
         }
     };
