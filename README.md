@@ -49,13 +49,13 @@ eichhof.me/
 ├── contact.php             # Contact form backend (rate limiting, CSRF, honeypot)
 ├── images/
 │   ├── hover/              # Link preview screenshots
+│   │   └── .apiflash-key   # APIFlash API key (server-only, gitignored)
 │   └── icons.svg           # SVG sprite
 │
 │   # Server-only (not in repo, gitignored)
 ├── .contact-config.json    # Email config (recipient, from address)
 ├── .contact-ratelimit.json # Rate limiting data (auto-generated)
-├── .webhook-secret         # GitHub webhook secret
-└── .apiflash-key           # APIFlash API key
+└── .webhook-secret         # GitHub webhook secret
 ```
 
 ---
