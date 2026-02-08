@@ -407,10 +407,11 @@
                 openContactForm();
             });
 
-            // Update href to mailto for NoScript fallback
+            // Update href to mailto for NoScript fallback (obfuscated)
             const lang = window.LanguageManager ? window.LanguageManager.getCurrentLang() : 'de';
             const prefix = lang === 'en' ? 'hello' : (lang === 'da' ? 'hej' : 'hallo');
-            emailLink.href = 'mailto:' + prefix + '@eichhof.me';
+            const domain = ['eichhof', 'me'];
+            emailLink.href = 'mailto:' + prefix + '@' + domain[0] + '.' + domain[1];
         }
 
         // Check URL parameter for auto-open
