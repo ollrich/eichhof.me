@@ -81,6 +81,9 @@ function generateCsrfToken() {
 function checkRateLimit($ip, $file, $max, $window) {
     $data = [];
 
+    // Hash IP for privacy (rate limiting doesn't need the actual IP)
+    $ipHash = hash('sha256', $ip . 'rate_limit_salt');
+
     if (file_exists($file)) {
         $content = file_get_contents($file);
         $data = json_decode($content, true) ?: [];
@@ -89,24 +92,24 @@ function checkRateLimit($ip, $file, $max, $window) {
     $now = time();
 
     // Alte Einträge entfernen
-    foreach ($data as $storedIp => $timestamps) {
-        $data[$storedIp] = array_filter($timestamps, function($t) use ($now, $window) {
+    foreach ($data as $storedHash => $timestamps) {
+        $data[$storedHash] = array_filter($timestamps, function($t) use ($now, $window) {
             return ($now - $t) < $window;
         });
-        if (empty($data[$storedIp])) {
-            unset($data[$storedIp]);
+        if (empty($data[$storedHash])) {
+            unset($data[$storedHash]);
         }
     }
 
-    // IP prüfen
-    $ipRequests = $data[$ip] ?? [];
+    // IP-Hash prüfen
+    $ipRequests = $data[$ipHash] ?? [];
 
     if (count($ipRequests) >= $max) {
         return false;
     }
 
-    // Neuen Request speichern
-    $data[$ip][] = $now;
+    // Neuen Request speichern (mit Hash)
+    $data[$ipHash][] = $now;
     file_put_contents($file, json_encode($data));
 
     return true;
