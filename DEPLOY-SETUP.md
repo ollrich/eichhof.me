@@ -23,6 +23,17 @@ Repository → Settings → Webhooks → Add/Edit webhook → Enter the same sec
 
 **Security:** The `.webhook-secret` file is gitignored. Change immediately if exposed.
 
+## Contact Form Config
+
+For the contact form backend (`contact.php`):
+
+```bash
+echo '{"recipient_email":"you@example.com","from_email":"noreply@example.com"}' > .contact-config.json
+chmod 644 .contact-config.json
+```
+
+Replace with your actual email addresses. The file is gitignored.
+
 ## APIFlash Key (Optional)
 
 For link preview screenshots via `update-previews.php`:
@@ -69,6 +80,17 @@ Repository → Settings → Webhooks → Webhook hinzufügen/bearbeiten → Glei
 
 **Sicherheit:** Die `.webhook-secret`-Datei ist gitignored. Bei Offenlegung sofort ändern.
 
+## Kontaktformular-Konfiguration
+
+Für das Kontaktformular-Backend (`contact.php`):
+
+```bash
+echo '{"recipient_email":"du@example.com","from_email":"noreply@example.com"}' > .contact-config.json
+chmod 644 .contact-config.json
+```
+
+Ersetze durch deine echten E-Mail-Adressen. Die Datei ist gitignored.
+
 ## APIFlash-Key (Optional)
 
 Für Link-Preview-Screenshots via `update-previews.php`:
@@ -114,6 +136,17 @@ chmod 600 .webhook-secret
 Repository → Settings → Webhooks → Tilføj/rediger webhook → Indtast samme secret i "Secret"-feltet.
 
 **Sikkerhed:** `.webhook-secret`-filen er gitignored. Skift straks ved eksponering.
+
+## Kontaktformular-konfiguration
+
+Til kontaktformular-backend (`contact.php`):
+
+```bash
+echo '{"recipient_email":"dig@example.com","from_email":"noreply@example.com"}' > .contact-config.json
+chmod 644 .contact-config.json
+```
+
+Erstat med dine rigtige e-mailadresser. Filen er gitignored.
 
 ## APIFlash Key (Valgfri)
 
