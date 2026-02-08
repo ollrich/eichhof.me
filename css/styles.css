@@ -887,3 +887,143 @@ html.dark-mode .link-preview:hover {
         height: 14px;
     }
 }
+
+/* ========================================
+   LLMS PAGE SPECIFIC STYLES
+   ========================================
+   Overrides for llms.html - different layout than index page
+*/
+.llms-page {
+    display: block;
+    align-items: initial;
+    justify-content: initial;
+    padding: 3rem 1.5rem;
+}
+
+.llms-page .container {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.llms-page h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+}
+
+.llms-page .subtitle {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+.llms-page .formats {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+}
+
+.llms-page .formats a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1.2rem;
+    background: rgba(var(--accent-purple), 0.2);
+    border: 1px solid rgba(var(--accent-purple), 0.3);
+    border-radius: 6px;
+    color: var(--link-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.llms-page .formats a:hover {
+    background: rgba(var(--accent-purple), 0.3);
+    border-color: rgba(var(--accent-purple), 0.5);
+    color: var(--link-hover);
+    transform: translateY(-2px);
+}
+
+.llms-page h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 2rem 0 1rem;
+    color: var(--text-primary);
+    border-bottom: 1px solid var(--card-border);
+    padding-bottom: 0.5rem;
+}
+
+.llms-page h2:first-of-type {
+    margin-top: 0;
+}
+
+.llms-page h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 1.5rem 0 0.5rem;
+    color: var(--text-secondary);
+}
+
+.llms-page p {
+    line-height: 1.7;
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+}
+
+.llms-page strong {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.llms-page a {
+    color: var(--link-color);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    transition: all 0.2s ease;
+}
+
+.llms-page a:hover {
+    color: var(--link-hover);
+    border-bottom-color: var(--link-hover);
+}
+
+.llms-page ul {
+    list-style: none;
+    margin-bottom: 1rem;
+}
+
+.llms-page ul li {
+    padding: 0.4rem 0;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+.llms-page ul li::before {
+    content: "\2192  ";
+    color: rgba(var(--accent-purple), 0.8);
+    font-weight: bold;
+}
+
+@media (max-width: 768px) {
+    .llms-page {
+        padding: 2rem 1rem;
+    }
+
+    .llms-page .container {
+        padding: 1.5rem;
+    }
+
+    .llms-page h1 {
+        font-size: 2rem;
+    }
+
+    .llms-page .formats {
+        flex-direction: column;
+        align-items: stretch;
+    }
+}

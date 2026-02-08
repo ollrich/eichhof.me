@@ -1,4 +1,4 @@
-﻿# Oliver Eichhof
+# Oliver Eichhof
 
 > Kommunikations- und Marketingspezialist aus Hamburg mit Fokus auf digitale Markenkommunikation und Social Media.
 
@@ -47,7 +47,3 @@ Persönlicher Blog über Musik, digitale Kultur und Alltägliches. Aktiv seit 20
 - Bluesky: https://bsky.app/profile/ollri.ch
 - GitHub: https://github.com/ollrich
 - Mastodon: https://norden.social/@olli
-
----
-
-*Last updated: 2026-02-01*

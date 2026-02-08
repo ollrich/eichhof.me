@@ -6,161 +6,22 @@
     <meta name="theme-color" content="#764ba2">
     <meta name="description" content="Strukturierte Informationen über Oliver Eichhof für Large Language Models (LLMs) – Kommunikationsspezialist aus Hamburg.">
     <meta name="robots" content="index, follow">
+
+    <!-- Open Graph meta tags -->
+    <meta property="og:title" content="Oliver Eichhof – LLM Profile">
+    <meta property="og:description" content="Strukturierte Informationen über Oliver Eichhof für Large Language Models (LLMs) – Kommunikationsspezialist aus Hamburg.">
+    <meta property="og:image" content="https://eichhof.me/images/og-image.png">
+    <meta property="og:url" content="https://eichhof.me/llms.html">
+    <meta property="og:type" content="profile">
+
     <title>Oliver Eichhof – LLM Profile</title>
     <link rel="canonical" href="https://eichhof.me/llms.html">
     <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
 
     <!-- Stylesheet -->
     <link rel="stylesheet" href="/css/styles.css">
-
-    <!-- Page-specific styles -->
-    <style>
-        body {
-            min-height: 100vh;
-            padding: 3rem 1.5rem;
-        }
-
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 12px;
-            padding: 2.5rem;
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-        }
-
-        h1 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            color: var(--text-primary);
-        }
-
-        .subtitle {
-            font-size: 1.1rem;
-            color: var(--text-secondary);
-            margin-bottom: 2rem;
-            line-height: 1.6;
-        }
-
-        .formats {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            margin-bottom: 3rem;
-            flex-wrap: wrap;
-        }
-
-        .formats a {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.6rem 1.2rem;
-            background: rgba(var(--accent-purple), 0.2);
-            border: 1px solid rgba(var(--accent-purple), 0.3);
-            border-radius: 6px;
-            color: var(--link-color);
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.2s ease;
-        }
-
-        .formats a:hover {
-            background: rgba(var(--accent-purple), 0.3);
-            border-color: rgba(var(--accent-purple), 0.5);
-            color: var(--link-hover);
-            transform: translateY(-2px);
-        }
-
-        h2 {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin: 2rem 0 1rem;
-            color: var(--text-primary);
-            border-bottom: 1px solid var(--card-border);
-            padding-bottom: 0.5rem;
-        }
-
-        h2:first-of-type {
-            margin-top: 0;
-        }
-
-        h3 {
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin: 1.5rem 0 0.5rem;
-            color: var(--text-secondary);
-        }
-
-        p {
-            line-height: 1.7;
-            color: var(--text-secondary);
-            margin-bottom: 1rem;
-        }
-
-        strong {
-            color: var(--text-primary);
-            font-weight: 600;
-        }
-
-        a {
-            color: var(--link-color);
-            text-decoration: none;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-            transition: all 0.2s ease;
-        }
-
-        a:hover {
-            color: var(--link-hover);
-            border-bottom-color: var(--link-hover);
-        }
-
-        ul {
-            list-style: none;
-            margin-bottom: 1rem;
-        }
-
-        ul li {
-            padding: 0.4rem 0;
-            color: var(--text-secondary);
-            line-height: 1.6;
-        }
-
-        ul li::before {
-            content: "→ ";
-            color: rgba(var(--accent-purple), 0.8);
-            font-weight: bold;
-            margin-right: 0.5rem;
-        }
-
-        .meta {
-            margin-top: 3rem;
-            padding-top: 2rem;
-            border-top: 1px solid var(--card-border);
-            text-align: center;
-            color: var(--text-muted);
-            font-size: 0.9rem;
-        }
-
-        @media (max-width: 768px) {
-            .container {
-                padding: 1.5rem;
-            }
-
-            h1 {
-                font-size: 2rem;
-            }
-
-            .formats {
-                flex-direction: column;
-                align-items: stretch;
-            }
-        }
-    </style>
 </head>
-<body>
+<body class="llms-page">
     <!-- Theme Toggle -->
     <div class="theme-toggle">
         <span class="theme-tooltip">
@@ -241,9 +102,6 @@
             <li><a href="https://norden.social/@olli">Mastodon</a></li>
         </ul>
 
-        <div class="meta">
-            <p><em>Last updated: 2026-02-03</em></p>
-        </div>
     </div>
 
     <!-- Theme management script -->

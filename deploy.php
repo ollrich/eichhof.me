@@ -20,8 +20,8 @@ $max_log_entries = 100;
 
 /**
  * GitHub IP ranges (CIDR notation)
- * Source: https://api.github.com/meta
- * Updated: 2024-01 - Should be periodically verified
+ * Source: https://api.github.com/meta (hooks field)
+ * Updated: 2026-02 - verified current
  */
 $github_ip_ranges = [
     '192.30.252.0/22',

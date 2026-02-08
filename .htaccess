@@ -29,21 +29,19 @@ RedirectMatch 404 /\.git
     Header set Content-Type "application/xml"
 </Files>
 
-# Content-Type für llms.txt (wichtig für LLM-Crawler wie ChatGPT/Gemini)
+# LLM-Dateien: CORS-Header für Cross-Origin-Zugriff durch KI-Bots
+# Diese überschreiben die globale CORP "same-origin" Policy (Zeile 69),
+# damit LLM-Crawler die Dateien von anderen Domains abrufen können.
 <Files "llms.txt">
     Header set Content-Type "text/plain; charset=utf-8"
     Header set Cross-Origin-Resource-Policy "cross-origin"
     Header set Access-Control-Allow-Origin "*"
 </Files>
-
-# Content-Type für llms.html (Alternative für LLM-Crawler die txt blockieren)
 <Files "llms.html">
     Header set Content-Type "text/html; charset=utf-8"
     Header set Cross-Origin-Resource-Policy "cross-origin"
     Header set Access-Control-Allow-Origin "*"
 </Files>
-
-# Content-Type für llms.md (Alternative für LLM-Crawler)
 <Files "llms.md">
     Header set Content-Type "text/markdown; charset=utf-8"
     Header set Cross-Origin-Resource-Policy "cross-origin"

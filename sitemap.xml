@@ -16,12 +16,12 @@
     <loc>https://eichhof.me/llms.html</loc>
     <lastmod>2026-02-04</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.5</priority>
   </url>
   <url>
     <loc>https://eichhof.me/llms.md</loc>
     <lastmod>2026-02-04</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.3</priority>
   </url>
 </urlset>
