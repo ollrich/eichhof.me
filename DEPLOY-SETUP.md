@@ -30,9 +30,13 @@ For the contact form backend (`contact.php`):
 ```bash
 echo '{"recipient_email":"you@example.com","from_email":"noreply@example.com"}' > .contact-config.json
 chmod 644 .contact-config.json
+
+# Rate limiting file (must be writable by webserver)
+echo '{}' > .contact-ratelimit.json
+chmod 666 .contact-ratelimit.json
 ```
 
-Replace with your actual email addresses. The file is gitignored.
+Replace with your actual email addresses. Both files are gitignored.
 
 ## APIFlash Key (Optional)
 
@@ -87,9 +91,13 @@ Für das Kontaktformular-Backend (`contact.php`):
 ```bash
 echo '{"recipient_email":"du@example.com","from_email":"noreply@example.com"}' > .contact-config.json
 chmod 644 .contact-config.json
+
+# Rate-Limiting-Datei (muss vom Webserver beschreibbar sein)
+echo '{}' > .contact-ratelimit.json
+chmod 666 .contact-ratelimit.json
 ```
 
-Ersetze durch deine echten E-Mail-Adressen. Die Datei ist gitignored.
+Ersetze durch deine echten E-Mail-Adressen. Beide Dateien sind gitignored.
 
 ## APIFlash-Key (Optional)
 
@@ -144,9 +152,13 @@ Til kontaktformular-backend (`contact.php`):
 ```bash
 echo '{"recipient_email":"dig@example.com","from_email":"noreply@example.com"}' > .contact-config.json
 chmod 644 .contact-config.json
+
+# Rate limiting-fil (skal være skrivbar af webserveren)
+echo '{}' > .contact-ratelimit.json
+chmod 666 .contact-ratelimit.json
 ```
 
-Erstat med dine rigtige e-mailadresser. Filen er gitignored.
+Erstat med dine rigtige e-mailadresser. Begge filer er gitignored.
 
 ## APIFlash Key (Valgfri)
 
