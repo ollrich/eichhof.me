@@ -217,6 +217,14 @@ if ($return_var !== 0) {
     die('Git reset failed');
 }
 
+// Ensure rate limit file exists (may be deleted by git reset)
+$ratelimit_file = __DIR__ . '/.contact-ratelimit.json';
+if (!file_exists($ratelimit_file)) {
+    file_put_contents($ratelimit_file, '{}');
+    chmod($ratelimit_file, 0666);
+    writeLog('INFO: Recreated .contact-ratelimit.json');
+}
+
 // Log success
 $commit = $data['head_commit']['message'] ?? 'Unknown commit';
 $pusher = $data['pusher']['name'] ?? 'Unknown';
