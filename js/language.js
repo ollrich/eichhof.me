@@ -299,14 +299,8 @@
     function init() {
         applyLanguage();
 
-        // Set up email link handler
-        const emailLink = document.getElementById('email-link');
-        if (emailLink) {
-            emailLink.addEventListener('click', function(e) {
-                e.preventDefault();
-                openEmail();
-            });
-        }
+        // Note: Email link click handler is now in contact.js
+        // which opens the contact form popup instead of mailto
     }
 
     // Initialize when DOM is ready
