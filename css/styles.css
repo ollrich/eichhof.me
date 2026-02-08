@@ -1107,10 +1107,10 @@ html.dark-mode .link-preview:hover {
 
 /* Privacy note */
 .contact-privacy {
-    font-size: 0.8rem;
-    opacity: 0.7;
+    font-size: 0.7rem;
+    opacity: 0.55;
     margin-bottom: 1.25rem;
-    line-height: 1.5;
+    line-height: 1.4;
 }
 
 /* Submit button */
