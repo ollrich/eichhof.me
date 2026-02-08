@@ -19,6 +19,9 @@ RewriteRule ^(.*)$ https://eichhof.me/$1 [L,R=301]
 <Files "update-previews.php">
     Require all granted
 </Files>
+<Files "contact.php">
+    Require all granted
+</Files>
 RedirectMatch 404 /\.git
 
 # Content-Type für Sitemaps

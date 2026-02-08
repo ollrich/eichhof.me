@@ -16,6 +16,7 @@ Built with AI assistance as an exploration of modern web development practices. 
 - 🌐 Multilingual (DE/EN/DA) with automatic browser language detection
 - 🎨 Dark mode with system preference support
 - 🔒 Privacy-first: no cookies, no tracking, no analytics
+- 📬 Contact form with spam protection (honeypot, rate limiting, time-based checks)
 - 🔍 SEO optimized with schema.org structured data (Person) and JSON-LD
 - 🤖 AI-optimized discovery via llms.txt/html/md – multiple formats because some hosters block .txt requests from datacenter IPs
 - 🎊 Easter eggs (try pressing spacebar or double-clicking the photo)
@@ -41,9 +42,11 @@ eichhof.me/
 │   ├── theme.js            # Dark mode toggle
 │   ├── language.js         # Multilingual content
 │   ├── overlay.js          # Legal notice modal
+│   ├── contact.js          # Contact form modal + AJAX
 │   ├── easter-egg.js       # Animations + confetti
 │   ├── link-preview.js     # Hover previews
 │   └── confetti.min.js     # Canvas-Confetti (lazy-loaded)
+├── contact.php             # Contact form backend (rate limiting, CSRF, honeypot)
 └── images/
     ├── hover/              # Link preview screenshots
     └── icons.svg           # SVG sprite
@@ -63,6 +66,7 @@ Mit KI-Unterstützung gebaut als Exploration moderner Webentwicklung. Der Code i
 - 🌐 Mehrsprachig (DE/EN/DA) mit automatischer Browser-Spracherkennung
 - 🎨 Dark Mode mit System-Präferenz-Unterstützung
 - 🔒 Privacy-First: keine Cookies, kein Tracking, keine Analytik
+- 📬 Kontaktformular mit Spam-Schutz (Honeypot, Rate Limiting, Zeitprüfung)
 - 🔍 SEO-optimiert mit schema.org strukturierten Daten (Person) und JSON-LD
 - 🤖 KI-optimierte Discovery via llms.txt/html/md – mehrere Formate, weil manche Hoster .txt-Anfragen von Datacenter-IPs blockieren
 - 🎊 Easter Eggs (Leertaste drücken oder Foto doppelklicken)
@@ -90,6 +94,7 @@ Bygget med AI-assistance som en udforskning af moderne webudvikling. Koden er op
 - 🌐 Flersproget (DE/EN/DA) med automatisk browser-sprogdetektering
 - 🎨 Dark mode med systempræference-support
 - 🔒 Privacy-first: ingen cookies, ingen tracking, ingen analytics
+- 📬 Kontaktformular med spam-beskyttelse (honeypot, rate limiting, tidscheck)
 - 🔍 SEO-optimeret med schema.org strukturerede data (Person) og JSON-LD
 - 🤖 AI-optimeret discovery via llms.txt/html/md – flere formater fordi nogle hostere blokerer .txt-forespørgsler fra datacenter-IP'er
 - 🎊 Easter eggs (tryk mellemrum eller dobbeltklik på billedet)

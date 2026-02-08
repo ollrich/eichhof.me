@@ -50,7 +50,22 @@
             footerDesktop: 'Mit <span aria-hidden="true">♥</span><span class="sr-only">Liebe</span> und KI in Hamburg erstellt',
             footerMobile: 'Mit <span aria-hidden="true">♥</span><span class="sr-only">Liebe</span> und KI realisiert',
             githubTooltip: "Quellcode auf GitHub",
-            githubAriaLabel: "Quellcode auf GitHub"
+            githubAriaLabel: "Quellcode auf GitHub",
+            // Kontaktformular
+            contactTitle: "Kontakt",
+            contactName: "Dein Name",
+            contactEmail: "Deine E-Mail-Adresse",
+            contactMessage: "Deine Nachricht",
+            contactSubmit: "Nachricht senden",
+            contactSending: "Wird gesendet...",
+            contactSuccess: "Vielen Dank! Deine Nachricht wurde gesendet.",
+            contactErrorGeneral: "Leider ist ein Fehler aufgetreten. Bitte versuche es später erneut.",
+            contactErrorName: "Bitte gib deinen Namen ein (mind. 2 Zeichen).",
+            contactErrorEmail: "Bitte gib eine gültige E-Mail-Adresse ein.",
+            contactErrorMessage: "Bitte gib eine Nachricht ein (mind. 10 Zeichen).",
+            contactErrorRateLimit: "Zu viele Anfragen. Bitte warte einige Minuten.",
+            contactPrivacy: "Deine Daten werden ausschließlich zur Beantwortung deiner Anfrage verwendet.",
+            contactFallback: "Oder direkt per E-Mail:"
         },
         en: {
             title: "Legal Notice",
@@ -75,7 +90,22 @@
             footerDesktop: 'Made with <span aria-hidden="true">♥</span><span class="sr-only">love</span> and AI in Hamburg',
             footerMobile: 'Made with <span aria-hidden="true">♥</span><span class="sr-only">love</span> and AI',
             githubTooltip: "View source on GitHub",
-            githubAriaLabel: "View source on GitHub"
+            githubAriaLabel: "View source on GitHub",
+            // Contact form
+            contactTitle: "Contact",
+            contactName: "Your name",
+            contactEmail: "Your email address",
+            contactMessage: "Your message",
+            contactSubmit: "Send message",
+            contactSending: "Sending...",
+            contactSuccess: "Thank you! Your message has been sent.",
+            contactErrorGeneral: "An error occurred. Please try again later.",
+            contactErrorName: "Please enter your name (at least 2 characters).",
+            contactErrorEmail: "Please enter a valid email address.",
+            contactErrorMessage: "Please enter a message (at least 10 characters).",
+            contactErrorRateLimit: "Too many requests. Please wait a few minutes.",
+            contactPrivacy: "Your data will only be used to respond to your inquiry.",
+            contactFallback: "Or email directly:"
         },
         da: {
             title: "Kolofon",
@@ -100,7 +130,22 @@
             footerDesktop: 'Lavet med <span aria-hidden="true">♥</span><span class="sr-only">kærlighed</span> og AI i Hamburg',
             footerMobile: 'Lavet med <span aria-hidden="true">♥</span><span class="sr-only">kærlighed</span> og AI',
             githubTooltip: "Se kildekoden på GitHub",
-            githubAriaLabel: "Se kildekoden på GitHub"
+            githubAriaLabel: "Se kildekoden på GitHub",
+            // Kontaktformular
+            contactTitle: "Kontakt",
+            contactName: "Dit navn",
+            contactEmail: "Din e-mailadresse",
+            contactMessage: "Din besked",
+            contactSubmit: "Send besked",
+            contactSending: "Sender...",
+            contactSuccess: "Tak! Din besked er blevet sendt.",
+            contactErrorGeneral: "Der opstod en fejl. Prøv venligst igen senere.",
+            contactErrorName: "Indtast venligst dit navn (mindst 2 tegn).",
+            contactErrorEmail: "Indtast venligst en gyldig e-mailadresse.",
+            contactErrorMessage: "Indtast venligst en besked (mindst 10 tegn).",
+            contactErrorRateLimit: "For mange anmodninger. Vent venligst et par minutter.",
+            contactPrivacy: "Dine data bruges kun til at besvare din henvendelse.",
+            contactFallback: "Eller send e-mail direkte:"
         }
     };
 
@@ -227,6 +272,24 @@
             } else {
                 socialRow.classList.remove('mastodon-first');
             }
+        }
+
+        // Update contact form content
+        updateElement('contact-title', content.contactTitle);
+        updateAttr('contact-name', 'placeholder', content.contactName);
+        updateAttr('contact-email', 'placeholder', content.contactEmail);
+        updateAttr('contact-message', 'placeholder', content.contactMessage);
+        updateElement('contact-submit-text', content.contactSubmit);
+        updateElement('contact-privacy', content.contactPrivacy);
+        updateElement('contact-fallback-text', content.contactFallback);
+        updateAttr('close-contact-btn', 'aria-label', content.closeOverlay);
+
+        // Update contact email fallback link
+        const contactFallbackEmail = buildEmail(content.emailPrefix);
+        const contactEmailLink = document.getElementById('contact-fallback-link');
+        if (contactEmailLink) {
+            contactEmailLink.textContent = contactFallbackEmail;
+            contactEmailLink.href = 'mailto:' + contactFallbackEmail;
         }
     }
 

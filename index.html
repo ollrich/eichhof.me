@@ -223,10 +223,63 @@
         </button>
     </div>
 
+    <!-- Contact Form Modal -->
+    <div class="overlay" id="contact-overlay">
+        <div class="overlay-content contact-form-content">
+            <button class="close-overlay" id="close-contact-btn" aria-label="Schließen">
+                <svg width="16" height="16" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                    <line x1="2" y1="2" x2="12" y2="12"/><line x1="12" y1="2" x2="2" y2="12"/>
+                </svg>
+            </button>
+            <h2 id="contact-title">Kontakt</h2>
+
+            <form id="contact-form" novalidate>
+                <!-- Honeypot field (hidden from users, visible to bots) -->
+                <div class="contact-honeypot" aria-hidden="true">
+                    <label for="website">Website</label>
+                    <input type="text" name="website" id="contact-website" tabindex="-1" autocomplete="off">
+                </div>
+
+                <!-- Hidden timestamp for time-based spam check -->
+                <input type="hidden" name="_t" id="contact-timestamp">
+
+                <!-- Hidden CSRF token -->
+                <input type="hidden" name="csrf_token" id="contact-csrf">
+
+                <div class="contact-field">
+                    <input type="text" id="contact-name" name="name" placeholder="Dein Name" required minlength="2" maxlength="100" autocomplete="name">
+                </div>
+
+                <div class="contact-field">
+                    <input type="email" id="contact-email" name="email" placeholder="Deine E-Mail-Adresse" required autocomplete="email">
+                </div>
+
+                <div class="contact-field">
+                    <textarea id="contact-message" name="message" placeholder="Deine Nachricht" required minlength="10" maxlength="5000" rows="5"></textarea>
+                </div>
+
+                <p class="contact-privacy" id="contact-privacy">Deine Daten werden ausschließlich zur Beantwortung deiner Anfrage verwendet.</p>
+
+                <button type="submit" class="contact-submit" id="contact-submit">
+                    <span id="contact-submit-text">Nachricht senden</span>
+                    <span class="contact-spinner" id="contact-spinner"></span>
+                </button>
+
+                <div class="contact-feedback" id="contact-feedback" role="alert" aria-live="polite"></div>
+            </form>
+
+            <div class="contact-fallback">
+                <span id="contact-fallback-text">Oder direkt per E-Mail:</span>
+                <a href="mailto:hallo@eichhof.me" id="contact-fallback-link">hallo@eichhof.me</a>
+            </div>
+        </div>
+    </div>
+
     <!-- JavaScript Modules -->
     <script src="/js/theme.js"></script>
     <script src="/js/language.js"></script>
     <script src="/js/overlay.js"></script>
+    <script src="/js/contact.js"></script>
     <script src="/js/easter-egg.js"></script>
     <script src="/js/link-preview.js"></script>
 </body>

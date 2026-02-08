@@ -1027,3 +1027,248 @@ html.dark-mode .link-preview:hover {
         align-items: stretch;
     }
 }
+
+/* ========================================
+   CONTACT FORM STYLES
+   ======================================== */
+
+/* Honeypot field - hidden from users */
+.contact-honeypot {
+    position: absolute;
+    left: -9999px;
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+}
+
+/* Form content container */
+.contact-form-content {
+    max-width: 450px;
+}
+
+.contact-form-content h2 {
+    margin-bottom: 1.5rem;
+}
+
+/* Form fields */
+.contact-field {
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+.contact-field input,
+.contact-field textarea {
+    width: 100%;
+    padding: 0.875rem 1rem;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+    color: white;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.contact-field input::placeholder,
+.contact-field textarea::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.contact-field input:focus,
+.contact-field textarea:focus {
+    outline: none;
+    border-color: rgba(255, 255, 255, 0.4);
+    background: rgba(255, 255, 255, 0.12);
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.1);
+}
+
+.contact-field textarea {
+    resize: vertical;
+    min-height: 120px;
+    line-height: 1.5;
+}
+
+/* Validation states */
+.contact-field.error input,
+.contact-field.error textarea {
+    border-color: rgba(239, 68, 68, 0.7);
+    background: rgba(239, 68, 68, 0.1);
+}
+
+.contact-field.error input:focus,
+.contact-field.error textarea:focus {
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.2);
+}
+
+.contact-field.valid input,
+.contact-field.valid textarea {
+    border-color: rgba(34, 197, 94, 0.5);
+}
+
+/* Privacy note */
+.contact-privacy {
+    font-size: 0.8rem;
+    opacity: 0.7;
+    margin-bottom: 1.25rem;
+    line-height: 1.5;
+}
+
+/* Submit button */
+.contact-submit {
+    width: 100%;
+    padding: 0.875rem 1.5rem;
+    background: rgba(var(--accent-purple), 0.4);
+    border: 1px solid rgba(var(--accent-purple), 0.5);
+    border-radius: 8px;
+    color: white;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.contact-submit:hover:not(:disabled) {
+    background: rgba(var(--accent-purple), 0.6);
+    border-color: rgba(var(--accent-purple), 0.7);
+    transform: translateY(-1px);
+}
+
+.contact-submit:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+.contact-submit:focus-visible {
+    outline: 2px solid rgba(255, 255, 255, 0.5);
+    outline-offset: 2px;
+}
+
+.contact-submit:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Loading spinner */
+.contact-spinner {
+    display: none;
+    width: 18px;
+    height: 18px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-top-color: white;
+    border-radius: 50%;
+    animation: contact-spin 0.8s linear infinite;
+}
+
+.contact-submit.loading .contact-spinner {
+    display: block;
+}
+
+.contact-submit.loading #contact-submit-text {
+    display: none;
+}
+
+@keyframes contact-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Feedback messages */
+.contact-feedback {
+    margin-top: 1rem;
+    padding: 0;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.contact-feedback:empty {
+    display: none;
+}
+
+.contact-feedback.success {
+    display: block;
+    padding: 1rem;
+    background: rgba(34, 197, 94, 0.15);
+    border: 1px solid rgba(34, 197, 94, 0.3);
+    color: rgba(134, 239, 172, 1);
+}
+
+.contact-feedback.error {
+    display: block;
+    padding: 1rem;
+    background: rgba(239, 68, 68, 0.15);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    color: rgba(252, 165, 165, 1);
+}
+
+/* Fallback email link */
+.contact-fallback {
+    margin-top: 1.5rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.85rem;
+    text-align: center;
+    opacity: 0.8;
+}
+
+.contact-fallback a {
+    color: white;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    transition: opacity 0.2s ease;
+}
+
+.contact-fallback a:hover {
+    opacity: 0.8;
+}
+
+/* Dark mode adjustments */
+html.dark-mode .contact-field input,
+html.dark-mode .contact-field textarea {
+    background: rgba(var(--accent-purple), 0.1);
+    border-color: rgba(var(--accent-purple), 0.25);
+}
+
+html.dark-mode .contact-field input:focus,
+html.dark-mode .contact-field textarea:focus {
+    background: rgba(var(--accent-purple), 0.15);
+    border-color: rgba(var(--accent-purple), 0.4);
+    box-shadow: 0 0 0 3px rgba(var(--accent-purple), 0.15);
+}
+
+html.dark-mode .contact-submit {
+    background: rgba(var(--accent-purple), 0.3);
+    border-color: rgba(var(--accent-purple), 0.4);
+}
+
+html.dark-mode .contact-submit:hover:not(:disabled) {
+    background: rgba(var(--accent-purple), 0.45);
+    border-color: rgba(var(--accent-purple), 0.55);
+}
+
+/* Mobile adjustments */
+@media (max-width: 480px) {
+    .contact-form-content {
+        padding: 1.5rem 1.25rem;
+    }
+
+    .contact-field input,
+    .contact-field textarea {
+        padding: 0.75rem 0.875rem;
+        font-size: 16px; /* Prevents zoom on iOS */
+    }
+
+    .contact-submit {
+        padding: 0.75rem 1.25rem;
+    }
+
+    .contact-privacy {
+        font-size: 0.75rem;
+    }
+}
