@@ -13,8 +13,23 @@
  * - Input Validation & Sanitization
  */
 
-// Konfiguration
-$recipient_email = 'hallo@eichhof.me';
+// Konfiguration aus externer Datei laden (nicht im Repo)
+$config_file = __DIR__ . '/.contact-config.json';
+if (!file_exists($config_file)) {
+    http_response_code(500);
+    echo json_encode(['success' => false, 'error' => 'config_missing']);
+    exit;
+}
+$config = json_decode(file_get_contents($config_file), true);
+$recipient_email = $config['recipient_email'] ?? '';
+$from_email = $config['from_email'] ?? '';
+
+if (empty($recipient_email)) {
+    http_response_code(500);
+    echo json_encode(['success' => false, 'error' => 'config_invalid']);
+    exit;
+}
+
 $rate_limit_file = __DIR__ . '/.contact-ratelimit.json';
 $max_requests = 3;
 $time_window = 600; // 10 Minuten in Sekunden
@@ -217,7 +232,7 @@ $emailBody .= html_entity_decode($message, ENT_QUOTES, 'UTF-8') . "\n";
 $emailBody .= "-------------------------------------\n";
 
 $headers = [
-    'From: noreply@eichhof.me',
+    'From: ' . $from_email,
     'Reply-To: ' . $email,
     'X-Mailer: eichhof.me Contact Form',
     'Content-Type: text/plain; charset=UTF-8'
