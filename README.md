@@ -34,6 +34,9 @@ Every push to `main` automatically updates the sitemap's `<lastmod>` date via Gi
 ```
 eichhof.me/
 ├── index.html              # Main page
+├── robots.txt              # Crawler rules
+├── sitemap.xml             # Sitemap for search engines
+├── sitemap-images.xml      # Image sitemap
 ├── css/
 │   └── styles.css          # All styles (variables, themes, components)
 ├── js/
