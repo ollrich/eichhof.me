@@ -18,7 +18,6 @@ Built with AI assistance as an exploration of modern web development practices. 
 - 🔒 Privacy-first: no cookies, no tracking, no analytics
 - 📬 Contact form with spam protection (honeypot, rate limiting, time-based checks)
 - 🔍 SEO optimized with schema.org structured data (Person) and JSON-LD
-- 🤖 AI-optimized discovery via llms.txt/html/md – multiple formats because some hosters block .txt requests from datacenter IPs
 - 🎊 Easter eggs (try pressing spacebar or double-clicking the photo)
 - ♿ Accessible: keyboard navigation, ARIA labels, reduced motion support
 
@@ -35,7 +34,6 @@ Every push to `main` automatically updates the sitemap's `<lastmod>` date via Gi
 ```
 eichhof.me/
 ├── index.html              # Main page
-├── llms.txt/html/md        # AI-readable profile (multiple formats)
 ├── css/
 │   └── styles.css          # All styles (variables, themes, components)
 ├── js/
@@ -74,7 +72,6 @@ Mit KI-Unterstützung gebaut als Exploration moderner Webentwicklung. Der Code i
 - 🔒 Privacy-First: keine Cookies, kein Tracking, keine Analytik
 - 📬 Kontaktformular mit Spam-Schutz (Honeypot, Rate Limiting, Zeitprüfung)
 - 🔍 SEO-optimiert mit schema.org strukturierten Daten (Person) und JSON-LD
-- 🤖 KI-optimierte Discovery via llms.txt/html/md – mehrere Formate, weil manche Hoster .txt-Anfragen von Datacenter-IPs blockieren
 - 🎊 Easter Eggs (Leertaste drücken oder Foto doppelklicken)
 - ♿ Barrierefrei: Tastaturnavigation, ARIA-Labels, Reduced-Motion-Support
 
@@ -102,7 +99,6 @@ Bygget med AI-assistance som en udforskning af moderne webudvikling. Koden er op
 - 🔒 Privacy-first: ingen cookies, ingen tracking, ingen analytics
 - 📬 Kontaktformular med spam-beskyttelse (honeypot, rate limiting, tidscheck)
 - 🔍 SEO-optimeret med schema.org strukturerede data (Person) og JSON-LD
-- 🤖 AI-optimeret discovery via llms.txt/html/md – flere formater fordi nogle hostere blokerer .txt-forespørgsler fra datacenter-IP'er
 - 🎊 Easter eggs (tryk mellemrum eller dobbeltklik på billedet)
 - ♿ Tilgængelig: tastaturnavigation, ARIA-labels, reduced-motion support
 
