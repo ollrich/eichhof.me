@@ -327,8 +327,8 @@ if ($overlay === 'impressum' || $overlay === 'legal' || $overlay === 'kolofon') 
             <p><span id="overlay-text-3">Kontakt:</span> <a href="#" id="overlay-email-link" style="color: inherit; text-decoration: underline;"></a></p>
             <p id="overlay-text-3b">Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV.</p>
             <h3 id="overlay-subtitle">Datenverarbeitung</h3>
-            <p id="overlay-text-4">Diese Website verwendet keine Cookies, keine Logfiles und keine Tracking-Tools. Lediglich Ihre Farbschema-Präferenz wird lokal in Ihrem Browser gespeichert.</p>
-            <p id="overlay-text-5">Bei Nutzung des Kontaktformulars werden Ihr Name, Ihre E-Mail-Adresse und Ihre Nachricht per E-Mail übermittelt. Zur Spam-Abwehr wird Ihre IP-Adresse temporär verarbeitet, aber nicht gespeichert.</p>
+            <p id="overlay-text-4">Diese Website verwendet keine Cookies, keine Logfiles und keine Tracking-Tools. Lediglich deine Farbschema-Präferenz wird lokal in deinem Browser gespeichert.</p>
+            <p id="overlay-text-5">Bei Nutzung des Kontaktformulars werden dein Name, deine E-Mail-Adresse und deine Nachricht per E-Mail übermittelt. Zur Spam-Abwehr wird deine IP-Adresse temporär verarbeitet, aber nicht gespeichert.</p>
             <p id="overlay-text-6">Links zu externen Plattformen (LinkedIn, Instagram, Bluesky, Mastodon, GitHub, SoundCloud) unterliegen deren eigenen Datenschutzbestimmungen.</p>
         </div>
     </div>
