@@ -53,8 +53,8 @@ eichhof.me/
 │   ├── og-image.png        # Open Graph image for social sharing
 │   ├── favicons/           # Favicon variants (180, 192, 512)
 │   ├── hover/              # Link preview screenshots
-│   │   ├── *.webp          # Preview images
 │   │   ├── update-previews.php  # Screenshot generation script
+│   │   ├── *.webp          # Preview images (server-only, gitignored)
 │   │   └── .apiflash-key   # APIFlash API key (server-only, gitignored)
 │   └── icons.svg           # SVG sprite
 │

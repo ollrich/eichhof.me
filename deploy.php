@@ -201,18 +201,6 @@ chdir($repo_dir);
 $output = [];
 $return_var = 0;
 
-// Backup server-generated files before git reset
-$preview_dir = __DIR__ . '/images/hover';
-$preview_files = ['blog-preview.webp', 'blog-preview-en.webp', 'soundcloud-preview.webp'];
-$preview_backups = [];
-
-foreach ($preview_files as $file) {
-    $path = $preview_dir . '/' . $file;
-    if (file_exists($path)) {
-        $preview_backups[$file] = file_get_contents($path);
-    }
-}
-
 // Git fetch
 exec('git fetch origin 2>&1', $output, $return_var);
 if ($return_var !== 0) {
@@ -235,15 +223,6 @@ if (!file_exists($ratelimit_file)) {
     file_put_contents($ratelimit_file, '{}');
     chmod($ratelimit_file, 0666);
     writeLog('INFO: Recreated .contact-ratelimit.json');
-}
-
-// Restore server-generated preview images
-foreach ($preview_backups as $file => $content) {
-    $path = $preview_dir . '/' . $file;
-    file_put_contents($path, $content);
-}
-if (!empty($preview_backups)) {
-    writeLog('INFO: Restored ' . count($preview_backups) . ' preview images');
 }
 
 // Log success

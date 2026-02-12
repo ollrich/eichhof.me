@@ -31,3 +31,8 @@ deploy-config.php
 .apiflash-key
 .contact-config.json
 .contact-ratelimit.json
+
+# Server-generated preview images (via cron)
+images/hover/*-preview.webp
+images/hover/*-preview-en.webp
+images/hover/update-log.txt
