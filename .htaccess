@@ -13,15 +13,17 @@ RewriteRule ^(.*)$ https://eichhof.me/$1 [L,R=301]
 RewriteRule ^en/?$ index.php?lang=en [L,QSA]
 RewriteRule ^dk/?$ index.php?lang=da [L,QSA]
 
-# Legal notice paths (open impressum overlay)
+# German subpages (no language prefix)
 RewriteRule ^impressum/?$ index.php?lang=de&overlay=impressum [L,QSA]
-RewriteRule ^legal-notice/?$ index.php?lang=en&overlay=legal [L,QSA]
-RewriteRule ^kolofon/?$ index.php?lang=da&overlay=kolofon [L,QSA]
-
-# Contact paths (open contact overlay)
 RewriteRule ^kontakt/?$ index.php?lang=de&overlay=kontakt [L,QSA]
-RewriteRule ^contact/?$ index.php?lang=en&overlay=contact [L,QSA]
-RewriteRule ^kontakt-dk/?$ index.php?lang=da&overlay=kontakt [L,QSA]
+
+# English subpages (/en/...)
+RewriteRule ^en/legal-notice/?$ index.php?lang=en&overlay=legal [L,QSA]
+RewriteRule ^en/contact/?$ index.php?lang=en&overlay=contact [L,QSA]
+
+# Danish subpages (/dk/...)
+RewriteRule ^dk/kolofon/?$ index.php?lang=da&overlay=kolofon [L,QSA]
+RewriteRule ^dk/kontakt/?$ index.php?lang=da&overlay=kontakt [L,QSA]
 
 # Default: serve index.php (German, with browser detection fallback)
 DirectoryIndex index.php index.html

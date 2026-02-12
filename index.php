@@ -6,15 +6,15 @@
  * while keeping client-side language switching for UI elements.
  *
  * URL Structure:
- * - /           → German (default)
- * - /en/        → English
- * - /dk/        → Danish
- * - /impressum  → German legal notice (opens overlay)
- * - /legal-notice → English legal notice (opens overlay)
- * - /kolofon    → Danish legal notice (opens overlay)
- * - /kontakt    → German contact (opens overlay)
- * - /contact    → English contact (opens overlay)
- * - /kontakt-da → Danish contact (opens overlay)
+ * - /              → German (default)
+ * - /en/           → English
+ * - /dk/           → Danish
+ * - /impressum     → German legal notice
+ * - /en/legal-notice → English legal notice
+ * - /dk/kolofon    → Danish legal notice
+ * - /kontakt       → German contact
+ * - /en/contact    → English contact
+ * - /dk/kontakt    → Danish contact
  */
 
 // ============================================================================
