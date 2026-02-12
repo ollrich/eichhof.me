@@ -13,7 +13,7 @@ Built with AI assistance as an exploration of modern web development practices. 
 
 ### Highlights
 
-- 🌐 Multilingual (DE/EN/DA) with automatic browser language detection
+- 🌐 Multilingual (DE/EN/DA) with clean URLs (/en/, /dk/) and automatic browser language detection
 - 🎨 Dark mode with system preference support
 - 🔒 Privacy-first: no cookies, no tracking, no analytics
 - 📬 Contact form with spam protection (honeypot, rate limiting, time-based checks)
@@ -33,15 +33,16 @@ Every push to `main` automatically updates the sitemap's `<lastmod>` date via Gi
 
 ```
 eichhof.me/
-├── index.html              # Main page
+├── index.php               # Main entry (multilingual routing, dynamic meta tags)
+├── .htaccess               # URL rewrites (/en/, /dk/, /impressum, etc.)
 ├── robots.txt              # Crawler rules
-├── sitemap.xml             # Sitemap for search engines
+├── sitemap.xml             # Multilingual sitemap with hreflang
 ├── sitemap-images.xml      # Image sitemap
 ├── css/
 │   └── styles.css          # All styles (variables, themes, components)
 ├── js/
 │   ├── theme.js            # Dark mode toggle
-│   ├── language.js         # Multilingual content
+│   ├── language.js         # Multilingual content switching
 │   ├── overlay.js          # Legal notice modal
 │   ├── contact.js          # Contact form modal + AJAX
 │   ├── easter-egg.js       # Animations + confetti
@@ -75,7 +76,7 @@ Mit KI-Unterstützung gebaut als Exploration moderner Webentwicklung. Der Code i
 
 ### Highlights
 
-- 🌐 Mehrsprachig (DE/EN/DA) mit automatischer Browser-Spracherkennung
+- 🌐 Mehrsprachig (DE/EN/DA) mit Clean URLs (/en/, /dk/) und automatischer Browser-Spracherkennung
 - 🎨 Dark Mode mit System-Präferenz-Unterstützung
 - 🔒 Privacy-First: keine Cookies, kein Tracking, keine Analytik
 - 📬 Kontaktformular mit Spam-Schutz (Honeypot, Rate Limiting, Zeitprüfung)
@@ -102,7 +103,7 @@ Bygget med AI-assistance som en udforskning af moderne webudvikling. Koden er op
 
 ### Highlights
 
-- 🌐 Flersproget (DE/EN/DA) med automatisk browser-sprogdetektering
+- 🌐 Flersproget (DE/EN/DA) med clean URLs (/en/, /dk/) og automatisk browser-sprogdetektering
 - 🎨 Dark mode med systempræference-support
 - 🔒 Privacy-first: ingen cookies, ingen tracking, ingen analytics
 - 📬 Kontaktformular med spam-beskyttelse (honeypot, rate limiting, tidscheck)

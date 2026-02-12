@@ -146,9 +146,9 @@ if ($overlay === 'impressum' || $overlay === 'legal' || $overlay === 'kolofon') 
         "inLanguage": "<?= $m['lang'] ?>",
         "knowsAbout": [
             "Marketing", "Markenentwicklung", "Zielgruppenanalyse", "Kampagnenplanung",
-            "Kommunikationsstrategie", "Content-Strategie", "Streaming Media", "Online-Magazine",
-            "Nachhaltigkeit", "Medien", "Neue Medien", "Crowdfunding", "Smart Home",
-            "Musik", "Musikmedien", "Bloggen"
+            "Kommunikationsstrategie", "Content-Strategie", "Digitale Kommunikation",
+            "Radio", "Audio", "Streaming Media", "Online-Magazine",
+            "Nachhaltigkeit", "Musik", "Musikmedien", "Bloggen"
         ],
         "homeLocation": { "@type": "Place", "name": "Hamburg" },
         "birthPlace": { "@type": "Place", "name": "Bremerhaven" },
