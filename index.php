@@ -50,7 +50,8 @@ $meta = [
         'description' => 'Kommunikationsspezialist aus Hamburg für digitale Markenführung und Zielgruppenanalyse, geprägt von Musikmedien und Streaming.',
         'locale' => 'de_DE',
         'url' => 'https://eichhof.me/',
-        'schema_description' => 'Kommunikationsspezialist aus Hamburg für digitale Markenführung und Zielgruppenanalyse, geprägt von Musikmedien und Streaming.'
+        'schema_description' => 'Kommunikationsspezialist aus Hamburg für digitale Markenführung und Zielgruppenanalyse, geprägt von Musikmedien und Streaming.',
+        'jobTitle' => 'Leiter Marketing'
     ],
     'en' => [
         'lang' => 'en',
@@ -58,7 +59,8 @@ $meta = [
         'description' => 'Communication specialist from Hamburg for digital brand management and audience analysis, shaped by music media and streaming.',
         'locale' => 'en_GB',
         'url' => 'https://eichhof.me/en/',
-        'schema_description' => 'Communication specialist from Hamburg for digital brand management and audience analysis, shaped by music media and streaming.'
+        'schema_description' => 'Communication specialist from Hamburg for digital brand management and audience analysis, shaped by music media and streaming.',
+        'jobTitle' => 'Head of Marketing'
     ],
     'da' => [
         'lang' => 'da',
@@ -66,7 +68,8 @@ $meta = [
         'description' => 'Kommunikationsspecialist fra Hamborg for digital brandledelse og målgruppeanalyse, formet af musikmedier og streaming.',
         'locale' => 'da_DK',
         'url' => 'https://eichhof.me/dk/',
-        'schema_description' => 'Kommunikationsspecialist fra Hamborg for digital brandledelse og målgruppeanalyse, formet af musikmedier og streaming.'
+        'schema_description' => 'Kommunikationsspecialist fra Hamborg for digital brandledelse og målgruppeanalyse, formet af musikmedier og streaming.',
+        'jobTitle' => 'Marketingchef'
     ]
 ];
 
@@ -138,8 +141,9 @@ if ($overlay === 'impressum' || $overlay === 'legal' || $overlay === 'kolofon') 
         "familyName": "Eichhof",
         "url": "https://eichhof.me/",
         "image": "https://eichhof.me/images/oliver-eichhof.webp",
-        "jobTitle": "Leiter Marketing",
+        "jobTitle": "<?= htmlspecialchars($m['jobTitle']) ?>",
         "description": "<?= htmlspecialchars($m['schema_description']) ?>",
+        "inLanguage": "<?= $m['lang'] ?>",
         "knowsAbout": [
             "Marketing", "Markenentwicklung", "Zielgruppenanalyse", "Kampagnenplanung",
             "Kommunikationsstrategie", "Content-Strategie", "Streaming Media", "Online-Magazine",
