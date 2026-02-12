@@ -1,8 +1,10 @@
 /**
  * Language Detection and Content Management Module
  * =================================================
- * Handles multilingual content switching based on browser language
- * or explicit URL parameter (?lang=de|en|da)
+ * Handles multilingual content switching based on:
+ * 1. Server-detected language (from URL path like /en/ or /da/)
+ * 2. URL parameter (?lang=de|en|da)
+ * 3. Browser language preference
  */
 (function() {
     'use strict';
@@ -157,15 +159,19 @@
     let currentEmailPrefix = 'hallo';
 
     /**
-     * Detect language from URL parameter or browser settings
-     * Priority: URL param > Browser language > Default (German)
+     * Detect language from server, URL parameter, or browser settings
+     * Priority: Server-set lang > URL param > Browser language > Default (German)
      * @returns {string} Language code (de, en, or da)
      */
     function detectLanguage() {
+        // Check if server already detected language (from /en/ or /da/ path)
+        if (window.serverLang && ['de', 'en', 'da'].includes(window.serverLang)) {
+            return window.serverLang;
+        }
+
+        // Check URL parameter (legacy support for ?lang=xx)
         const urlParams = new URLSearchParams(window.location.search);
         const urlLang = urlParams.get('lang');
-
-        // Check URL parameter first (explicit user choice)
         if (urlLang && ['de', 'en', 'da'].includes(urlLang)) {
             return urlLang;
         }
@@ -299,10 +305,29 @@
     }
 
     /**
+     * Open overlay if server requested it (from /impressum, /kontakt etc.)
+     */
+    function handleServerOverlay() {
+        if (!window.openOverlay) return;
+
+        // Small delay to ensure overlay.js has initialized
+        setTimeout(function() {
+            if (window.openOverlay === 'impressum') {
+                const overlay = document.getElementById('overlay');
+                if (overlay) overlay.classList.add('active');
+            } else if (window.openOverlay === 'contact') {
+                const contactOverlay = document.getElementById('contact-overlay');
+                if (contactOverlay) contactOverlay.classList.add('active');
+            }
+        }, 100);
+    }
+
+    /**
      * Initialize language module
      */
     function init() {
         applyLanguage();
+        handleServerOverlay();
 
         // Note: Email link click handler is now in contact.js
         // which opens the contact form popup instead of mailto

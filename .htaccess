@@ -5,6 +5,31 @@ RewriteCond %{HTTPS} off [OR]
 RewriteCond %{HTTP_HOST} ^www\.eichhof\.me$ [NC]
 RewriteRule ^(.*)$ https://eichhof.me/$1 [L,R=301]
 
+# ============================================================================
+# MULTILINGUAL URL ROUTING
+# ============================================================================
+
+# Language paths: /en/ and /da/ → index.php with lang parameter
+RewriteRule ^en/?$ index.php?lang=en [L,QSA]
+RewriteRule ^da/?$ index.php?lang=da [L,QSA]
+
+# Legal notice paths (open impressum overlay)
+RewriteRule ^impressum/?$ index.php?lang=de&overlay=impressum [L,QSA]
+RewriteRule ^legal-notice/?$ index.php?lang=en&overlay=legal [L,QSA]
+RewriteRule ^kolofon/?$ index.php?lang=da&overlay=kolofon [L,QSA]
+
+# Contact paths (open contact overlay)
+RewriteRule ^kontakt/?$ index.php?lang=de&overlay=kontakt [L,QSA]
+RewriteRule ^contact/?$ index.php?lang=en&overlay=contact [L,QSA]
+RewriteRule ^kontakt-da/?$ index.php?lang=da&overlay=kontakt [L,QSA]
+
+# Default: serve index.php (German, with browser detection fallback)
+DirectoryIndex index.php index.html
+
+# ============================================================================
+# SECURITY
+# ============================================================================
+
 # Schutz sensibler Dateien und Verzeichnisse
 <FilesMatch "^\.">
     Require all denied
@@ -13,6 +38,9 @@ RewriteRule ^(.*)$ https://eichhof.me/$1 [L,R=301]
     Require all denied
 </FilesMatch>
 # Ausnahmen für PHP-Scripts
+<Files "index.php">
+    Require all granted
+</Files>
 <Files "deploy.php">
     Require all granted
 </Files>

@@ -1,5 +1,87 @@
+<?php
+/**
+ * eichhof.me - Multilingual Entry Point
+ * =====================================
+ * Handles language detection and serves appropriate meta tags for SEO/Social
+ * while keeping client-side language switching for UI elements.
+ *
+ * URL Structure:
+ * - /           → German (default)
+ * - /en/        → English
+ * - /da/        → Danish
+ * - /impressum  → German legal notice (opens overlay)
+ * - /legal-notice → English legal notice (opens overlay)
+ * - /kolofon    → Danish legal notice (opens overlay)
+ * - /kontakt    → German contact (opens overlay)
+ * - /contact    → English contact (opens overlay)
+ * - /kontakt-da → Danish contact (opens overlay)
+ */
+
+// ============================================================================
+// LANGUAGE DETECTION
+// ============================================================================
+
+$lang = $_GET['lang'] ?? 'de';
+$overlay = $_GET['overlay'] ?? null;
+
+// Validate language
+if (!in_array($lang, ['de', 'en', 'da'])) {
+    // Fallback to browser language detection
+    $acceptLang = $_SERVER['HTTP_ACCEPT_LANGUAGE'] ?? 'de';
+    $browserLang = strtolower(substr($acceptLang, 0, 2));
+
+    if ($browserLang === 'en') {
+        $lang = 'en';
+    } elseif ($browserLang === 'da') {
+        $lang = 'da';
+    } else {
+        $lang = 'de';
+    }
+}
+
+// ============================================================================
+// META CONTENT PER LANGUAGE
+// ============================================================================
+
+$meta = [
+    'de' => [
+        'lang' => 'de',
+        'title' => 'Oliver Eichhof – Kommunikationsspezialist aus Hamburg',
+        'description' => 'Kommunikationsspezialist aus Hamburg für digitale Markenführung und Zielgruppenanalyse, geprägt von Musikmedien und Streaming.',
+        'locale' => 'de_DE',
+        'url' => 'https://eichhof.me/',
+        'schema_description' => 'Kommunikationsspezialist aus Hamburg für digitale Markenführung und Zielgruppenanalyse, geprägt von Musikmedien und Streaming.'
+    ],
+    'en' => [
+        'lang' => 'en',
+        'title' => 'Oliver Eichhof – Communication Specialist from Hamburg',
+        'description' => 'Communication specialist from Hamburg for digital brand management and audience analysis, shaped by music media and streaming.',
+        'locale' => 'en_GB',
+        'url' => 'https://eichhof.me/en/',
+        'schema_description' => 'Communication specialist from Hamburg for digital brand management and audience analysis, shaped by music media and streaming.'
+    ],
+    'da' => [
+        'lang' => 'da',
+        'title' => 'Oliver Eichhof – Kommunikationsspecialist fra Hamborg',
+        'description' => 'Kommunikationsspecialist fra Hamborg for digital brandledelse og målgruppeanalyse, formet af musikmedier og streaming.',
+        'locale' => 'da_DK',
+        'url' => 'https://eichhof.me/da/',
+        'schema_description' => 'Kommunikationsspecialist fra Hamborg for digital brandledelse og målgruppeanalyse, formet af musikmedier og streaming.'
+    ]
+];
+
+$m = $meta[$lang];
+
+// Determine overlay to open (if any)
+$openOverlay = null;
+if ($overlay === 'impressum' || $overlay === 'legal' || $overlay === 'kolofon') {
+    $openOverlay = 'impressum';
+} elseif ($overlay === 'contact' || $overlay === 'kontakt') {
+    $openOverlay = 'contact';
+}
+?>
 <!DOCTYPE html>
-<html lang="de">
+<html lang="<?= $m['lang'] ?>">
 <head>
     <!-- Character encoding and viewport configuration for responsive design -->
     <meta charset="UTF-8">
@@ -9,30 +91,37 @@
     <meta name="theme-color" content="#764ba2">
 
     <!-- SEO meta tags for search engines -->
-    <meta name="description" content="Kommunikationsspezialist aus Hamburg für digitale Markenführung und Zielgruppenanalyse, geprägt von Musikmedien und Streaming.">
+    <meta name="description" content="<?= htmlspecialchars($m['description']) ?>">
     <meta name="robots" content="index, follow">
     <meta name="author" content="Oliver Eichhof">
 
     <!-- Open Graph meta tags for rich social media sharing (Facebook, LinkedIn) -->
-    <meta property="og:title" content="Oliver Eichhof – Kommunikationsspezialist aus Hamburg">
-    <meta property="og:description" content="Kommunikationsspezialist aus Hamburg für digitale Markenführung und Zielgruppenanalyse, geprägt von Musikmedien und Streaming.">
+    <meta property="og:title" content="<?= htmlspecialchars($m['title']) ?>">
+    <meta property="og:description" content="<?= htmlspecialchars($m['description']) ?>">
     <meta property="og:image" content="https://eichhof.me/images/og-image.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="628">
-    <meta property="og:url" content="https://eichhof.me/">
+    <meta property="og:url" content="<?= $m['url'] ?>">
     <meta property="og:type" content="profile">
-    <meta property="og:locale" content="de_DE">
+    <meta property="og:locale" content="<?= $m['locale'] ?>">
+    <meta property="og:locale:alternate" content="de_DE">
+    <meta property="og:locale:alternate" content="en_GB">
+    <meta property="og:locale:alternate" content="da_DK">
 
     <!-- Twitter Card meta tags for rich Twitter sharing -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Oliver Eichhof – Kommunikationsspezialist aus Hamburg">
-    <meta name="twitter:description" content="Kommunikationsspezialist aus Hamburg für digitale Markenführung und Zielgruppenanalyse, geprägt von Musikmedien und Streaming.">
+    <meta name="twitter:title" content="<?= htmlspecialchars($m['title']) ?>">
+    <meta name="twitter:description" content="<?= htmlspecialchars($m['description']) ?>">
     <meta name="twitter:image" content="https://eichhof.me/images/og-image.png">
 
-    <!-- Canonical URL to prevent duplicate content issues in SEO -->
-    <link rel="canonical" href="https://eichhof.me/">
+    <!-- Canonical URL and hreflang for international SEO -->
+    <link rel="canonical" href="<?= $m['url'] ?>">
+    <link rel="alternate" hreflang="de" href="https://eichhof.me/">
+    <link rel="alternate" hreflang="en" href="https://eichhof.me/en/">
+    <link rel="alternate" hreflang="da" href="https://eichhof.me/da/">
+    <link rel="alternate" hreflang="x-default" href="https://eichhof.me/">
 
-    <title>Oliver Eichhof – Kommunikationsspezialist aus Hamburg</title>
+    <title><?= htmlspecialchars($m['title']) ?></title>
 
     <!-- JSON-LD structured data for rich search results (Google Knowledge Panel) -->
     <script type="application/ld+json">
@@ -42,7 +131,7 @@
         "@id": "https://eichhof.me/#person",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "https://eichhof.me/"
+            "@id": "<?= $m['url'] ?>"
         },
         "name": "Oliver Eichhof",
         "givenName": "Oliver",
@@ -50,7 +139,7 @@
         "url": "https://eichhof.me/",
         "image": "https://eichhof.me/images/oliver-eichhof.webp",
         "jobTitle": "Leiter Marketing",
-        "description": "Kommunikationsspezialist aus Hamburg für digitale Markenführung und Zielgruppenanalyse, geprägt von Musikmedien und Streaming.",
+        "description": "<?= htmlspecialchars($m['schema_description']) ?>",
         "knowsAbout": [
             "Marketing", "Markenentwicklung", "Zielgruppenanalyse", "Kampagnenplanung",
             "Kommunikationsstrategie", "Content-Strategie", "Streaming Media", "Online-Magazine",
@@ -93,6 +182,12 @@
 
     <!-- Stylesheet -->
     <link rel="stylesheet" href="/css/styles.css">
+
+    <!-- Pass server-detected language and overlay to JavaScript -->
+    <script>
+        window.serverLang = '<?= $lang ?>';
+        window.openOverlay = <?= $openOverlay ? "'" . $openOverlay . "'" : 'null' ?>;
+    </script>
 </head>
 <body>
     <main>
