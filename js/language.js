@@ -49,7 +49,7 @@
             closePreview: "Vorschau schließen",
             footerDesktop: 'Mit <span aria-hidden="true">♥</span><span class="sr-only">Liebe</span> und KI in Hamburg erstellt',
             footerMobile: 'Mit <span aria-hidden="true">♥</span><span class="sr-only">Liebe</span> und KI realisiert',
-            footerEntity: 'Oliver Eichhof, Kommunikationsspezialist aus Hamburg',
+            footerEntity: 'Oliver Eichhof, Kommunikationsstratege aus Hamburg',
             githubTooltip: "Quellcode auf GitHub",
             githubAriaLabel: "Quellcode auf GitHub",
             // Kontaktformular
@@ -90,7 +90,7 @@
             closePreview: "Close preview",
             footerDesktop: 'Made with <span aria-hidden="true">♥</span><span class="sr-only">love</span> and AI in Hamburg',
             footerMobile: 'Made with <span aria-hidden="true">♥</span><span class="sr-only">love</span> and AI',
-            footerEntity: 'Oliver Eichhof, Communication Specialist from Hamburg',
+            footerEntity: 'Oliver Eichhof, Communication Strategist from Hamburg',
             githubTooltip: "View source on GitHub",
             githubAriaLabel: "View source on GitHub",
             // Contact form
@@ -131,7 +131,7 @@
             closePreview: "Luk forhåndsvisning",
             footerDesktop: 'Lavet med <span aria-hidden="true">♥</span><span class="sr-only">kærlighed</span> og AI i Hamburg',
             footerMobile: 'Lavet med <span aria-hidden="true">♥</span><span class="sr-only">kærlighed</span> og AI',
-            footerEntity: 'Oliver Eichhof, Kommunikationsspecialist fra Hamborg',
+            footerEntity: 'Oliver Eichhof, Kommunikationsstrateg fra Hamborg',
             githubTooltip: "Se kildekoden på GitHub",
             githubAriaLabel: "Se kildekoden på GitHub",
             // Kontaktformular
