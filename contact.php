@@ -227,7 +227,6 @@ $emailBody .= "=====================================\n\n";
 $emailBody .= "Name: {$name}\n";
 $emailBody .= "E-Mail: {$email}\n";
 $emailBody .= "Sprache: {$lang}\n";
-$emailBody .= "IP: {$clientIP}\n";
 $emailBody .= "Zeit: " . date('Y-m-d H:i:s') . "\n\n";
 $emailBody .= "Nachricht:\n";
 $emailBody .= "-------------------------------------\n";

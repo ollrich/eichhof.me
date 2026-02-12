@@ -32,25 +32,6 @@ RedirectMatch 404 /\.git
     Header set Content-Type "application/xml"
 </Files>
 
-# LLM-Dateien: CORS-Header für Cross-Origin-Zugriff durch KI-Bots
-# Diese überschreiben die globale CORP "same-origin" Policy (Zeile 69),
-# damit LLM-Crawler die Dateien von anderen Domains abrufen können.
-<Files "llms.txt">
-    Header set Content-Type "text/plain; charset=utf-8"
-    Header set Cross-Origin-Resource-Policy "cross-origin"
-    Header set Access-Control-Allow-Origin "*"
-</Files>
-<Files "llms.html">
-    Header set Content-Type "text/html; charset=utf-8"
-    Header set Cross-Origin-Resource-Policy "cross-origin"
-    Header set Access-Control-Allow-Origin "*"
-</Files>
-<Files "llms.md">
-    Header set Content-Type "text/markdown; charset=utf-8"
-    Header set Cross-Origin-Resource-Policy "cross-origin"
-    Header set Access-Control-Allow-Origin "*"
-</Files>
-
 # ETags deaktivieren (unnötig bei statischen Seiten mit Cache-Control)
 <IfModule mod_headers.c>
     Header unset ETag
