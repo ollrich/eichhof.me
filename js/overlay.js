@@ -2,7 +2,7 @@
  * Overlay/Modal Module
  * ====================
  * Handles the legal notice modal with proper accessibility features
- * including focus trap for keyboard navigation.
+ * including focus trap for keyboard navigation and URL history management.
  */
 (function() {
     'use strict';
@@ -12,6 +12,29 @@
     let closeButton = null;
     let previousActiveElement = null;
     let focusableElements = [];
+    let originalUrl = null; // Store URL before opening overlay
+
+    /**
+     * Get the legal notice URL based on current language
+     * @returns {string} URL path for legal notice
+     */
+    function getLegalUrl() {
+        const lang = window.LanguageManager ? window.LanguageManager.getCurrentLang() : 'de';
+        if (lang === 'en') return '/en/legal-notice';
+        if (lang === 'da') return '/dk/kolofon';
+        return '/impressum';
+    }
+
+    /**
+     * Get the base URL for current language
+     * @returns {string} Base URL path
+     */
+    function getBaseUrl() {
+        const lang = window.LanguageManager ? window.LanguageManager.getCurrentLang() : 'de';
+        if (lang === 'en') return '/en/';
+        if (lang === 'da') return '/dk/';
+        return '/';
+    }
 
     /**
      * Get all focusable elements within the overlay
@@ -78,12 +101,19 @@
 
     /**
      * Open the overlay modal
+     * @param {boolean} skipHistory - If true, don't push to history (used for popstate)
      */
-    function openOverlay() {
+    function openOverlay(skipHistory) {
         if (!overlay) return;
 
         // Store current focus to restore later
         previousActiveElement = document.activeElement;
+
+        // Update URL (unless opening from popstate or server-side)
+        if (!skipHistory && !window.openOverlay) {
+            originalUrl = window.location.pathname;
+            history.pushState({ overlay: 'legal' }, '', getLegalUrl());
+        }
 
         // Show overlay
         overlay.classList.add('active');
@@ -107,14 +137,20 @@
 
     /**
      * Close the overlay modal
+     * @param {boolean} skipHistory - If true, don't modify history (used for popstate)
      */
-    function closeOverlay() {
+    function closeOverlay(skipHistory) {
         if (!overlay) return;
 
         overlay.classList.remove('active');
 
         // Restore body scroll
         document.body.style.overflow = '';
+
+        // Update URL back to base (unless closing from popstate)
+        if (!skipHistory) {
+            history.pushState({ overlay: null }, '', getBaseUrl());
+        }
 
         // Restore previous focus
         if (previousActiveElement) {
@@ -124,6 +160,17 @@
 
         // Remove keyboard listener
         document.removeEventListener('keydown', handleKeydown);
+    }
+
+    /**
+     * Handle browser back/forward navigation
+     */
+    function handlePopState(e) {
+        if (e.state && e.state.overlay === 'legal') {
+            openOverlay(true); // Skip history push
+        } else if (overlay && overlay.classList.contains('active')) {
+            closeOverlay(true); // Skip history push
+        }
     }
 
     /**
@@ -145,7 +192,9 @@
 
         // Close button click
         if (closeButton) {
-            closeButton.addEventListener('click', closeOverlay);
+            closeButton.addEventListener('click', function() {
+                closeOverlay();
+            });
         }
 
         // Click outside to close
@@ -180,11 +229,18 @@
             });
         }
 
-        // Check for URL parameter to auto-open
+        // Listen for browser back/forward
+        window.addEventListener('popstate', handlePopState);
+
+        // Set initial history state (for proper back navigation)
+        if (!window.openOverlay) {
+            history.replaceState({ overlay: null }, '', window.location.pathname);
+        }
+
+        // Check for URL parameter to auto-open (legacy support)
         const urlParams = new URLSearchParams(window.location.search);
         if (urlParams.get('impressum') !== null || urlParams.get('legal') !== null) {
-            // Small delay to ensure page is ready
-            setTimeout(openOverlay, 100);
+            setTimeout(function() { openOverlay(true); }, 100);
         }
     }
 

@@ -148,7 +148,7 @@ if ($overlay === 'impressum' || $overlay === 'legal' || $overlay === 'kolofon') 
             "Marketing", "Markenentwicklung", "Zielgruppenanalyse", "Kampagnenplanung",
             "Kommunikationsstrategie", "Content-Strategie", "Digitale Kommunikation",
             "Radio", "Audio", "Streaming Media", "Online-Magazine",
-            "Nachhaltigkeit", "Musik", "Musikmedien", "Bloggen"
+            "Musik", "Musikmedien", "Bloggen"
         ],
         "homeLocation": { "@type": "Place", "name": "Hamburg" },
         "birthPlace": { "@type": "Place", "name": "Bremerhaven" },

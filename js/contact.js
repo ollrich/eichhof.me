@@ -2,7 +2,7 @@
  * Contact Form Module
  * ===================
  * Handles the contact form modal with AJAX submission,
- * validation, and accessibility features.
+ * validation, accessibility features, and URL history management.
  */
 (function() {
     'use strict';
@@ -13,6 +13,28 @@
     let previousActiveElement = null;
     let focusableElements = [];
     let csrfToken = null;
+
+    /**
+     * Get the contact URL based on current language
+     * @returns {string} URL path for contact
+     */
+    function getContactUrl() {
+        const lang = window.LanguageManager ? window.LanguageManager.getCurrentLang() : 'de';
+        if (lang === 'en') return '/en/contact';
+        if (lang === 'da') return '/dk/kontakt';
+        return '/kontakt';
+    }
+
+    /**
+     * Get the base URL for current language
+     * @returns {string} Base URL path
+     */
+    function getBaseUrl() {
+        const lang = window.LanguageManager ? window.LanguageManager.getCurrentLang() : 'de';
+        if (lang === 'en') return '/en/';
+        if (lang === 'da') return '/dk/';
+        return '/';
+    }
 
     /**
      * Fetch CSRF token from server
@@ -100,8 +122,9 @@
 
     /**
      * Open contact form modal
+     * @param {boolean} skipHistory - If true, don't push to history (used for popstate)
      */
-    function openContactForm() {
+    function openContactForm(skipHistory) {
         if (!contactOverlay) return;
 
         previousActiveElement = document.activeElement;
@@ -117,6 +140,11 @@
 
         // Fetch CSRF token from server
         fetchCsrfToken();
+
+        // Update URL (unless opening from popstate or server-side)
+        if (!skipHistory && window.openOverlay !== 'contact') {
+            history.pushState({ overlay: 'contact' }, '', getContactUrl());
+        }
 
         // Show overlay
         contactOverlay.classList.add('active');
@@ -135,12 +163,18 @@
 
     /**
      * Close contact form modal
+     * @param {boolean} skipHistory - If true, don't modify history (used for popstate)
      */
-    function closeContactForm() {
+    function closeContactForm(skipHistory) {
         if (!contactOverlay) return;
 
         contactOverlay.classList.remove('active');
         document.body.style.overflow = '';
+
+        // Update URL back to base (unless closing from popstate)
+        if (!skipHistory) {
+            history.pushState({ overlay: null }, '', getBaseUrl());
+        }
 
         if (previousActiveElement) {
             previousActiveElement.focus();
@@ -148,6 +182,17 @@
         }
 
         document.removeEventListener('keydown', handleKeydown);
+    }
+
+    /**
+     * Handle browser back/forward navigation
+     */
+    function handlePopState(e) {
+        if (e.state && e.state.overlay === 'contact') {
+            openContactForm(true); // Skip history push
+        } else if (contactOverlay && contactOverlay.classList.contains('active')) {
+            closeContactForm(true); // Skip history push
+        }
     }
 
     /**
@@ -174,6 +219,12 @@
         const fields = contactForm.querySelectorAll('.contact-field');
         fields.forEach(field => {
             field.classList.remove('error', 'valid');
+        });
+
+        // Show form fields (in case they were hidden after success)
+        const formFields = contactForm.querySelectorAll('.contact-field, .contact-privacy, .contact-submit');
+        formFields.forEach(field => {
+            field.style.display = '';
         });
     }
 
@@ -376,7 +427,9 @@
 
         // Close button click
         if (closeButton) {
-            closeButton.addEventListener('click', closeContactForm);
+            closeButton.addEventListener('click', function() {
+                closeContactForm();
+            });
         }
 
         // Click outside to close
@@ -414,10 +467,13 @@
             emailLink.href = 'mailto:' + prefix + '@' + domain[0] + '.' + domain[1];
         }
 
-        // Check URL parameter for auto-open
+        // Listen for browser back/forward
+        window.addEventListener('popstate', handlePopState);
+
+        // Check URL parameter for auto-open (legacy support)
         const urlParams = new URLSearchParams(window.location.search);
         if (urlParams.get('contact') !== null) {
-            setTimeout(openContactForm, 100);
+            setTimeout(function() { openContactForm(true); }, 100);
         }
     }
 
