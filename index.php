@@ -50,6 +50,9 @@ $meta = [
         'description' => 'Kommunikationsspezialist aus Hamburg für digitale Markenführung und Zielgruppenanalyse, geprägt von Musikmedien und Streaming.',
         'locale' => 'de_DE',
         'url' => 'https://eichhof.me/',
+        'baseUrl' => '/',
+        'legalUrl' => '/impressum',
+        'contactUrl' => '/kontakt',
         'schema_description' => 'Kommunikationsspezialist aus Hamburg für digitale Markenführung und Zielgruppenanalyse, geprägt von Musikmedien und Streaming.',
         'jobTitle' => 'Leiter Marketing'
     ],
@@ -59,6 +62,9 @@ $meta = [
         'description' => 'Communication specialist from Hamburg for digital brand management and audience analysis, shaped by music media and streaming.',
         'locale' => 'en_GB',
         'url' => 'https://eichhof.me/en/',
+        'baseUrl' => '/en/',
+        'legalUrl' => '/en/legal-notice',
+        'contactUrl' => '/en/contact',
         'schema_description' => 'Communication specialist from Hamburg for digital brand management and audience analysis, shaped by music media and streaming.',
         'jobTitle' => 'Head of Marketing'
     ],
@@ -68,6 +74,9 @@ $meta = [
         'description' => 'Kommunikationsspecialist fra Hamborg for digital brandledelse og målgruppeanalyse, formet af musikmedier og streaming.',
         'locale' => 'da_DK',
         'url' => 'https://eichhof.me/dk/',
+        'baseUrl' => '/dk/',
+        'legalUrl' => '/dk/kolofon',
+        'contactUrl' => '/dk/kontakt',
         'schema_description' => 'Kommunikationsspecialist fra Hamborg for digital brandledelse og målgruppeanalyse, formet af musikmedier og streaming.',
         'jobTitle' => 'Marketingchef'
     ]
@@ -262,8 +271,8 @@ if ($overlay === 'impressum' || $overlay === 'legal' || $overlay === 'kolofon') 
                 </a>
             </div>
 
-            <!-- Email link - address is obfuscated and constructed by JavaScript -->
-            <a href="#" id="email-link" class="link-card email" aria-label="E-Mail senden">
+            <!-- Email link - opens contact form, href serves as fallback -->
+            <a href="<?= $m['contactUrl'] ?>" id="email-link" class="link-card email" aria-label="E-Mail senden">
                 <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
                     <polyline points="22,6 12,13 2,6"></polyline>
@@ -274,7 +283,7 @@ if ($overlay === 'impressum' || $overlay === 'legal' || $overlay === 'kolofon') 
 
         <!-- Mobile-only footer -->
         <div class="mobile-footer">
-            <a id="footer-link-mobile">Impressum & Datenverarbeitung</a>
+            <a href="<?= $m['legalUrl'] ?>" id="footer-link-mobile">Impressum & Datenverarbeitung</a>
             <span class="sr-only" id="footer-entity-mobile">Oliver Eichhof, Kommunikationsspezialist aus Hamburg</span>
             <span id="footer-text-mobile">Mit <span aria-hidden="true">♥</span><span class="sr-only">Liebe</span> und KI realisiert</span>
         </div>
@@ -283,7 +292,7 @@ if ($overlay === 'impressum' || $overlay === 'legal' || $overlay === 'kolofon') 
 
     <!-- Footer Elements -->
     <div class="footer-left">
-        <a id="footer-link">Impressum & Datenverarbeitung</a>
+        <a href="<?= $m['legalUrl'] ?>" id="footer-link">Impressum & Datenverarbeitung</a>
     </div>
 
     <!-- Hidden entity info for crawlers -->

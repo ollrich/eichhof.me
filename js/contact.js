@@ -450,21 +450,13 @@
         contactForm.addEventListener('submit', handleSubmit);
 
         // Connect email button to open contact form
+        // href is set server-side for proper URL preview and no-JS fallback
         const emailLink = document.getElementById('email-link');
         if (emailLink) {
             emailLink.addEventListener('click', function(e) {
                 e.preventDefault();
-
-                // Check if JavaScript is working, open form
-                // NoScript users will fall through to mailto (we keep href as fallback)
                 openContactForm();
             });
-
-            // Update href to mailto for NoScript fallback (obfuscated)
-            const lang = window.LanguageManager ? window.LanguageManager.getCurrentLang() : 'de';
-            const prefix = lang === 'en' ? 'hello' : (lang === 'da' ? 'hej' : 'hallo');
-            const domain = ['eichhof', 'me'];
-            emailLink.href = 'mailto:' + prefix + '@' + domain[0] + '.' + domain[1];
         }
 
         // Listen for browser back/forward
