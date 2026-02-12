@@ -8,7 +8,7 @@
  * URL Structure:
  * - /           → German (default)
  * - /en/        → English
- * - /da/        → Danish
+ * - /dk/        → Danish
  * - /impressum  → German legal notice (opens overlay)
  * - /legal-notice → English legal notice (opens overlay)
  * - /kolofon    → Danish legal notice (opens overlay)
@@ -65,7 +65,7 @@ $meta = [
         'title' => 'Oliver Eichhof – Kommunikationsspecialist fra Hamborg',
         'description' => 'Kommunikationsspecialist fra Hamborg for digital brandledelse og målgruppeanalyse, formet af musikmedier og streaming.',
         'locale' => 'da_DK',
-        'url' => 'https://eichhof.me/da/',
+        'url' => 'https://eichhof.me/dk/',
         'schema_description' => 'Kommunikationsspecialist fra Hamborg for digital brandledelse og målgruppeanalyse, formet af musikmedier og streaming.'
     ]
 ];
@@ -118,7 +118,7 @@ if ($overlay === 'impressum' || $overlay === 'legal' || $overlay === 'kolofon') 
     <link rel="canonical" href="<?= $m['url'] ?>">
     <link rel="alternate" hreflang="de" href="https://eichhof.me/">
     <link rel="alternate" hreflang="en" href="https://eichhof.me/en/">
-    <link rel="alternate" hreflang="da" href="https://eichhof.me/da/">
+    <link rel="alternate" hreflang="da" href="https://eichhof.me/dk/">
     <link rel="alternate" hreflang="x-default" href="https://eichhof.me/">
 
     <title><?= htmlspecialchars($m['title']) ?></title>

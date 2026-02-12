@@ -7,7 +7,7 @@
     <loc>https://eichhof.me/</loc>
     <xhtml:link rel="alternate" hreflang="de" href="https://eichhof.me/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://eichhof.me/en/"/>
-    <xhtml:link rel="alternate" hreflang="da" href="https://eichhof.me/da/"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://eichhof.me/dk/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://eichhof.me/"/>
     <lastmod>2026-02-12</lastmod>
     <changefreq>monthly</changefreq>
@@ -19,7 +19,7 @@
     <loc>https://eichhof.me/en/</loc>
     <xhtml:link rel="alternate" hreflang="de" href="https://eichhof.me/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://eichhof.me/en/"/>
-    <xhtml:link rel="alternate" hreflang="da" href="https://eichhof.me/da/"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://eichhof.me/dk/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://eichhof.me/"/>
     <lastmod>2026-02-12</lastmod>
     <changefreq>monthly</changefreq>
@@ -28,10 +28,10 @@
 
   <!-- Danish -->
   <url>
-    <loc>https://eichhof.me/da/</loc>
+    <loc>https://eichhof.me/dk/</loc>
     <xhtml:link rel="alternate" hreflang="de" href="https://eichhof.me/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://eichhof.me/en/"/>
-    <xhtml:link rel="alternate" hreflang="da" href="https://eichhof.me/da/"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://eichhof.me/dk/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://eichhof.me/"/>
     <lastmod>2026-02-12</lastmod>
     <changefreq>monthly</changefreq>
@@ -76,7 +76,7 @@
     <loc>https://eichhof.me/kontakt</loc>
     <xhtml:link rel="alternate" hreflang="de" href="https://eichhof.me/kontakt"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://eichhof.me/contact"/>
-    <xhtml:link rel="alternate" hreflang="da" href="https://eichhof.me/kontakt-da"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://eichhof.me/kontakt-dk"/>
     <lastmod>2026-02-12</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
@@ -87,7 +87,7 @@
     <loc>https://eichhof.me/contact</loc>
     <xhtml:link rel="alternate" hreflang="de" href="https://eichhof.me/kontakt"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://eichhof.me/contact"/>
-    <xhtml:link rel="alternate" hreflang="da" href="https://eichhof.me/kontakt-da"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://eichhof.me/kontakt-dk"/>
     <lastmod>2026-02-12</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.4</priority>
@@ -95,10 +95,10 @@
 
   <!-- Danish Contact -->
   <url>
-    <loc>https://eichhof.me/kontakt-da</loc>
+    <loc>https://eichhof.me/kontakt-dk</loc>
     <xhtml:link rel="alternate" hreflang="de" href="https://eichhof.me/kontakt"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://eichhof.me/contact"/>
-    <xhtml:link rel="alternate" hreflang="da" href="https://eichhof.me/kontakt-da"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://eichhof.me/kontakt-dk"/>
     <lastmod>2026-02-12</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
