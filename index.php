@@ -199,13 +199,8 @@ if ($overlay === 'impressum' || $overlay === 'legal' || $overlay === 'kolofon') 
     <!-- Stylesheet -->
     <link rel="stylesheet" href="/css/styles.css">
 
-    <!-- Pass server-detected language and overlay to JavaScript -->
-    <script>
-        window.serverLang = '<?= $lang ?>';
-        window.openOverlay = <?= $openOverlay ? "'" . $openOverlay . "'" : 'null' ?>;
-    </script>
 </head>
-<body>
+<body data-lang="<?= $lang ?>"<?= $openOverlay ? ' data-overlay="' . $openOverlay . '"' : '' ?>>
     <main>
     <!-- Theme Toggle Button -->
     <div class="theme-toggle">
@@ -306,7 +301,7 @@ if ($overlay === 'impressum' || $overlay === 'legal' || $overlay === 'kolofon') 
         <span class="github-link-wrapper">•
             <span class="github-tooltip" id="github-tooltip">Quellcode auf GitHub</span>
             <a href="https://github.com/ollrich/eichhof.me" target="_blank" rel="noopener noreferrer" class="footer-link">
-                <svg style="width: 1em; height: 1em; vertical-align: -0.125em;" viewBox="0 0 16 16" fill="currentColor" aria-label="Quellcode auf GitHub">
+                <svg class="icon-github" viewBox="0 0 16 16" fill="currentColor" aria-label="Quellcode auf GitHub">
                     <path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"/>
                 </svg>
             </a>
@@ -327,7 +322,7 @@ if ($overlay === 'impressum' || $overlay === 'legal' || $overlay === 'kolofon') 
             <h2 id="overlay-title">Impressum</h2>
             <p id="overlay-text-1">Diese Website wird betrieben von:</p>
             <p id="overlay-text-2">Oliver Eichhof<br>Eismeerweg 9E<br>22145 Hamburg</p>
-            <p><span id="overlay-text-3">Kontakt:</span> <a href="#" id="overlay-email-link" style="color: inherit; text-decoration: underline;"></a></p>
+            <p><span id="overlay-text-3">Kontakt:</span> <a href="#" id="overlay-email-link" class="overlay-email-link"></a></p>
             <p id="overlay-text-3b">Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV.</p>
             <h3 id="overlay-subtitle">Datenverarbeitung</h3>
             <p id="overlay-text-4">Diese Website verwendet keine Cookies, keine Logfiles und keine Tracking-Tools. Lediglich deine Farbschema-Präferenz wird lokal in deinem Browser gespeichert.</p>

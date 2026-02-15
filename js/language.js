@@ -165,8 +165,9 @@
      */
     function detectLanguage() {
         // Check if server already detected language (from /en/ or /da/ path)
-        if (window.serverLang && ['de', 'en', 'da'].includes(window.serverLang)) {
-            return window.serverLang;
+        const serverLang = document.body.dataset.lang;
+        if (serverLang && ['de', 'en', 'da'].includes(serverLang)) {
+            return serverLang;
         }
 
         // Check URL parameter (legacy support for ?lang=xx)
@@ -308,14 +309,15 @@
      * Open overlay if server requested it (from /impressum, /kontakt etc.)
      */
     function handleServerOverlay() {
-        if (!window.openOverlay) return;
+        const openOverlay = document.body.dataset.overlay;
+        if (!openOverlay) return;
 
         // Small delay to ensure overlay.js has initialized
         setTimeout(function() {
-            if (window.openOverlay === 'impressum') {
+            if (openOverlay === 'impressum') {
                 const overlay = document.getElementById('overlay');
                 if (overlay) overlay.classList.add('active');
-            } else if (window.openOverlay === 'contact') {
+            } else if (openOverlay === 'contact') {
                 const contactOverlay = document.getElementById('contact-overlay');
                 if (contactOverlay) contactOverlay.classList.add('active');
             }

@@ -142,7 +142,7 @@
         fetchCsrfToken();
 
         // Update URL (unless opening from popstate or server-side)
-        if (!skipHistory && window.openOverlay !== 'contact') {
+        if (!skipHistory && document.body.dataset.overlay !== 'contact') {
             history.pushState({ overlay: 'contact' }, '', getContactUrl());
         }
 

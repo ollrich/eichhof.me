@@ -110,7 +110,7 @@
         previousActiveElement = document.activeElement;
 
         // Update URL (unless opening from popstate or server-side)
-        if (!skipHistory && !window.openOverlay) {
+        if (!skipHistory && !document.body.dataset.overlay) {
             originalUrl = window.location.pathname;
             history.pushState({ overlay: 'legal' }, '', getLegalUrl());
         }
@@ -233,7 +233,7 @@
         window.addEventListener('popstate', handlePopState);
 
         // Set initial history state (for proper back navigation)
-        if (!window.openOverlay) {
+        if (!document.body.dataset.overlay) {
             history.replaceState({ overlay: null }, '', window.location.pathname);
         }
 

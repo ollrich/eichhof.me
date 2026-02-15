@@ -513,6 +513,17 @@ html.dark-mode .link-preview:hover {
     opacity: 0.9;
 }
 
+.icon-github {
+    width: 1em;
+    height: 1em;
+    vertical-align: -0.125em;
+}
+
+.overlay-email-link {
+    color: inherit;
+    text-decoration: underline;
+}
+
 .footer-link {
     color: inherit;
     text-decoration: none;
