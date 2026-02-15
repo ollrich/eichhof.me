@@ -1,6 +1,6 @@
 # eichhof.me
 
-**[English](#english)** | **[Deutsch](#deutsch)** | **[Dansk](#dansk)**
+**[Deutsch](#deutsch)** | **[Dansk](#dansk)**
 
 ---
 
@@ -67,6 +67,8 @@ eichhof.me/
 
 ---
 
+**[English](#english)** | **[Dansk](#dansk)**
+
 <a name="deutsch"></a>
 ## Deutsch
 
@@ -93,6 +95,8 @@ Pures HTML/CSS/JavaScript – keine Frameworks. Nutzt [Canvas-Confetti](https://
 Bei jedem Push auf `main` wird das `<lastmod>`-Datum der Sitemap automatisch via GitHub Actions aktualisiert.
 
 ---
+
+**[English](#english)** | **[Deutsch](#deutsch)**
 
 <a name="dansk"></a>
 ## Dansk
