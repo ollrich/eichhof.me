@@ -1,11 +1,11 @@
 # eichhof.me
 
-**[Deutsch](#deutsch)** | **[Dansk](#dansk)**
-
 ---
 
 <a name="english"></a>
 ## English
+
+**[Deutsch](#deutsch)** | **[Dansk](#dansk)**
 
 Personal website of Oliver Eichhof – Communication Specialist from Hamburg.
 
@@ -67,10 +67,10 @@ eichhof.me/
 
 ---
 
-**[English](#english)** | **[Dansk](#dansk)**
-
 <a name="deutsch"></a>
 ## Deutsch
+
+**[English](#english)** | **[Dansk](#dansk)**
 
 Persönliche Website von Oliver Eichhof – Kommunikationsspezialist aus Hamburg.
 
@@ -96,10 +96,10 @@ Bei jedem Push auf `main` wird das `<lastmod>`-Datum der Sitemap automatisch via
 
 ---
 
-**[English](#english)** | **[Deutsch](#deutsch)**
-
 <a name="dansk"></a>
 ## Dansk
+
+**[English](#english)** | **[Deutsch](#deutsch)**
 
 Personlig hjemmeside for Oliver Eichhof – Kommunikationsspecialist fra Hamborg.
 
