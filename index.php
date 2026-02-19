@@ -186,7 +186,9 @@ if ($overlay === 'impressum' || $overlay === 'legal' || $overlay === 'kolofon') 
             "https://norden.social/@olli",
             "https://www.instagram.com/ollri.ch/",
             "https://soundcloud.com/livicxyz",
+            "https://livic.xyz",
             "https://www.youtube.com/@schongeilDE",
+            "https://ollrich.bandcamp.com/",
             "https://unsplash.com/@ollrich"
         ],
         "subjectOf": [
@@ -241,11 +243,6 @@ if ($overlay === 'impressum' || $overlay === 'legal' || $overlay === 'kolofon') 
 
         <h1 class="name">Oliver Eichhof
             <span class="about-triggers">
-                <a href="<?= $m['aboutUrl'] ?>" class="about-trigger about-trigger-info" id="about-trigger-info" aria-label="Über mich">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/>
-                    </svg>
-                </a>
                 <a href="<?= $m['aboutUrl'] ?>" class="about-trigger about-trigger-card" id="about-trigger-card" aria-label="Über mich">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                         <rect x="2" y="4" width="20" height="16" rx="2"/><circle cx="8" cy="11" r="2.5"/><path d="M4 18c0-2 1.5-3 4-3s4 1 4 3"/><line x1="15" y1="9" x2="20" y2="9"/><line x1="15" y1="13" x2="20" y2="13"/>
@@ -431,7 +428,7 @@ if ($overlay === 'impressum' || $overlay === 'legal' || $overlay === 'kolofon') 
                 <h3 id="about-facts-title">Steckbrief</h3>
                 <dl class="about-facts" id="about-facts">
                     <dt id="about-dt-role">Rolle</dt>
-                    <dd id="about-dd-role">Leiter Marketing, REGIOCAST GmbH & Co. KG</dd>
+                    <dd id="about-dd-role">Leiter Marketing, <a href="https://www.regiocast.de/" target="_blank" rel="noopener noreferrer">REGIOCAST GmbH & Co. KG</a></dd>
                     <dt id="about-dt-location">Standort</dt>
                     <dd id="about-dd-location">Hamburg</dd>
                     <dt id="about-dt-born">Geboren</dt>
@@ -444,13 +441,25 @@ if ($overlay === 'impressum' || $overlay === 'legal' || $overlay === 'kolofon') 
             <section class="about-section">
                 <h3 id="about-career-title">Beruflicher Werdegang</h3>
                 <ul class="about-career" id="about-career">
-                    <li><strong>Leiter Marketing</strong> — REGIOCAST GmbH & Co. KG <span class="about-year">seit 2025</span></li>
+                    <li><strong>Leiter Marketing</strong> — <a href="https://www.regiocast.de/" target="_blank" rel="noopener noreferrer">REGIOCAST GmbH & Co. KG</a> <span class="about-year">seit 2025</span></li>
                     <li><strong>Strategy Director Marketing & Digital</strong> — wirDesign communication AG <span class="about-year">2023–2025</span></li>
                     <li><strong>Digital Strategist</strong> — Freiberuflich <span class="about-year">2020–2022</span></li>
                     <li><strong>Unit Lead Marketing & Concepts</strong> — rock&stars digital GmbH <span class="about-year">2019–2020</span></li>
                     <li><strong>Senior Consultant Digital</strong> — DOKYO GmbH <span class="about-year">2014–2018</span></li>
                     <li><strong>Etatdirektor</strong> — beebop media ag <span class="about-year">2010–2014</span></li>
                     <li><strong>Social Media Manager</strong> — Scholz & Friends <span class="about-year">2009–2010</span></li>
+                    <li><strong>Community Manager</strong> — 1000MIKES <span class="about-year">2008–2009</span></li>
+                </ul>
+            </section>
+
+            <section class="about-section">
+                <h3 id="about-education-title">Ausbildung</h3>
+                <ul class="about-career" id="about-education">
+                    <li><strong id="about-edu-1-title">Führungskräftetraining</strong> — Unternehmensnavigation Dirk Abels <span class="about-year">2012</span></li>
+                    <li><strong id="about-edu-2-title">Studium Digitale Medien</strong> — Hochschule Bremerhaven <span class="about-year">2007–2008</span></li>
+                    <li><strong id="about-edu-3-title">Fachhochschulreife</strong> — Kaufmännische Lehranstalten Bremerhaven <span class="about-year">2006–2007</span></li>
+                    <li><strong id="about-edu-4-title">Informatikkaufmann</strong> — Kreishandwerkerschaft Bremerhaven <span class="about-year">2001–2004</span></li>
+                    <li><strong id="about-edu-5-title">Einzelhandelskaufmann</strong> — Eurospar Warenhandels GmbH <span class="about-year">1995–1998</span></li>
                 </ul>
             </section>
 
@@ -460,12 +469,26 @@ if ($overlay === 'impressum' || $overlay === 'legal' || $overlay === 'kolofon') 
             </section>
 
             <section class="about-section">
-                <h3 id="about-projects-title">Projekte & Präsenzen</h3>
+                <h3 id="about-projects-title">Projekte</h3>
                 <ul class="about-links" id="about-projects">
-                    <li><a href="https://www.schongeil.de/" target="_blank" rel="noopener noreferrer">schongeil.de</a> <span id="about-project-blog">— Musikblog</span></li>
-                    <li><a href="https://soundcloud.com/livicxyz" target="_blank" rel="noopener noreferrer">SoundCloud</a> <span id="about-project-dj">— DJ-Mixes als livicxyz</span></li>
+                    <li><a href="https://www.schongeil.de/" target="_blank" rel="noopener noreferrer">schongeil.de</a> <span id="about-project-blog">— Persönlicher Blog</span></li>
                     <li><a href="https://github.com/ollrich" target="_blank" rel="noopener noreferrer">GitHub</a> <span id="about-project-code">— Open-Source-Projekte</span></li>
-                    <li><a href="https://unsplash.com/@ollrich" target="_blank" rel="noopener noreferrer">Unsplash</a> <span id="about-project-photo">— Fotografie</span></li>
+                </ul>
+            </section>
+
+            <section class="about-section">
+                <h3 id="about-profiles-title">Präsenzen</h3>
+                <ul class="about-links" id="about-profiles">
+                    <li><a href="https://www.linkedin.com/in/olivereichhof" target="_blank" rel="noopener noreferrer me">LinkedIn</a></li>
+                    <li><a href="https://www.xing.com/profile/Oliver_Eichhof2/" target="_blank" rel="noopener noreferrer me">XING</a></li>
+                    <li><a href="https://bsky.app/profile/ollri.ch" target="_blank" rel="noopener noreferrer me">Bluesky</a></li>
+                    <li><a href="https://norden.social/@olli" target="_blank" rel="noopener noreferrer me">Mastodon</a></li>
+                    <li><a href="https://www.instagram.com/ollri.ch/" target="_blank" rel="noopener noreferrer me">Instagram</a></li>
+                    <li><a href="https://soundcloud.com/livicxyz" target="_blank" rel="noopener noreferrer me">SoundCloud</a> <span id="about-profile-dj">— DJ-Mixes als livic</span></li>
+                    <li><a href="https://livic.xyz" target="_blank" rel="noopener noreferrer me">livic.xyz</a> <span id="about-profile-djsite">— DJ-Profil</span></li>
+                    <li><a href="https://www.youtube.com/@schongeilDE" target="_blank" rel="noopener noreferrer me">YouTube</a></li>
+                    <li><a href="https://ollrich.bandcamp.com/" target="_blank" rel="noopener noreferrer me">Bandcamp</a></li>
+                    <li><a href="https://unsplash.com/@ollrich" target="_blank" rel="noopener noreferrer me">Unsplash</a> <span id="about-profile-photo">— Fotografie</span></li>
                 </ul>
             </section>
 
@@ -500,7 +523,7 @@ if ($overlay === 'impressum' || $overlay === 'legal' || $overlay === 'kolofon') 
                     </details>
                     <details>
                         <summary id="about-q5">Was ist schongeil.de?</summary>
-                        <p id="about-a5">schongeil.de ist Oliver Eichhofs persönlicher Blog über Musik und Medien, den er seit über einem Jahrzehnt betreibt. Außerdem veröffentlicht er dort DJ-Mixes unter dem Alias livicxyz.</p>
+                        <p id="about-a5">schongeil.de ist Oliver Eichhofs persönlicher Blog, den er seit über einem Jahrzehnt betreibt. Außerdem veröffentlicht er DJ-Mixes unter dem Alias livic.</p>
                     </details>
                 </div>
             </section>

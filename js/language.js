@@ -74,7 +74,7 @@
             aboutSummary: "Digitaler Marken- und Kommunikationsstratege aus Hamburg mit mehr als 15 Jahren Erfahrung in integrierter Kampagnenführung, Employer Branding und B2B-Kommunikation.",
             aboutFactsTitle: "Steckbrief",
             aboutDtRole: "Rolle",
-            aboutDdRole: "Leiter Marketing, REGIOCAST GmbH & Co. KG",
+            aboutDdRole: 'Leiter Marketing, <a href="https://www.regiocast.de/" target="_blank" rel="noopener noreferrer">REGIOCAST GmbH & Co. KG</a>',
             aboutDtLocation: "Standort",
             aboutDdLocation: "Hamburg",
             aboutDtBorn: "Geboren",
@@ -82,13 +82,21 @@
             aboutDtLanguages: "Sprachen",
             aboutDdLanguages: "Deutsch (Muttersprache), Englisch (fließend), Dänisch (Grundkenntnisse)",
             aboutCareerTitle: "Beruflicher Werdegang",
+            aboutEducationTitle: "Ausbildung",
+            aboutEdu1: "Führungskräftetraining",
+            aboutEdu2: "Studium Digitale Medien",
+            aboutEdu3: "Fachhochschulreife",
+            aboutEdu4: "Informatikkaufmann",
+            aboutEdu5: "Einzelhandelskaufmann",
             aboutSkillsTitle: "Kernkompetenzen",
             aboutSkills: "Markenführung, Employer Branding, Kommunikationsstrategie, digitale Kampagnenentwicklung, Journey Design, KPI-Frameworks, GEO/SEO/SEA, Marketing Automation, KI-gestützte Workflows, Stakeholder Management, Content-Strategie, B2B/B2C-Kommunikation.",
-            aboutProjectsTitle: "Projekte & Präsenzen",
-            aboutProjectBlog: "— Musikblog",
-            aboutProjectDj: "— DJ-Mixes als livicxyz",
+            aboutProjectsTitle: "Projekte",
+            aboutProjectBlog: "— Persönlicher Blog",
             aboutProjectCode: "— Open-Source-Projekte",
-            aboutProjectPhoto: "— Fotografie",
+            aboutProfilesTitle: "Präsenzen",
+            aboutProfileDj: "— DJ-Mixes als livic",
+            aboutProfileDjSite: "— DJ-Profil",
+            aboutProfilePhoto: "— Fotografie",
             aboutMentionsTitle: "Erwähnungen",
             aboutFaqTitle: "Häufig gefragt",
             aboutQ1: "Wer ist Oliver Eichhof?",
@@ -100,7 +108,7 @@
             aboutQ4: "Wo findet man Oliver Eichhof online?",
             aboutA4: "Auf LinkedIn, seinem Blog schongeil.de, Instagram, Bluesky, Mastodon und GitHub. Alle Links sind auf eichhof.me versammelt.",
             aboutQ5: "Was ist schongeil.de?",
-            aboutA5: "schongeil.de ist Oliver Eichhofs persönlicher Blog über Musik und Medien, den er seit über einem Jahrzehnt betreibt. Außerdem veröffentlicht er dort DJ-Mixes unter dem Alias livicxyz.",
+            aboutA5: "schongeil.de ist Oliver Eichhofs persönlicher Blog, den er seit über einem Jahrzehnt betreibt. Außerdem veröffentlicht er DJ-Mixes unter dem Alias livic.",
             aboutTriggerLabel: "Über mich"
         },
         en: {
@@ -148,7 +156,7 @@
             aboutSummary: "Digital brand and communication strategist from Hamburg with over 15 years of experience in integrated campaign management, employer branding and B2B communication.",
             aboutFactsTitle: "Key Facts",
             aboutDtRole: "Role",
-            aboutDdRole: "Head of Marketing, REGIOCAST GmbH & Co. KG",
+            aboutDdRole: 'Head of Marketing, <a href="https://www.regiocast.de/" target="_blank" rel="noopener noreferrer">REGIOCAST GmbH & Co. KG</a>',
             aboutDtLocation: "Location",
             aboutDdLocation: "Hamburg, Germany",
             aboutDtBorn: "Born",
@@ -156,13 +164,21 @@
             aboutDtLanguages: "Languages",
             aboutDdLanguages: "German (native), English (fluent), Danish (beginner)",
             aboutCareerTitle: "Career",
+            aboutEducationTitle: "Education",
+            aboutEdu1: "Leadership Training",
+            aboutEdu2: "Digital Media Studies",
+            aboutEdu3: "University Entrance Qualification",
+            aboutEdu4: "IT Specialist",
+            aboutEdu5: "Retail Sales Specialist",
             aboutSkillsTitle: "Core Competencies",
             aboutSkills: "Brand management, employer branding, communication strategy, digital campaign development, journey design, KPI frameworks, GEO/SEO/SEA, marketing automation, AI-powered workflows, stakeholder management, content strategy, B2B/B2C communication.",
-            aboutProjectsTitle: "Projects & Profiles",
-            aboutProjectBlog: "— music blog",
-            aboutProjectDj: "— DJ mixes as livicxyz",
+            aboutProjectsTitle: "Projects",
+            aboutProjectBlog: "— personal blog",
             aboutProjectCode: "— open source projects",
-            aboutProjectPhoto: "— photography",
+            aboutProfilesTitle: "Profiles",
+            aboutProfileDj: "— DJ mixes as livic",
+            aboutProfileDjSite: "— DJ profile",
+            aboutProfilePhoto: "— photography",
             aboutMentionsTitle: "Mentions",
             aboutFaqTitle: "Frequently Asked",
             aboutQ1: "Who is Oliver Eichhof?",
@@ -174,7 +190,7 @@
             aboutQ4: "Where can you find Oliver Eichhof online?",
             aboutA4: "On LinkedIn, his blog schongeil.de, Instagram, Bluesky, Mastodon and GitHub. All links are collected at eichhof.me.",
             aboutQ5: "What is schongeil.de?",
-            aboutA5: "schongeil.de is Oliver Eichhof's personal blog about music and media, which he has been running for over a decade. He also publishes DJ mixes there under the alias livicxyz.",
+            aboutA5: "schongeil.de is Oliver Eichhof's personal blog, which he has been running for over a decade. He also publishes DJ mixes under the alias livic.",
             aboutTriggerLabel: "About me"
         },
         da: {
@@ -222,7 +238,7 @@
             aboutSummary: "Digital brand- og kommunikationsstrateg fra Hamborg med over 15 års erfaring inden for integreret kampagneledelse, employer branding og B2B-kommunikation.",
             aboutFactsTitle: "Nøglefakta",
             aboutDtRole: "Rolle",
-            aboutDdRole: "Marketingchef, REGIOCAST GmbH & Co. KG",
+            aboutDdRole: 'Marketingchef, <a href="https://www.regiocast.de/" target="_blank" rel="noopener noreferrer">REGIOCAST GmbH & Co. KG</a>',
             aboutDtLocation: "Placering",
             aboutDdLocation: "Hamborg, Tyskland",
             aboutDtBorn: "Født",
@@ -230,13 +246,21 @@
             aboutDtLanguages: "Sprog",
             aboutDdLanguages: "Tysk (modersmål), Engelsk (flydende), Dansk (begynder)",
             aboutCareerTitle: "Karriere",
+            aboutEducationTitle: "Uddannelse",
+            aboutEdu1: "Lederuddannelse",
+            aboutEdu2: "Studium i digitale medier",
+            aboutEdu3: "Højere forberedelseseksamen",
+            aboutEdu4: "IT-specialist",
+            aboutEdu5: "Detailhandelsspecialist",
             aboutSkillsTitle: "Kernekompetencer",
             aboutSkills: "Brandledelse, employer branding, kommunikationsstrategi, digital kampagneudvikling, journey design, KPI-frameworks, GEO/SEO/SEA, marketing automation, AI-drevne workflows, stakeholder management, content-strategi, B2B/B2C-kommunikation.",
-            aboutProjectsTitle: "Projekter & Profiler",
-            aboutProjectBlog: "— musikblog",
-            aboutProjectDj: "— DJ-mixes som livicxyz",
+            aboutProjectsTitle: "Projekter",
+            aboutProjectBlog: "— personlig blog",
             aboutProjectCode: "— open source-projekter",
-            aboutProjectPhoto: "— fotografi",
+            aboutProfilesTitle: "Profiler",
+            aboutProfileDj: "— DJ-mixes som livic",
+            aboutProfileDjSite: "— DJ-profil",
+            aboutProfilePhoto: "— fotografi",
             aboutMentionsTitle: "Omtaler",
             aboutFaqTitle: "Ofte spurgt",
             aboutQ1: "Hvem er Oliver Eichhof?",
@@ -248,7 +272,7 @@
             aboutQ4: "Hvor kan man finde Oliver Eichhof online?",
             aboutA4: "På LinkedIn, hans blog schongeil.de, Instagram, Bluesky, Mastodon og GitHub. Alle links er samlet på eichhof.me.",
             aboutQ5: "Hvad er schongeil.de?",
-            aboutA5: "schongeil.de er Oliver Eichhofs personlige blog om musik og medier, som han har drevet i over et årti. Han udgiver også DJ-mixes der under aliaset livicxyz.",
+            aboutA5: "schongeil.de er Oliver Eichhofs personlige blog, som han har drevet i over et årti. Han udgiver også DJ-mixes under aliaset livic.",
             aboutTriggerLabel: "Om mig"
         }
     };
@@ -408,7 +432,7 @@
         updateElement('about-summary', content.aboutSummary);
         updateElement('about-facts-title', content.aboutFactsTitle);
         updateElement('about-dt-role', content.aboutDtRole);
-        updateElement('about-dd-role', content.aboutDdRole);
+        updateElement('about-dd-role', content.aboutDdRole, true);
         updateElement('about-dt-location', content.aboutDtLocation);
         updateElement('about-dd-location', content.aboutDdLocation);
         updateElement('about-dt-born', content.aboutDtBorn);
@@ -416,13 +440,21 @@
         updateElement('about-dt-languages', content.aboutDtLanguages);
         updateElement('about-dd-languages', content.aboutDdLanguages);
         updateElement('about-career-title', content.aboutCareerTitle);
+        updateElement('about-education-title', content.aboutEducationTitle);
+        updateElement('about-edu-1-title', content.aboutEdu1);
+        updateElement('about-edu-2-title', content.aboutEdu2);
+        updateElement('about-edu-3-title', content.aboutEdu3);
+        updateElement('about-edu-4-title', content.aboutEdu4);
+        updateElement('about-edu-5-title', content.aboutEdu5);
         updateElement('about-skills-title', content.aboutSkillsTitle);
         updateElement('about-skills', content.aboutSkills);
         updateElement('about-projects-title', content.aboutProjectsTitle);
         updateElement('about-project-blog', content.aboutProjectBlog);
-        updateElement('about-project-dj', content.aboutProjectDj);
         updateElement('about-project-code', content.aboutProjectCode);
-        updateElement('about-project-photo', content.aboutProjectPhoto);
+        updateElement('about-profiles-title', content.aboutProfilesTitle);
+        updateElement('about-profile-dj', content.aboutProfileDj);
+        updateElement('about-profile-djsite', content.aboutProfileDjSite);
+        updateElement('about-profile-photo', content.aboutProfilePhoto);
         updateElement('about-mentions-title', content.aboutMentionsTitle);
         updateElement('about-faq-title', content.aboutFaqTitle);
         updateElement('about-q1', content.aboutQ1);
@@ -435,7 +467,6 @@
         updateElement('about-a4', content.aboutA4);
         updateElement('about-q5', content.aboutQ5);
         updateElement('about-a5', content.aboutA5);
-        updateAttr('about-trigger-info', 'aria-label', content.aboutTriggerLabel);
         updateAttr('about-trigger-card', 'aria-label', content.aboutTriggerLabel);
         updateAttr('close-about-btn', 'aria-label', content.closeOverlay);
     }

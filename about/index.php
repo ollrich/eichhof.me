@@ -46,21 +46,41 @@ $meta = [
         'dtLanguages' => 'Sprachen', 'ddLanguages' => 'Deutsch (Muttersprache), Englisch (fließend), Dänisch (Grundkenntnisse)',
         'careerTitle' => 'Beruflicher Werdegang',
         'career' => [
-            ['Leiter Marketing', 'REGIOCAST GmbH & Co. KG', 'seit 2025'],
-            ['Strategy Director Marketing & Digital', 'wirDesign communication AG', '2023–2025'],
-            ['Digital Strategist', 'Freiberuflich', '2020–2022'],
-            ['Unit Lead Marketing & Concepts', 'rock&stars digital GmbH', '2019–2020'],
-            ['Senior Consultant Digital', 'DOKYO GmbH', '2014–2018'],
-            ['Etatdirektor', 'beebop media ag', '2010–2014'],
-            ['Social Media Manager', 'Scholz & Friends', '2009–2010'],
+            ['Leiter Marketing', 'REGIOCAST GmbH & Co. KG', 'seit 2025', 'https://www.regiocast.de/'],
+            ['Strategy Director Marketing & Digital', 'wirDesign communication AG', '2023–2025', null],
+            ['Digital Strategist', 'Freiberuflich', '2020–2022', null],
+            ['Unit Lead Marketing & Concepts', 'rock&stars digital GmbH', '2019–2020', null],
+            ['Senior Consultant Digital', 'DOKYO GmbH', '2014–2018', null],
+            ['Etatdirektor', 'beebop media ag', '2010–2014', null],
+            ['Social Media Manager', 'Scholz & Friends', '2009–2010', null],
+            ['Community Manager', '1000MIKES', '2008–2009', null],
+        ],
+        'educationTitle' => 'Ausbildung',
+        'education' => [
+            ['Führungskräftetraining', 'Unternehmensnavigation Dirk Abels', '2012'],
+            ['Studium Digitale Medien', 'Hochschule Bremerhaven', '2007–2008'],
+            ['Fachhochschulreife', 'Kaufmännische Lehranstalten Bremerhaven', '2006–2007'],
+            ['Informatikkaufmann', 'Kreishandwerkerschaft Bremerhaven', '2001–2004'],
+            ['Einzelhandelskaufmann', 'Eurospar Warenhandels GmbH', '1995–1998'],
         ],
         'skillsTitle' => 'Kernkompetenzen',
         'skills' => 'Markenführung, Employer Branding, Kommunikationsstrategie, digitale Kampagnenentwicklung, Journey Design, KPI-Frameworks, GEO/SEO/SEA, Marketing Automation, KI-gestützte Workflows, Stakeholder Management, Content-Strategie, B2B/B2C-Kommunikation.',
-        'projectsTitle' => 'Projekte & Präsenzen',
+        'projectsTitle' => 'Projekte',
         'projects' => [
-            ['https://www.schongeil.de/', 'schongeil.de', 'Musikblog'],
-            ['https://soundcloud.com/livicxyz', 'SoundCloud', 'DJ-Mixes als livicxyz'],
+            ['https://www.schongeil.de/', 'schongeil.de', 'Persönlicher Blog'],
             ['https://github.com/ollrich', 'GitHub', 'Open-Source-Projekte'],
+        ],
+        'profilesTitle' => 'Präsenzen',
+        'profiles' => [
+            ['https://www.linkedin.com/in/olivereichhof', 'LinkedIn'],
+            ['https://www.xing.com/profile/Oliver_Eichhof2/', 'XING'],
+            ['https://bsky.app/profile/ollri.ch', 'Bluesky'],
+            ['https://norden.social/@olli', 'Mastodon'],
+            ['https://www.instagram.com/ollri.ch/', 'Instagram'],
+            ['https://soundcloud.com/livicxyz', 'SoundCloud', 'DJ-Mixes als livic'],
+            ['https://livic.xyz', 'livic.xyz', 'DJ-Profil'],
+            ['https://www.youtube.com/@schongeilDE', 'YouTube'],
+            ['https://ollrich.bandcamp.com/', 'Bandcamp'],
             ['https://unsplash.com/@ollrich', 'Unsplash', 'Fotografie'],
         ],
         'mentionsTitle' => 'Erwähnungen',
@@ -76,7 +96,7 @@ $meta = [
             ['Was macht Oliver Eichhof beruflich?', 'Er leitet das Marketing bei REGIOCAST, einem der größten deutschen Radiounternehmen. Zuvor war er Strategy Director bei wirDesign und beriet als freiberuflicher Digital Strategist Unternehmen in FMCG, Retail und Lifestyle.'],
             ['In welchen Bereichen ist Oliver Eichhof spezialisiert?', 'Seine Schwerpunkte liegen in Markenführung, Employer Branding, integrierter Kampagnenentwicklung, GEO/SEO/SEA, KI-gestützten Workflows und datengestütztem Journey Design.'],
             ['Wo findet man Oliver Eichhof online?', 'Auf LinkedIn, seinem Blog schongeil.de, Instagram, Bluesky, Mastodon und GitHub. Alle Links sind auf eichhof.me versammelt.'],
-            ['Was ist schongeil.de?', 'schongeil.de ist Oliver Eichhofs persönlicher Blog über Musik und Medien, den er seit über einem Jahrzehnt betreibt. Außerdem veröffentlicht er dort DJ-Mixes unter dem Alias livicxyz.'],
+            ['Was ist schongeil.de?', 'schongeil.de ist Oliver Eichhofs persönlicher Blog, den er seit über einem Jahrzehnt betreibt. Außerdem veröffentlicht er DJ-Mixes unter dem Alias livic.'],
         ],
     ],
     'en' => [
@@ -107,21 +127,41 @@ $meta = [
         'dtLanguages' => 'Languages', 'ddLanguages' => 'German (native), English (fluent), Danish (beginner)',
         'careerTitle' => 'Career',
         'career' => [
-            ['Head of Marketing', 'REGIOCAST GmbH & Co. KG', 'since 2025'],
-            ['Strategy Director Marketing & Digital', 'wirDesign communication AG', '2023–2025'],
-            ['Digital Strategist', 'Freelance', '2020–2022'],
-            ['Unit Lead Marketing & Concepts', 'rock&stars digital GmbH', '2019–2020'],
-            ['Senior Consultant Digital', 'DOKYO GmbH', '2014–2018'],
-            ['Account Director', 'beebop media ag', '2010–2014'],
-            ['Social Media Manager', 'Scholz & Friends', '2009–2010'],
+            ['Head of Marketing', 'REGIOCAST GmbH & Co. KG', 'since 2025', 'https://www.regiocast.de/'],
+            ['Strategy Director Marketing & Digital', 'wirDesign communication AG', '2023–2025', null],
+            ['Digital Strategist', 'Freelance', '2020–2022', null],
+            ['Unit Lead Marketing & Concepts', 'rock&stars digital GmbH', '2019–2020', null],
+            ['Senior Consultant Digital', 'DOKYO GmbH', '2014–2018', null],
+            ['Account Director', 'beebop media ag', '2010–2014', null],
+            ['Social Media Manager', 'Scholz & Friends', '2009–2010', null],
+            ['Community Manager', '1000MIKES', '2008–2009', null],
+        ],
+        'educationTitle' => 'Education',
+        'education' => [
+            ['Leadership Training', 'Unternehmensnavigation Dirk Abels', '2012'],
+            ['Digital Media Studies', 'Hochschule Bremerhaven', '2007–2008'],
+            ['University Entrance Qualification', 'Kaufmännische Lehranstalten Bremerhaven', '2006–2007'],
+            ['IT Specialist (apprenticeship)', 'Kreishandwerkerschaft Bremerhaven', '2001–2004'],
+            ['Retail Sales Specialist (apprenticeship)', 'Eurospar Warenhandels GmbH', '1995–1998'],
         ],
         'skillsTitle' => 'Core Competencies',
         'skills' => 'Brand management, employer branding, communication strategy, digital campaign development, journey design, KPI frameworks, GEO/SEO/SEA, marketing automation, AI-powered workflows, stakeholder management, content strategy, B2B/B2C communication.',
-        'projectsTitle' => 'Projects & Profiles',
+        'projectsTitle' => 'Projects',
         'projects' => [
-            ['https://www.schongeil.de/', 'schongeil.de', 'music blog'],
-            ['https://soundcloud.com/livicxyz', 'SoundCloud', 'DJ mixes as livicxyz'],
+            ['https://www.schongeil.de/', 'schongeil.de', 'personal blog'],
             ['https://github.com/ollrich', 'GitHub', 'open source projects'],
+        ],
+        'profilesTitle' => 'Profiles',
+        'profiles' => [
+            ['https://www.linkedin.com/in/olivereichhof', 'LinkedIn'],
+            ['https://www.xing.com/profile/Oliver_Eichhof2/', 'XING'],
+            ['https://bsky.app/profile/ollri.ch', 'Bluesky'],
+            ['https://norden.social/@olli', 'Mastodon'],
+            ['https://www.instagram.com/ollri.ch/', 'Instagram'],
+            ['https://soundcloud.com/livicxyz', 'SoundCloud', 'DJ mixes as livic'],
+            ['https://livic.xyz', 'livic.xyz', 'DJ profile'],
+            ['https://www.youtube.com/@schongeilDE', 'YouTube'],
+            ['https://ollrich.bandcamp.com/', 'Bandcamp'],
             ['https://unsplash.com/@ollrich', 'Unsplash', 'photography'],
         ],
         'mentionsTitle' => 'Mentions',
@@ -137,7 +177,7 @@ $meta = [
             ['What does Oliver Eichhof do professionally?', 'He heads marketing at REGIOCAST, one of Germany\'s largest radio companies. Previously, he was Strategy Director at wirDesign and advised companies in FMCG, retail and lifestyle as a freelance digital strategist.'],
             ['What are Oliver Eichhof\'s specialisations?', 'His focus areas include brand management, employer branding, integrated campaign development, GEO/SEO/SEA, AI-powered workflows and data-driven journey design.'],
             ['Where can you find Oliver Eichhof online?', 'On LinkedIn, his blog schongeil.de, Instagram, Bluesky, Mastodon and GitHub. All links are collected at eichhof.me.'],
-            ['What is schongeil.de?', 'schongeil.de is Oliver Eichhof\'s personal blog about music and media, which he has been running for over a decade. He also publishes DJ mixes there under the alias livicxyz.'],
+            ['What is schongeil.de?', 'schongeil.de is Oliver Eichhof\'s personal blog, which he has been running for over a decade. He also publishes DJ mixes under the alias livic.'],
         ],
     ],
     'da' => [
@@ -168,21 +208,41 @@ $meta = [
         'dtLanguages' => 'Sprog', 'ddLanguages' => 'Tysk (modersmål), Engelsk (flydende), Dansk (begynder)',
         'careerTitle' => 'Karriere',
         'career' => [
-            ['Marketingchef', 'REGIOCAST GmbH & Co. KG', 'siden 2025'],
-            ['Strategy Director Marketing & Digital', 'wirDesign communication AG', '2023–2025'],
-            ['Digital Strategist', 'Freelance', '2020–2022'],
-            ['Unit Lead Marketing & Concepts', 'rock&stars digital GmbH', '2019–2020'],
-            ['Senior Consultant Digital', 'DOKYO GmbH', '2014–2018'],
-            ['Account Director', 'beebop media ag', '2010–2014'],
-            ['Social Media Manager', 'Scholz & Friends', '2009–2010'],
+            ['Marketingchef', 'REGIOCAST GmbH & Co. KG', 'siden 2025', 'https://www.regiocast.de/'],
+            ['Strategy Director Marketing & Digital', 'wirDesign communication AG', '2023–2025', null],
+            ['Digital Strategist', 'Freelance', '2020–2022', null],
+            ['Unit Lead Marketing & Concepts', 'rock&stars digital GmbH', '2019–2020', null],
+            ['Senior Consultant Digital', 'DOKYO GmbH', '2014–2018', null],
+            ['Account Director', 'beebop media ag', '2010–2014', null],
+            ['Social Media Manager', 'Scholz & Friends', '2009–2010', null],
+            ['Community Manager', '1000MIKES', '2008–2009', null],
+        ],
+        'educationTitle' => 'Uddannelse',
+        'education' => [
+            ['Lederuddannelse', 'Unternehmensnavigation Dirk Abels', '2012'],
+            ['Studium i digitale medier', 'Hochschule Bremerhaven', '2007–2008'],
+            ['Højere forberedelseseksamen', 'Kaufmännische Lehranstalten Bremerhaven', '2006–2007'],
+            ['IT-specialist (erhvervsuddannelse)', 'Kreishandwerkerschaft Bremerhaven', '2001–2004'],
+            ['Detailhandelsspecialist (erhvervsuddannelse)', 'Eurospar Warenhandels GmbH', '1995–1998'],
         ],
         'skillsTitle' => 'Kernekompetencer',
         'skills' => 'Brandledelse, employer branding, kommunikationsstrategi, digital kampagneudvikling, journey design, KPI-frameworks, GEO/SEO/SEA, marketing automation, AI-drevne workflows, stakeholder management, content-strategi, B2B/B2C-kommunikation.',
-        'projectsTitle' => 'Projekter & Profiler',
+        'projectsTitle' => 'Projekter',
         'projects' => [
-            ['https://www.schongeil.de/', 'schongeil.de', 'musikblog'],
-            ['https://soundcloud.com/livicxyz', 'SoundCloud', 'DJ-mixes som livicxyz'],
+            ['https://www.schongeil.de/', 'schongeil.de', 'personlig blog'],
             ['https://github.com/ollrich', 'GitHub', 'open source-projekter'],
+        ],
+        'profilesTitle' => 'Profiler',
+        'profiles' => [
+            ['https://www.linkedin.com/in/olivereichhof', 'LinkedIn'],
+            ['https://www.xing.com/profile/Oliver_Eichhof2/', 'XING'],
+            ['https://bsky.app/profile/ollri.ch', 'Bluesky'],
+            ['https://norden.social/@olli', 'Mastodon'],
+            ['https://www.instagram.com/ollri.ch/', 'Instagram'],
+            ['https://soundcloud.com/livicxyz', 'SoundCloud', 'DJ-mixes som livic'],
+            ['https://livic.xyz', 'livic.xyz', 'DJ-profil'],
+            ['https://www.youtube.com/@schongeilDE', 'YouTube'],
+            ['https://ollrich.bandcamp.com/', 'Bandcamp'],
             ['https://unsplash.com/@ollrich', 'Unsplash', 'fotografi'],
         ],
         'mentionsTitle' => 'Omtaler',
@@ -198,7 +258,7 @@ $meta = [
             ['Hvad laver Oliver Eichhof professionelt?', 'Han leder marketing hos REGIOCAST, et af Tysklands største radioselskaber. Tidligere var han Strategy Director hos wirDesign og rådgav virksomheder inden for FMCG, detail og livsstil som freelance digital strateg.'],
             ['Hvad er Oliver Eichhofs specialiseringer?', 'Hans fokusområder omfatter brandledelse, employer branding, integreret kampagneudvikling, GEO/SEO/SEA, AI-drevne workflows og datadrevet journey design.'],
             ['Hvor kan man finde Oliver Eichhof online?', 'På LinkedIn, hans blog schongeil.de, Instagram, Bluesky, Mastodon og GitHub. Alle links er samlet på eichhof.me.'],
-            ['Hvad er schongeil.de?', 'schongeil.de er Oliver Eichhofs personlige blog om musik og medier, som han har drevet i over et årti. Han udgiver også DJ-mixes der under aliaset livicxyz.'],
+            ['Hvad er schongeil.de?', 'schongeil.de er Oliver Eichhofs personlige blog, som han har drevet i over et årti. Han udgiver også DJ-mixes under aliaset livic.'],
         ],
     ],
 ];
@@ -258,7 +318,9 @@ $e = fn($s) => htmlspecialchars($s, ENT_QUOTES, 'UTF-8');
             "url": "https://www.regiocast.de/"
         },
         "alumniOf": [
-            { "@type": "EducationalOrganization", "name": "Hochschule Bremerhaven" }
+            { "@type": "EducationalOrganization", "name": "Hochschule Bremerhaven" },
+            { "@type": "EducationalOrganization", "name": "Kaufmännische Lehranstalten Bremerhaven" },
+            { "@type": "EducationalOrganization", "name": "Kreishandwerkerschaft Bremerhaven" }
         ],
         "hasOccupation": [
             {
@@ -276,7 +338,9 @@ $e = fn($s) => htmlspecialchars($s, ENT_QUOTES, 'UTF-8');
             "https://norden.social/@olli",
             "https://www.instagram.com/ollri.ch/",
             "https://soundcloud.com/livicxyz",
+            "https://livic.xyz",
             "https://www.youtube.com/@schongeilDE",
+            "https://ollrich.bandcamp.com/",
             "https://unsplash.com/@ollrich"
         ],
         "subjectOf": [
@@ -327,7 +391,14 @@ $e = fn($s) => htmlspecialchars($s, ENT_QUOTES, 'UTF-8');
             <h2><?= $e($m['careerTitle']) ?></h2>
             <ul>
 <?php foreach ($m['career'] as $c): ?>
-                <li><strong><?= $e($c[0]) ?></strong> — <?= $e($c[1]) ?> (<?= $e($c[2]) ?>)</li>
+                <li><strong><?= $e($c[0]) ?></strong> — <?php if (!empty($c[3])): ?><a href="<?= $e($c[3]) ?>"><?= $e($c[1]) ?></a><?php else: ?><?= $e($c[1]) ?><?php endif; ?> (<?= $e($c[2]) ?>)</li>
+<?php endforeach; ?>
+            </ul>
+
+            <h2><?= $e($m['educationTitle']) ?></h2>
+            <ul>
+<?php foreach ($m['education'] as $edu): ?>
+                <li><strong><?= $e($edu[0]) ?></strong> — <?= $e($edu[1]) ?> (<?= $e($edu[2]) ?>)</li>
 <?php endforeach; ?>
             </ul>
 
@@ -338,6 +409,13 @@ $e = fn($s) => htmlspecialchars($s, ENT_QUOTES, 'UTF-8');
             <ul>
 <?php foreach ($m['projects'] as $p): ?>
                 <li><a href="<?= $e($p[0]) ?>"><?= $e($p[1]) ?></a> — <?= $e($p[2]) ?></li>
+<?php endforeach; ?>
+            </ul>
+
+            <h2><?= $e($m['profilesTitle']) ?></h2>
+            <ul>
+<?php foreach ($m['profiles'] as $p): ?>
+                <li><a href="<?= $e($p[0]) ?>"><?= $e($p[1]) ?></a><?php if (!empty($p[2])): ?> — <?= $e($p[2]) ?><?php endif; ?></li>
 <?php endforeach; ?>
             </ul>
 

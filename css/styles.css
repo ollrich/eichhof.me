@@ -653,6 +653,37 @@ html.dark-mode .link-preview:hover {
     position: relative;
     transform: scale(0.9);
     transition: transform 0.3s ease;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+}
+
+.overlay-content::-webkit-scrollbar {
+    width: 6px;
+}
+
+.overlay-content::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.overlay-content::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 3px;
+}
+
+.overlay-content::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.35);
+}
+
+html.dark-mode .overlay-content {
+    scrollbar-color: rgba(var(--accent-purple), 0.3) transparent;
+}
+
+html.dark-mode .overlay-content::-webkit-scrollbar-thumb {
+    background: rgba(var(--accent-purple), 0.3);
+}
+
+html.dark-mode .overlay-content::-webkit-scrollbar-thumb:hover {
+    background: rgba(var(--accent-purple), 0.45);
 }
 
 .overlay.active .overlay-content {
@@ -1234,6 +1265,17 @@ html.dark-mode .contact-submit:hover:not(:disabled) {
 
 .about-career li strong {
     font-weight: 500;
+}
+
+.about-career a {
+    color: white;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    transition: opacity 0.2s ease;
+}
+
+.about-career a:hover {
+    opacity: 0.8;
 }
 
 .about-year {

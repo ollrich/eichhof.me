@@ -206,16 +206,8 @@
             });
         }
 
-        // Set up trigger icon clicks
-        var triggerInfo = document.getElementById('about-trigger-info');
+        // Set up trigger icon click
         var triggerCard = document.getElementById('about-trigger-card');
-
-        if (triggerInfo) {
-            triggerInfo.addEventListener('click', function(e) {
-                e.preventDefault();
-                openAbout();
-            });
-        }
 
         if (triggerCard) {
             triggerCard.addEventListener('click', function(e) {
