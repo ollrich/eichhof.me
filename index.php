@@ -187,7 +187,7 @@ if ($overlay === 'impressum' || $overlay === 'legal' || $overlay === 'kolofon') 
             "https://www.instagram.com/ollri.ch/",
             "https://soundcloud.com/livicxyz",
             "https://www.youtube.com/@schongeilDE",
-            "https://ollrich.bandcamp.com/",
+            "https://bandcamp.com/livic",
             "https://unsplash.com/@ollrich"
         ],
         "subjectOf": [
@@ -464,7 +464,7 @@ if ($overlay === 'impressum' || $overlay === 'legal' || $overlay === 'kolofon') 
                     <li><a href="https://www.instagram.com/ollri.ch/" target="_blank" rel="noopener noreferrer me">Instagram</a></li>
                     <li><a href="https://soundcloud.com/livicxyz" target="_blank" rel="noopener noreferrer me">SoundCloud</a></li>
                     <li><a href="https://www.youtube.com/@schongeilDE" target="_blank" rel="noopener noreferrer me">YouTube</a></li>
-                    <li><a href="https://ollrich.bandcamp.com/" target="_blank" rel="noopener noreferrer me">Bandcamp</a></li>
+                    <li><a href="https://bandcamp.com/livic" target="_blank" rel="noopener noreferrer me">Bandcamp</a></li>
                     <li><a href="https://unsplash.com/@ollrich" target="_blank" rel="noopener noreferrer me">Unsplash</a></li>
                 </ul>
             </section>
