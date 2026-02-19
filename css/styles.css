@@ -1250,6 +1250,17 @@ html.dark-mode .contact-submit:hover:not(:disabled) {
     opacity: 0.9;
 }
 
+.about-facts a {
+    color: white;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    transition: opacity 0.2s ease;
+}
+
+.about-facts a:hover {
+    opacity: 0.8;
+}
+
 /* Career timeline */
 .about-career {
     list-style: none;

@@ -186,7 +186,6 @@ if ($overlay === 'impressum' || $overlay === 'legal' || $overlay === 'kolofon') 
             "https://norden.social/@olli",
             "https://www.instagram.com/ollri.ch/",
             "https://soundcloud.com/livicxyz",
-            "https://livic.xyz",
             "https://www.youtube.com/@schongeilDE",
             "https://ollrich.bandcamp.com/",
             "https://unsplash.com/@ollrich"
@@ -442,9 +441,9 @@ if ($overlay === 'impressum' || $overlay === 'legal' || $overlay === 'kolofon') 
                 <h3 id="about-career-title">Beruflicher Werdegang</h3>
                 <ul class="about-career" id="about-career">
                     <li><strong>Leiter Marketing</strong> — <a href="https://www.regiocast.de/" target="_blank" rel="noopener noreferrer">REGIOCAST GmbH & Co. KG</a> <span class="about-year">seit 2025</span></li>
-                    <li><strong>Strategy Director Marketing & Digital</strong> — wirDesign communication AG <span class="about-year">2023–2025</span></li>
+                    <li><strong>Strategy Director Marketing</strong> — wirDesign communication AG <span class="about-year">2023–2025</span></li>
                     <li><strong>Digital Strategist</strong> — Freiberuflich <span class="about-year">2020–2022</span></li>
-                    <li><strong>Unit Lead Marketing & Concepts</strong> — rock&stars digital GmbH <span class="about-year">2019–2020</span></li>
+                    <li><strong>Unit Lead Marketing</strong> — rock&stars digital GmbH <span class="about-year">2019–2020</span></li>
                     <li><strong>Senior Consultant Digital</strong> — DOKYO GmbH <span class="about-year">2014–2018</span></li>
                     <li><strong>Etatdirektor</strong> — beebop media ag <span class="about-year">2010–2014</span></li>
                     <li><strong>Social Media Manager</strong> — Scholz & Friends <span class="about-year">2009–2010</span></li>
@@ -455,11 +454,10 @@ if ($overlay === 'impressum' || $overlay === 'legal' || $overlay === 'kolofon') 
             <section class="about-section">
                 <h3 id="about-education-title">Ausbildung</h3>
                 <ul class="about-career" id="about-education">
-                    <li><strong id="about-edu-1-title">Führungskräftetraining</strong> — Unternehmensnavigation Dirk Abels <span class="about-year">2012</span></li>
-                    <li><strong id="about-edu-2-title">Studium Digitale Medien</strong> — Hochschule Bremerhaven <span class="about-year">2007–2008</span></li>
-                    <li><strong id="about-edu-3-title">Fachhochschulreife</strong> — Kaufmännische Lehranstalten Bremerhaven <span class="about-year">2006–2007</span></li>
-                    <li><strong id="about-edu-4-title">Informatikkaufmann</strong> — Kreishandwerkerschaft Bremerhaven <span class="about-year">2001–2004</span></li>
-                    <li><strong id="about-edu-5-title">Einzelhandelskaufmann</strong> — Eurospar Warenhandels GmbH <span class="about-year">1995–1998</span></li>
+                    <li><strong id="about-edu-1-title">Studium Digitale Medien</strong> — Hochschule Bremerhaven <span class="about-year">2007–2008</span></li>
+                    <li><strong id="about-edu-2-title">Fachhochschulreife</strong> — Kaufmännische Lehranstalten Bremerhaven <span class="about-year">2006–2007</span></li>
+                    <li><strong id="about-edu-3-title">Informatikkaufmann</strong> — Kreishandwerkerschaft Bremerhaven <span class="about-year">2001–2004</span></li>
+                    <li><strong id="about-edu-4-title">Einzelhandelskaufmann</strong> — Eurospar Warenhandels GmbH <span class="about-year">1995–1998</span></li>
                 </ul>
             </section>
 
@@ -484,11 +482,10 @@ if ($overlay === 'impressum' || $overlay === 'legal' || $overlay === 'kolofon') 
                     <li><a href="https://bsky.app/profile/ollri.ch" target="_blank" rel="noopener noreferrer me">Bluesky</a></li>
                     <li><a href="https://norden.social/@olli" target="_blank" rel="noopener noreferrer me">Mastodon</a></li>
                     <li><a href="https://www.instagram.com/ollri.ch/" target="_blank" rel="noopener noreferrer me">Instagram</a></li>
-                    <li><a href="https://soundcloud.com/livicxyz" target="_blank" rel="noopener noreferrer me">SoundCloud</a> <span id="about-profile-dj">— DJ-Mixes als livic</span></li>
-                    <li><a href="https://livic.xyz" target="_blank" rel="noopener noreferrer me">livic.xyz</a> <span id="about-profile-djsite">— DJ-Profil</span></li>
+                    <li><a href="https://soundcloud.com/livicxyz" target="_blank" rel="noopener noreferrer me">SoundCloud</a></li>
                     <li><a href="https://www.youtube.com/@schongeilDE" target="_blank" rel="noopener noreferrer me">YouTube</a></li>
                     <li><a href="https://ollrich.bandcamp.com/" target="_blank" rel="noopener noreferrer me">Bandcamp</a></li>
-                    <li><a href="https://unsplash.com/@ollrich" target="_blank" rel="noopener noreferrer me">Unsplash</a> <span id="about-profile-photo">— Fotografie</span></li>
+                    <li><a href="https://unsplash.com/@ollrich" target="_blank" rel="noopener noreferrer me">Unsplash</a></li>
                 </ul>
             </section>
 

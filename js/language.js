@@ -83,20 +83,16 @@
             aboutDdLanguages: "Deutsch (Muttersprache), Englisch (fließend), Dänisch (Grundkenntnisse)",
             aboutCareerTitle: "Beruflicher Werdegang",
             aboutEducationTitle: "Ausbildung",
-            aboutEdu1: "Führungskräftetraining",
-            aboutEdu2: "Studium Digitale Medien",
-            aboutEdu3: "Fachhochschulreife",
-            aboutEdu4: "Informatikkaufmann",
-            aboutEdu5: "Einzelhandelskaufmann",
+            aboutEdu1: "Studium Digitale Medien",
+            aboutEdu2: "Fachhochschulreife",
+            aboutEdu3: "Informatikkaufmann",
+            aboutEdu4: "Einzelhandelskaufmann",
             aboutSkillsTitle: "Kernkompetenzen",
             aboutSkills: "Markenführung, Employer Branding, Kommunikationsstrategie, digitale Kampagnenentwicklung, Journey Design, KPI-Frameworks, GEO/SEO/SEA, Marketing Automation, KI-gestützte Workflows, Stakeholder Management, Content-Strategie, B2B/B2C-Kommunikation.",
             aboutProjectsTitle: "Projekte",
             aboutProjectBlog: "— Persönlicher Blog",
             aboutProjectCode: "— Open-Source-Projekte",
             aboutProfilesTitle: "Präsenzen",
-            aboutProfileDj: "— DJ-Mixes als livic",
-            aboutProfileDjSite: "— DJ-Profil",
-            aboutProfilePhoto: "— Fotografie",
             aboutMentionsTitle: "Erwähnungen",
             aboutFaqTitle: "Häufig gefragt",
             aboutQ1: "Wer ist Oliver Eichhof?",
@@ -165,20 +161,16 @@
             aboutDdLanguages: "German (native), English (fluent), Danish (beginner)",
             aboutCareerTitle: "Career",
             aboutEducationTitle: "Education",
-            aboutEdu1: "Leadership Training",
-            aboutEdu2: "Digital Media Studies",
-            aboutEdu3: "University Entrance Qualification",
-            aboutEdu4: "IT Specialist",
-            aboutEdu5: "Retail Sales Specialist",
+            aboutEdu1: "Digital Media Studies",
+            aboutEdu2: "University Entrance Qualification",
+            aboutEdu3: "IT Specialist",
+            aboutEdu4: "Retail Sales Specialist",
             aboutSkillsTitle: "Core Competencies",
             aboutSkills: "Brand management, employer branding, communication strategy, digital campaign development, journey design, KPI frameworks, GEO/SEO/SEA, marketing automation, AI-powered workflows, stakeholder management, content strategy, B2B/B2C communication.",
             aboutProjectsTitle: "Projects",
             aboutProjectBlog: "— personal blog",
             aboutProjectCode: "— open source projects",
             aboutProfilesTitle: "Profiles",
-            aboutProfileDj: "— DJ mixes as livic",
-            aboutProfileDjSite: "— DJ profile",
-            aboutProfilePhoto: "— photography",
             aboutMentionsTitle: "Mentions",
             aboutFaqTitle: "Frequently Asked",
             aboutQ1: "Who is Oliver Eichhof?",
@@ -247,20 +239,16 @@
             aboutDdLanguages: "Tysk (modersmål), Engelsk (flydende), Dansk (begynder)",
             aboutCareerTitle: "Karriere",
             aboutEducationTitle: "Uddannelse",
-            aboutEdu1: "Lederuddannelse",
-            aboutEdu2: "Studium i digitale medier",
-            aboutEdu3: "Højere forberedelseseksamen",
-            aboutEdu4: "IT-specialist",
-            aboutEdu5: "Detailhandelsspecialist",
+            aboutEdu1: "Studium i digitale medier",
+            aboutEdu2: "Højere forberedelseseksamen",
+            aboutEdu3: "IT-specialist",
+            aboutEdu4: "Detailhandelsspecialist",
             aboutSkillsTitle: "Kernekompetencer",
             aboutSkills: "Brandledelse, employer branding, kommunikationsstrategi, digital kampagneudvikling, journey design, KPI-frameworks, GEO/SEO/SEA, marketing automation, AI-drevne workflows, stakeholder management, content-strategi, B2B/B2C-kommunikation.",
             aboutProjectsTitle: "Projekter",
             aboutProjectBlog: "— personlig blog",
             aboutProjectCode: "— open source-projekter",
             aboutProfilesTitle: "Profiler",
-            aboutProfileDj: "— DJ-mixes som livic",
-            aboutProfileDjSite: "— DJ-profil",
-            aboutProfilePhoto: "— fotografi",
             aboutMentionsTitle: "Omtaler",
             aboutFaqTitle: "Ofte spurgt",
             aboutQ1: "Hvem er Oliver Eichhof?",
@@ -445,16 +433,12 @@
         updateElement('about-edu-2-title', content.aboutEdu2);
         updateElement('about-edu-3-title', content.aboutEdu3);
         updateElement('about-edu-4-title', content.aboutEdu4);
-        updateElement('about-edu-5-title', content.aboutEdu5);
         updateElement('about-skills-title', content.aboutSkillsTitle);
         updateElement('about-skills', content.aboutSkills);
         updateElement('about-projects-title', content.aboutProjectsTitle);
         updateElement('about-project-blog', content.aboutProjectBlog);
         updateElement('about-project-code', content.aboutProjectCode);
         updateElement('about-profiles-title', content.aboutProfilesTitle);
-        updateElement('about-profile-dj', content.aboutProfileDj);
-        updateElement('about-profile-djsite', content.aboutProfileDjSite);
-        updateElement('about-profile-photo', content.aboutProfilePhoto);
         updateElement('about-mentions-title', content.aboutMentionsTitle);
         updateElement('about-faq-title', content.aboutFaqTitle);
         updateElement('about-q1', content.aboutQ1);
