@@ -438,9 +438,9 @@ if ($overlay === 'impressum' || $overlay === 'legal' || $overlay === 'kolofon') 
             <section class="about-section">
                 <h3 id="about-career-title">Beruflicher Werdegang</h3>
                 <ul class="about-career" id="about-career">
-                    <li><strong>Leiter Marketing</strong> — REGIOCAST GmbH & Co. KG <span class="about-year">seit 2026</span></li>
+                    <li><strong id="about-career-1-title">Leiter Marketing</strong> — REGIOCAST GmbH & Co. KG <span class="about-year" id="about-career-1-year">seit 2026</span></li>
                     <li><strong>Strategy Director Marketing</strong> — wirDesign communication AG <span class="about-year">2023–2025</span></li>
-                    <li><strong>Digital Strategist</strong> — Freiberuflich <span class="about-year">2020–2022</span></li>
+                    <li><strong>Digital Strategist</strong> — <span id="about-career-3-org">Freiberuflich</span> <span class="about-year">2020–2022</span></li>
                     <li><strong>Unit Lead Marketing & Concepts</strong> — rock&stars digital GmbH <span class="about-year">2019–2020</span></li>
                 </ul>
                 <p class="about-career-more" id="about-career-more"><a href="<?= $m['linkedinUrl'] ?>" target="_blank" rel="noopener noreferrer">Kompletten Werdegang auf LinkedIn ansehen</a></p>

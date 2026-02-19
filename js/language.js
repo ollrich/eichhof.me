@@ -80,6 +80,9 @@
             aboutDtBorn: "Geboren",
             aboutDdBorn: "1979 in Bremerhaven",
             aboutCareerTitle: "Beruflicher Werdegang",
+            aboutCareer1Title: "Leiter Marketing",
+            aboutCareer1Year: "seit 2026",
+            aboutCareer3Org: "Freiberuflich",
             aboutCareerMore: 'Kompletten Werdegang auf <a href="https://de.linkedin.com/in/olivereichhof" target="_blank" rel="noopener noreferrer">LinkedIn</a> ansehen',
             aboutProjectsTitle: "Projekte",
             aboutProjectBlog: "— Persönlicher Blog",
@@ -140,6 +143,9 @@
             aboutDtBorn: "Born",
             aboutDdBorn: "1979 in Bremerhaven, Germany",
             aboutCareerTitle: "Career",
+            aboutCareer1Title: "Head of Marketing",
+            aboutCareer1Year: "since 2026",
+            aboutCareer3Org: "Freelance",
             aboutCareerMore: 'View full career on <a href="https://www.linkedin.com/in/olivereichhof" target="_blank" rel="noopener noreferrer">LinkedIn</a>',
             aboutProjectsTitle: "Projects",
             aboutProjectBlog: "— personal blog",
@@ -200,6 +206,9 @@
             aboutDtBorn: "Født",
             aboutDdBorn: "1979 i Bremerhaven, Tyskland",
             aboutCareerTitle: "Karriere",
+            aboutCareer1Title: "Marketingchef",
+            aboutCareer1Year: "siden 2026",
+            aboutCareer3Org: "Freelance",
             aboutCareerMore: 'Se den fulde karriere på <a href="https://dk.linkedin.com/in/olivereichhof" target="_blank" rel="noopener noreferrer">LinkedIn</a>',
             aboutProjectsTitle: "Projekter",
             aboutProjectBlog: "— personlig blog",
@@ -372,6 +381,9 @@
         updateElement('about-dt-born', content.aboutDtBorn);
         updateElement('about-dd-born', content.aboutDdBorn);
         updateElement('about-career-title', content.aboutCareerTitle);
+        updateElement('about-career-1-title', content.aboutCareer1Title);
+        updateElement('about-career-1-year', content.aboutCareer1Year);
+        updateElement('about-career-3-org', content.aboutCareer3Org);
         updateElement('about-career-more', content.aboutCareerMore, true);
         updateElement('about-projects-title', content.aboutProjectsTitle);
         updateElement('about-project-blog', content.aboutProjectBlog);
