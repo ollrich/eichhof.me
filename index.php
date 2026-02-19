@@ -243,7 +243,7 @@ if ($overlay === 'impressum' || $overlay === 'legal' || $overlay === 'kolofon') 
         <h1 class="name">Oliver Eichhof
             <span class="about-triggers">
                 <a href="<?= $m['aboutUrl'] ?>" class="about-trigger about-trigger-card" id="about-trigger-card" aria-label="Über mich">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                         <rect x="2" y="4" width="20" height="16" rx="2"/><circle cx="8" cy="11" r="2.5"/><path d="M4 18c0-2 1.5-3 4-3s4 1 4 3"/><line x1="15" y1="9" x2="20" y2="9"/><line x1="15" y1="13" x2="20" y2="13"/>
                     </svg>
                 </a>
