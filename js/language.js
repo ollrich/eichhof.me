@@ -79,21 +79,14 @@
             aboutDdLocation: "Hamburg",
             aboutDtBorn: "Geboren",
             aboutDdBorn: "1979 in Bremerhaven",
-            aboutDtLanguages: "Sprachen",
-            aboutDdLanguages: "Deutsch (Muttersprache), Englisch (fließend), Dänisch (Grundkenntnisse)",
             aboutCareerTitle: "Beruflicher Werdegang",
-            aboutEducationTitle: "Ausbildung",
-            aboutEdu1: "Studium Digitale Medien",
-            aboutEdu2: "Fachhochschulreife",
-            aboutEdu3: "Informatikkaufmann",
-            aboutEdu4: "Einzelhandelskaufmann",
-            aboutSkillsTitle: "Kernkompetenzen",
-            aboutSkills: "Markenführung, Employer Branding, Kommunikationsstrategie, digitale Kampagnenentwicklung, Journey Design, KPI-Frameworks, GEO/SEO/SEA, Marketing Automation, KI-gestützte Workflows, Stakeholder Management, Content-Strategie, B2B/B2C-Kommunikation.",
+            aboutCareerMore: 'Kompletten Werdegang auf <a href="https://de.linkedin.com/in/olivereichhof" target="_blank" rel="noopener noreferrer">LinkedIn</a> ansehen',
             aboutProjectsTitle: "Projekte",
             aboutProjectBlog: "— Persönlicher Blog",
             aboutProjectCode: "— Open-Source-Projekte",
             aboutProfilesTitle: "Präsenzen",
             aboutMentionsTitle: "Erwähnungen",
+            aboutNotice: "Diese Seite ist als maschinenlesbare Grounding Page optimiert. Sie dient KI-Systemen und Suchmaschinen als verifizierbare Faktenquelle zu Oliver Eichhof.",
             aboutTriggerLabel: "Über mich"
         },
         en: {
@@ -146,21 +139,14 @@
             aboutDdLocation: "Hamburg, Germany",
             aboutDtBorn: "Born",
             aboutDdBorn: "1979 in Bremerhaven, Germany",
-            aboutDtLanguages: "Languages",
-            aboutDdLanguages: "German (native), English (fluent), Danish (beginner)",
             aboutCareerTitle: "Career",
-            aboutEducationTitle: "Education",
-            aboutEdu1: "Digital Media Studies",
-            aboutEdu2: "University Entrance Qualification",
-            aboutEdu3: "IT Specialist",
-            aboutEdu4: "Retail Sales Specialist",
-            aboutSkillsTitle: "Core Competencies",
-            aboutSkills: "Brand management, employer branding, communication strategy, digital campaign development, journey design, KPI frameworks, GEO/SEO/SEA, marketing automation, AI-powered workflows, stakeholder management, content strategy, B2B/B2C communication.",
+            aboutCareerMore: 'View full career on <a href="https://www.linkedin.com/in/olivereichhof" target="_blank" rel="noopener noreferrer">LinkedIn</a>',
             aboutProjectsTitle: "Projects",
             aboutProjectBlog: "— personal blog",
             aboutProjectCode: "— open source projects",
             aboutProfilesTitle: "Profiles",
             aboutMentionsTitle: "Mentions",
+            aboutNotice: "This page is optimised as a machine-readable grounding page. It serves AI systems and search engines as a verifiable source of facts about Oliver Eichhof.",
             aboutTriggerLabel: "About me"
         },
         da: {
@@ -213,21 +199,14 @@
             aboutDdLocation: "Hamborg, Tyskland",
             aboutDtBorn: "Født",
             aboutDdBorn: "1979 i Bremerhaven, Tyskland",
-            aboutDtLanguages: "Sprog",
-            aboutDdLanguages: "Tysk (modersmål), Engelsk (flydende), Dansk (begynder)",
             aboutCareerTitle: "Karriere",
-            aboutEducationTitle: "Uddannelse",
-            aboutEdu1: "Studium i digitale medier",
-            aboutEdu2: "Højere forberedelseseksamen",
-            aboutEdu3: "IT-specialist",
-            aboutEdu4: "Detailhandelsspecialist",
-            aboutSkillsTitle: "Kernekompetencer",
-            aboutSkills: "Brandledelse, employer branding, kommunikationsstrategi, digital kampagneudvikling, journey design, KPI-frameworks, GEO/SEO/SEA, marketing automation, AI-drevne workflows, stakeholder management, content-strategi, B2B/B2C-kommunikation.",
+            aboutCareerMore: 'Se den fulde karriere på <a href="https://dk.linkedin.com/in/olivereichhof" target="_blank" rel="noopener noreferrer">LinkedIn</a>',
             aboutProjectsTitle: "Projekter",
             aboutProjectBlog: "— personlig blog",
             aboutProjectCode: "— open source-projekter",
             aboutProfilesTitle: "Profiler",
             aboutMentionsTitle: "Omtaler",
+            aboutNotice: "Denne side er optimeret som en maskinlæsbar grounding page. Den tjener AI-systemer og søgemaskiner som en verificerbar faktakilde om Oliver Eichhof.",
             aboutTriggerLabel: "Om mig"
         }
     };
@@ -392,21 +371,14 @@
         updateElement('about-dd-location', content.aboutDdLocation);
         updateElement('about-dt-born', content.aboutDtBorn);
         updateElement('about-dd-born', content.aboutDdBorn);
-        updateElement('about-dt-languages', content.aboutDtLanguages);
-        updateElement('about-dd-languages', content.aboutDdLanguages);
         updateElement('about-career-title', content.aboutCareerTitle);
-        updateElement('about-education-title', content.aboutEducationTitle);
-        updateElement('about-edu-1-title', content.aboutEdu1);
-        updateElement('about-edu-2-title', content.aboutEdu2);
-        updateElement('about-edu-3-title', content.aboutEdu3);
-        updateElement('about-edu-4-title', content.aboutEdu4);
-        updateElement('about-skills-title', content.aboutSkillsTitle);
-        updateElement('about-skills', content.aboutSkills);
+        updateElement('about-career-more', content.aboutCareerMore, true);
         updateElement('about-projects-title', content.aboutProjectsTitle);
         updateElement('about-project-blog', content.aboutProjectBlog);
         updateElement('about-project-code', content.aboutProjectCode);
         updateElement('about-profiles-title', content.aboutProfilesTitle);
         updateElement('about-mentions-title', content.aboutMentionsTitle);
+        updateElement('about-notice', content.aboutNotice);
         updateAttr('about-trigger-card', 'aria-label', content.aboutTriggerLabel);
         updateAttr('close-about-btn', 'aria-label', content.closeOverlay);
     }

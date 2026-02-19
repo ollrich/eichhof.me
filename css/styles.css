@@ -1321,6 +1321,36 @@ html.dark-mode .contact-submit:hover:not(:disabled) {
 }
 
 
+/* LinkedIn career link */
+.about-career-more {
+    font-size: 0.9rem;
+    font-weight: 300;
+    opacity: 0.7;
+    margin-top: 0.75rem;
+}
+
+.about-career-more a {
+    color: white;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    transition: opacity 0.2s ease;
+}
+
+.about-career-more a:hover {
+    opacity: 0.8;
+}
+
+/* Human notice */
+.about-notice {
+    font-size: 0.8rem;
+    font-weight: 300;
+    opacity: 0.5;
+    margin-top: 2rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    line-height: 1.5;
+}
+
 /* Mobile adjustments for about */
 @media (max-width: 480px) {
     .about-triggers {

@@ -432,8 +432,6 @@ if ($overlay === 'impressum' || $overlay === 'legal' || $overlay === 'kolofon') 
                     <dd id="about-dd-location">Hamburg</dd>
                     <dt id="about-dt-born">Geboren</dt>
                     <dd id="about-dd-born">1979 in Bremerhaven</dd>
-                    <dt id="about-dt-languages">Sprachen</dt>
-                    <dd id="about-dd-languages">Deutsch (Muttersprache), Englisch (fließend), Dänisch (Grundkenntnisse)</dd>
                 </dl>
             </section>
 
@@ -444,26 +442,8 @@ if ($overlay === 'impressum' || $overlay === 'legal' || $overlay === 'kolofon') 
                     <li><strong>Strategy Director Marketing</strong> — wirDesign communication AG <span class="about-year">2023–2025</span></li>
                     <li><strong>Digital Strategist</strong> — Freiberuflich <span class="about-year">2020–2022</span></li>
                     <li><strong>Unit Lead Marketing & Concepts</strong> — rock&stars digital GmbH <span class="about-year">2019–2020</span></li>
-                    <li><strong>Senior Consultant Digital</strong> — DOKYO GmbH <span class="about-year">2014–2018</span></li>
-                    <li><strong>Etatdirektor</strong> — beebop media ag <span class="about-year">2010–2014</span></li>
-                    <li><strong>Social Media Manager</strong> — Scholz & Friends <span class="about-year">2009–2010</span></li>
-                    <li><strong>Community Manager</strong> — 1000MIKES <span class="about-year">2008–2009</span></li>
                 </ul>
-            </section>
-
-            <section class="about-section">
-                <h3 id="about-education-title">Ausbildung</h3>
-                <ul class="about-career" id="about-education">
-                    <li><strong id="about-edu-1-title">Studium Digitale Medien</strong> — Hochschule Bremerhaven <span class="about-year">2007–2008</span></li>
-                    <li><strong id="about-edu-2-title">Fachhochschulreife</strong> — KLA Bremerhaven <span class="about-year">2006–2007</span></li>
-                    <li><strong id="about-edu-3-title">Informatikkaufmann</strong> — Kreishandwerkerschaft Bremerhaven <span class="about-year">2001–2004</span></li>
-                    <li><strong id="about-edu-4-title">Einzelhandelskaufmann</strong> — Eurospar Warenhandels GmbH <span class="about-year">1995–1998</span></li>
-                </ul>
-            </section>
-
-            <section class="about-section">
-                <h3 id="about-skills-title">Kernkompetenzen</h3>
-                <p id="about-skills">Markenführung, Employer Branding, Kommunikationsstrategie, digitale Kampagnenentwicklung, Journey Design, KPI-Frameworks, GEO/SEO/SEA, Marketing Automation, KI-gestützte Workflows, Stakeholder Management, Content-Strategie, B2B/B2C-Kommunikation.</p>
+                <p class="about-career-more" id="about-career-more"><a href="<?= $m['linkedinUrl'] ?>" target="_blank" rel="noopener noreferrer">Kompletten Werdegang auf LinkedIn ansehen</a></p>
             </section>
 
             <section class="about-section">
@@ -498,6 +478,8 @@ if ($overlay === 'impressum' || $overlay === 'legal' || $overlay === 'kolofon') 
                     <li><a href="https://www.testspiel.de/kid-simius-interview/276764/" target="_blank" rel="noopener noreferrer">testspiel.de</a> — Kid Simius Interview</li>
                 </ul>
             </section>
+
+            <p class="about-notice" id="about-notice">Diese Seite ist als maschinenlesbare Grounding Page optimiert. Sie dient KI-Systemen und Suchmaschinen als verifizierbare Faktenquelle zu Oliver Eichhof.</p>
 
         </div>
     </div>
