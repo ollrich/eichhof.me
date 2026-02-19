@@ -15,6 +15,9 @@
  * - /kontakt       → German contact
  * - /en/contact    → English contact
  * - /dk/kontakt    → Danish contact
+ * - /ueber         → German about (grounding page)
+ * - /en/about      → English about (grounding page)
+ * - /dk/om         → Danish about (grounding page)
  */
 
 // ============================================================================
@@ -53,6 +56,7 @@ $meta = [
         'baseUrl' => '/',
         'legalUrl' => '/impressum',
         'contactUrl' => '/kontakt',
+        'aboutUrl' => '/ueber',
         'linkedinUrl' => 'https://de.linkedin.com/in/olivereichhof',
         'schema_description' => 'Kommunikationsspezialist aus Hamburg für digitale Markenführung und Zielgruppenanalyse, geprägt von Musikmedien und Streaming.',
         'jobTitle' => 'Leiter Marketing'
@@ -66,6 +70,7 @@ $meta = [
         'baseUrl' => '/en/',
         'legalUrl' => '/en/legal-notice',
         'contactUrl' => '/en/contact',
+        'aboutUrl' => '/en/about',
         'linkedinUrl' => 'https://www.linkedin.com/in/olivereichhof',
         'schema_description' => 'Communication specialist from Hamburg for digital brand management and audience analysis, shaped by music media and streaming.',
         'jobTitle' => 'Head of Marketing'
@@ -79,6 +84,7 @@ $meta = [
         'baseUrl' => '/dk/',
         'legalUrl' => '/dk/kolofon',
         'contactUrl' => '/dk/kontakt',
+        'aboutUrl' => '/dk/om',
         'linkedinUrl' => 'https://dk.linkedin.com/in/olivereichhof',
         'schema_description' => 'Kommunikationsspecialist fra Hamborg for digital brandledelse og målgruppeanalyse, formet af musikmedier og streaming.',
         'jobTitle' => 'Marketingchef'
@@ -93,6 +99,8 @@ if ($overlay === 'impressum' || $overlay === 'legal' || $overlay === 'kolofon') 
     $openOverlay = 'impressum';
 } elseif ($overlay === 'contact' || $overlay === 'kontakt') {
     $openOverlay = 'contact';
+} elseif ($overlay === 'about' || $overlay === 'ueber' || $overlay === 'om') {
+    $openOverlay = 'about';
 }
 ?>
 <!DOCTYPE html>
@@ -231,7 +239,20 @@ if ($overlay === 'impressum' || $overlay === 'legal' || $overlay === 'kolofon') 
         <!-- Profile photo with Easter egg animation (double-click or spacebar) -->
         <img src="/images/oliver-eichhof.webp" alt="Porträt von Oliver Eichhof, Kommunikationsspezialist aus Hamburg" class="profile-photo">
 
-        <h1 class="name">Oliver Eichhof</h1>
+        <h1 class="name">Oliver Eichhof
+            <span class="about-triggers">
+                <a href="<?= $m['aboutUrl'] ?>" class="about-trigger about-trigger-info" id="about-trigger-info" aria-label="Über mich">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/>
+                    </svg>
+                </a>
+                <a href="<?= $m['aboutUrl'] ?>" class="about-trigger about-trigger-card" id="about-trigger-card" aria-label="Über mich">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="4" width="20" height="16" rx="2"/><circle cx="8" cy="11" r="2.5"/><path d="M4 18c0-2 1.5-3 4-3s4 1 4 3"/><line x1="15" y1="9" x2="20" y2="9"/><line x1="15" y1="13" x2="20" y2="13"/>
+                    </svg>
+                </a>
+            </span>
+        </h1>
 
         <!-- Tagline with inline links - content replaced by JavaScript based on language -->
         <p class="tagline" id="tagline">Ich arbeite in der Medienbranche und rede im Job gern über gute Kommunikation und was Zielgruppen brauchen. Ab und zu <a href="https://www.schongeil.de/" target="_blank" rel="noopener noreferrer">blogge</a> ich und <a href="https://soundcloud.com/livicxyz" target="_blank" rel="noopener noreferrer">lege</a> Platten auf.</p>
@@ -392,11 +413,106 @@ if ($overlay === 'impressum' || $overlay === 'legal' || $overlay === 'kolofon') 
         </div>
     </div>
 
+    <!-- About Overlay (Grounding Page) -->
+    <div class="overlay" id="about-overlay">
+        <div class="overlay-content about-content">
+            <button class="close-overlay" id="close-about-btn" aria-label="Schließen">
+                <svg width="16" height="16" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                    <line x1="2" y1="2" x2="12" y2="12"/><line x1="12" y1="2" x2="2" y2="12"/>
+                </svg>
+            </button>
+            <h2 id="about-title">Über Oliver Eichhof</h2>
+
+            <section class="about-section">
+                <p id="about-summary">Digitaler Marken- und Kommunikationsstratege aus Hamburg mit mehr als 15 Jahren Erfahrung in integrierter Kampagnenführung, Employer Branding und B2B-Kommunikation.</p>
+            </section>
+
+            <section class="about-section">
+                <h3 id="about-facts-title">Steckbrief</h3>
+                <dl class="about-facts" id="about-facts">
+                    <dt id="about-dt-role">Rolle</dt>
+                    <dd id="about-dd-role">Leiter Marketing, REGIOCAST GmbH & Co. KG</dd>
+                    <dt id="about-dt-location">Standort</dt>
+                    <dd id="about-dd-location">Hamburg</dd>
+                    <dt id="about-dt-born">Geboren</dt>
+                    <dd id="about-dd-born">1979 in Bremerhaven</dd>
+                    <dt id="about-dt-languages">Sprachen</dt>
+                    <dd id="about-dd-languages">Deutsch (Muttersprache), Englisch (fließend), Dänisch (Grundkenntnisse)</dd>
+                </dl>
+            </section>
+
+            <section class="about-section">
+                <h3 id="about-career-title">Beruflicher Werdegang</h3>
+                <ul class="about-career" id="about-career">
+                    <li><strong>Leiter Marketing</strong> — REGIOCAST GmbH & Co. KG <span class="about-year">seit 2025</span></li>
+                    <li><strong>Strategy Director Marketing & Digital</strong> — wirDesign communication AG <span class="about-year">2023–2025</span></li>
+                    <li><strong>Digital Strategist</strong> — Freiberuflich <span class="about-year">2020–2022</span></li>
+                    <li><strong>Unit Lead Marketing & Concepts</strong> — rock&stars digital GmbH <span class="about-year">2019–2020</span></li>
+                    <li><strong>Senior Consultant Digital</strong> — DOKYO GmbH <span class="about-year">2014–2018</span></li>
+                    <li><strong>Etatdirektor</strong> — beebop media ag <span class="about-year">2010–2014</span></li>
+                    <li><strong>Social Media Manager</strong> — Scholz & Friends <span class="about-year">2009–2010</span></li>
+                </ul>
+            </section>
+
+            <section class="about-section">
+                <h3 id="about-skills-title">Kernkompetenzen</h3>
+                <p id="about-skills">Markenführung, Employer Branding, Kommunikationsstrategie, digitale Kampagnenentwicklung, Journey Design, KPI-Frameworks, GEO/SEO/SEA, Marketing Automation, KI-gestützte Workflows, Stakeholder Management, Content-Strategie, B2B/B2C-Kommunikation.</p>
+            </section>
+
+            <section class="about-section">
+                <h3 id="about-projects-title">Projekte & Präsenzen</h3>
+                <ul class="about-links" id="about-projects">
+                    <li><a href="https://www.schongeil.de/" target="_blank" rel="noopener noreferrer">schongeil.de</a> <span id="about-project-blog">— Musikblog</span></li>
+                    <li><a href="https://soundcloud.com/livicxyz" target="_blank" rel="noopener noreferrer">SoundCloud</a> <span id="about-project-dj">— DJ-Mixes als livicxyz</span></li>
+                    <li><a href="https://github.com/ollrich" target="_blank" rel="noopener noreferrer">GitHub</a> <span id="about-project-code">— Open-Source-Projekte</span></li>
+                    <li><a href="https://unsplash.com/@ollrich" target="_blank" rel="noopener noreferrer">Unsplash</a> <span id="about-project-photo">— Fotografie</span></li>
+                </ul>
+            </section>
+
+            <section class="about-section">
+                <h3 id="about-mentions-title">Erwähnungen</h3>
+                <ul class="about-links" id="about-mentions">
+                    <li><a href="https://www.wuv.de/Archiv/Wie-man-mit-Messenger-f%C3%BCr-die-Ehe-f%C3%BCr-alle-wirbt" target="_blank" rel="noopener noreferrer">W&V</a> — Ben & Jerry's „Ehe für alle"</li>
+                    <li><a href="https://www.wuv.de/Archiv/So-tickt-die-Zukunft-Dokyo-auf-der-%22The-Next-Web-Conference%22" target="_blank" rel="noopener noreferrer">W&V</a> — DOKYO auf der Next Web Conference</li>
+                    <li><a href="https://www.testspiel.de/oliver-polak-interview-2/290215/" target="_blank" rel="noopener noreferrer">testspiel.de</a> — Oliver Polak Interview</li>
+                    <li><a href="https://www.testspiel.de/kid-simius-interview/276764/" target="_blank" rel="noopener noreferrer">testspiel.de</a> — Kid Simius Interview</li>
+                </ul>
+            </section>
+
+            <section class="about-section">
+                <h3 id="about-faq-title">Häufig gefragt</h3>
+                <div class="about-faq" id="about-faq">
+                    <details>
+                        <summary id="about-q1">Wer ist Oliver Eichhof?</summary>
+                        <p id="about-a1">Oliver Eichhof ist ein Kommunikationsspezialist aus Hamburg. Er arbeitet als Leiter Marketing bei REGIOCAST und verfügt über mehr als 15 Jahre Erfahrung in digitaler Markenführung, Kampagnenentwicklung und B2B-Kommunikation.</p>
+                    </details>
+                    <details>
+                        <summary id="about-q2">Was macht Oliver Eichhof beruflich?</summary>
+                        <p id="about-a2">Er leitet das Marketing bei REGIOCAST, einem der größten deutschen Radiounternehmen. Zuvor war er Strategy Director bei wirDesign und beriet als freiberuflicher Digital Strategist Unternehmen in FMCG, Retail und Lifestyle.</p>
+                    </details>
+                    <details>
+                        <summary id="about-q3">In welchen Bereichen ist Oliver Eichhof spezialisiert?</summary>
+                        <p id="about-a3">Seine Schwerpunkte liegen in Markenführung, Employer Branding, integrierter Kampagnenentwicklung, GEO/SEO/SEA, KI-gestützten Workflows und datengestütztem Journey Design.</p>
+                    </details>
+                    <details>
+                        <summary id="about-q4">Wo findet man Oliver Eichhof online?</summary>
+                        <p id="about-a4">Auf LinkedIn, seinem Blog schongeil.de, Instagram, Bluesky, Mastodon und GitHub. Alle Links sind auf eichhof.me versammelt.</p>
+                    </details>
+                    <details>
+                        <summary id="about-q5">Was ist schongeil.de?</summary>
+                        <p id="about-a5">schongeil.de ist Oliver Eichhofs persönlicher Blog über Musik und Medien, den er seit über einem Jahrzehnt betreibt. Außerdem veröffentlicht er dort DJ-Mixes unter dem Alias livicxyz.</p>
+                    </details>
+                </div>
+            </section>
+        </div>
+    </div>
+
     <!-- JavaScript Modules -->
     <script src="/js/theme.js"></script>
     <script src="/js/language.js"></script>
     <script src="/js/overlay.js"></script>
     <script src="/js/contact.js"></script>
+    <script src="/js/about.js"></script>
     <script src="/js/easter-egg.js"></script>
     <script src="/js/link-preview.js"></script>
 </body>

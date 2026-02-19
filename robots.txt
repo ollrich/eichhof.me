@@ -1,5 +1,8 @@
 User-agent: *
 Allow: /
+Disallow: /ueber
+Disallow: /en/about
+Disallow: /dk/om
 
 # Blockierte Bots
 User-agent: Yandex

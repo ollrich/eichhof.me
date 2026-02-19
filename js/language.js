@@ -68,7 +68,40 @@
             contactErrorMessage: "Bitte gib eine Nachricht ein (mind. 10 Zeichen).",
             contactErrorRateLimit: "Zu viele Anfragen. Bitte warte einige Minuten.",
             contactPrivacy: "Deine Daten werden nur zur Beantwortung verwendet. Zur Spam-Abwehr wird deine IP temporär verarbeitet, aber nicht gespeichert.",
-            contactFallback: "Oder direkt per E-Mail:"
+            contactFallback: "Oder direkt per E-Mail:",
+            // About overlay
+            aboutTitle: "Über Oliver Eichhof",
+            aboutSummary: "Digitaler Marken- und Kommunikationsstratege aus Hamburg mit mehr als 15 Jahren Erfahrung in integrierter Kampagnenführung, Employer Branding und B2B-Kommunikation.",
+            aboutFactsTitle: "Steckbrief",
+            aboutDtRole: "Rolle",
+            aboutDdRole: "Leiter Marketing, REGIOCAST GmbH & Co. KG",
+            aboutDtLocation: "Standort",
+            aboutDdLocation: "Hamburg",
+            aboutDtBorn: "Geboren",
+            aboutDdBorn: "1979 in Bremerhaven",
+            aboutDtLanguages: "Sprachen",
+            aboutDdLanguages: "Deutsch (Muttersprache), Englisch (fließend), Dänisch (Grundkenntnisse)",
+            aboutCareerTitle: "Beruflicher Werdegang",
+            aboutSkillsTitle: "Kernkompetenzen",
+            aboutSkills: "Markenführung, Employer Branding, Kommunikationsstrategie, digitale Kampagnenentwicklung, Journey Design, KPI-Frameworks, GEO/SEO/SEA, Marketing Automation, KI-gestützte Workflows, Stakeholder Management, Content-Strategie, B2B/B2C-Kommunikation.",
+            aboutProjectsTitle: "Projekte & Präsenzen",
+            aboutProjectBlog: "— Musikblog",
+            aboutProjectDj: "— DJ-Mixes als livicxyz",
+            aboutProjectCode: "— Open-Source-Projekte",
+            aboutProjectPhoto: "— Fotografie",
+            aboutMentionsTitle: "Erwähnungen",
+            aboutFaqTitle: "Häufig gefragt",
+            aboutQ1: "Wer ist Oliver Eichhof?",
+            aboutA1: "Oliver Eichhof ist ein Kommunikationsspezialist aus Hamburg. Er arbeitet als Leiter Marketing bei REGIOCAST und verfügt über mehr als 15 Jahre Erfahrung in digitaler Markenführung, Kampagnenentwicklung und B2B-Kommunikation.",
+            aboutQ2: "Was macht Oliver Eichhof beruflich?",
+            aboutA2: "Er leitet das Marketing bei REGIOCAST, einem der größten deutschen Radiounternehmen. Zuvor war er Strategy Director bei wirDesign und beriet als freiberuflicher Digital Strategist Unternehmen in FMCG, Retail und Lifestyle.",
+            aboutQ3: "In welchen Bereichen ist Oliver Eichhof spezialisiert?",
+            aboutA3: "Seine Schwerpunkte liegen in Markenführung, Employer Branding, integrierter Kampagnenentwicklung, GEO/SEO/SEA, KI-gestützten Workflows und datengestütztem Journey Design.",
+            aboutQ4: "Wo findet man Oliver Eichhof online?",
+            aboutA4: "Auf LinkedIn, seinem Blog schongeil.de, Instagram, Bluesky, Mastodon und GitHub. Alle Links sind auf eichhof.me versammelt.",
+            aboutQ5: "Was ist schongeil.de?",
+            aboutA5: "schongeil.de ist Oliver Eichhofs persönlicher Blog über Musik und Medien, den er seit über einem Jahrzehnt betreibt. Außerdem veröffentlicht er dort DJ-Mixes unter dem Alias livicxyz.",
+            aboutTriggerLabel: "Über mich"
         },
         en: {
             title: "Legal Notice",
@@ -109,7 +142,40 @@
             contactErrorMessage: "Please enter a message (at least 10 characters).",
             contactErrorRateLimit: "Too many requests. Please wait a few minutes.",
             contactPrivacy: "Your data will only be used to respond. Your IP is temporarily processed for spam protection but not stored.",
-            contactFallback: "Or email directly:"
+            contactFallback: "Or email directly:",
+            // About overlay
+            aboutTitle: "About Oliver Eichhof",
+            aboutSummary: "Digital brand and communication strategist from Hamburg with over 15 years of experience in integrated campaign management, employer branding and B2B communication.",
+            aboutFactsTitle: "Key Facts",
+            aboutDtRole: "Role",
+            aboutDdRole: "Head of Marketing, REGIOCAST GmbH & Co. KG",
+            aboutDtLocation: "Location",
+            aboutDdLocation: "Hamburg, Germany",
+            aboutDtBorn: "Born",
+            aboutDdBorn: "1979 in Bremerhaven, Germany",
+            aboutDtLanguages: "Languages",
+            aboutDdLanguages: "German (native), English (fluent), Danish (beginner)",
+            aboutCareerTitle: "Career",
+            aboutSkillsTitle: "Core Competencies",
+            aboutSkills: "Brand management, employer branding, communication strategy, digital campaign development, journey design, KPI frameworks, GEO/SEO/SEA, marketing automation, AI-powered workflows, stakeholder management, content strategy, B2B/B2C communication.",
+            aboutProjectsTitle: "Projects & Profiles",
+            aboutProjectBlog: "— music blog",
+            aboutProjectDj: "— DJ mixes as livicxyz",
+            aboutProjectCode: "— open source projects",
+            aboutProjectPhoto: "— photography",
+            aboutMentionsTitle: "Mentions",
+            aboutFaqTitle: "Frequently Asked",
+            aboutQ1: "Who is Oliver Eichhof?",
+            aboutA1: "Oliver Eichhof is a communication specialist from Hamburg, Germany. He works as Head of Marketing at REGIOCAST and has over 15 years of experience in digital brand management, campaign development and B2B communication.",
+            aboutQ2: "What does Oliver Eichhof do professionally?",
+            aboutA2: "He heads marketing at REGIOCAST, one of Germany's largest radio companies. Previously, he was Strategy Director at wirDesign and advised companies in FMCG, retail and lifestyle as a freelance digital strategist.",
+            aboutQ3: "What are Oliver Eichhof's specialisations?",
+            aboutA3: "His focus areas include brand management, employer branding, integrated campaign development, GEO/SEO/SEA, AI-powered workflows and data-driven journey design.",
+            aboutQ4: "Where can you find Oliver Eichhof online?",
+            aboutA4: "On LinkedIn, his blog schongeil.de, Instagram, Bluesky, Mastodon and GitHub. All links are collected at eichhof.me.",
+            aboutQ5: "What is schongeil.de?",
+            aboutA5: "schongeil.de is Oliver Eichhof's personal blog about music and media, which he has been running for over a decade. He also publishes DJ mixes there under the alias livicxyz.",
+            aboutTriggerLabel: "About me"
         },
         da: {
             title: "Kolofon",
@@ -150,7 +216,40 @@
             contactErrorMessage: "Indtast venligst en besked (mindst 10 tegn).",
             contactErrorRateLimit: "For mange anmodninger. Vent venligst et par minutter.",
             contactPrivacy: "Dine data bruges kun til at besvare. Din IP behandles midlertidigt til spam-beskyttelse, men gemmes ikke.",
-            contactFallback: "Eller send e-mail direkte:"
+            contactFallback: "Eller send e-mail direkte:",
+            // About overlay
+            aboutTitle: "Om Oliver Eichhof",
+            aboutSummary: "Digital brand- og kommunikationsstrateg fra Hamborg med over 15 års erfaring inden for integreret kampagneledelse, employer branding og B2B-kommunikation.",
+            aboutFactsTitle: "Nøglefakta",
+            aboutDtRole: "Rolle",
+            aboutDdRole: "Marketingchef, REGIOCAST GmbH & Co. KG",
+            aboutDtLocation: "Placering",
+            aboutDdLocation: "Hamborg, Tyskland",
+            aboutDtBorn: "Født",
+            aboutDdBorn: "1979 i Bremerhaven, Tyskland",
+            aboutDtLanguages: "Sprog",
+            aboutDdLanguages: "Tysk (modersmål), Engelsk (flydende), Dansk (begynder)",
+            aboutCareerTitle: "Karriere",
+            aboutSkillsTitle: "Kernekompetencer",
+            aboutSkills: "Brandledelse, employer branding, kommunikationsstrategi, digital kampagneudvikling, journey design, KPI-frameworks, GEO/SEO/SEA, marketing automation, AI-drevne workflows, stakeholder management, content-strategi, B2B/B2C-kommunikation.",
+            aboutProjectsTitle: "Projekter & Profiler",
+            aboutProjectBlog: "— musikblog",
+            aboutProjectDj: "— DJ-mixes som livicxyz",
+            aboutProjectCode: "— open source-projekter",
+            aboutProjectPhoto: "— fotografi",
+            aboutMentionsTitle: "Omtaler",
+            aboutFaqTitle: "Ofte spurgt",
+            aboutQ1: "Hvem er Oliver Eichhof?",
+            aboutA1: "Oliver Eichhof er en kommunikationsspecialist fra Hamborg, Tyskland. Han arbejder som marketingchef hos REGIOCAST og har over 15 års erfaring inden for digital brandledelse, kampagneudvikling og B2B-kommunikation.",
+            aboutQ2: "Hvad laver Oliver Eichhof professionelt?",
+            aboutA2: "Han leder marketing hos REGIOCAST, et af Tysklands største radioselskaber. Tidligere var han Strategy Director hos wirDesign og rådgav virksomheder inden for FMCG, detail og livsstil som freelance digital strateg.",
+            aboutQ3: "Hvad er Oliver Eichhofs specialiseringer?",
+            aboutA3: "Hans fokusområder omfatter brandledelse, employer branding, integreret kampagneudvikling, GEO/SEO/SEA, AI-drevne workflows og datadrevet journey design.",
+            aboutQ4: "Hvor kan man finde Oliver Eichhof online?",
+            aboutA4: "På LinkedIn, hans blog schongeil.de, Instagram, Bluesky, Mastodon og GitHub. Alle links er samlet på eichhof.me.",
+            aboutQ5: "Hvad er schongeil.de?",
+            aboutA5: "schongeil.de er Oliver Eichhofs personlige blog om musik og medier, som han har drevet i over et årti. Han udgiver også DJ-mixes der under aliaset livicxyz.",
+            aboutTriggerLabel: "Om mig"
         }
     };
 
@@ -303,6 +402,42 @@
             contactEmailLink.textContent = contactFallbackEmail;
             contactEmailLink.href = 'mailto:' + contactFallbackEmail;
         }
+
+        // Update about overlay content
+        updateElement('about-title', content.aboutTitle);
+        updateElement('about-summary', content.aboutSummary);
+        updateElement('about-facts-title', content.aboutFactsTitle);
+        updateElement('about-dt-role', content.aboutDtRole);
+        updateElement('about-dd-role', content.aboutDdRole);
+        updateElement('about-dt-location', content.aboutDtLocation);
+        updateElement('about-dd-location', content.aboutDdLocation);
+        updateElement('about-dt-born', content.aboutDtBorn);
+        updateElement('about-dd-born', content.aboutDdBorn);
+        updateElement('about-dt-languages', content.aboutDtLanguages);
+        updateElement('about-dd-languages', content.aboutDdLanguages);
+        updateElement('about-career-title', content.aboutCareerTitle);
+        updateElement('about-skills-title', content.aboutSkillsTitle);
+        updateElement('about-skills', content.aboutSkills);
+        updateElement('about-projects-title', content.aboutProjectsTitle);
+        updateElement('about-project-blog', content.aboutProjectBlog);
+        updateElement('about-project-dj', content.aboutProjectDj);
+        updateElement('about-project-code', content.aboutProjectCode);
+        updateElement('about-project-photo', content.aboutProjectPhoto);
+        updateElement('about-mentions-title', content.aboutMentionsTitle);
+        updateElement('about-faq-title', content.aboutFaqTitle);
+        updateElement('about-q1', content.aboutQ1);
+        updateElement('about-a1', content.aboutA1);
+        updateElement('about-q2', content.aboutQ2);
+        updateElement('about-a2', content.aboutA2);
+        updateElement('about-q3', content.aboutQ3);
+        updateElement('about-a3', content.aboutA3);
+        updateElement('about-q4', content.aboutQ4);
+        updateElement('about-a4', content.aboutA4);
+        updateElement('about-q5', content.aboutQ5);
+        updateElement('about-a5', content.aboutA5);
+        updateAttr('about-trigger-info', 'aria-label', content.aboutTriggerLabel);
+        updateAttr('about-trigger-card', 'aria-label', content.aboutTriggerLabel);
+        updateAttr('close-about-btn', 'aria-label', content.closeOverlay);
     }
 
     /**
@@ -320,6 +455,9 @@
             } else if (openOverlay === 'contact') {
                 const contactOverlay = document.getElementById('contact-overlay');
                 if (contactOverlay) contactOverlay.classList.add('active');
+            } else if (openOverlay === 'about') {
+                const aboutOverlay = document.getElementById('about-overlay');
+                if (aboutOverlay) aboutOverlay.classList.add('active');
             }
         }, 100);
     }

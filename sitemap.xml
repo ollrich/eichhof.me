@@ -71,6 +71,39 @@
     <priority>0.2</priority>
   </url>
 
+  <!-- German About (Grounding Page) -->
+  <url>
+    <loc>https://eichhof.me/ueber</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://eichhof.me/ueber"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://eichhof.me/en/about"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://eichhof.me/dk/om"/>
+    <lastmod>2026-02-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- English About (Grounding Page) -->
+  <url>
+    <loc>https://eichhof.me/en/about</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://eichhof.me/ueber"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://eichhof.me/en/about"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://eichhof.me/dk/om"/>
+    <lastmod>2026-02-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Danish About (Grounding Page) -->
+  <url>
+    <loc>https://eichhof.me/dk/om</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://eichhof.me/ueber"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://eichhof.me/en/about"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://eichhof.me/dk/om"/>
+    <lastmod>2026-02-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
   <!-- German Contact -->
   <url>
     <loc>https://eichhof.me/kontakt</loc>

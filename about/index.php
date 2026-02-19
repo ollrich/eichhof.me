@@ -1,0 +1,364 @@
+<?php
+/**
+ * About / Grounding Page — Multilingual
+ * ======================================
+ * Standalone crawlable page with full Person + FAQPage JSON-LD.
+ * Human visitors are redirected to the main site with the about overlay.
+ *
+ * URLs:
+ * - /ueber      → German
+ * - /en/about   → English
+ * - /dk/om      → Danish
+ */
+
+$lang = $_GET['lang'] ?? 'de';
+if (!in_array($lang, ['de', 'en', 'da'])) {
+    $lang = 'de';
+}
+
+$meta = [
+    'de' => [
+        'htmlLang' => 'de',
+        'title' => 'Über Oliver Eichhof – Kommunikationsspezialist aus Hamburg',
+        'description' => 'Digitaler Marken- und Kommunikationsstratege aus Hamburg. Leiter Marketing bei REGIOCAST. Über 15 Jahre Erfahrung in Kampagnenführung, Employer Branding und B2B-Kommunikation.',
+        'ogDescription' => 'Digitaler Marken- und Kommunikationsstratege aus Hamburg. Leiter Marketing bei REGIOCAST.',
+        'ogUrl' => 'https://eichhof.me/ueber',
+        'locale' => 'de_DE',
+        'canonical' => 'https://eichhof.me/ueber',
+        'redirect' => '/?lang=de&overlay=ueber',
+        'homeUrl' => 'https://eichhof.me/',
+        'jobTitle' => 'Leiter Marketing',
+        'personDescription' => 'Digitaler Marken- und Kommunikationsstratege aus Hamburg mit mehr als 15 Jahren Erfahrung in integrierter Kampagnenführung, Employer Branding und B2B-Kommunikation.',
+        'inLanguage' => 'de',
+        'birthPlace' => 'Bremerhaven',
+        'nationality' => 'Deutschland',
+        'homeLocation' => 'Hamburg',
+        'occupationName' => 'Leiter Marketing',
+        'occupationLocation' => 'Hamburg',
+        'knowsAbout' => '["Marketing", "Markenentwicklung", "Zielgruppenanalyse", "Kampagnenplanung", "Kommunikationsstrategie", "Content-Strategie", "Digitale Kommunikation", "Employer Branding", "B2B-Kommunikation", "Journey Design", "KPI-Frameworks", "GEO/SEO/SEA", "Marketing Automation", "KI-gestützte Workflows", "Radio", "Audio", "Streaming Media", "Musik", "Musikmedien", "Bloggen"]',
+        // Page content
+        'h1' => 'Über Oliver Eichhof',
+        'summary' => 'Digitaler Marken- und Kommunikationsstratege aus Hamburg mit mehr als 15 Jahren Erfahrung in integrierter Kampagnenführung, Employer Branding und B2B-Kommunikation.',
+        'factsTitle' => 'Steckbrief',
+        'dtRole' => 'Rolle', 'ddRole' => 'Leiter Marketing, REGIOCAST GmbH & Co. KG',
+        'dtLocation' => 'Standort', 'ddLocation' => 'Hamburg',
+        'dtBorn' => 'Geboren', 'ddBorn' => '1979 in Bremerhaven',
+        'dtLanguages' => 'Sprachen', 'ddLanguages' => 'Deutsch (Muttersprache), Englisch (fließend), Dänisch (Grundkenntnisse)',
+        'careerTitle' => 'Beruflicher Werdegang',
+        'career' => [
+            ['Leiter Marketing', 'REGIOCAST GmbH & Co. KG', 'seit 2025'],
+            ['Strategy Director Marketing & Digital', 'wirDesign communication AG', '2023–2025'],
+            ['Digital Strategist', 'Freiberuflich', '2020–2022'],
+            ['Unit Lead Marketing & Concepts', 'rock&stars digital GmbH', '2019–2020'],
+            ['Senior Consultant Digital', 'DOKYO GmbH', '2014–2018'],
+            ['Etatdirektor', 'beebop media ag', '2010–2014'],
+            ['Social Media Manager', 'Scholz & Friends', '2009–2010'],
+        ],
+        'skillsTitle' => 'Kernkompetenzen',
+        'skills' => 'Markenführung, Employer Branding, Kommunikationsstrategie, digitale Kampagnenentwicklung, Journey Design, KPI-Frameworks, GEO/SEO/SEA, Marketing Automation, KI-gestützte Workflows, Stakeholder Management, Content-Strategie, B2B/B2C-Kommunikation.',
+        'projectsTitle' => 'Projekte & Präsenzen',
+        'projects' => [
+            ['https://www.schongeil.de/', 'schongeil.de', 'Musikblog'],
+            ['https://soundcloud.com/livicxyz', 'SoundCloud', 'DJ-Mixes als livicxyz'],
+            ['https://github.com/ollrich', 'GitHub', 'Open-Source-Projekte'],
+            ['https://unsplash.com/@ollrich', 'Unsplash', 'Fotografie'],
+        ],
+        'mentionsTitle' => 'Erwähnungen',
+        'mentions' => [
+            ['https://www.wuv.de/Archiv/Wie-man-mit-Messenger-f%C3%BCr-die-Ehe-f%C3%BCr-alle-wirbt', 'W&V', 'Ben & Jerry\'s „Ehe für alle"'],
+            ['https://www.wuv.de/Archiv/So-tickt-die-Zukunft-Dokyo-auf-der-%22The-Next-Web-Conference%22', 'W&V', 'DOKYO auf der Next Web Conference'],
+            ['https://www.testspiel.de/oliver-polak-interview-2/290215/', 'testspiel.de', 'Oliver Polak Interview'],
+            ['https://www.testspiel.de/kid-simius-interview/276764/', 'testspiel.de', 'Kid Simius Interview'],
+        ],
+        'faqTitle' => 'Häufig gefragt',
+        'faq' => [
+            ['Wer ist Oliver Eichhof?', 'Oliver Eichhof ist ein Kommunikationsspezialist aus Hamburg. Er arbeitet als Leiter Marketing bei REGIOCAST und verfügt über mehr als 15 Jahre Erfahrung in digitaler Markenführung, Kampagnenentwicklung und B2B-Kommunikation.'],
+            ['Was macht Oliver Eichhof beruflich?', 'Er leitet das Marketing bei REGIOCAST, einem der größten deutschen Radiounternehmen. Zuvor war er Strategy Director bei wirDesign und beriet als freiberuflicher Digital Strategist Unternehmen in FMCG, Retail und Lifestyle.'],
+            ['In welchen Bereichen ist Oliver Eichhof spezialisiert?', 'Seine Schwerpunkte liegen in Markenführung, Employer Branding, integrierter Kampagnenentwicklung, GEO/SEO/SEA, KI-gestützten Workflows und datengestütztem Journey Design.'],
+            ['Wo findet man Oliver Eichhof online?', 'Auf LinkedIn, seinem Blog schongeil.de, Instagram, Bluesky, Mastodon und GitHub. Alle Links sind auf eichhof.me versammelt.'],
+            ['Was ist schongeil.de?', 'schongeil.de ist Oliver Eichhofs persönlicher Blog über Musik und Medien, den er seit über einem Jahrzehnt betreibt. Außerdem veröffentlicht er dort DJ-Mixes unter dem Alias livicxyz.'],
+        ],
+    ],
+    'en' => [
+        'htmlLang' => 'en',
+        'title' => 'About Oliver Eichhof – Communication Specialist from Hamburg',
+        'description' => 'Digital brand and communication strategist from Hamburg. Head of Marketing at REGIOCAST. Over 15 years of experience in campaign management, employer branding and B2B communication.',
+        'ogDescription' => 'Digital brand and communication strategist from Hamburg. Head of Marketing at REGIOCAST.',
+        'ogUrl' => 'https://eichhof.me/en/about',
+        'locale' => 'en_GB',
+        'canonical' => 'https://eichhof.me/en/about',
+        'redirect' => '/en/?overlay=about',
+        'homeUrl' => 'https://eichhof.me/en/',
+        'jobTitle' => 'Head of Marketing',
+        'personDescription' => 'Digital brand and communication strategist from Hamburg with over 15 years of experience in integrated campaign management, employer branding and B2B communication.',
+        'inLanguage' => 'en',
+        'birthPlace' => 'Bremerhaven, Germany',
+        'nationality' => 'Germany',
+        'homeLocation' => 'Hamburg, Germany',
+        'occupationName' => 'Head of Marketing',
+        'occupationLocation' => 'Hamburg, Germany',
+        'knowsAbout' => '["Marketing", "Brand Development", "Audience Analysis", "Campaign Planning", "Communication Strategy", "Content Strategy", "Digital Communication", "Employer Branding", "B2B Communication", "Journey Design", "KPI Frameworks", "GEO/SEO/SEA", "Marketing Automation", "AI-powered Workflows", "Radio", "Audio", "Streaming Media", "Music", "Music Media", "Blogging"]',
+        'h1' => 'About Oliver Eichhof',
+        'summary' => 'Digital brand and communication strategist from Hamburg with over 15 years of experience in integrated campaign management, employer branding and B2B communication.',
+        'factsTitle' => 'Key Facts',
+        'dtRole' => 'Role', 'ddRole' => 'Head of Marketing, REGIOCAST GmbH & Co. KG',
+        'dtLocation' => 'Location', 'ddLocation' => 'Hamburg, Germany',
+        'dtBorn' => 'Born', 'ddBorn' => '1979 in Bremerhaven, Germany',
+        'dtLanguages' => 'Languages', 'ddLanguages' => 'German (native), English (fluent), Danish (beginner)',
+        'careerTitle' => 'Career',
+        'career' => [
+            ['Head of Marketing', 'REGIOCAST GmbH & Co. KG', 'since 2025'],
+            ['Strategy Director Marketing & Digital', 'wirDesign communication AG', '2023–2025'],
+            ['Digital Strategist', 'Freelance', '2020–2022'],
+            ['Unit Lead Marketing & Concepts', 'rock&stars digital GmbH', '2019–2020'],
+            ['Senior Consultant Digital', 'DOKYO GmbH', '2014–2018'],
+            ['Account Director', 'beebop media ag', '2010–2014'],
+            ['Social Media Manager', 'Scholz & Friends', '2009–2010'],
+        ],
+        'skillsTitle' => 'Core Competencies',
+        'skills' => 'Brand management, employer branding, communication strategy, digital campaign development, journey design, KPI frameworks, GEO/SEO/SEA, marketing automation, AI-powered workflows, stakeholder management, content strategy, B2B/B2C communication.',
+        'projectsTitle' => 'Projects & Profiles',
+        'projects' => [
+            ['https://www.schongeil.de/', 'schongeil.de', 'music blog'],
+            ['https://soundcloud.com/livicxyz', 'SoundCloud', 'DJ mixes as livicxyz'],
+            ['https://github.com/ollrich', 'GitHub', 'open source projects'],
+            ['https://unsplash.com/@ollrich', 'Unsplash', 'photography'],
+        ],
+        'mentionsTitle' => 'Mentions',
+        'mentions' => [
+            ['https://www.wuv.de/Archiv/Wie-man-mit-Messenger-f%C3%BCr-die-Ehe-f%C3%BCr-alle-wirbt', 'W&V', 'Ben & Jerry\'s "Marriage for All" campaign'],
+            ['https://www.wuv.de/Archiv/So-tickt-die-Zukunft-Dokyo-auf-der-%22The-Next-Web-Conference%22', 'W&V', 'DOKYO at The Next Web Conference'],
+            ['https://www.testspiel.de/oliver-polak-interview-2/290215/', 'testspiel.de', 'Oliver Polak Interview'],
+            ['https://www.testspiel.de/kid-simius-interview/276764/', 'testspiel.de', 'Kid Simius Interview'],
+        ],
+        'faqTitle' => 'Frequently Asked',
+        'faq' => [
+            ['Who is Oliver Eichhof?', 'Oliver Eichhof is a communication specialist from Hamburg, Germany. He works as Head of Marketing at REGIOCAST and has over 15 years of experience in digital brand management, campaign development and B2B communication.'],
+            ['What does Oliver Eichhof do professionally?', 'He heads marketing at REGIOCAST, one of Germany\'s largest radio companies. Previously, he was Strategy Director at wirDesign and advised companies in FMCG, retail and lifestyle as a freelance digital strategist.'],
+            ['What are Oliver Eichhof\'s specialisations?', 'His focus areas include brand management, employer branding, integrated campaign development, GEO/SEO/SEA, AI-powered workflows and data-driven journey design.'],
+            ['Where can you find Oliver Eichhof online?', 'On LinkedIn, his blog schongeil.de, Instagram, Bluesky, Mastodon and GitHub. All links are collected at eichhof.me.'],
+            ['What is schongeil.de?', 'schongeil.de is Oliver Eichhof\'s personal blog about music and media, which he has been running for over a decade. He also publishes DJ mixes there under the alias livicxyz.'],
+        ],
+    ],
+    'da' => [
+        'htmlLang' => 'da',
+        'title' => 'Om Oliver Eichhof – Kommunikationsspecialist fra Hamborg',
+        'description' => 'Digital brand- og kommunikationsstrateg fra Hamborg. Marketingchef hos REGIOCAST. Over 15 års erfaring inden for kampagneledelse, employer branding og B2B-kommunikation.',
+        'ogDescription' => 'Digital brand- og kommunikationsstrateg fra Hamborg. Marketingchef hos REGIOCAST.',
+        'ogUrl' => 'https://eichhof.me/dk/om',
+        'locale' => 'da_DK',
+        'canonical' => 'https://eichhof.me/dk/om',
+        'redirect' => '/dk/?overlay=om',
+        'homeUrl' => 'https://eichhof.me/dk/',
+        'jobTitle' => 'Marketingchef',
+        'personDescription' => 'Digital brand- og kommunikationsstrateg fra Hamborg med over 15 års erfaring inden for integreret kampagneledelse, employer branding og B2B-kommunikation.',
+        'inLanguage' => 'da',
+        'birthPlace' => 'Bremerhaven, Tyskland',
+        'nationality' => 'Tyskland',
+        'homeLocation' => 'Hamborg, Tyskland',
+        'occupationName' => 'Marketingchef',
+        'occupationLocation' => 'Hamborg, Tyskland',
+        'knowsAbout' => '["Marketing", "Brandudvikling", "Målgruppeanalyse", "Kampagneplanlægning", "Kommunikationsstrategi", "Content-strategi", "Digital kommunikation", "Employer branding", "B2B-kommunikation", "Journey design", "KPI-frameworks", "GEO/SEO/SEA", "Marketing automation", "AI-drevne workflows", "Radio", "Audio", "Streaming media", "Musik", "Musikmedier", "Blogging"]',
+        'h1' => 'Om Oliver Eichhof',
+        'summary' => 'Digital brand- og kommunikationsstrateg fra Hamborg med over 15 års erfaring inden for integreret kampagneledelse, employer branding og B2B-kommunikation.',
+        'factsTitle' => 'Nøglefakta',
+        'dtRole' => 'Rolle', 'ddRole' => 'Marketingchef, REGIOCAST GmbH & Co. KG',
+        'dtLocation' => 'Placering', 'ddLocation' => 'Hamborg, Tyskland',
+        'dtBorn' => 'Født', 'ddBorn' => '1979 i Bremerhaven, Tyskland',
+        'dtLanguages' => 'Sprog', 'ddLanguages' => 'Tysk (modersmål), Engelsk (flydende), Dansk (begynder)',
+        'careerTitle' => 'Karriere',
+        'career' => [
+            ['Marketingchef', 'REGIOCAST GmbH & Co. KG', 'siden 2025'],
+            ['Strategy Director Marketing & Digital', 'wirDesign communication AG', '2023–2025'],
+            ['Digital Strategist', 'Freelance', '2020–2022'],
+            ['Unit Lead Marketing & Concepts', 'rock&stars digital GmbH', '2019–2020'],
+            ['Senior Consultant Digital', 'DOKYO GmbH', '2014–2018'],
+            ['Account Director', 'beebop media ag', '2010–2014'],
+            ['Social Media Manager', 'Scholz & Friends', '2009–2010'],
+        ],
+        'skillsTitle' => 'Kernekompetencer',
+        'skills' => 'Brandledelse, employer branding, kommunikationsstrategi, digital kampagneudvikling, journey design, KPI-frameworks, GEO/SEO/SEA, marketing automation, AI-drevne workflows, stakeholder management, content-strategi, B2B/B2C-kommunikation.',
+        'projectsTitle' => 'Projekter & Profiler',
+        'projects' => [
+            ['https://www.schongeil.de/', 'schongeil.de', 'musikblog'],
+            ['https://soundcloud.com/livicxyz', 'SoundCloud', 'DJ-mixes som livicxyz'],
+            ['https://github.com/ollrich', 'GitHub', 'open source-projekter'],
+            ['https://unsplash.com/@ollrich', 'Unsplash', 'fotografi'],
+        ],
+        'mentionsTitle' => 'Omtaler',
+        'mentions' => [
+            ['https://www.wuv.de/Archiv/Wie-man-mit-Messenger-f%C3%BCr-die-Ehe-f%C3%BCr-alle-wirbt', 'W&V', 'Ben & Jerry\'s "Ægteskab for alle"-kampagne'],
+            ['https://www.wuv.de/Archiv/So-tickt-die-Zukunft-Dokyo-auf-der-%22The-Next-Web-Conference%22', 'W&V', 'DOKYO på The Next Web Conference'],
+            ['https://www.testspiel.de/oliver-polak-interview-2/290215/', 'testspiel.de', 'Oliver Polak Interview'],
+            ['https://www.testspiel.de/kid-simius-interview/276764/', 'testspiel.de', 'Kid Simius Interview'],
+        ],
+        'faqTitle' => 'Ofte spurgt',
+        'faq' => [
+            ['Hvem er Oliver Eichhof?', 'Oliver Eichhof er en kommunikationsspecialist fra Hamborg, Tyskland. Han arbejder som marketingchef hos REGIOCAST og har over 15 års erfaring inden for digital brandledelse, kampagneudvikling og B2B-kommunikation.'],
+            ['Hvad laver Oliver Eichhof professionelt?', 'Han leder marketing hos REGIOCAST, et af Tysklands største radioselskaber. Tidligere var han Strategy Director hos wirDesign og rådgav virksomheder inden for FMCG, detail og livsstil som freelance digital strateg.'],
+            ['Hvad er Oliver Eichhofs specialiseringer?', 'Hans fokusområder omfatter brandledelse, employer branding, integreret kampagneudvikling, GEO/SEO/SEA, AI-drevne workflows og datadrevet journey design.'],
+            ['Hvor kan man finde Oliver Eichhof online?', 'På LinkedIn, hans blog schongeil.de, Instagram, Bluesky, Mastodon og GitHub. Alle links er samlet på eichhof.me.'],
+            ['Hvad er schongeil.de?', 'schongeil.de er Oliver Eichhofs personlige blog om musik og medier, som han har drevet i over et årti. Han udgiver også DJ-mixes der under aliaset livicxyz.'],
+        ],
+    ],
+];
+
+$m = $meta[$lang];
+$e = fn($s) => htmlspecialchars($s, ENT_QUOTES, 'UTF-8');
+?>
+<!DOCTYPE html>
+<html lang="<?= $m['htmlLang'] ?>">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><?= $e($m['title']) ?></title>
+    <meta name="description" content="<?= $e($m['description']) ?>">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Oliver Eichhof">
+
+    <meta property="og:title" content="<?= $e($m['title']) ?>">
+    <meta property="og:description" content="<?= $e($m['ogDescription']) ?>">
+    <meta property="og:image" content="https://eichhof.me/images/og-image.png">
+    <meta property="og:url" content="<?= $m['ogUrl'] ?>">
+    <meta property="og:type" content="profile">
+    <meta property="og:locale" content="<?= $m['locale'] ?>">
+
+    <link rel="canonical" href="<?= $m['canonical'] ?>">
+    <link rel="alternate" hreflang="de" href="https://eichhof.me/ueber">
+    <link rel="alternate" hreflang="en" href="https://eichhof.me/en/about">
+    <link rel="alternate" hreflang="da" href="https://eichhof.me/dk/om">
+    <link rel="alternate" hreflang="x-default" href="https://eichhof.me/ueber">
+
+    <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/favicons/favicon180.png">
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "@id": "https://eichhof.me/#person",
+        "name": "Oliver Eichhof",
+        "givenName": "Oliver",
+        "familyName": "Eichhof",
+        "url": "https://eichhof.me/",
+        "image": "https://eichhof.me/images/oliver-eichhof.webp",
+        "jobTitle": "<?= $e($m['jobTitle']) ?>",
+        "description": "<?= $e($m['personDescription']) ?>",
+        "inLanguage": "<?= $m['inLanguage'] ?>",
+        "birthPlace": { "@type": "Place", "name": "<?= $e($m['birthPlace']) ?>" },
+        "birthDate": "1979",
+        "homeLocation": { "@type": "Place", "name": "<?= $e($m['homeLocation']) ?>" },
+        "nationality": { "@type": "Country", "name": "<?= $e($m['nationality']) ?>" },
+        "knowsLanguage": ["de", "en", "da"],
+        "knowsAbout": <?= $m['knowsAbout'] ?>,
+        "worksFor": {
+            "@type": "Organization",
+            "name": "REGIOCAST GmbH & Co. KG",
+            "url": "https://www.regiocast.de/"
+        },
+        "alumniOf": [
+            { "@type": "EducationalOrganization", "name": "Hochschule Bremerhaven" }
+        ],
+        "hasOccupation": [
+            {
+                "@type": "Occupation",
+                "name": "<?= $e($m['occupationName']) ?>",
+                "occupationLocation": { "@type": "Place", "name": "<?= $e($m['occupationLocation']) ?>" }
+            }
+        ],
+        "sameAs": [
+            "https://www.linkedin.com/in/olivereichhof",
+            "https://www.xing.com/profile/Oliver_Eichhof2/",
+            "https://www.schongeil.de/",
+            "https://github.com/ollrich",
+            "https://bsky.app/profile/ollri.ch",
+            "https://norden.social/@olli",
+            "https://www.instagram.com/ollri.ch/",
+            "https://soundcloud.com/livicxyz",
+            "https://www.youtube.com/@schongeilDE",
+            "https://unsplash.com/@ollrich"
+        ],
+        "subjectOf": [
+            { "@type": "Article", "url": "https://www.testspiel.de/oliver-polak-interview-2/290215/" },
+            { "@type": "Article", "url": "https://www.testspiel.de/kid-simius-interview/276764/" },
+            { "@type": "Article", "url": "https://www.wuv.de/Archiv/Wie-man-mit-Messenger-f%C3%BCr-die-Ehe-f%C3%BCr-alle-wirbt" },
+            { "@type": "Article", "url": "https://www.wuv.de/Archiv/So-tickt-die-Zukunft-Dokyo-auf-der-%22The-Next-Web-Conference%22" }
+        ]
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+<?php foreach ($m['faq'] as $i => $qa): ?>
+            {
+                "@type": "Question",
+                "name": "<?= $e($qa[0]) ?>",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "<?= $e($qa[1]) ?>"
+                }
+            }<?= $i < count($m['faq']) - 1 ? ',' : '' ?>
+
+<?php endforeach; ?>
+        ]
+    }
+    </script>
+
+    <meta http-equiv="refresh" content="0;url=<?= $e($m['redirect']) ?>">
+</head>
+<body>
+    <main>
+        <article>
+            <h1><?= $e($m['h1']) ?></h1>
+            <p><?= $e($m['summary']) ?></p>
+
+            <h2><?= $e($m['factsTitle']) ?></h2>
+            <dl>
+                <dt><?= $e($m['dtRole']) ?></dt><dd><?= $e($m['ddRole']) ?></dd>
+                <dt><?= $e($m['dtLocation']) ?></dt><dd><?= $e($m['ddLocation']) ?></dd>
+                <dt><?= $e($m['dtBorn']) ?></dt><dd><?= $e($m['ddBorn']) ?></dd>
+                <dt><?= $e($m['dtLanguages']) ?></dt><dd><?= $e($m['ddLanguages']) ?></dd>
+            </dl>
+
+            <h2><?= $e($m['careerTitle']) ?></h2>
+            <ul>
+<?php foreach ($m['career'] as $c): ?>
+                <li><strong><?= $e($c[0]) ?></strong> — <?= $e($c[1]) ?> (<?= $e($c[2]) ?>)</li>
+<?php endforeach; ?>
+            </ul>
+
+            <h2><?= $e($m['skillsTitle']) ?></h2>
+            <p><?= $e($m['skills']) ?></p>
+
+            <h2><?= $e($m['projectsTitle']) ?></h2>
+            <ul>
+<?php foreach ($m['projects'] as $p): ?>
+                <li><a href="<?= $e($p[0]) ?>"><?= $e($p[1]) ?></a> — <?= $e($p[2]) ?></li>
+<?php endforeach; ?>
+            </ul>
+
+            <h2><?= $e($m['mentionsTitle']) ?></h2>
+            <ul>
+<?php foreach ($m['mentions'] as $mention): ?>
+                <li><a href="<?= $mention[0] ?>"><?= $e($mention[1]) ?></a> — <?= $e($mention[2]) ?></li>
+<?php endforeach; ?>
+            </ul>
+
+            <h2><?= $e($m['faqTitle']) ?></h2>
+            <dl>
+<?php foreach ($m['faq'] as $qa): ?>
+                <dt><?= $e($qa[0]) ?></dt>
+                <dd><?= $e($qa[1]) ?></dd>
+<?php endforeach; ?>
+            </dl>
+        </article>
+    </main>
+    <footer>
+        <p><a href="<?= $m['homeUrl'] ?>">eichhof.me</a></p>
+    </footer>
+</body>
+</html>
