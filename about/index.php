@@ -2,7 +2,7 @@
 /**
  * About / Grounding Page — Multilingual
  * ======================================
- * Standalone crawlable page with full Person + FAQPage JSON-LD.
+ * Standalone crawlable page with full Person JSON-LD.
  * Human visitors are redirected to the main site with the about overlay.
  *
  * URLs:
@@ -88,14 +88,6 @@ $meta = [
             ['https://www.testspiel.de/oliver-polak-interview-2/290215/', 'testspiel.de', 'Oliver Polak Interview'],
             ['https://www.testspiel.de/kid-simius-interview/276764/', 'testspiel.de', 'Kid Simius Interview'],
         ],
-        'faqTitle' => 'Häufig gefragt',
-        'faq' => [
-            ['Wer ist Oliver Eichhof?', 'Oliver Eichhof ist ein Kommunikationsspezialist aus Hamburg. Er arbeitet als Leiter Marketing bei REGIOCAST und verfügt über mehr als 15 Jahre Erfahrung in digitaler Markenführung, Kampagnenentwicklung und B2B-Kommunikation.'],
-            ['Was macht Oliver Eichhof beruflich?', 'Er leitet das Marketing bei REGIOCAST, einem der größten deutschen Radiounternehmen. Zuvor war er Strategy Director bei wirDesign und beriet als freiberuflicher Digital Strategist Unternehmen in FMCG, Retail und Lifestyle.'],
-            ['In welchen Bereichen ist Oliver Eichhof spezialisiert?', 'Seine Schwerpunkte liegen in Markenführung, Employer Branding, integrierter Kampagnenentwicklung, GEO/SEO/SEA, KI-gestützten Workflows und datengestütztem Journey Design.'],
-            ['Wo findet man Oliver Eichhof online?', 'Auf LinkedIn, seinem Blog schongeil.de, Instagram, Bluesky, Mastodon und GitHub. Alle Links sind auf eichhof.me versammelt.'],
-            ['Was ist schongeil.de?', 'schongeil.de ist Oliver Eichhofs persönlicher Blog, den er seit über einem Jahrzehnt betreibt. Außerdem veröffentlicht er DJ-Mixes unter dem Alias livic.'],
-        ],
     ],
     'en' => [
         'htmlLang' => 'en',
@@ -167,14 +159,6 @@ $meta = [
             ['https://www.testspiel.de/oliver-polak-interview-2/290215/', 'testspiel.de', 'Oliver Polak Interview'],
             ['https://www.testspiel.de/kid-simius-interview/276764/', 'testspiel.de', 'Kid Simius Interview'],
         ],
-        'faqTitle' => 'Frequently Asked',
-        'faq' => [
-            ['Who is Oliver Eichhof?', 'Oliver Eichhof is a communication specialist from Hamburg, Germany. He works as Head of Marketing at REGIOCAST and has over 15 years of experience in digital brand management, campaign development and B2B communication.'],
-            ['What does Oliver Eichhof do professionally?', 'He heads marketing at REGIOCAST, one of Germany\'s largest radio companies. Previously, he was Strategy Director at wirDesign and advised companies in FMCG, retail and lifestyle as a freelance digital strategist.'],
-            ['What are Oliver Eichhof\'s specialisations?', 'His focus areas include brand management, employer branding, integrated campaign development, GEO/SEO/SEA, AI-powered workflows and data-driven journey design.'],
-            ['Where can you find Oliver Eichhof online?', 'On LinkedIn, his blog schongeil.de, Instagram, Bluesky, Mastodon and GitHub. All links are collected at eichhof.me.'],
-            ['What is schongeil.de?', 'schongeil.de is Oliver Eichhof\'s personal blog, which he has been running for over a decade. He also publishes DJ mixes under the alias livic.'],
-        ],
     ],
     'da' => [
         'htmlLang' => 'da',
@@ -245,14 +229,6 @@ $meta = [
             ['https://www.wuv.de/Archiv/So-tickt-die-Zukunft-Dokyo-auf-der-%22The-Next-Web-Conference%22', 'W&V', 'DOKYO på The Next Web Conference'],
             ['https://www.testspiel.de/oliver-polak-interview-2/290215/', 'testspiel.de', 'Oliver Polak Interview'],
             ['https://www.testspiel.de/kid-simius-interview/276764/', 'testspiel.de', 'Kid Simius Interview'],
-        ],
-        'faqTitle' => 'Ofte spurgt',
-        'faq' => [
-            ['Hvem er Oliver Eichhof?', 'Oliver Eichhof er en kommunikationsspecialist fra Hamborg, Tyskland. Han arbejder som marketingchef hos REGIOCAST og har over 15 års erfaring inden for digital brandledelse, kampagneudvikling og B2B-kommunikation.'],
-            ['Hvad laver Oliver Eichhof professionelt?', 'Han leder marketing hos REGIOCAST, et af Tysklands største radioselskaber. Tidligere var han Strategy Director hos wirDesign og rådgav virksomheder inden for FMCG, detail og livsstil som freelance digital strateg.'],
-            ['Hvad er Oliver Eichhofs specialiseringer?', 'Hans fokusområder omfatter brandledelse, employer branding, integreret kampagneudvikling, GEO/SEO/SEA, AI-drevne workflows og datadrevet journey design.'],
-            ['Hvor kan man finde Oliver Eichhof online?', 'På LinkedIn, hans blog schongeil.de, Instagram, Bluesky, Mastodon og GitHub. Alle links er samlet på eichhof.me.'],
-            ['Hvad er schongeil.de?', 'schongeil.de er Oliver Eichhofs personlige blog, som han har drevet i over et årti. Han udgiver også DJ-mixes under aliaset livic.'],
         ],
     ],
 ];
@@ -345,26 +321,6 @@ $e = fn($s) => htmlspecialchars($s, ENT_QUOTES, 'UTF-8');
     }
     </script>
 
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "mainEntity": [
-<?php foreach ($m['faq'] as $i => $qa): ?>
-            {
-                "@type": "Question",
-                "name": "<?= $e($qa[0]) ?>",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "<?= $e($qa[1]) ?>"
-                }
-            }<?= $i < count($m['faq']) - 1 ? ',' : '' ?>
-
-<?php endforeach; ?>
-        ]
-    }
-    </script>
-
     <meta http-equiv="refresh" content="0;url=<?= $e($m['redirect']) ?>">
 </head>
 <body>
@@ -419,13 +375,6 @@ $e = fn($s) => htmlspecialchars($s, ENT_QUOTES, 'UTF-8');
 <?php endforeach; ?>
             </ul>
 
-            <h2><?= $e($m['faqTitle']) ?></h2>
-            <dl>
-<?php foreach ($m['faq'] as $qa): ?>
-                <dt><?= $e($qa[0]) ?></dt>
-                <dd><?= $e($qa[1]) ?></dd>
-<?php endforeach; ?>
-            </dl>
         </article>
     </main>
     <footer>

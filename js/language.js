@@ -94,17 +94,6 @@
             aboutProjectCode: "— Open-Source-Projekte",
             aboutProfilesTitle: "Präsenzen",
             aboutMentionsTitle: "Erwähnungen",
-            aboutFaqTitle: "Häufig gefragt",
-            aboutQ1: "Wer ist Oliver Eichhof?",
-            aboutA1: "Oliver Eichhof ist ein Kommunikationsspezialist aus Hamburg. Er arbeitet als Leiter Marketing bei REGIOCAST und verfügt über mehr als 15 Jahre Erfahrung in digitaler Markenführung, Kampagnenentwicklung und B2B-Kommunikation.",
-            aboutQ2: "Was macht Oliver Eichhof beruflich?",
-            aboutA2: "Er leitet das Marketing bei REGIOCAST, einem der größten deutschen Radiounternehmen. Zuvor war er Strategy Director bei wirDesign und beriet als freiberuflicher Digital Strategist Unternehmen in FMCG, Retail und Lifestyle.",
-            aboutQ3: "In welchen Bereichen ist Oliver Eichhof spezialisiert?",
-            aboutA3: "Seine Schwerpunkte liegen in Markenführung, Employer Branding, integrierter Kampagnenentwicklung, GEO/SEO/SEA, KI-gestützten Workflows und datengestütztem Journey Design.",
-            aboutQ4: "Wo findet man Oliver Eichhof online?",
-            aboutA4: "Auf LinkedIn, seinem Blog schongeil.de, Instagram, Bluesky, Mastodon und GitHub. Alle Links sind auf eichhof.me versammelt.",
-            aboutQ5: "Was ist schongeil.de?",
-            aboutA5: "schongeil.de ist Oliver Eichhofs persönlicher Blog, den er seit über einem Jahrzehnt betreibt. Außerdem veröffentlicht er DJ-Mixes unter dem Alias livic.",
             aboutTriggerLabel: "Über mich"
         },
         en: {
@@ -172,17 +161,6 @@
             aboutProjectCode: "— open source projects",
             aboutProfilesTitle: "Profiles",
             aboutMentionsTitle: "Mentions",
-            aboutFaqTitle: "Frequently Asked",
-            aboutQ1: "Who is Oliver Eichhof?",
-            aboutA1: "Oliver Eichhof is a communication specialist from Hamburg, Germany. He works as Head of Marketing at REGIOCAST and has over 15 years of experience in digital brand management, campaign development and B2B communication.",
-            aboutQ2: "What does Oliver Eichhof do professionally?",
-            aboutA2: "He heads marketing at REGIOCAST, one of Germany's largest radio companies. Previously, he was Strategy Director at wirDesign and advised companies in FMCG, retail and lifestyle as a freelance digital strategist.",
-            aboutQ3: "What are Oliver Eichhof's specialisations?",
-            aboutA3: "His focus areas include brand management, employer branding, integrated campaign development, GEO/SEO/SEA, AI-powered workflows and data-driven journey design.",
-            aboutQ4: "Where can you find Oliver Eichhof online?",
-            aboutA4: "On LinkedIn, his blog schongeil.de, Instagram, Bluesky, Mastodon and GitHub. All links are collected at eichhof.me.",
-            aboutQ5: "What is schongeil.de?",
-            aboutA5: "schongeil.de is Oliver Eichhof's personal blog, which he has been running for over a decade. He also publishes DJ mixes under the alias livic.",
             aboutTriggerLabel: "About me"
         },
         da: {
@@ -250,17 +228,6 @@
             aboutProjectCode: "— open source-projekter",
             aboutProfilesTitle: "Profiler",
             aboutMentionsTitle: "Omtaler",
-            aboutFaqTitle: "Ofte spurgt",
-            aboutQ1: "Hvem er Oliver Eichhof?",
-            aboutA1: "Oliver Eichhof er en kommunikationsspecialist fra Hamborg, Tyskland. Han arbejder som marketingchef hos REGIOCAST og har over 15 års erfaring inden for digital brandledelse, kampagneudvikling og B2B-kommunikation.",
-            aboutQ2: "Hvad laver Oliver Eichhof professionelt?",
-            aboutA2: "Han leder marketing hos REGIOCAST, et af Tysklands største radioselskaber. Tidligere var han Strategy Director hos wirDesign og rådgav virksomheder inden for FMCG, detail og livsstil som freelance digital strateg.",
-            aboutQ3: "Hvad er Oliver Eichhofs specialiseringer?",
-            aboutA3: "Hans fokusområder omfatter brandledelse, employer branding, integreret kampagneudvikling, GEO/SEO/SEA, AI-drevne workflows og datadrevet journey design.",
-            aboutQ4: "Hvor kan man finde Oliver Eichhof online?",
-            aboutA4: "På LinkedIn, hans blog schongeil.de, Instagram, Bluesky, Mastodon og GitHub. Alle links er samlet på eichhof.me.",
-            aboutQ5: "Hvad er schongeil.de?",
-            aboutA5: "schongeil.de er Oliver Eichhofs personlige blog, som han har drevet i over et årti. Han udgiver også DJ-mixes under aliaset livic.",
             aboutTriggerLabel: "Om mig"
         }
     };
@@ -440,17 +407,6 @@
         updateElement('about-project-code', content.aboutProjectCode);
         updateElement('about-profiles-title', content.aboutProfilesTitle);
         updateElement('about-mentions-title', content.aboutMentionsTitle);
-        updateElement('about-faq-title', content.aboutFaqTitle);
-        updateElement('about-q1', content.aboutQ1);
-        updateElement('about-a1', content.aboutA1);
-        updateElement('about-q2', content.aboutQ2);
-        updateElement('about-a2', content.aboutA2);
-        updateElement('about-q3', content.aboutQ3);
-        updateElement('about-a3', content.aboutA3);
-        updateElement('about-q4', content.aboutQ4);
-        updateElement('about-a4', content.aboutA4);
-        updateElement('about-q5', content.aboutQ5);
-        updateElement('about-a5', content.aboutA5);
         updateAttr('about-trigger-card', 'aria-label', content.aboutTriggerLabel);
         updateAttr('close-about-btn', 'aria-label', content.closeOverlay);
     }

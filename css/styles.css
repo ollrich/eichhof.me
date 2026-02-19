@@ -1290,8 +1290,10 @@ html.dark-mode .contact-submit:hover:not(:disabled) {
 }
 
 .about-year {
+    display: block;
     opacity: 0.5;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
+    margin-top: 0.1rem;
 }
 
 /* Links lists */
@@ -1318,50 +1320,6 @@ html.dark-mode .contact-submit:hover:not(:disabled) {
     opacity: 0.8;
 }
 
-/* FAQ section */
-.about-faq details {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.about-faq details:last-child {
-    border-bottom: none;
-}
-
-.about-faq summary {
-    padding: 0.75rem 0;
-    cursor: pointer;
-    font-size: 0.95rem;
-    font-weight: 400;
-    opacity: 0.9;
-    transition: opacity 0.2s ease;
-    list-style: none;
-}
-
-.about-faq summary::-webkit-details-marker {
-    display: none;
-}
-
-.about-faq summary::before {
-    content: '+ ';
-    font-weight: 300;
-    opacity: 0.5;
-}
-
-.about-faq details[open] summary::before {
-    content: '− ';
-}
-
-.about-faq summary:hover {
-    opacity: 1;
-}
-
-.about-faq details p {
-    padding: 0 0 0.75rem;
-    font-size: 0.9rem;
-    line-height: 1.6;
-    font-weight: 300;
-    opacity: 0.8;
-}
 
 /* Mobile adjustments for about */
 @media (max-width: 480px) {
@@ -1387,11 +1345,4 @@ html.dark-mode .contact-submit:hover:not(:disabled) {
         font-size: 0.85rem;
     }
 
-    .about-faq summary {
-        font-size: 0.85rem;
-    }
-
-    .about-faq details p {
-        font-size: 0.8rem;
-    }
 }

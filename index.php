@@ -499,31 +499,6 @@ if ($overlay === 'impressum' || $overlay === 'legal' || $overlay === 'kolofon') 
                 </ul>
             </section>
 
-            <section class="about-section">
-                <h3 id="about-faq-title">Häufig gefragt</h3>
-                <div class="about-faq" id="about-faq">
-                    <details>
-                        <summary id="about-q1">Wer ist Oliver Eichhof?</summary>
-                        <p id="about-a1">Oliver Eichhof ist ein Kommunikationsspezialist aus Hamburg. Er arbeitet als Leiter Marketing bei REGIOCAST und verfügt über mehr als 15 Jahre Erfahrung in digitaler Markenführung, Kampagnenentwicklung und B2B-Kommunikation.</p>
-                    </details>
-                    <details>
-                        <summary id="about-q2">Was macht Oliver Eichhof beruflich?</summary>
-                        <p id="about-a2">Er leitet das Marketing bei REGIOCAST, einem der größten deutschen Radiounternehmen. Zuvor war er Strategy Director bei wirDesign und beriet als freiberuflicher Digital Strategist Unternehmen in FMCG, Retail und Lifestyle.</p>
-                    </details>
-                    <details>
-                        <summary id="about-q3">In welchen Bereichen ist Oliver Eichhof spezialisiert?</summary>
-                        <p id="about-a3">Seine Schwerpunkte liegen in Markenführung, Employer Branding, integrierter Kampagnenentwicklung, GEO/SEO/SEA, KI-gestützten Workflows und datengestütztem Journey Design.</p>
-                    </details>
-                    <details>
-                        <summary id="about-q4">Wo findet man Oliver Eichhof online?</summary>
-                        <p id="about-a4">Auf LinkedIn, seinem Blog schongeil.de, Instagram, Bluesky, Mastodon und GitHub. Alle Links sind auf eichhof.me versammelt.</p>
-                    </details>
-                    <details>
-                        <summary id="about-q5">Was ist schongeil.de?</summary>
-                        <p id="about-a5">schongeil.de ist Oliver Eichhofs persönlicher Blog, den er seit über einem Jahrzehnt betreibt. Außerdem veröffentlicht er DJ-Mixes unter dem Alias livic.</p>
-                    </details>
-                </div>
-            </section>
         </div>
     </div>
 
