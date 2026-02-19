@@ -70,8 +70,8 @@
             contactPrivacy: "Deine Daten werden nur zur Beantwortung verwendet. Zur Spam-Abwehr wird deine IP temporär verarbeitet, aber nicht gespeichert.",
             contactFallback: "Oder direkt per E-Mail:",
             // About overlay
-            aboutTitle: "Über Oliver Eichhof",
-            aboutSummary: "Digitaler Marken- und Kommunikationsstratege aus Hamburg mit mehr als 15 Jahren Erfahrung in integrierter Kampagnenführung, Employer Branding und B2B-Kommunikation.",
+            aboutTitle: "Oliver Eichhof",
+            aboutSummary: "Oliver Eichhof ist ein Kommunikationsspezialist aus Hamburg. Er arbeitet als Leiter Marketing bei REGIOCAST und verfügt über mehr als 15 Jahre Erfahrung in digitaler Markenführung, Kampagnenentwicklung und B2B-Kommunikation.",
             aboutFactsTitle: "Steckbrief",
             aboutDtRole: "Arbeitgeber",
             aboutDdRole: '<a href="https://www.regiocast.de/" target="_blank" rel="noopener noreferrer">REGIOCAST GmbH & Co. KG</a>',
@@ -137,8 +137,8 @@
             contactPrivacy: "Your data will only be used to respond. Your IP is temporarily processed for spam protection but not stored.",
             contactFallback: "Or email directly:",
             // About overlay
-            aboutTitle: "About Oliver Eichhof",
-            aboutSummary: "Digital brand and communication strategist from Hamburg with over 15 years of experience in integrated campaign management, employer branding and B2B communication.",
+            aboutTitle: "Oliver Eichhof",
+            aboutSummary: "Oliver Eichhof is a communication specialist from Hamburg, Germany. He works as Head of Marketing at REGIOCAST and has over 15 years of experience in digital brand management, campaign development and B2B communication.",
             aboutFactsTitle: "Key Facts",
             aboutDtRole: "Employer",
             aboutDdRole: '<a href="https://www.regiocast.de/" target="_blank" rel="noopener noreferrer">REGIOCAST GmbH & Co. KG</a>',
@@ -204,8 +204,8 @@
             contactPrivacy: "Dine data bruges kun til at besvare. Din IP behandles midlertidigt til spam-beskyttelse, men gemmes ikke.",
             contactFallback: "Eller send e-mail direkte:",
             // About overlay
-            aboutTitle: "Om Oliver Eichhof",
-            aboutSummary: "Digital brand- og kommunikationsstrateg fra Hamborg med over 15 års erfaring inden for integreret kampagneledelse, employer branding og B2B-kommunikation.",
+            aboutTitle: "Oliver Eichhof",
+            aboutSummary: "Oliver Eichhof er en kommunikationsspecialist fra Hamborg, Tyskland. Han arbejder som marketingchef hos REGIOCAST og har over 15 års erfaring inden for digital brandledelse, kampagneudvikling og B2B-kommunikation.",
             aboutFactsTitle: "Nøglefakta",
             aboutDtRole: "Arbejdsgiver",
             aboutDdRole: '<a href="https://www.regiocast.de/" target="_blank" rel="noopener noreferrer">REGIOCAST GmbH & Co. KG</a>',

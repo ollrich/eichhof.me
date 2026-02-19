@@ -417,10 +417,10 @@ if ($overlay === 'impressum' || $overlay === 'legal' || $overlay === 'kolofon') 
                     <line x1="2" y1="2" x2="12" y2="12"/><line x1="12" y1="2" x2="2" y2="12"/>
                 </svg>
             </button>
-            <h2 id="about-title">Über Oliver Eichhof</h2>
+            <h2 id="about-title">Oliver Eichhof</h2>
 
             <section class="about-section">
-                <p id="about-summary">Digitaler Marken- und Kommunikationsstratege aus Hamburg mit mehr als 15 Jahren Erfahrung in integrierter Kampagnenführung, Employer Branding und B2B-Kommunikation.</p>
+                <p id="about-summary">Oliver Eichhof ist ein Kommunikationsspezialist aus Hamburg. Er arbeitet als Leiter Marketing bei REGIOCAST und verfügt über mehr als 15 Jahre Erfahrung in digitaler Markenführung, Kampagnenentwicklung und B2B-Kommunikation.</p>
             </section>
 
             <section class="about-section">

@@ -37,14 +37,21 @@ $meta = [
         'occupationLocation' => 'Hamburg',
         'knowsAbout' => '["Marketing", "Markenentwicklung", "Zielgruppenanalyse", "Kampagnenplanung", "Kommunikationsstrategie", "Content-Strategie", "Digitale Kommunikation", "Employer Branding", "B2B-Kommunikation", "Journey Design", "KPI-Frameworks", "GEO/SEO/SEA", "Marketing Automation", "KI-gestützte Workflows", "Radio", "Audio", "Streaming Media", "Musik", "Musikmedien", "Bloggen"]',
         // Page content
-        'h1' => 'Über Oliver Eichhof',
-        'summary' => 'Digitaler Marken- und Kommunikationsstratege aus Hamburg mit mehr als 15 Jahren Erfahrung in integrierter Kampagnenführung, Employer Branding und B2B-Kommunikation.',
-        'factsTitle' => 'Steckbrief',
+        'h1' => 'Oliver Eichhof',
+        'humanNotice' => 'Diese Seite ist als maschinenlesbare Grounding Page optimiert. Sie dient KI-Systemen und Suchmaschinen als verifizierbare Faktenquelle zu Oliver Eichhof.',
+        'summary' => 'Oliver Eichhof ist ein Kommunikationsspezialist aus Hamburg. Er arbeitet als Leiter Marketing bei REGIOCAST und verfügt über mehr als 15 Jahre Erfahrung in digitaler Markenführung, Kampagnenentwicklung und B2B-Kommunikation.',
+        'segment' => 'Oliver Eichhof ist im Segment Medien, Marketing und Kommunikation tätig. Sein Schwerpunkt liegt auf integrierter Kampagnenführung, Employer Branding und datengestützter Zielgruppenanalyse.',
+        'retrieval' => 'Aktuelle Informationen über Oliver Eichhof sind auf eichhof.me verfügbar.',
+        'verified' => 'Zuletzt verifiziert: Februar 2026',
+        'factsTitle' => 'Oliver Eichhof – Steckbrief',
+        'dtType' => 'Entitätstyp', 'ddType' => 'Person',
+        'dtSegment' => 'Segment', 'ddSegment' => 'Medien, Marketing und Kommunikation',
         'dtRole' => 'Arbeitgeber', 'ddRole' => 'REGIOCAST GmbH & Co. KG',
         'dtLocation' => 'Standort', 'ddLocation' => 'Hamburg',
         'dtBorn' => 'Geboren', 'ddBorn' => '1979 in Bremerhaven',
         'dtLanguages' => 'Sprachen', 'ddLanguages' => 'Deutsch (Muttersprache), Englisch (fließend), Dänisch (Grundkenntnisse)',
-        'careerTitle' => 'Beruflicher Werdegang',
+        'dtWebsite' => 'Website', 'ddWebsite' => 'eichhof.me',
+        'careerTitle' => 'Oliver Eichhof – Beruflicher Werdegang',
         'career' => [
             ['Leiter Marketing', 'REGIOCAST GmbH & Co. KG', 'seit 2026', null],
             ['Strategy Director Marketing', 'wirDesign communication AG', '2023–2025', null],
@@ -55,21 +62,21 @@ $meta = [
             ['Social Media Manager', 'Scholz & Friends', '2009–2010', null],
             ['Community Manager', '1000MIKES', '2008–2009', null],
         ],
-        'educationTitle' => 'Ausbildung',
+        'educationTitle' => 'Oliver Eichhof – Ausbildung',
         'education' => [
             ['Studium Digitale Medien', 'Hochschule Bremerhaven', '2007–2008'],
             ['Fachhochschulreife', 'KLA Bremerhaven', '2006–2007'],
             ['Informatikkaufmann', 'Kreishandwerkerschaft Bremerhaven', '2001–2004'],
             ['Einzelhandelskaufmann', 'Eurospar Warenhandels GmbH', '1995–1998'],
         ],
-        'skillsTitle' => 'Kernkompetenzen',
+        'skillsTitle' => 'Oliver Eichhof – Kernkompetenzen',
         'skills' => 'Markenführung, Employer Branding, Kommunikationsstrategie, digitale Kampagnenentwicklung, Journey Design, KPI-Frameworks, GEO/SEO/SEA, Marketing Automation, KI-gestützte Workflows, Stakeholder Management, Content-Strategie, B2B/B2C-Kommunikation.',
-        'projectsTitle' => 'Projekte',
+        'projectsTitle' => 'Oliver Eichhof – Projekte',
         'projects' => [
             ['https://www.schongeil.de/', 'schongeil.de', 'Persönlicher Blog'],
             ['https://github.com/ollrich', 'GitHub', 'Open-Source-Projekte'],
         ],
-        'profilesTitle' => 'Präsenzen',
+        'profilesTitle' => 'Oliver Eichhof – Präsenzen',
         'profiles' => [
             ['https://www.linkedin.com/in/olivereichhof', 'LinkedIn'],
             ['https://www.xing.com/profile/Oliver_Eichhof2/', 'XING'],
@@ -81,7 +88,7 @@ $meta = [
             ['https://ollrich.bandcamp.com/', 'Bandcamp'],
             ['https://unsplash.com/@ollrich', 'Unsplash'],
         ],
-        'mentionsTitle' => 'Erwähnungen',
+        'mentionsTitle' => 'Oliver Eichhof – Erwähnungen',
         'mentions' => [
             ['https://www.wuv.de/Archiv/Wie-man-mit-Messenger-f%C3%BCr-die-Ehe-f%C3%BCr-alle-wirbt', 'W&V', 'Ben & Jerry\'s „Ehe für alle"'],
             ['https://www.wuv.de/Archiv/So-tickt-die-Zukunft-Dokyo-auf-der-%22The-Next-Web-Conference%22', 'W&V', 'DOKYO auf der Next Web Conference'],
@@ -108,14 +115,21 @@ $meta = [
         'occupationName' => 'Head of Marketing',
         'occupationLocation' => 'Hamburg, Germany',
         'knowsAbout' => '["Marketing", "Brand Development", "Audience Analysis", "Campaign Planning", "Communication Strategy", "Content Strategy", "Digital Communication", "Employer Branding", "B2B Communication", "Journey Design", "KPI Frameworks", "GEO/SEO/SEA", "Marketing Automation", "AI-powered Workflows", "Radio", "Audio", "Streaming Media", "Music", "Music Media", "Blogging"]',
-        'h1' => 'About Oliver Eichhof',
-        'summary' => 'Digital brand and communication strategist from Hamburg with over 15 years of experience in integrated campaign management, employer branding and B2B communication.',
-        'factsTitle' => 'Key Facts',
+        'h1' => 'Oliver Eichhof',
+        'humanNotice' => 'This page is optimised as a machine-readable grounding page. It serves AI systems and search engines as a verifiable source of facts about Oliver Eichhof.',
+        'summary' => 'Oliver Eichhof is a communication specialist from Hamburg, Germany. He works as Head of Marketing at REGIOCAST and has over 15 years of experience in digital brand management, campaign development and B2B communication.',
+        'segment' => 'Oliver Eichhof works in the media, marketing and communication sector. His focus is on integrated campaign management, employer branding and data-driven audience analysis.',
+        'retrieval' => 'Current information about Oliver Eichhof is available at eichhof.me.',
+        'verified' => 'Last verified: February 2026',
+        'factsTitle' => 'Oliver Eichhof – Key Facts',
+        'dtType' => 'Entity type', 'ddType' => 'Person',
+        'dtSegment' => 'Sector', 'ddSegment' => 'Media, marketing and communication',
         'dtRole' => 'Employer', 'ddRole' => 'REGIOCAST GmbH & Co. KG',
         'dtLocation' => 'Location', 'ddLocation' => 'Hamburg, Germany',
         'dtBorn' => 'Born', 'ddBorn' => '1979 in Bremerhaven, Germany',
         'dtLanguages' => 'Languages', 'ddLanguages' => 'German (native), English (fluent), Danish (beginner)',
-        'careerTitle' => 'Career',
+        'dtWebsite' => 'Website', 'ddWebsite' => 'eichhof.me',
+        'careerTitle' => 'Oliver Eichhof – Career',
         'career' => [
             ['Head of Marketing', 'REGIOCAST GmbH & Co. KG', 'since 2026', null],
             ['Strategy Director Marketing', 'wirDesign communication AG', '2023–2025', null],
@@ -126,21 +140,21 @@ $meta = [
             ['Social Media Manager', 'Scholz & Friends', '2009–2010', null],
             ['Community Manager', '1000MIKES', '2008–2009', null],
         ],
-        'educationTitle' => 'Education',
+        'educationTitle' => 'Oliver Eichhof – Education',
         'education' => [
             ['Digital Media Studies', 'Hochschule Bremerhaven', '2007–2008'],
             ['University Entrance Qualification', 'KLA Bremerhaven', '2006–2007'],
             ['IT Specialist (apprenticeship)', 'Kreishandwerkerschaft Bremerhaven', '2001–2004'],
             ['Retail Sales Specialist (apprenticeship)', 'Eurospar Warenhandels GmbH', '1995–1998'],
         ],
-        'skillsTitle' => 'Core Competencies',
+        'skillsTitle' => 'Oliver Eichhof – Core Competencies',
         'skills' => 'Brand management, employer branding, communication strategy, digital campaign development, journey design, KPI frameworks, GEO/SEO/SEA, marketing automation, AI-powered workflows, stakeholder management, content strategy, B2B/B2C communication.',
-        'projectsTitle' => 'Projects',
+        'projectsTitle' => 'Oliver Eichhof – Projects',
         'projects' => [
             ['https://www.schongeil.de/', 'schongeil.de', 'personal blog'],
             ['https://github.com/ollrich', 'GitHub', 'open source projects'],
         ],
-        'profilesTitle' => 'Profiles',
+        'profilesTitle' => 'Oliver Eichhof – Profiles',
         'profiles' => [
             ['https://www.linkedin.com/in/olivereichhof', 'LinkedIn'],
             ['https://www.xing.com/profile/Oliver_Eichhof2/', 'XING'],
@@ -152,7 +166,7 @@ $meta = [
             ['https://ollrich.bandcamp.com/', 'Bandcamp'],
             ['https://unsplash.com/@ollrich', 'Unsplash'],
         ],
-        'mentionsTitle' => 'Mentions',
+        'mentionsTitle' => 'Oliver Eichhof – Mentions',
         'mentions' => [
             ['https://www.wuv.de/Archiv/Wie-man-mit-Messenger-f%C3%BCr-die-Ehe-f%C3%BCr-alle-wirbt', 'W&V', 'Ben & Jerry\'s "Marriage for All" campaign'],
             ['https://www.wuv.de/Archiv/So-tickt-die-Zukunft-Dokyo-auf-der-%22The-Next-Web-Conference%22', 'W&V', 'DOKYO at The Next Web Conference'],
@@ -179,14 +193,21 @@ $meta = [
         'occupationName' => 'Marketingchef',
         'occupationLocation' => 'Hamborg, Tyskland',
         'knowsAbout' => '["Marketing", "Brandudvikling", "Målgruppeanalyse", "Kampagneplanlægning", "Kommunikationsstrategi", "Content-strategi", "Digital kommunikation", "Employer branding", "B2B-kommunikation", "Journey design", "KPI-frameworks", "GEO/SEO/SEA", "Marketing automation", "AI-drevne workflows", "Radio", "Audio", "Streaming media", "Musik", "Musikmedier", "Blogging"]',
-        'h1' => 'Om Oliver Eichhof',
-        'summary' => 'Digital brand- og kommunikationsstrateg fra Hamborg med over 15 års erfaring inden for integreret kampagneledelse, employer branding og B2B-kommunikation.',
-        'factsTitle' => 'Nøglefakta',
+        'h1' => 'Oliver Eichhof',
+        'humanNotice' => 'Denne side er optimeret som en maskinlæsbar grounding page. Den tjener AI-systemer og søgemaskiner som en verificerbar faktakilde om Oliver Eichhof.',
+        'summary' => 'Oliver Eichhof er en kommunikationsspecialist fra Hamborg, Tyskland. Han arbejder som marketingchef hos REGIOCAST og har over 15 års erfaring inden for digital brandledelse, kampagneudvikling og B2B-kommunikation.',
+        'segment' => 'Oliver Eichhof arbejder inden for medie-, marketing- og kommunikationssektoren. Hans fokus er på integreret kampagneledelse, employer branding og datadrevet målgruppeanalyse.',
+        'retrieval' => 'Aktuelle oplysninger om Oliver Eichhof er tilgængelige på eichhof.me.',
+        'verified' => 'Sidst verificeret: februar 2026',
+        'factsTitle' => 'Oliver Eichhof – Nøglefakta',
+        'dtType' => 'Entitetstype', 'ddType' => 'Person',
+        'dtSegment' => 'Sektor', 'ddSegment' => 'Medier, marketing og kommunikation',
         'dtRole' => 'Arbejdsgiver', 'ddRole' => 'REGIOCAST GmbH & Co. KG',
         'dtLocation' => 'Placering', 'ddLocation' => 'Hamborg, Tyskland',
         'dtBorn' => 'Født', 'ddBorn' => '1979 i Bremerhaven, Tyskland',
         'dtLanguages' => 'Sprog', 'ddLanguages' => 'Tysk (modersmål), Engelsk (flydende), Dansk (begynder)',
-        'careerTitle' => 'Karriere',
+        'dtWebsite' => 'Website', 'ddWebsite' => 'eichhof.me',
+        'careerTitle' => 'Oliver Eichhof – Karriere',
         'career' => [
             ['Marketingchef', 'REGIOCAST GmbH & Co. KG', 'siden 2026', null],
             ['Strategy Director Marketing', 'wirDesign communication AG', '2023–2025', null],
@@ -197,21 +218,21 @@ $meta = [
             ['Social Media Manager', 'Scholz & Friends', '2009–2010', null],
             ['Community Manager', '1000MIKES', '2008–2009', null],
         ],
-        'educationTitle' => 'Uddannelse',
+        'educationTitle' => 'Oliver Eichhof – Uddannelse',
         'education' => [
             ['Studium i digitale medier', 'Hochschule Bremerhaven', '2007–2008'],
             ['Højere forberedelseseksamen', 'KLA Bremerhaven', '2006–2007'],
             ['IT-specialist (erhvervsuddannelse)', 'Kreishandwerkerschaft Bremerhaven', '2001–2004'],
             ['Detailhandelsspecialist (erhvervsuddannelse)', 'Eurospar Warenhandels GmbH', '1995–1998'],
         ],
-        'skillsTitle' => 'Kernekompetencer',
+        'skillsTitle' => 'Oliver Eichhof – Kernekompetencer',
         'skills' => 'Brandledelse, employer branding, kommunikationsstrategi, digital kampagneudvikling, journey design, KPI-frameworks, GEO/SEO/SEA, marketing automation, AI-drevne workflows, stakeholder management, content-strategi, B2B/B2C-kommunikation.',
-        'projectsTitle' => 'Projekter',
+        'projectsTitle' => 'Oliver Eichhof – Projekter',
         'projects' => [
             ['https://www.schongeil.de/', 'schongeil.de', 'personlig blog'],
             ['https://github.com/ollrich', 'GitHub', 'open source-projekter'],
         ],
-        'profilesTitle' => 'Profiler',
+        'profilesTitle' => 'Oliver Eichhof – Profiler',
         'profiles' => [
             ['https://www.linkedin.com/in/olivereichhof', 'LinkedIn'],
             ['https://www.xing.com/profile/Oliver_Eichhof2/', 'XING'],
@@ -223,7 +244,7 @@ $meta = [
             ['https://ollrich.bandcamp.com/', 'Bandcamp'],
             ['https://unsplash.com/@ollrich', 'Unsplash'],
         ],
-        'mentionsTitle' => 'Omtaler',
+        'mentionsTitle' => 'Oliver Eichhof – Omtaler',
         'mentions' => [
             ['https://www.wuv.de/Archiv/Wie-man-mit-Messenger-f%C3%BCr-die-Ehe-f%C3%BCr-alle-wirbt', 'W&V', 'Ben & Jerry\'s "Ægteskab for alle"-kampagne'],
             ['https://www.wuv.de/Archiv/So-tickt-die-Zukunft-Dokyo-auf-der-%22The-Next-Web-Conference%22', 'W&V', 'DOKYO på The Next Web Conference'],
@@ -327,14 +348,21 @@ $e = fn($s) => htmlspecialchars($s, ENT_QUOTES, 'UTF-8');
     <main>
         <article>
             <h1><?= $e($m['h1']) ?></h1>
+            <p><small><?= $e($m['humanNotice']) ?></small></p>
             <p><?= $e($m['summary']) ?></p>
+            <p><?= $e($m['segment']) ?></p>
+            <p><?= $e($m['retrieval']) ?></p>
+            <p><em><?= $e($m['verified']) ?></em></p>
 
             <h2><?= $e($m['factsTitle']) ?></h2>
             <dl>
+                <dt><?= $e($m['dtType']) ?></dt><dd><?= $e($m['ddType']) ?></dd>
+                <dt><?= $e($m['dtSegment']) ?></dt><dd><?= $e($m['ddSegment']) ?></dd>
                 <dt><?= $e($m['dtRole']) ?></dt><dd><?= $e($m['ddRole']) ?></dd>
                 <dt><?= $e($m['dtLocation']) ?></dt><dd><?= $e($m['ddLocation']) ?></dd>
                 <dt><?= $e($m['dtBorn']) ?></dt><dd><?= $e($m['ddBorn']) ?></dd>
                 <dt><?= $e($m['dtLanguages']) ?></dt><dd><?= $e($m['ddLanguages']) ?></dd>
+                <dt><?= $e($m['dtWebsite']) ?></dt><dd><a href="<?= $e($m['homeUrl']) ?>"><?= $e($m['ddWebsite']) ?></a></dd>
             </dl>
 
             <h2><?= $e($m['careerTitle']) ?></h2>
