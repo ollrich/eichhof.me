@@ -426,8 +426,8 @@ if ($overlay === 'impressum' || $overlay === 'legal' || $overlay === 'kolofon') 
             <section class="about-section">
                 <h3 id="about-facts-title">Steckbrief</h3>
                 <dl class="about-facts" id="about-facts">
-                    <dt id="about-dt-role">Rolle</dt>
-                    <dd id="about-dd-role">Leiter Marketing, <a href="https://www.regiocast.de/" target="_blank" rel="noopener noreferrer">REGIOCAST GmbH & Co. KG</a></dd>
+                    <dt id="about-dt-role">Arbeitgeber</dt>
+                    <dd id="about-dd-role"><a href="https://www.regiocast.de/" target="_blank" rel="noopener noreferrer">REGIOCAST GmbH & Co. KG</a></dd>
                     <dt id="about-dt-location">Standort</dt>
                     <dd id="about-dd-location">Hamburg</dd>
                     <dt id="about-dt-born">Geboren</dt>
@@ -440,7 +440,7 @@ if ($overlay === 'impressum' || $overlay === 'legal' || $overlay === 'kolofon') 
             <section class="about-section">
                 <h3 id="about-career-title">Beruflicher Werdegang</h3>
                 <ul class="about-career" id="about-career">
-                    <li><strong>Leiter Marketing</strong> — <a href="https://www.regiocast.de/" target="_blank" rel="noopener noreferrer">REGIOCAST GmbH & Co. KG</a> <span class="about-year">seit 2026</span></li>
+                    <li><strong>Leiter Marketing</strong> — REGIOCAST GmbH & Co. KG <span class="about-year">seit 2026</span></li>
                     <li><strong>Strategy Director Marketing</strong> — wirDesign communication AG <span class="about-year">2023–2025</span></li>
                     <li><strong>Digital Strategist</strong> — Freiberuflich <span class="about-year">2020–2022</span></li>
                     <li><strong>Unit Lead Marketing & Concepts</strong> — rock&stars digital GmbH <span class="about-year">2019–2020</span></li>
