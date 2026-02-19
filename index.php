@@ -440,10 +440,10 @@ if ($overlay === 'impressum' || $overlay === 'legal' || $overlay === 'kolofon') 
             <section class="about-section">
                 <h3 id="about-career-title">Beruflicher Werdegang</h3>
                 <ul class="about-career" id="about-career">
-                    <li><strong>Leiter Marketing</strong> — <a href="https://www.regiocast.de/" target="_blank" rel="noopener noreferrer">REGIOCAST GmbH & Co. KG</a> <span class="about-year">seit 2025</span></li>
+                    <li><strong>Leiter Marketing</strong> — <a href="https://www.regiocast.de/" target="_blank" rel="noopener noreferrer">REGIOCAST GmbH & Co. KG</a> <span class="about-year">seit 2026</span></li>
                     <li><strong>Strategy Director Marketing</strong> — wirDesign communication AG <span class="about-year">2023–2025</span></li>
                     <li><strong>Digital Strategist</strong> — Freiberuflich <span class="about-year">2020–2022</span></li>
-                    <li><strong>Unit Lead Marketing</strong> — rock&stars digital GmbH <span class="about-year">2019–2020</span></li>
+                    <li><strong>Unit Lead Marketing & Concepts</strong> — rock&stars digital GmbH <span class="about-year">2019–2020</span></li>
                     <li><strong>Senior Consultant Digital</strong> — DOKYO GmbH <span class="about-year">2014–2018</span></li>
                     <li><strong>Etatdirektor</strong> — beebop media ag <span class="about-year">2010–2014</span></li>
                     <li><strong>Social Media Manager</strong> — Scholz & Friends <span class="about-year">2009–2010</span></li>
@@ -455,7 +455,7 @@ if ($overlay === 'impressum' || $overlay === 'legal' || $overlay === 'kolofon') 
                 <h3 id="about-education-title">Ausbildung</h3>
                 <ul class="about-career" id="about-education">
                     <li><strong id="about-edu-1-title">Studium Digitale Medien</strong> — Hochschule Bremerhaven <span class="about-year">2007–2008</span></li>
-                    <li><strong id="about-edu-2-title">Fachhochschulreife</strong> — Kaufmännische Lehranstalten Bremerhaven <span class="about-year">2006–2007</span></li>
+                    <li><strong id="about-edu-2-title">Fachhochschulreife</strong> — KLA Bremerhaven <span class="about-year">2006–2007</span></li>
                     <li><strong id="about-edu-3-title">Informatikkaufmann</strong> — Kreishandwerkerschaft Bremerhaven <span class="about-year">2001–2004</span></li>
                     <li><strong id="about-edu-4-title">Einzelhandelskaufmann</strong> — Eurospar Warenhandels GmbH <span class="about-year">1995–1998</span></li>
                 </ul>

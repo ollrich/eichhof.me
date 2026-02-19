@@ -46,10 +46,10 @@ $meta = [
         'dtLanguages' => 'Sprachen', 'ddLanguages' => 'Deutsch (Muttersprache), Englisch (fließend), Dänisch (Grundkenntnisse)',
         'careerTitle' => 'Beruflicher Werdegang',
         'career' => [
-            ['Leiter Marketing', 'REGIOCAST GmbH & Co. KG', 'seit 2025', 'https://www.regiocast.de/'],
+            ['Leiter Marketing', 'REGIOCAST GmbH & Co. KG', 'seit 2026', 'https://www.regiocast.de/'],
             ['Strategy Director Marketing', 'wirDesign communication AG', '2023–2025', null],
             ['Digital Strategist', 'Freiberuflich', '2020–2022', null],
-            ['Unit Lead Marketing', 'rock&stars digital GmbH', '2019–2020', null],
+            ['Unit Lead Marketing & Concepts', 'rock&stars digital GmbH', '2019–2020', null],
             ['Senior Consultant Digital', 'DOKYO GmbH', '2014–2018', null],
             ['Etatdirektor', 'beebop media ag', '2010–2014', null],
             ['Social Media Manager', 'Scholz & Friends', '2009–2010', null],
@@ -58,7 +58,7 @@ $meta = [
         'educationTitle' => 'Ausbildung',
         'education' => [
             ['Studium Digitale Medien', 'Hochschule Bremerhaven', '2007–2008'],
-            ['Fachhochschulreife', 'Kaufmännische Lehranstalten Bremerhaven', '2006–2007'],
+            ['Fachhochschulreife', 'KLA Bremerhaven', '2006–2007'],
             ['Informatikkaufmann', 'Kreishandwerkerschaft Bremerhaven', '2001–2004'],
             ['Einzelhandelskaufmann', 'Eurospar Warenhandels GmbH', '1995–1998'],
         ],
@@ -117,10 +117,10 @@ $meta = [
         'dtLanguages' => 'Languages', 'ddLanguages' => 'German (native), English (fluent), Danish (beginner)',
         'careerTitle' => 'Career',
         'career' => [
-            ['Head of Marketing', 'REGIOCAST GmbH & Co. KG', 'since 2025', 'https://www.regiocast.de/'],
+            ['Head of Marketing', 'REGIOCAST GmbH & Co. KG', 'since 2026', 'https://www.regiocast.de/'],
             ['Strategy Director Marketing', 'wirDesign communication AG', '2023–2025', null],
             ['Digital Strategist', 'Freelance', '2020–2022', null],
-            ['Unit Lead Marketing', 'rock&stars digital GmbH', '2019–2020', null],
+            ['Unit Lead Marketing & Concepts', 'rock&stars digital GmbH', '2019–2020', null],
             ['Senior Consultant Digital', 'DOKYO GmbH', '2014–2018', null],
             ['Account Director', 'beebop media ag', '2010–2014', null],
             ['Social Media Manager', 'Scholz & Friends', '2009–2010', null],
@@ -129,7 +129,7 @@ $meta = [
         'educationTitle' => 'Education',
         'education' => [
             ['Digital Media Studies', 'Hochschule Bremerhaven', '2007–2008'],
-            ['University Entrance Qualification', 'Kaufmännische Lehranstalten Bremerhaven', '2006–2007'],
+            ['University Entrance Qualification', 'KLA Bremerhaven', '2006–2007'],
             ['IT Specialist (apprenticeship)', 'Kreishandwerkerschaft Bremerhaven', '2001–2004'],
             ['Retail Sales Specialist (apprenticeship)', 'Eurospar Warenhandels GmbH', '1995–1998'],
         ],
@@ -188,10 +188,10 @@ $meta = [
         'dtLanguages' => 'Sprog', 'ddLanguages' => 'Tysk (modersmål), Engelsk (flydende), Dansk (begynder)',
         'careerTitle' => 'Karriere',
         'career' => [
-            ['Marketingchef', 'REGIOCAST GmbH & Co. KG', 'siden 2025', 'https://www.regiocast.de/'],
+            ['Marketingchef', 'REGIOCAST GmbH & Co. KG', 'siden 2026', 'https://www.regiocast.de/'],
             ['Strategy Director Marketing', 'wirDesign communication AG', '2023–2025', null],
             ['Digital Strategist', 'Freelance', '2020–2022', null],
-            ['Unit Lead Marketing', 'rock&stars digital GmbH', '2019–2020', null],
+            ['Unit Lead Marketing & Concepts', 'rock&stars digital GmbH', '2019–2020', null],
             ['Senior Consultant Digital', 'DOKYO GmbH', '2014–2018', null],
             ['Account Director', 'beebop media ag', '2010–2014', null],
             ['Social Media Manager', 'Scholz & Friends', '2009–2010', null],
@@ -200,7 +200,7 @@ $meta = [
         'educationTitle' => 'Uddannelse',
         'education' => [
             ['Studium i digitale medier', 'Hochschule Bremerhaven', '2007–2008'],
-            ['Højere forberedelseseksamen', 'Kaufmännische Lehranstalten Bremerhaven', '2006–2007'],
+            ['Højere forberedelseseksamen', 'KLA Bremerhaven', '2006–2007'],
             ['IT-specialist (erhvervsuddannelse)', 'Kreishandwerkerschaft Bremerhaven', '2001–2004'],
             ['Detailhandelsspecialist (erhvervsuddannelse)', 'Eurospar Warenhandels GmbH', '1995–1998'],
         ],
@@ -289,7 +289,7 @@ $e = fn($s) => htmlspecialchars($s, ENT_QUOTES, 'UTF-8');
         },
         "alumniOf": [
             { "@type": "EducationalOrganization", "name": "Hochschule Bremerhaven" },
-            { "@type": "EducationalOrganization", "name": "Kaufmännische Lehranstalten Bremerhaven" },
+            { "@type": "EducationalOrganization", "name": "KLA Bremerhaven" },
             { "@type": "EducationalOrganization", "name": "Kreishandwerkerschaft Bremerhaven" }
         ],
         "hasOccupation": [
