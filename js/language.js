@@ -71,7 +71,7 @@
             contactFallback: "Oder direkt per E-Mail:",
             // About overlay
             aboutTitle: "Oliver Eichhof",
-            aboutSummary: "Oliver Eichhof ist ein Kommunikationsspezialist aus Hamburg. Er arbeitet als Leiter Marketing bei REGIOCAST und verfügt über mehr als 15 Jahre Erfahrung in digitaler Markenführung, Kampagnenentwicklung und B2B-Kommunikation.",
+            aboutSummary: "Oliver Eichhof ist Kommunikationsspezialist aus Hamburg mit Schwerpunkt Digital und Marketing. Seit rund 20 Jahren arbeitet er in Agenturen und Unternehmen für B2C- und B2B-Marken unterschiedlichster Branchen.",
             aboutFactsTitle: "Steckbrief",
             aboutDtRole: "Arbeitgeber",
             aboutDdRole: '<a href="https://www.regiocast.de/" target="_blank" rel="noopener noreferrer">REGIOCAST GmbH & Co. KG</a>',
@@ -131,7 +131,7 @@
             contactFallback: "Or email directly:",
             // About overlay
             aboutTitle: "Oliver Eichhof",
-            aboutSummary: "Oliver Eichhof is a communication specialist from Hamburg, Germany. He works as Head of Marketing at REGIOCAST and has over 15 years of experience in digital brand management, campaign development and B2B communication.",
+            aboutSummary: "Oliver Eichhof is a communication specialist from Hamburg, Germany, with a focus on digital and marketing. He has been working in agencies and companies for B2C and B2B brands across a wide range of industries for around 20 years.",
             aboutFactsTitle: "Key Facts",
             aboutDtRole: "Employer",
             aboutDdRole: '<a href="https://www.regiocast.de/" target="_blank" rel="noopener noreferrer">REGIOCAST GmbH & Co. KG</a>',
@@ -191,7 +191,7 @@
             contactFallback: "Eller send e-mail direkte:",
             // About overlay
             aboutTitle: "Oliver Eichhof",
-            aboutSummary: "Oliver Eichhof er en kommunikationsspecialist fra Hamborg, Tyskland. Han arbejder som marketingchef hos REGIOCAST og har over 15 års erfaring inden for digital brandledelse, kampagneudvikling og B2B-kommunikation.",
+            aboutSummary: "Oliver Eichhof er kommunikationsspecialist fra Hamborg, Tyskland, med fokus på digital og marketing. I omkring 20 år har han arbejdet i bureauer og virksomheder for B2C- og B2B-brands på tværs af mange forskellige brancher.",
             aboutFactsTitle: "Nøglefakta",
             aboutDtRole: "Arbejdsgiver",
             aboutDdRole: '<a href="https://www.regiocast.de/" target="_blank" rel="noopener noreferrer">REGIOCAST GmbH & Co. KG</a>',
