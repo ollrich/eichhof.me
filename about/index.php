@@ -342,7 +342,7 @@ $e = fn($s) => htmlspecialchars($s, ENT_QUOTES, 'UTF-8');
     }
     </script>
 
-    <meta http-equiv="refresh" content="0;url=<?= $e($m['redirect']) ?>">
+    <script>window.location.replace('<?= $e($m['redirect']) ?>');</script>
 </head>
 <body>
     <main>
