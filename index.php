@@ -344,7 +344,7 @@ if ($overlay === 'impressum' || $overlay === 'legal' || $overlay === 'kolofon') 
             <h3 id="overlay-subtitle">Datenverarbeitung</h3>
             <p id="overlay-text-4">Diese Website verwendet keine Cookies, keine Logfiles und keine Tracking-Tools. Lediglich deine Farbschema-Präferenz wird lokal in deinem Browser gespeichert.</p>
             <p id="overlay-text-5">Bei Nutzung des Kontaktformulars werden dein Name, deine E-Mail-Adresse und deine Nachricht per E-Mail übermittelt. Zur Spam-Abwehr wird deine IP-Adresse temporär verarbeitet, aber nicht gespeichert.</p>
-            <p id="overlay-text-6">Links zu externen Plattformen (LinkedIn, Instagram, Bluesky, Mastodon, GitHub, SoundCloud) unterliegen deren eigenen Datenschutzbestimmungen.</p>
+            <p id="overlay-text-6">Links zu externen Plattformen (LinkedIn, XING, Bluesky, Mastodon, Instagram, SoundCloud, YouTube, Bandcamp, Unsplash, GitHub) unterliegen deren eigenen Datenschutzbestimmungen.</p>
         </div>
     </div>
 
