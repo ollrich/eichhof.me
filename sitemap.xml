@@ -38,39 +38,6 @@
     <priority>0.8</priority>
   </url>
 
-  <!-- German Legal Notice -->
-  <url>
-    <loc>https://eichhof.me/impressum</loc>
-    <xhtml:link rel="alternate" hreflang="de" href="https://eichhof.me/impressum"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://eichhof.me/en/legal-notice"/>
-    <xhtml:link rel="alternate" hreflang="da" href="https://eichhof.me/dk/kolofon"/>
-    <lastmod>2026-02-19</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
-  </url>
-
-  <!-- English Legal Notice -->
-  <url>
-    <loc>https://eichhof.me/en/legal-notice</loc>
-    <xhtml:link rel="alternate" hreflang="de" href="https://eichhof.me/impressum"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://eichhof.me/en/legal-notice"/>
-    <xhtml:link rel="alternate" hreflang="da" href="https://eichhof.me/dk/kolofon"/>
-    <lastmod>2026-02-19</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.2</priority>
-  </url>
-
-  <!-- Danish Legal Notice -->
-  <url>
-    <loc>https://eichhof.me/dk/kolofon</loc>
-    <xhtml:link rel="alternate" hreflang="de" href="https://eichhof.me/impressum"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://eichhof.me/en/legal-notice"/>
-    <xhtml:link rel="alternate" hreflang="da" href="https://eichhof.me/dk/kolofon"/>
-    <lastmod>2026-02-19</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.2</priority>
-  </url>
-
   <!-- German About (Grounding Page) -->
   <url>
     <loc>https://eichhof.me/ueber</loc>
@@ -102,39 +69,6 @@
     <lastmod>2026-02-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
-  </url>
-
-  <!-- German Contact -->
-  <url>
-    <loc>https://eichhof.me/kontakt</loc>
-    <xhtml:link rel="alternate" hreflang="de" href="https://eichhof.me/kontakt"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://eichhof.me/en/contact"/>
-    <xhtml:link rel="alternate" hreflang="da" href="https://eichhof.me/dk/kontakt"/>
-    <lastmod>2026-02-19</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.5</priority>
-  </url>
-
-  <!-- English Contact -->
-  <url>
-    <loc>https://eichhof.me/en/contact</loc>
-    <xhtml:link rel="alternate" hreflang="de" href="https://eichhof.me/kontakt"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://eichhof.me/en/contact"/>
-    <xhtml:link rel="alternate" hreflang="da" href="https://eichhof.me/dk/kontakt"/>
-    <lastmod>2026-02-19</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.4</priority>
-  </url>
-
-  <!-- Danish Contact -->
-  <url>
-    <loc>https://eichhof.me/dk/kontakt</loc>
-    <xhtml:link rel="alternate" hreflang="de" href="https://eichhof.me/kontakt"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://eichhof.me/en/contact"/>
-    <xhtml:link rel="alternate" hreflang="da" href="https://eichhof.me/dk/kontakt"/>
-    <lastmod>2026-02-19</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
   </url>
 
 </urlset>
