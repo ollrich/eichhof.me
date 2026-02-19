@@ -278,7 +278,7 @@ $e = fn($s) => htmlspecialchars($s, ENT_QUOTES, 'UTF-8');
     <link rel="alternate" hreflang="de" href="https://eichhof.me/ueber">
     <link rel="alternate" hreflang="en" href="https://eichhof.me/en/about">
     <link rel="alternate" hreflang="da" href="https://eichhof.me/dk/om">
-    <link rel="alternate" hreflang="x-default" href="https://eichhof.me/ueber">
+    <link rel="alternate" hreflang="x-default" href="https://eichhof.me/en/about">
 
     <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
     <link rel="apple-touch-icon" sizes="180x180" href="/images/favicons/favicon180.png">
