@@ -143,7 +143,7 @@
             aboutDtBorn: "Born",
             aboutDdBorn: "1979 in Bremerhaven, Germany",
             aboutCareerTitle: "Career",
-            aboutCareer1Title: "Head of Marketing",
+            aboutCareer1Title: "Marketing Director",
             aboutCareer1Year: "since 2026",
             aboutCareer3Org: "Freelance",
             aboutCareerMore: 'View full career on <a href="https://www.linkedin.com/in/olivereichhof" target="_blank" rel="noopener noreferrer">LinkedIn</a>',

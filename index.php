@@ -73,7 +73,7 @@ $meta = [
         'aboutUrl' => '/en/about',
         'linkedinUrl' => 'https://www.linkedin.com/in/olivereichhof',
         'schema_description' => 'Communication specialist from Hamburg for digital brand management and audience analysis, shaped by music media and streaming.',
-        'jobTitle' => 'Head of Marketing'
+        'jobTitle' => 'Marketing Director'
     ],
     'da' => [
         'lang' => 'da',
