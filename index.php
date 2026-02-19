@@ -206,7 +206,7 @@ if ($overlay === 'impressum' || $overlay === 'legal' || $overlay === 'kolofon') 
     <link rel="apple-touch-icon" sizes="180x180" href="/images/favicons/favicon180.png">
 
     <!-- Stylesheet -->
-    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/styles.css?v=2">
 
 </head>
 <body data-lang="<?= $lang ?>"<?= $openOverlay ? ' data-overlay="' . $openOverlay . '"' : '' ?>>
@@ -485,12 +485,12 @@ if ($overlay === 'impressum' || $overlay === 'legal' || $overlay === 'kolofon') 
     </div>
 
     <!-- JavaScript Modules -->
-    <script src="/js/theme.js"></script>
-    <script src="/js/language.js"></script>
-    <script src="/js/overlay.js"></script>
-    <script src="/js/contact.js"></script>
-    <script src="/js/about.js"></script>
-    <script src="/js/easter-egg.js"></script>
-    <script src="/js/link-preview.js"></script>
+    <script src="/js/theme.js?v=2"></script>
+    <script src="/js/language.js?v=2"></script>
+    <script src="/js/overlay.js?v=2"></script>
+    <script src="/js/contact.js?v=2"></script>
+    <script src="/js/about.js?v=2"></script>
+    <script src="/js/easter-egg.js?v=2"></script>
+    <script src="/js/link-preview.js?v=2"></script>
 </body>
 </html>

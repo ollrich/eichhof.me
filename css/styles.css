@@ -1198,7 +1198,7 @@ html.dark-mode .contact-submit:hover:not(:disabled) {
     transition: color 0.3s ease, transform 0.2s ease, opacity 0.3s ease;
     opacity: 0.5;
     cursor: pointer;
-    vertical-align: middle;
+    vertical-align: -0.1em;
     -webkit-appearance: none;
 }
 
