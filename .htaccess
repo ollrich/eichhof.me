@@ -9,6 +9,14 @@ RewriteRule ^(.*)$ https://eichhof.me/$1 [L,R=301]
 # MULTILINGUAL URL ROUTING
 # ============================================================================
 
+# Legacy ?lang= Query-Strings auf saubere URLs umleiten (301)
+RewriteCond %{QUERY_STRING} ^lang=da$ [NC]
+RewriteRule ^(index\.php)?$ /dk/? [L,R=301]
+RewriteCond %{QUERY_STRING} ^lang=en$ [NC]
+RewriteRule ^(index\.php)?$ /en/? [L,R=301]
+RewriteCond %{QUERY_STRING} ^lang=de$ [NC]
+RewriteRule ^(index\.php)?$ /? [L,R=301]
+
 # Language paths: /en/ and /dk/ → index.php with lang parameter
 RewriteRule ^en/?$ index.php?lang=en [L,QSA]
 RewriteRule ^dk/?$ index.php?lang=da [L,QSA]
