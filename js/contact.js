@@ -462,11 +462,23 @@
         // Listen for browser back/forward
         window.addEventListener('popstate', handlePopState);
 
+        // Cleanup on page unload
+        window.addEventListener('pagehide', cleanup);
+
         // Check URL parameter for auto-open (legacy support)
         const urlParams = new URLSearchParams(window.location.search);
         if (urlParams.get('contact') !== null) {
             setTimeout(function() { openContactForm(true); }, 100);
         }
+    }
+
+    /**
+     * Cleanup event listeners on page unload
+     */
+    function cleanup() {
+        window.removeEventListener('popstate', handlePopState);
+        window.removeEventListener('pagehide', cleanup);
+        document.removeEventListener('keydown', handleKeydown);
     }
 
     // Initialize when DOM is ready

@@ -30,9 +30,9 @@ $meta = [
         'jobTitle' => 'Leiter Marketing',
         'personDescription' => 'Kommunikationsspezialist aus Hamburg mit Schwerpunkt Digital und Marketing. Seit rund 20 Jahren in Agenturen und Unternehmen für B2C- und B2B-Marken unterschiedlichster Branchen tätig.',
         'inLanguage' => 'de',
-        'birthPlace' => 'Bremerhaven',
+        'birthPlace' => 'Bremerhaven, Deutschland',
         'nationality' => 'Deutschland',
-        'homeLocation' => 'Hamburg',
+        'homeLocation' => 'Hamburg, Deutschland',
         'occupationName' => 'Leiter Marketing',
         'occupationLocation' => 'Hamburg',
         'knowsAbout' => '["Marketing", "Markenentwicklung", "Zielgruppenanalyse", "Kampagnenplanung", "Kommunikationsstrategie", "Content-Strategie", "Digitale Kommunikation", "Employer Branding", "B2B-Kommunikation", "Journey Design", "KPI-Frameworks", "GEO/SEO/SEA", "Marketing Automation", "KI-gestützte Workflows", "Radio", "Audio", "Streaming Media", "Musik", "Musikmedien", "Bloggen"]',
@@ -270,9 +270,19 @@ $e = fn($s) => htmlspecialchars($s, ENT_QUOTES, 'UTF-8');
     <meta property="og:title" content="<?= $e($m['title']) ?>">
     <meta property="og:description" content="<?= $e($m['ogDescription']) ?>">
     <meta property="og:image" content="https://eichhof.me/images/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="628">
     <meta property="og:url" content="<?= $m['ogUrl'] ?>">
     <meta property="og:type" content="profile">
     <meta property="og:locale" content="<?= $m['locale'] ?>">
+    <meta property="og:locale:alternate" content="de_DE">
+    <meta property="og:locale:alternate" content="en_GB">
+    <meta property="og:locale:alternate" content="da_DK">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="<?= $e($m['title']) ?>">
+    <meta name="twitter:description" content="<?= $e($m['ogDescription']) ?>">
+    <meta name="twitter:image" content="https://eichhof.me/images/og-image.png">
 
     <link rel="canonical" href="<?= $m['canonical'] ?>">
     <link rel="alternate" hreflang="de" href="https://eichhof.me/ueber">
@@ -282,13 +292,17 @@ $e = fn($s) => htmlspecialchars($s, ENT_QUOTES, 'UTF-8');
 
     <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
     <link rel="apple-touch-icon" sizes="180x180" href="/images/favicons/favicon180.png">
-    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/styles.css?v=2">
 
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
         "@type": "Person",
         "@id": "https://eichhof.me/#person",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "<?= $m['canonical'] ?>"
+        },
         "name": "Oliver Eichhof",
         "givenName": "Oliver",
         "familyName": "Eichhof",

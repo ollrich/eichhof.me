@@ -232,6 +232,9 @@
         // Listen for browser back/forward
         window.addEventListener('popstate', handlePopState);
 
+        // Cleanup on page unload
+        window.addEventListener('pagehide', cleanup);
+
         // Set initial history state (for proper back navigation)
         if (!document.body.dataset.overlay) {
             history.replaceState({ overlay: null }, '', window.location.pathname);
@@ -242,6 +245,15 @@
         if (urlParams.get('impressum') !== null || urlParams.get('legal') !== null) {
             setTimeout(function() { openOverlay(true); }, 100);
         }
+    }
+
+    /**
+     * Cleanup event listeners on page unload
+     */
+    function cleanup() {
+        window.removeEventListener('popstate', handlePopState);
+        window.removeEventListener('pagehide', cleanup);
+        document.removeEventListener('keydown', handleKeydown);
     }
 
     // Initialize when DOM is ready
