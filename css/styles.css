@@ -657,7 +657,7 @@ html.dark-mode .link-preview:hover {
     scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
 }
 
-.overlay-content:focus:not(:focus-visible) {
+.overlay-content:focus {
     outline: none;
 }
 
