@@ -167,7 +167,10 @@ if ($overlay === 'impressum' || $overlay === 'legal' || $overlay === 'kolofon') 
         "knowsAbout": [
             "Marketing", "Markenentwicklung", "Zielgruppenanalyse", "Kampagnenplanung",
             "Kommunikationsstrategie", "Content-Strategie", "Digitale Kommunikation",
-            "Radio", "Audio", "Streaming Media", "Online-Magazine",
+            "Employer Branding", "B2B-Kommunikation", "Journey Design",
+            "KPI-Frameworks", "GEO/SEO/SEA", "Marketing Automation",
+            "KI-gestützte Workflows",
+            "Radio", "Audio", "Streaming Media",
             "Musik", "Musikmedien", "Bloggen"
         ],
         "homeLocation": { "@type": "Place", "name": "Hamburg" },

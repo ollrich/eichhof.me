@@ -413,7 +413,7 @@ $e = fn($s) => htmlspecialchars($s, ENT_QUOTES, 'UTF-8');
             <h2><?= $e($m['mentionsTitle']) ?></h2>
             <ul>
 <?php foreach ($m['mentions'] as $mention): ?>
-                <li><a href="<?= $mention[0] ?>"><?= $e($mention[1]) ?></a> — <?= $e($mention[2]) ?></li>
+                <li><a href="<?= $e($mention[0]) ?>"><?= $e($mention[1]) ?></a> — <?= $e($mention[2]) ?></li>
 <?php endforeach; ?>
             </ul>
 
