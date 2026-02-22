@@ -422,9 +422,9 @@ if ($overlay === 'impressum' || $overlay === 'legal' || $overlay === 'kolofon') 
             </button>
             <h2 id="about-title">Oliver Eichhof</h2>
 
-            <section class="about-section">
+            <div class="about-section">
                 <p id="about-summary">Oliver Eichhof ist Kommunikationsspezialist aus Hamburg mit Schwerpunkt Digital und Marketing. Seit rund 20 Jahren arbeitet er in Agenturen und Unternehmen für B2C- und B2B-Marken unterschiedlichster Branchen.</p>
-            </section>
+            </div>
 
             <section class="about-section">
                 <h3 id="about-facts-title">Steckbrief</h3>
