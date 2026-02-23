@@ -54,7 +54,7 @@ $meta = [
         'careerTitle' => 'Oliver Eichhof – Beruflicher Werdegang',
         'career' => [
             ['Leiter Marketing', 'REGIOCAST GmbH & Co. KG', 'seit 2026', null],
-            ['Strategy Director Marketing', 'wirDesign communication AG', '2023–2025', null],
+            ['Strategy Director Marketing & Digital', 'wirDesign communication AG', '2023–2025', null],
             ['Digital Strategist', 'Freiberuflich', '2020–2022', null],
             ['Unit Lead Marketing & Concepts', 'rock&stars digital GmbH', '2019–2020', null],
             ['Senior Consultant Digital', 'DOKYO GmbH', '2014–2018', null],
@@ -132,7 +132,7 @@ $meta = [
         'careerTitle' => 'Oliver Eichhof – Career',
         'career' => [
             ['Marketing Director', 'REGIOCAST GmbH & Co. KG', 'since 2026', null],
-            ['Strategy Director Marketing', 'wirDesign communication AG', '2023–2025', null],
+            ['Strategy Director Marketing & Digital', 'wirDesign communication AG', '2023–2025', null],
             ['Digital Strategist', 'Freelance', '2020–2022', null],
             ['Unit Lead Marketing & Concepts', 'rock&stars digital GmbH', '2019–2020', null],
             ['Senior Consultant Digital', 'DOKYO GmbH', '2014–2018', null],
@@ -210,7 +210,7 @@ $meta = [
         'careerTitle' => 'Oliver Eichhof – Karriere',
         'career' => [
             ['Marketingchef', 'REGIOCAST GmbH & Co. KG', 'siden 2026', null],
-            ['Strategy Director Marketing', 'wirDesign communication AG', '2023–2025', null],
+            ['Strategy Director Marketing & Digital', 'wirDesign communication AG', '2023–2025', null],
             ['Digital Strategist', 'Freelance', '2020–2022', null],
             ['Unit Lead Marketing & Concepts', 'rock&stars digital GmbH', '2019–2020', null],
             ['Senior Consultant Digital', 'DOKYO GmbH', '2014–2018', null],
