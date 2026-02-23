@@ -1377,6 +1377,11 @@ html.dark-mode .contact-submit:hover:not(:disabled) {
     line-height: 1.5;
 }
 
+.about-notice a {
+    color: inherit;
+    text-decoration: underline;
+}
+
 /* Mobile adjustments for about */
 @media (max-width: 480px) {
     .about-triggers {
