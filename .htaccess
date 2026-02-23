@@ -21,6 +21,10 @@ RewriteCond %{ENV:REDIRECT_STATUS} ^$
 RewriteCond %{QUERY_STRING} ^lang=de$ [NC]
 RewriteRule ^(index\.php)?$ /? [L,R=301]
 
+# /about/ direkt → saubere URL (301)
+RewriteCond %{ENV:REDIRECT_STATUS} ^$
+RewriteRule ^about/(index\.php)?$ /ueber [L,R=301]
+
 # Language paths: /en/ and /dk/ → index.php with lang parameter
 RewriteRule ^en/?$ index.php?lang=en [L,QSA]
 RewriteRule ^dk/?$ index.php?lang=da [L,QSA]
