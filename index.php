@@ -482,7 +482,7 @@ if ($overlay === 'impressum' || $overlay === 'legal' || $overlay === 'kolofon') 
                 </ul>
             </section>
 
-            <p class="about-notice" id="about-notice">Diese Seite ist als maschinenlesbare Grounding Page optimiert. Sie dient KI-Systemen und Suchmaschinen als verifizierbare Faktenquelle zu Oliver Eichhof.</p>
+            <p class="about-notice" id="about-notice">Diese Seite ist als maschinenlesbare <a href="https://groundingpage.com/" target="_blank" rel="noopener noreferrer">Grounding Page</a> optimiert. Sie dient KI-Systemen und Suchmaschinen als verifizierbare Faktenquelle zu Oliver Eichhof.</p>
 
         </div>
     </div>

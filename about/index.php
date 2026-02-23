@@ -38,7 +38,7 @@ $meta = [
         'knowsAbout' => '["Marketing", "Markenentwicklung", "Zielgruppenanalyse", "Kampagnenplanung", "Kommunikationsstrategie", "Content-Strategie", "Digitale Kommunikation", "Employer Branding", "B2B-Kommunikation", "Journey Design", "KPI-Frameworks", "GEO/SEO/SEA", "Marketing Automation", "KI-gestützte Workflows", "Radio", "Audio", "Streaming Media", "Musik", "Musikmedien", "Bloggen"]',
         // Page content
         'h1' => 'Oliver Eichhof',
-        'humanNotice' => 'Diese Seite ist als maschinenlesbare Grounding Page optimiert. Sie dient KI-Systemen und Suchmaschinen als verifizierbare Faktenquelle zu Oliver Eichhof.',
+        'humanNotice' => 'Diese Seite ist als maschinenlesbare <a href="https://groundingpage.com/" target="_blank" rel="noopener noreferrer">Grounding Page</a> optimiert. Sie dient KI-Systemen und Suchmaschinen als verifizierbare Faktenquelle zu Oliver Eichhof.',
         'summary' => 'Oliver Eichhof ist Kommunikationsspezialist aus Hamburg mit Schwerpunkt Digital und Marketing. Seit rund 20 Jahren arbeitet er in Agenturen und Unternehmen für B2C- und B2B-Marken unterschiedlichster Branchen.',
         'segment' => 'Oliver Eichhof ist im Segment Medien, Marketing und Kommunikation tätig. Sein Schwerpunkt liegt auf integrierter Kampagnenführung, Employer Branding und datengestützter Zielgruppenanalyse.',
         'retrieval' => 'Aktuelle Informationen über Oliver Eichhof sind auf eichhof.me verfügbar.',
@@ -116,7 +116,7 @@ $meta = [
         'occupationLocation' => 'Hamburg, Germany',
         'knowsAbout' => '["Marketing", "Brand Development", "Audience Analysis", "Campaign Planning", "Communication Strategy", "Content Strategy", "Digital Communication", "Employer Branding", "B2B Communication", "Journey Design", "KPI Frameworks", "GEO/SEO/SEA", "Marketing Automation", "AI-powered Workflows", "Radio", "Audio", "Streaming Media", "Music", "Music Media", "Blogging"]',
         'h1' => 'Oliver Eichhof',
-        'humanNotice' => 'This page is optimised as a machine-readable grounding page. It serves AI systems and search engines as a verifiable source of facts about Oliver Eichhof.',
+        'humanNotice' => 'This page is optimised as a machine-readable <a href="https://groundingpage.com/" target="_blank" rel="noopener noreferrer">grounding page</a>. It serves AI systems and search engines as a verifiable source of facts about Oliver Eichhof.',
         'summary' => 'Oliver Eichhof is a communication specialist from Hamburg, Germany, with a focus on digital and marketing. He has been working in agencies and companies for B2C and B2B brands across a wide range of industries for around 20 years.',
         'segment' => 'Oliver Eichhof works in the media, marketing and communication sector. His focus is on integrated campaign management, employer branding and data-driven audience analysis.',
         'retrieval' => 'Current information about Oliver Eichhof is available at eichhof.me.',
@@ -194,7 +194,7 @@ $meta = [
         'occupationLocation' => 'Hamborg, Tyskland',
         'knowsAbout' => '["Marketing", "Brandudvikling", "Målgruppeanalyse", "Kampagneplanlægning", "Kommunikationsstrategi", "Content-strategi", "Digital kommunikation", "Employer branding", "B2B-kommunikation", "Journey design", "KPI-frameworks", "GEO/SEO/SEA", "Marketing automation", "AI-drevne workflows", "Radio", "Audio", "Streaming media", "Musik", "Musikmedier", "Blogging"]',
         'h1' => 'Oliver Eichhof',
-        'humanNotice' => 'Denne side er optimeret som en maskinlæsbar grounding page. Den tjener AI-systemer og søgemaskiner som en verificerbar faktakilde om Oliver Eichhof.',
+        'humanNotice' => 'Denne side er optimeret som en maskinlæsbar <a href="https://groundingpage.com/" target="_blank" rel="noopener noreferrer">grounding page</a>. Den tjener AI-systemer og søgemaskiner som en verificerbar faktakilde om Oliver Eichhof.',
         'summary' => 'Oliver Eichhof er kommunikationsspecialist fra Hamborg, Tyskland, med fokus på digital og marketing. I omkring 20 år har han arbejdet i bureauer og virksomheder for B2C- og B2B-brands på tværs af mange forskellige brancher.',
         'segment' => 'Oliver Eichhof arbejder inden for medie-, marketing- og kommunikationssektoren. Hans fokus er på integreret kampagneledelse, employer branding og datadrevet målgruppeanalyse.',
         'retrieval' => 'Aktuelle oplysninger om Oliver Eichhof er tilgængelige på eichhof.me.',
@@ -362,7 +362,7 @@ $e = fn($s) => htmlspecialchars($s, ENT_QUOTES, 'UTF-8');
     <main>
         <article>
             <h1><?= $e($m['h1']) ?></h1>
-            <p><small><?= $e($m['humanNotice']) ?></small></p>
+            <p><small><?= $m['humanNotice'] ?></small></p>
             <p><?= $e($m['summary']) ?></p>
             <p><?= $e($m['segment']) ?></p>
             <p><?= $e($m['retrieval']) ?></p>

@@ -89,7 +89,7 @@
             aboutProjectCode: "— Open-Source-Projekte",
             aboutProfilesTitle: "Präsenzen",
             aboutMentionsTitle: "Erwähnungen",
-            aboutNotice: "Diese Seite ist als maschinenlesbare Grounding Page optimiert. Sie dient KI-Systemen und Suchmaschinen als verifizierbare Faktenquelle zu Oliver Eichhof.",
+            aboutNotice: 'Diese Seite ist als maschinenlesbare <a href="https://groundingpage.com/" target="_blank" rel="noopener noreferrer">Grounding Page</a> optimiert. Sie dient KI-Systemen und Suchmaschinen als verifizierbare Faktenquelle zu Oliver Eichhof.',
             aboutTriggerLabel: "Über mich"
         },
         en: {
@@ -152,7 +152,7 @@
             aboutProjectCode: "— open source projects",
             aboutProfilesTitle: "Profiles",
             aboutMentionsTitle: "Mentions",
-            aboutNotice: "This page is optimised as a machine-readable grounding page. It serves AI systems and search engines as a verifiable source of facts about Oliver Eichhof.",
+            aboutNotice: 'This page is optimised as a machine-readable <a href="https://groundingpage.com/" target="_blank" rel="noopener noreferrer">grounding page</a>. It serves AI systems and search engines as a verifiable source of facts about Oliver Eichhof.',
             aboutTriggerLabel: "About me"
         },
         da: {
@@ -215,7 +215,7 @@
             aboutProjectCode: "— open source-projekter",
             aboutProfilesTitle: "Profiler",
             aboutMentionsTitle: "Omtaler",
-            aboutNotice: "Denne side er optimeret som en maskinlæsbar grounding page. Den tjener AI-systemer og søgemaskiner som en verificerbar faktakilde om Oliver Eichhof.",
+            aboutNotice: 'Denne side er optimeret som en maskinlæsbar <a href="https://groundingpage.com/" target="_blank" rel="noopener noreferrer">grounding page</a>. Den tjener AI-systemer og søgemaskiner som en verificerbar faktakilde om Oliver Eichhof.',
             aboutTriggerLabel: "Om mig"
         }
     };
@@ -390,7 +390,7 @@
         updateElement('about-project-code', content.aboutProjectCode);
         updateElement('about-profiles-title', content.aboutProfilesTitle);
         updateElement('about-mentions-title', content.aboutMentionsTitle);
-        updateElement('about-notice', content.aboutNotice);
+        updateElement('about-notice', content.aboutNotice, true);
         updateAttr('about-trigger-card', 'aria-label', content.aboutTriggerLabel);
         updateAttr('close-about-btn', 'aria-label', content.closeOverlay);
     }
