@@ -59,7 +59,8 @@ $meta = [
         'aboutUrl' => '/ueber',
         'linkedinUrl' => 'https://de.linkedin.com/in/olivereichhof',
         'schema_description' => 'Kommunikationsspezialist aus Hamburg für digitale Markenführung und Zielgruppenanalyse, geprägt von Musikmedien und Streaming.',
-        'jobTitle' => 'Leiter Marketing'
+        'jobTitle' => 'Leiter Marketing',
+        'knowsAbout' => '["Marketing", "Markenentwicklung", "Zielgruppenanalyse", "Kampagnenplanung", "Kommunikationsstrategie", "Content-Strategie", "Digitale Kommunikation", "Employer Branding", "B2B-Kommunikation", "Journey Design", "KPI-Frameworks", "GEO/SEO/SEA", "Marketing Automation", "KI-gestützte Workflows", "Radio", "Audio", "Streaming Media", "Musik", "Musikmedien", "Bloggen"]'
     ],
     'en' => [
         'lang' => 'en',
@@ -73,7 +74,8 @@ $meta = [
         'aboutUrl' => '/en/about',
         'linkedinUrl' => 'https://www.linkedin.com/in/olivereichhof',
         'schema_description' => 'Communication specialist from Hamburg for digital brand management and audience analysis, shaped by music media and streaming.',
-        'jobTitle' => 'Marketing Director'
+        'jobTitle' => 'Marketing Director',
+        'knowsAbout' => '["Marketing", "Brand Development", "Audience Analysis", "Campaign Planning", "Communication Strategy", "Content Strategy", "Digital Communication", "Employer Branding", "B2B Communication", "Journey Design", "KPI Frameworks", "GEO/SEO/SEA", "Marketing Automation", "AI-powered Workflows", "Radio", "Audio", "Streaming Media", "Music", "Music Media", "Blogging"]'
     ],
     'da' => [
         'lang' => 'da',
@@ -87,7 +89,8 @@ $meta = [
         'aboutUrl' => '/dk/om',
         'linkedinUrl' => 'https://dk.linkedin.com/in/olivereichhof',
         'schema_description' => 'Kommunikationsspecialist fra Hamborg for digital brandledelse og målgruppeanalyse, formet af musikmedier og streaming.',
-        'jobTitle' => 'Marketingchef'
+        'jobTitle' => 'Marketingchef',
+        'knowsAbout' => '["Marketing", "Brandudvikling", "Målgruppeanalyse", "Kampagneplanlægning", "Kommunikationsstrategi", "Content-strategi", "Digital kommunikation", "Employer branding", "B2B-kommunikation", "Journey design", "KPI-frameworks", "GEO/SEO/SEA", "Marketing automation", "AI-drevne workflows", "Radio", "Audio", "Streaming media", "Musik", "Musikmedier", "Blogging"]'
     ]
 ];
 
@@ -126,6 +129,7 @@ if ($overlay === 'impressum' || $overlay === 'legal' || $overlay === 'kolofon') 
     <meta property="og:image:height" content="628">
     <meta property="og:url" content="<?= $m['url'] ?>">
     <meta property="og:type" content="profile">
+    <meta property="og:site_name" content="Oliver Eichhof">
     <meta property="og:locale" content="<?= $m['locale'] ?>">
     <meta property="og:locale:alternate" content="de_DE">
     <meta property="og:locale:alternate" content="en_GB">
@@ -164,15 +168,7 @@ if ($overlay === 'impressum' || $overlay === 'legal' || $overlay === 'kolofon') 
         "jobTitle": "<?= htmlspecialchars($m['jobTitle']) ?>",
         "description": "<?= htmlspecialchars($m['schema_description']) ?>",
         "inLanguage": "<?= $m['lang'] ?>",
-        "knowsAbout": [
-            "Marketing", "Markenentwicklung", "Zielgruppenanalyse", "Kampagnenplanung",
-            "Kommunikationsstrategie", "Content-Strategie", "Digitale Kommunikation",
-            "Employer Branding", "B2B-Kommunikation", "Journey Design",
-            "KPI-Frameworks", "GEO/SEO/SEA", "Marketing Automation",
-            "KI-gestützte Workflows",
-            "Radio", "Audio", "Streaming Media",
-            "Musik", "Musikmedien", "Bloggen"
-        ],
+        "knowsAbout": <?= $m['knowsAbout'] ?>,
         "homeLocation": { "@type": "Place", "name": "Hamburg" },
         "birthPlace": { "@type": "Place", "name": "Bremerhaven" },
         "worksFor": {

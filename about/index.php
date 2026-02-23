@@ -274,6 +274,7 @@ $e = fn($s) => htmlspecialchars($s, ENT_QUOTES, 'UTF-8');
     <meta property="og:image:height" content="628">
     <meta property="og:url" content="<?= $m['ogUrl'] ?>">
     <meta property="og:type" content="profile">
+    <meta property="og:site_name" content="Oliver Eichhof">
     <meta property="og:locale" content="<?= $m['locale'] ?>">
     <meta property="og:locale:alternate" content="de_DE">
     <meta property="og:locale:alternate" content="en_GB">
