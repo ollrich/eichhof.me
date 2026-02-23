@@ -2,8 +2,8 @@
 /**
  * eichhof.me - Multilingual Entry Point
  * =====================================
- * Handles language detection and serves appropriate meta tags for SEO/Social
- * while keeping client-side language switching for UI elements.
+ * Handles language detection and serves all content server-side for SEO/Social
+ * while keeping client-side language switching for UI elements via language.js.
  *
  * URL Structure:
  * - /              → German (default)
@@ -42,12 +42,16 @@ if (!in_array($lang, ['de', 'en', 'da'])) {
     }
 }
 
+// Helper function for HTML escaping
+$e = function($s) { return htmlspecialchars($s, ENT_QUOTES, 'UTF-8'); };
+
 // ============================================================================
-// META CONTENT PER LANGUAGE
+// COMPLETE CONTENT PER LANGUAGE
 // ============================================================================
 
 $meta = [
     'de' => [
+        // SEO & Meta
         'lang' => 'de',
         'title' => 'Oliver Eichhof – Kommunikationsspezialist aus Hamburg',
         'description' => 'Kommunikationsspezialist aus Hamburg für digitale Markenführung und Zielgruppenanalyse, geprägt von Musikmedien und Streaming.',
@@ -60,9 +64,79 @@ $meta = [
         'linkedinUrl' => 'https://de.linkedin.com/in/olivereichhof',
         'schema_description' => 'Kommunikationsspezialist aus Hamburg für digitale Markenführung und Zielgruppenanalyse, geprägt von Musikmedien und Streaming.',
         'jobTitle' => 'Leiter Marketing',
-        'knowsAbout' => '["Marketing", "Markenentwicklung", "Zielgruppenanalyse", "Kampagnenplanung", "Kommunikationsstrategie", "Content-Strategie", "Digitale Kommunikation", "Employer Branding", "B2B-Kommunikation", "Journey Design", "KPI-Frameworks", "GEO/SEO/SEA", "Marketing Automation", "KI-gestützte Workflows", "Radio", "Audio", "Streaming Media", "Musik", "Musikmedien", "Bloggen"]'
+        'knowsAbout' => '["Marketing", "Markenentwicklung", "Zielgruppenanalyse", "Kampagnenplanung", "Kommunikationsstrategie", "Content-Strategie", "Digitale Kommunikation", "Employer Branding", "B2B-Kommunikation", "Journey Design", "KPI-Frameworks", "GEO/SEO/SEA", "Marketing Automation", "KI-gestützte Workflows", "Radio", "Audio", "Streaming Media", "Musik", "Musikmedien", "Bloggen"]',
+        // Photo
+        'photoAlt' => 'Porträt von Oliver Eichhof, Kommunikationsspezialist aus Hamburg',
+        // Tagline (HTML)
+        'tagline' => 'Ich arbeite in der Medienbranche und rede im Job gern über gute Kommunikation und was Zielgruppen brauchen. Ab und zu <a href="https://www.schongeil.de/" target="_blank" rel="noopener noreferrer">blogge</a> ich und <a href="https://soundcloud.com/livicxyz" target="_blank" rel="noopener noreferrer">lege</a> Platten auf.',
+        // Theme toggle
+        'themeDark' => 'Licht aus',
+        'themeLight' => 'Licht an',
+        'themeToggleLabel' => 'Farbschema wechseln',
+        // About trigger
+        'aboutTriggerLabel' => 'Über mich',
+        // Email
+        'emailText' => 'E-Mail',
+        'emailAriaLabel' => 'E-Mail senden',
+        // Footer
+        'legalLink' => 'Impressum & Datenverarbeitung',
+        'footerEntity' => 'Oliver Eichhof, Kommunikationsspezialist aus Hamburg',
+        'footerDesktop' => 'Mit <span aria-hidden="true">♥</span><span class="sr-only">Liebe</span> und KI in Hamburg erstellt',
+        'footerMobile' => 'Mit <span aria-hidden="true">♥</span><span class="sr-only">Liebe</span> und KI realisiert',
+        'githubTooltip' => 'Quellcode auf GitHub',
+        'githubAriaLabel' => 'Quellcode auf GitHub',
+        'hint' => 'drücke leertaste',
+        // Close buttons
+        'closeOverlay' => 'Schließen',
+        'closePreview' => 'Vorschau schließen',
+        // Impressum overlay
+        'overlayTitle' => 'Impressum',
+        'overlayText1' => 'Diese Website wird betrieben von:',
+        'overlayText2' => 'Oliver Eichhof<br>Eismeerweg 9E<br>22145 Hamburg',
+        'overlayText3' => 'Kontakt:',
+        'overlayText3b' => 'Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV.',
+        'overlaySubtitle' => 'Datenverarbeitung',
+        'overlayText4' => 'Diese Website verwendet keine Cookies, keine Logfiles und keine Tracking-Tools. Lediglich deine Farbschema-Präferenz wird lokal in deinem Browser gespeichert.',
+        'overlayText5' => 'Bei Nutzung des Kontaktformulars werden dein Name, deine E-Mail-Adresse und deine Nachricht per E-Mail übermittelt. Zur Spam-Abwehr wird deine IP-Adresse temporär verarbeitet, aber nicht gespeichert.',
+        'overlayText6' => 'Links zu externen Plattformen (LinkedIn, XING, Bluesky, Mastodon, Instagram, SoundCloud, YouTube, Bandcamp, Unsplash, GitHub, REGIOCAST, W&V, testspiel.de) unterliegen deren eigenen Datenschutzbestimmungen.',
+        // Contact form
+        'contactTitle' => 'Kontakt',
+        'contactName' => 'Dein Name',
+        'contactEmail' => 'Deine E-Mail-Adresse',
+        'contactMessage' => 'Deine Nachricht',
+        'contactSubmit' => 'Nachricht senden',
+        'contactPrivacy' => 'Deine Daten werden nur zur Beantwortung verwendet. Zur Spam-Abwehr wird deine IP temporär verarbeitet, aber nicht gespeichert.',
+        'contactFallback' => 'Oder direkt per E-Mail:',
+        // About overlay
+        'aboutSummary' => 'Oliver Eichhof ist Kommunikationsspezialist aus Hamburg mit Schwerpunkt Digital und Marketing. Seit rund 20 Jahren arbeitet er in Agenturen und Unternehmen für B2C- und B2B-Marken unterschiedlichster Branchen.',
+        'aboutFactsTitle' => 'Steckbrief',
+        'aboutDtRole' => 'Arbeitgeber',
+        'aboutDdRole' => '<a href="https://www.regiocast.de/" target="_blank" rel="noopener noreferrer">REGIOCAST GmbH &amp; Co. KG</a>',
+        'aboutDtLocation' => 'Standort',
+        'aboutDdLocation' => 'Hamburg',
+        'aboutDtBorn' => 'Geboren',
+        'aboutDdBorn' => '1979 in Bremerhaven',
+        'aboutCareerTitle' => 'Beruflicher Werdegang',
+        'aboutCareer1Title' => 'Leiter Marketing',
+        'aboutCareer1Year' => 'seit 2026',
+        'aboutCareer3Org' => 'Freiberuflich',
+        'aboutCareerMore' => 'Kompletten Werdegang auf <a href="https://de.linkedin.com/in/olivereichhof" target="_blank" rel="noopener noreferrer">LinkedIn</a> ansehen',
+        'aboutProjectsTitle' => 'Projekte',
+        'aboutProjectBlog' => '— Persönlicher Blog',
+        'aboutProjectCode' => '— Open-Source-Projekte',
+        'aboutProfilesTitle' => 'Präsenzen',
+        'aboutMentionsTitle' => 'Erwähnungen',
+        'aboutNotice' => 'Diese Seite ist als maschinenlesbare <a href="https://groundingpage.com/" target="_blank" rel="noopener noreferrer">Grounding Page</a> optimiert. Sie dient KI-Systemen und Suchmaschinen als verifizierbare Faktenquelle zu Oliver Eichhof.',
+        // Mentions
+        'mentions' => [
+            ['https://www.wuv.de/Archiv/So-tickt-die-Zukunft-Dokyo-auf-der-%22The-Next-Web-Conference%22', 'W&V', 'DOKYO auf der Next Web Conference'],
+            ['https://www.wuv.de/Archiv/Wie-man-mit-Messenger-f%C3%BCr-die-Ehe-f%C3%BCr-alle-wirbt', 'W&V', 'Ben & Jerry\'s „Ehe für alle"'],
+            ['https://www.testspiel.de/oliver-polak-interview-2/290215/', 'testspiel.de', 'Oliver Polak Interview'],
+            ['https://www.testspiel.de/kid-simius-interview/276764/', 'testspiel.de', 'Kid Simius Interview'],
+        ],
     ],
     'en' => [
+        // SEO & Meta
         'lang' => 'en',
         'title' => 'Oliver Eichhof – Communication Specialist from Hamburg',
         'description' => 'Communication specialist from Hamburg for digital brand management and audience analysis, shaped by music media and streaming.',
@@ -75,9 +149,79 @@ $meta = [
         'linkedinUrl' => 'https://www.linkedin.com/in/olivereichhof',
         'schema_description' => 'Communication specialist from Hamburg for digital brand management and audience analysis, shaped by music media and streaming.',
         'jobTitle' => 'Marketing Director',
-        'knowsAbout' => '["Marketing", "Brand Development", "Audience Analysis", "Campaign Planning", "Communication Strategy", "Content Strategy", "Digital Communication", "Employer Branding", "B2B Communication", "Journey Design", "KPI Frameworks", "GEO/SEO/SEA", "Marketing Automation", "AI-powered Workflows", "Radio", "Audio", "Streaming Media", "Music", "Music Media", "Blogging"]'
+        'knowsAbout' => '["Marketing", "Brand Development", "Audience Analysis", "Campaign Planning", "Communication Strategy", "Content Strategy", "Digital Communication", "Employer Branding", "B2B Communication", "Journey Design", "KPI Frameworks", "GEO/SEO/SEA", "Marketing Automation", "AI-powered Workflows", "Radio", "Audio", "Streaming Media", "Music", "Music Media", "Blogging"]',
+        // Photo
+        'photoAlt' => 'Portrait of Oliver Eichhof, Communication Specialist from Hamburg',
+        // Tagline (HTML)
+        'tagline' => 'I work in media and like talking about good communication and what audiences need. Every now and then I <a href="https://www.schongeil.de/en/" target="_blank" rel="noopener noreferrer">blog</a> and <a href="https://soundcloud.com/livicxyz" target="_blank" rel="noopener noreferrer">spin records</a>.',
+        // Theme toggle
+        'themeDark' => 'Lights off',
+        'themeLight' => 'Lights on',
+        'themeToggleLabel' => 'Toggle color scheme',
+        // About trigger
+        'aboutTriggerLabel' => 'About me',
+        // Email
+        'emailText' => 'Email',
+        'emailAriaLabel' => 'Send email',
+        // Footer
+        'legalLink' => 'Legal Notice & Data Processing',
+        'footerEntity' => 'Oliver Eichhof, Communication Specialist from Hamburg',
+        'footerDesktop' => 'Made with <span aria-hidden="true">♥</span><span class="sr-only">love</span> and AI in Hamburg',
+        'footerMobile' => 'Made with <span aria-hidden="true">♥</span><span class="sr-only">love</span> and AI',
+        'githubTooltip' => 'View source on GitHub',
+        'githubAriaLabel' => 'View source on GitHub',
+        'hint' => 'press space',
+        // Close buttons
+        'closeOverlay' => 'Close',
+        'closePreview' => 'Close preview',
+        // Legal overlay
+        'overlayTitle' => 'Legal Notice',
+        'overlayText1' => 'This website is operated by:',
+        'overlayText2' => 'Oliver Eichhof<br>Eismeerweg 9E<br>22145 Hamburg, Germany',
+        'overlayText3' => 'Contact:',
+        'overlayText3b' => 'Responsible for content according to § 18 para. 2 German Interstate Media Treaty (MStV).',
+        'overlaySubtitle' => 'Data Processing',
+        'overlayText4' => 'This website uses no cookies, no log files, and no tracking tools. Only your color scheme preference is stored locally in your browser.',
+        'overlayText5' => 'When using the contact form, your name, email address, and message are transmitted via email. Your IP address is temporarily processed for spam protection but not stored.',
+        'overlayText6' => 'Links to external platforms (LinkedIn, XING, Bluesky, Mastodon, Instagram, SoundCloud, YouTube, Bandcamp, Unsplash, GitHub, REGIOCAST, W&V, testspiel.de) are subject to their own privacy policies.',
+        // Contact form
+        'contactTitle' => 'Contact',
+        'contactName' => 'Your name',
+        'contactEmail' => 'Your email address',
+        'contactMessage' => 'Your message',
+        'contactSubmit' => 'Send message',
+        'contactPrivacy' => 'Your data will only be used to respond. Your IP is temporarily processed for spam protection but not stored.',
+        'contactFallback' => 'Or email directly:',
+        // About overlay
+        'aboutSummary' => 'Oliver Eichhof is a communication specialist from Hamburg, Germany, with a focus on digital and marketing. He has been working in agencies and companies for B2C and B2B brands across a wide range of industries for around 20 years.',
+        'aboutFactsTitle' => 'Key Facts',
+        'aboutDtRole' => 'Employer',
+        'aboutDdRole' => '<a href="https://www.regiocast.de/" target="_blank" rel="noopener noreferrer">REGIOCAST GmbH &amp; Co. KG</a>',
+        'aboutDtLocation' => 'Location',
+        'aboutDdLocation' => 'Hamburg, Germany',
+        'aboutDtBorn' => 'Born',
+        'aboutDdBorn' => '1979 in Bremerhaven, Germany',
+        'aboutCareerTitle' => 'Career',
+        'aboutCareer1Title' => 'Marketing Director',
+        'aboutCareer1Year' => 'since 2026',
+        'aboutCareer3Org' => 'Freelance',
+        'aboutCareerMore' => 'View full career on <a href="https://www.linkedin.com/in/olivereichhof" target="_blank" rel="noopener noreferrer">LinkedIn</a>',
+        'aboutProjectsTitle' => 'Projects',
+        'aboutProjectBlog' => '— personal blog',
+        'aboutProjectCode' => '— open source projects',
+        'aboutProfilesTitle' => 'Profiles',
+        'aboutMentionsTitle' => 'Mentions',
+        'aboutNotice' => 'This page is optimised as a machine-readable <a href="https://groundingpage.com/" target="_blank" rel="noopener noreferrer">grounding page</a>. It serves AI systems and search engines as a verifiable source of facts about Oliver Eichhof.',
+        // Mentions
+        'mentions' => [
+            ['https://www.wuv.de/Archiv/So-tickt-die-Zukunft-Dokyo-auf-der-%22The-Next-Web-Conference%22', 'W&V', 'DOKYO at The Next Web Conference'],
+            ['https://www.wuv.de/Archiv/Wie-man-mit-Messenger-f%C3%BCr-die-Ehe-f%C3%BCr-alle-wirbt', 'W&V', 'Ben & Jerry\'s "Marriage for All" campaign'],
+            ['https://www.testspiel.de/oliver-polak-interview-2/290215/', 'testspiel.de', 'Oliver Polak Interview'],
+            ['https://www.testspiel.de/kid-simius-interview/276764/', 'testspiel.de', 'Kid Simius Interview'],
+        ],
     ],
     'da' => [
+        // SEO & Meta
         'lang' => 'da',
         'title' => 'Oliver Eichhof – Kommunikationsspecialist fra Hamborg',
         'description' => 'Kommunikationsspecialist fra Hamborg for digital brandledelse og målgruppeanalyse, formet af musikmedier og streaming.',
@@ -90,7 +234,76 @@ $meta = [
         'linkedinUrl' => 'https://dk.linkedin.com/in/olivereichhof',
         'schema_description' => 'Kommunikationsspecialist fra Hamborg for digital brandledelse og målgruppeanalyse, formet af musikmedier og streaming.',
         'jobTitle' => 'Marketingchef',
-        'knowsAbout' => '["Marketing", "Brandudvikling", "Målgruppeanalyse", "Kampagneplanlægning", "Kommunikationsstrategi", "Content-strategi", "Digital kommunikation", "Employer branding", "B2B-kommunikation", "Journey design", "KPI-frameworks", "GEO/SEO/SEA", "Marketing automation", "AI-drevne workflows", "Radio", "Audio", "Streaming media", "Musik", "Musikmedier", "Blogging"]'
+        'knowsAbout' => '["Marketing", "Brandudvikling", "Målgruppeanalyse", "Kampagneplanlægning", "Kommunikationsstrategi", "Content-strategi", "Digital kommunikation", "Employer branding", "B2B-kommunikation", "Journey design", "KPI-frameworks", "GEO/SEO/SEA", "Marketing automation", "AI-drevne workflows", "Radio", "Audio", "Streaming media", "Musik", "Musikmedier", "Blogging"]',
+        // Photo
+        'photoAlt' => 'Portræt af Oliver Eichhof, Kommunikationsspecialist fra Hamborg',
+        // Tagline (HTML)
+        'tagline' => 'Jeg arbejder i mediebranchen og taler gerne om god kommunikation og hvad målgrupper har brug for. Af og til <a href="https://www.schongeil.de/en/" target="_blank" rel="noopener noreferrer">blogger</a> jeg og <a href="https://soundcloud.com/livicxyz" target="_blank" rel="noopener noreferrer">spiller plader</a>.',
+        // Theme toggle
+        'themeDark' => 'Sluk lyset',
+        'themeLight' => 'Tænd lyset',
+        'themeToggleLabel' => 'Skift farveskema',
+        // About trigger
+        'aboutTriggerLabel' => 'Om mig',
+        // Email
+        'emailText' => 'E-Mail',
+        'emailAriaLabel' => 'Send e-mail',
+        // Footer
+        'legalLink' => 'Kolofon & Databehandling',
+        'footerEntity' => 'Oliver Eichhof, Kommunikationsspecialist fra Hamborg',
+        'footerDesktop' => 'Lavet med <span aria-hidden="true">♥</span><span class="sr-only">kærlighed</span> og AI i Hamburg',
+        'footerMobile' => 'Lavet med <span aria-hidden="true">♥</span><span class="sr-only">kærlighed</span> og AI',
+        'githubTooltip' => 'Se kildekoden på GitHub',
+        'githubAriaLabel' => 'Se kildekoden på GitHub',
+        'hint' => 'tryk mellemrum',
+        // Close buttons
+        'closeOverlay' => 'Luk',
+        'closePreview' => 'Luk forhåndsvisning',
+        // Kolofon overlay
+        'overlayTitle' => 'Kolofon',
+        'overlayText1' => 'Denne hjemmeside drives af:',
+        'overlayText2' => 'Oliver Eichhof<br>Eismeerweg 9E<br>22145 Hamburg, Tyskland',
+        'overlayText3' => 'Kontakt:',
+        'overlayText3b' => 'Ansvarlig for indhold i henhold til § 18 stk. 2 tysk statslig medieaftale (MStV).',
+        'overlaySubtitle' => 'Databehandling',
+        'overlayText4' => 'Denne hjemmeside bruger ingen cookies, ingen logfiler og ingen sporingsværktøjer. Kun din farvevalg-præference gemmes lokalt i din browser.',
+        'overlayText5' => 'Ved brug af kontaktformularen sendes dit navn, din e-mailadresse og din besked via e-mail. Din IP-adresse behandles midlertidigt til spam-beskyttelse, men gemmes ikke.',
+        'overlayText6' => 'Links til eksterne platforme (LinkedIn, XING, Bluesky, Mastodon, Instagram, SoundCloud, YouTube, Bandcamp, Unsplash, GitHub, REGIOCAST, W&V, testspiel.de) er underlagt deres egne privatlivspolitikker.',
+        // Contact form
+        'contactTitle' => 'Kontakt',
+        'contactName' => 'Dit navn',
+        'contactEmail' => 'Din e-mailadresse',
+        'contactMessage' => 'Din besked',
+        'contactSubmit' => 'Send besked',
+        'contactPrivacy' => 'Dine data bruges kun til at besvare. Din IP behandles midlertidigt til spam-beskyttelse, men gemmes ikke.',
+        'contactFallback' => 'Eller send e-mail direkte:',
+        // About overlay
+        'aboutSummary' => 'Oliver Eichhof er kommunikationsspecialist fra Hamborg, Tyskland, med fokus på digital og marketing. I omkring 20 år har han arbejdet i bureauer og virksomheder for B2C- og B2B-brands på tværs af mange forskellige brancher.',
+        'aboutFactsTitle' => 'Nøglefakta',
+        'aboutDtRole' => 'Arbejdsgiver',
+        'aboutDdRole' => '<a href="https://www.regiocast.de/" target="_blank" rel="noopener noreferrer">REGIOCAST GmbH &amp; Co. KG</a>',
+        'aboutDtLocation' => 'Placering',
+        'aboutDdLocation' => 'Hamborg, Tyskland',
+        'aboutDtBorn' => 'Født',
+        'aboutDdBorn' => '1979 i Bremerhaven, Tyskland',
+        'aboutCareerTitle' => 'Karriere',
+        'aboutCareer1Title' => 'Marketingchef',
+        'aboutCareer1Year' => 'siden 2026',
+        'aboutCareer3Org' => 'Freelance',
+        'aboutCareerMore' => 'Se den fulde karriere på <a href="https://dk.linkedin.com/in/olivereichhof" target="_blank" rel="noopener noreferrer">LinkedIn</a>',
+        'aboutProjectsTitle' => 'Projekter',
+        'aboutProjectBlog' => '— personlig blog',
+        'aboutProjectCode' => '— open source-projekter',
+        'aboutProfilesTitle' => 'Profiler',
+        'aboutMentionsTitle' => 'Omtaler',
+        'aboutNotice' => 'Denne side er optimeret som en maskinlæsbar <a href="https://groundingpage.com/" target="_blank" rel="noopener noreferrer">grounding page</a>. Den tjener AI-systemer og søgemaskiner som en verificerbar faktakilde om Oliver Eichhof.',
+        // Mentions
+        'mentions' => [
+            ['https://www.wuv.de/Archiv/So-tickt-die-Zukunft-Dokyo-auf-der-%22The-Next-Web-Conference%22', 'W&V', 'DOKYO på The Next Web Conference'],
+            ['https://www.wuv.de/Archiv/Wie-man-mit-Messenger-f%C3%BCr-die-Ehe-f%C3%BCr-alle-wirbt', 'W&V', 'Ben & Jerry\'s "Ægteskab for alle"-kampagne'],
+            ['https://www.testspiel.de/oliver-polak-interview-2/290215/', 'testspiel.de', 'Oliver Polak Interview'],
+            ['https://www.testspiel.de/kid-simius-interview/276764/', 'testspiel.de', 'Kid Simius Interview'],
+        ],
     ]
 ];
 
@@ -117,13 +330,13 @@ if ($overlay === 'impressum' || $overlay === 'legal' || $overlay === 'kolofon') 
     <meta name="theme-color" content="#764ba2">
 
     <!-- SEO meta tags for search engines -->
-    <meta name="description" content="<?= htmlspecialchars($m['description']) ?>">
+    <meta name="description" content="<?= $e($m['description']) ?>">
     <meta name="robots" content="index, follow">
     <meta name="author" content="Oliver Eichhof">
 
     <!-- Open Graph meta tags for rich social media sharing (Facebook, LinkedIn) -->
-    <meta property="og:title" content="<?= htmlspecialchars($m['title']) ?>">
-    <meta property="og:description" content="<?= htmlspecialchars($m['description']) ?>">
+    <meta property="og:title" content="<?= $e($m['title']) ?>">
+    <meta property="og:description" content="<?= $e($m['description']) ?>">
     <meta property="og:image" content="https://eichhof.me/images/og-image.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="628">
@@ -137,8 +350,8 @@ if ($overlay === 'impressum' || $overlay === 'legal' || $overlay === 'kolofon') 
 
     <!-- Twitter Card meta tags for rich Twitter sharing -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="<?= htmlspecialchars($m['title']) ?>">
-    <meta name="twitter:description" content="<?= htmlspecialchars($m['description']) ?>">
+    <meta name="twitter:title" content="<?= $e($m['title']) ?>">
+    <meta name="twitter:description" content="<?= $e($m['description']) ?>">
     <meta name="twitter:image" content="https://eichhof.me/images/og-image.png">
 
     <!-- Canonical URL and hreflang for international SEO -->
@@ -148,7 +361,7 @@ if ($overlay === 'impressum' || $overlay === 'legal' || $overlay === 'kolofon') 
     <link rel="alternate" hreflang="da" href="https://eichhof.me/dk/">
     <link rel="alternate" hreflang="x-default" href="https://eichhof.me/">
 
-    <title><?= htmlspecialchars($m['title']) ?></title>
+    <title><?= $e($m['title']) ?></title>
 
     <!-- JSON-LD structured data for rich search results (Google Knowledge Panel) -->
     <script type="application/ld+json">
@@ -165,8 +378,8 @@ if ($overlay === 'impressum' || $overlay === 'legal' || $overlay === 'kolofon') 
         "familyName": "Eichhof",
         "url": "https://eichhof.me/",
         "image": "https://eichhof.me/images/oliver-eichhof.webp",
-        "jobTitle": "<?= htmlspecialchars($m['jobTitle']) ?>",
-        "description": "<?= htmlspecialchars($m['schema_description']) ?>",
+        "jobTitle": "<?= $e($m['jobTitle']) ?>",
+        "description": "<?= $e($m['schema_description']) ?>",
         "inLanguage": "<?= $m['lang'] ?>",
         "knowsAbout": <?= $m['knowsAbout'] ?>,
         "homeLocation": { "@type": "Place", "name": "Hamburg" },
@@ -205,7 +418,7 @@ if ($overlay === 'impressum' || $overlay === 'legal' || $overlay === 'kolofon') 
     <link rel="apple-touch-icon" sizes="180x180" href="/images/favicons/favicon180.png">
 
     <!-- Stylesheet -->
-    <link rel="stylesheet" href="/css/styles.css?v=3">
+    <link rel="stylesheet" href="/css/styles.css?v=4">
 
 </head>
 <body data-lang="<?= $lang ?>"<?= $openOverlay ? ' data-overlay="' . $openOverlay . '"' : '' ?>>
@@ -213,10 +426,10 @@ if ($overlay === 'impressum' || $overlay === 'legal' || $overlay === 'kolofon') 
     <!-- Theme Toggle Button -->
     <div class="theme-toggle">
         <span class="theme-tooltip">
-            <span class="tooltip-dark" id="tooltip-dark">Licht aus</span>
-            <span class="tooltip-light" id="tooltip-light">Licht an</span>
+            <span class="tooltip-dark" id="tooltip-dark"><?= $e($m['themeDark']) ?></span>
+            <span class="tooltip-light" id="tooltip-light"><?= $e($m['themeLight']) ?></span>
         </span>
-        <button class="theme-toggle-btn" id="theme-toggle" aria-label="Farbschema wechseln">
+        <button class="theme-toggle-btn" id="theme-toggle" aria-label="<?= $e($m['themeToggleLabel']) ?>">
             <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
             </svg>
@@ -237,11 +450,11 @@ if ($overlay === 'impressum' || $overlay === 'legal' || $overlay === 'kolofon') 
     <!-- Main Content Container -->
     <div class="container">
         <!-- Profile photo with Easter egg animation (double-click or spacebar) -->
-        <img src="/images/oliver-eichhof.webp" alt="Porträt von Oliver Eichhof, Kommunikationsspezialist aus Hamburg" class="profile-photo">
+        <img src="/images/oliver-eichhof.webp" alt="<?= $e($m['photoAlt']) ?>" class="profile-photo">
 
         <h1 class="name">Oliver Eichhof
             <span class="about-triggers">
-                <a href="<?= $m['aboutUrl'] ?>" class="about-trigger about-trigger-card" id="about-trigger-card" aria-label="Über mich">
+                <a href="<?= $m['aboutUrl'] ?>" class="about-trigger about-trigger-card" id="about-trigger-card" aria-label="<?= $e($m['aboutTriggerLabel']) ?>">
                     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                         <rect x="2" y="4" width="20" height="16" rx="2"/><circle cx="8" cy="11" r="2.5"/><path d="M4 18c0-2 1.5-3 4-3s4 1 4 3"/><line x1="15" y1="9" x2="20" y2="9"/><line x1="15" y1="13" x2="20" y2="13"/>
                     </svg>
@@ -249,8 +462,8 @@ if ($overlay === 'impressum' || $overlay === 'legal' || $overlay === 'kolofon') 
             </span>
         </h1>
 
-        <!-- Tagline with inline links - content replaced by JavaScript based on language -->
-        <p class="tagline" id="tagline">Ich arbeite in der Medienbranche und rede im Job gern über gute Kommunikation und was Zielgruppen brauchen. Ab und zu <a href="https://www.schongeil.de/" target="_blank" rel="noopener noreferrer">blogge</a> ich und <a href="https://soundcloud.com/livicxyz" target="_blank" rel="noopener noreferrer">lege</a> Platten auf.</p>
+        <!-- Tagline with inline links -->
+        <p class="tagline" id="tagline"><?= $m['tagline'] ?></p>
 
         <!-- Social media and contact links -->
         <nav class="links" aria-label="Social Links">
@@ -286,38 +499,38 @@ if ($overlay === 'impressum' || $overlay === 'legal' || $overlay === 'kolofon') 
             </div>
 
             <!-- Email link - opens contact form, href serves as fallback -->
-            <a href="<?= $m['contactUrl'] ?>" id="email-link" class="link-card email" aria-label="E-Mail senden">
+            <a href="<?= $m['contactUrl'] ?>" id="email-link" class="link-card email" aria-label="<?= $e($m['emailAriaLabel']) ?>">
                 <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
                     <polyline points="22,6 12,13 2,6"></polyline>
                 </svg>
-                <div class="link-text" id="email-text">E-Mail</div>
+                <div class="link-text" id="email-text"><?= $e($m['emailText']) ?></div>
             </a>
         </nav>
 
         <!-- Mobile-only footer -->
         <div class="mobile-footer">
-            <a href="<?= $m['legalUrl'] ?>" id="footer-link-mobile">Impressum & Datenverarbeitung</a>
-            <span class="sr-only" id="footer-entity-mobile">Oliver Eichhof, Kommunikationsspezialist aus Hamburg</span>
-            <span id="footer-text-mobile">Mit <span aria-hidden="true">♥</span><span class="sr-only">Liebe</span> und KI realisiert</span>
+            <a href="<?= $m['legalUrl'] ?>" id="footer-link-mobile"><?= $e($m['legalLink']) ?></a>
+            <span class="sr-only" id="footer-entity-mobile"><?= $e($m['footerEntity']) ?></span>
+            <span id="footer-text-mobile"><?= $m['footerMobile'] ?></span>
         </div>
     </div>
 </main>
 
     <!-- Footer Elements -->
     <div class="footer-left">
-        <a href="<?= $m['legalUrl'] ?>" id="footer-link">Impressum & Datenverarbeitung</a>
+        <a href="<?= $m['legalUrl'] ?>" id="footer-link"><?= $e($m['legalLink']) ?></a>
     </div>
 
     <!-- Hidden entity info for crawlers -->
-    <span class="sr-only" id="footer-entity-desktop">Oliver Eichhof, Kommunikationsspezialist aus Hamburg</span>
+    <span class="sr-only" id="footer-entity-desktop"><?= $e($m['footerEntity']) ?></span>
 
     <div class="footer">
-        <span id="footer-text-desktop">Mit <span aria-hidden="true">♥</span><span class="sr-only">Liebe</span> und KI in Hamburg erstellt</span>
+        <span id="footer-text-desktop"><?= $m['footerDesktop'] ?></span>
         <span class="github-link-wrapper">•
-            <span class="github-tooltip" id="github-tooltip">Quellcode auf GitHub</span>
+            <span class="github-tooltip" id="github-tooltip"><?= $e($m['githubTooltip']) ?></span>
             <a href="https://github.com/ollrich/eichhof.me" target="_blank" rel="noopener noreferrer" class="footer-link">
-                <svg class="icon-github" viewBox="0 0 16 16" fill="currentColor" aria-label="Quellcode auf GitHub">
+                <svg class="icon-github" viewBox="0 0 16 16" fill="currentColor" aria-label="<?= $e($m['githubAriaLabel']) ?>">
                     <path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"/>
                 </svg>
             </a>
@@ -325,31 +538,31 @@ if ($overlay === 'impressum' || $overlay === 'legal' || $overlay === 'kolofon') 
     </div>
 
     <!-- Hint text for Easter egg discovery -->
-    <div class="footer-hint" id="footer-hint">drücke leertaste</div>
+    <div class="footer-hint" id="footer-hint"><?= $e($m['hint']) ?></div>
 
     <!-- Modal Overlay (Impressum/Legal Notice) -->
     <div class="overlay" id="overlay">
         <div class="overlay-content">
-            <button class="close-overlay" id="close-overlay-btn" aria-label="Close">
+            <button class="close-overlay" id="close-overlay-btn" aria-label="<?= $e($m['closeOverlay']) ?>">
                 <svg width="16" height="16" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
                     <line x1="2" y1="2" x2="12" y2="12"/><line x1="12" y1="2" x2="2" y2="12"/>
                 </svg>
             </button>
-            <h2 id="overlay-title">Impressum</h2>
-            <p id="overlay-text-1">Diese Website wird betrieben von:</p>
-            <p id="overlay-text-2">Oliver Eichhof<br>Eismeerweg 9E<br>22145 Hamburg</p>
-            <p><span id="overlay-text-3">Kontakt:</span> <a href="#" id="overlay-email-link" class="overlay-email-link"></a></p>
-            <p id="overlay-text-3b">Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV.</p>
-            <h3 id="overlay-subtitle">Datenverarbeitung</h3>
-            <p id="overlay-text-4">Diese Website verwendet keine Cookies, keine Logfiles und keine Tracking-Tools. Lediglich deine Farbschema-Präferenz wird lokal in deinem Browser gespeichert.</p>
-            <p id="overlay-text-5">Bei Nutzung des Kontaktformulars werden dein Name, deine E-Mail-Adresse und deine Nachricht per E-Mail übermittelt. Zur Spam-Abwehr wird deine IP-Adresse temporär verarbeitet, aber nicht gespeichert.</p>
-            <p id="overlay-text-6">Links zu externen Plattformen (LinkedIn, XING, Bluesky, Mastodon, Instagram, SoundCloud, YouTube, Bandcamp, Unsplash, GitHub, REGIOCAST, W&amp;V, testspiel.de) unterliegen deren eigenen Datenschutzbestimmungen.</p>
+            <h2 id="overlay-title"><?= $e($m['overlayTitle']) ?></h2>
+            <p id="overlay-text-1"><?= $e($m['overlayText1']) ?></p>
+            <p id="overlay-text-2"><?= $m['overlayText2'] ?></p>
+            <p><span id="overlay-text-3"><?= $e($m['overlayText3']) ?></span> <a href="#" id="overlay-email-link" class="overlay-email-link"></a></p>
+            <p id="overlay-text-3b"><?= $e($m['overlayText3b']) ?></p>
+            <h3 id="overlay-subtitle"><?= $e($m['overlaySubtitle']) ?></h3>
+            <p id="overlay-text-4"><?= $e($m['overlayText4']) ?></p>
+            <p id="overlay-text-5"><?= $e($m['overlayText5']) ?></p>
+            <p id="overlay-text-6"><?= $e($m['overlayText6']) ?></p>
         </div>
     </div>
 
     <!-- Link Preview Tooltip -->
     <div class="link-preview" id="link-preview">
-        <button class="preview-close" id="preview-close" aria-label="Close preview">
+        <button class="preview-close" id="preview-close" aria-label="<?= $e($m['closePreview']) ?>">
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
                 <line x1="2" y1="2" x2="12" y2="12"/><line x1="12" y1="2" x2="2" y2="12"/>
             </svg>
@@ -359,12 +572,12 @@ if ($overlay === 'impressum' || $overlay === 'legal' || $overlay === 'kolofon') 
     <!-- Contact Form Modal -->
     <div class="overlay" id="contact-overlay">
         <div class="overlay-content contact-form-content">
-            <button class="close-overlay" id="close-contact-btn" aria-label="Schließen">
+            <button class="close-overlay" id="close-contact-btn" aria-label="<?= $e($m['closeOverlay']) ?>">
                 <svg width="16" height="16" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
                     <line x1="2" y1="2" x2="12" y2="12"/><line x1="12" y1="2" x2="2" y2="12"/>
                 </svg>
             </button>
-            <h2 id="contact-title">Kontakt</h2>
+            <h2 id="contact-title"><?= $e($m['contactTitle']) ?></h2>
 
             <form id="contact-form" novalidate>
                 <!-- Honeypot field (hidden from users, visible to bots) -->
@@ -380,21 +593,21 @@ if ($overlay === 'impressum' || $overlay === 'legal' || $overlay === 'kolofon') 
                 <input type="hidden" name="csrf_token" id="contact-csrf">
 
                 <div class="contact-field">
-                    <input type="text" id="contact-name" name="name" placeholder="Dein Name" required minlength="2" maxlength="100" autocomplete="name">
+                    <input type="text" id="contact-name" name="name" placeholder="<?= $e($m['contactName']) ?>" required minlength="2" maxlength="100" autocomplete="name">
                 </div>
 
                 <div class="contact-field">
-                    <input type="email" id="contact-email" name="email" placeholder="Deine E-Mail-Adresse" required autocomplete="email">
+                    <input type="email" id="contact-email" name="email" placeholder="<?= $e($m['contactEmail']) ?>" required autocomplete="email">
                 </div>
 
                 <div class="contact-field">
-                    <textarea id="contact-message" name="message" placeholder="Deine Nachricht" required minlength="10" maxlength="5000" rows="5"></textarea>
+                    <textarea id="contact-message" name="message" placeholder="<?= $e($m['contactMessage']) ?>" required minlength="10" maxlength="5000" rows="5"></textarea>
                 </div>
 
-                <p class="contact-privacy" id="contact-privacy">Deine Daten werden ausschließlich zur Beantwortung deiner Anfrage verwendet.</p>
+                <p class="contact-privacy" id="contact-privacy"><?= $e($m['contactPrivacy']) ?></p>
 
                 <button type="submit" class="contact-submit" id="contact-submit">
-                    <span id="contact-submit-text">Nachricht senden</span>
+                    <span id="contact-submit-text"><?= $e($m['contactSubmit']) ?></span>
                     <span class="contact-spinner" id="contact-spinner"></span>
                 </button>
 
@@ -402,7 +615,7 @@ if ($overlay === 'impressum' || $overlay === 'legal' || $overlay === 'kolofon') 
             </form>
 
             <div class="contact-fallback">
-                <span id="contact-fallback-text">Oder direkt per E-Mail:</span>
+                <span id="contact-fallback-text"><?= $e($m['contactFallback']) ?></span>
                 <a href="#" id="contact-fallback-link"></a>
             </div>
         </div>
@@ -411,7 +624,7 @@ if ($overlay === 'impressum' || $overlay === 'legal' || $overlay === 'kolofon') 
     <!-- About Overlay (Grounding Page) -->
     <div class="overlay" id="about-overlay">
         <div class="overlay-content about-content">
-            <button class="close-overlay" id="close-about-btn" aria-label="Schließen">
+            <button class="close-overlay" id="close-about-btn" aria-label="<?= $e($m['closeOverlay']) ?>">
                 <svg width="16" height="16" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
                     <line x1="2" y1="2" x2="12" y2="12"/><line x1="12" y1="2" x2="2" y2="12"/>
                 </svg>
@@ -419,42 +632,42 @@ if ($overlay === 'impressum' || $overlay === 'legal' || $overlay === 'kolofon') 
             <h2 id="about-title">Oliver Eichhof</h2>
 
             <div class="about-section">
-                <p id="about-summary">Oliver Eichhof ist Kommunikationsspezialist aus Hamburg mit Schwerpunkt Digital und Marketing. Seit rund 20 Jahren arbeitet er in Agenturen und Unternehmen für B2C- und B2B-Marken unterschiedlichster Branchen.</p>
+                <p id="about-summary"><?= $e($m['aboutSummary']) ?></p>
             </div>
 
             <section class="about-section">
-                <h3 id="about-facts-title">Steckbrief</h3>
+                <h3 id="about-facts-title"><?= $e($m['aboutFactsTitle']) ?></h3>
                 <dl class="about-facts" id="about-facts">
-                    <dt id="about-dt-role">Arbeitgeber</dt>
-                    <dd id="about-dd-role"><a href="https://www.regiocast.de/" target="_blank" rel="noopener noreferrer">REGIOCAST GmbH & Co. KG</a></dd>
-                    <dt id="about-dt-location">Standort</dt>
-                    <dd id="about-dd-location">Hamburg</dd>
-                    <dt id="about-dt-born">Geboren</dt>
-                    <dd id="about-dd-born">1979 in Bremerhaven</dd>
+                    <dt id="about-dt-role"><?= $e($m['aboutDtRole']) ?></dt>
+                    <dd id="about-dd-role"><?= $m['aboutDdRole'] ?></dd>
+                    <dt id="about-dt-location"><?= $e($m['aboutDtLocation']) ?></dt>
+                    <dd id="about-dd-location"><?= $e($m['aboutDdLocation']) ?></dd>
+                    <dt id="about-dt-born"><?= $e($m['aboutDtBorn']) ?></dt>
+                    <dd id="about-dd-born"><?= $e($m['aboutDdBorn']) ?></dd>
                 </dl>
             </section>
 
             <section class="about-section">
-                <h3 id="about-career-title">Beruflicher Werdegang</h3>
+                <h3 id="about-career-title"><?= $e($m['aboutCareerTitle']) ?></h3>
                 <ul class="about-career" id="about-career">
-                    <li><strong id="about-career-1-title">Leiter Marketing</strong> — REGIOCAST GmbH & Co. KG <span class="about-year" id="about-career-1-year">seit 2026</span></li>
+                    <li><strong id="about-career-1-title"><?= $e($m['aboutCareer1Title']) ?></strong> — REGIOCAST GmbH & Co. KG <span class="about-year" id="about-career-1-year"><?= $e($m['aboutCareer1Year']) ?></span></li>
                     <li><strong>Strategy Director Marketing & Digital</strong> — wirDesign communication AG <span class="about-year">2023–2025</span></li>
-                    <li><strong>Digital Strategist</strong> — <span id="about-career-3-org">Freiberuflich</span> <span class="about-year">2020–2022</span></li>
+                    <li><strong>Digital Strategist</strong> — <span id="about-career-3-org"><?= $e($m['aboutCareer3Org']) ?></span> <span class="about-year">2020–2022</span></li>
                     <li><strong>Unit Lead Marketing & Concepts</strong> — rock&stars digital GmbH <span class="about-year">2019–2020</span></li>
                 </ul>
-                <p class="about-career-more" id="about-career-more"><a href="<?= $m['linkedinUrl'] ?>" target="_blank" rel="noopener noreferrer">Kompletten Werdegang auf LinkedIn ansehen</a></p>
+                <p class="about-career-more" id="about-career-more"><?= $m['aboutCareerMore'] ?></p>
             </section>
 
             <section class="about-section">
-                <h3 id="about-projects-title">Projekte</h3>
+                <h3 id="about-projects-title"><?= $e($m['aboutProjectsTitle']) ?></h3>
                 <ul class="about-links" id="about-projects">
-                    <li><a href="https://www.schongeil.de/" target="_blank" rel="noopener noreferrer">schongeil.de</a> <span id="about-project-blog">— Persönlicher Blog</span></li>
-                    <li><a href="https://github.com/ollrich" target="_blank" rel="noopener noreferrer">GitHub</a> <span id="about-project-code">— Open-Source-Projekte</span></li>
+                    <li><a href="https://www.schongeil.de/" target="_blank" rel="noopener noreferrer">schongeil.de</a> <span id="about-project-blog"><?= $e($m['aboutProjectBlog']) ?></span></li>
+                    <li><a href="https://github.com/ollrich" target="_blank" rel="noopener noreferrer">GitHub</a> <span id="about-project-code"><?= $e($m['aboutProjectCode']) ?></span></li>
                 </ul>
             </section>
 
             <section class="about-section">
-                <h3 id="about-profiles-title">Präsenzen</h3>
+                <h3 id="about-profiles-title"><?= $e($m['aboutProfilesTitle']) ?></h3>
                 <ul class="about-links" id="about-profiles">
                     <li><a href="https://www.linkedin.com/in/olivereichhof" target="_blank" rel="noopener noreferrer me">LinkedIn</a></li>
                     <li><a href="https://www.xing.com/profile/Oliver_Eichhof2/" target="_blank" rel="noopener noreferrer me">XING</a></li>
@@ -469,27 +682,26 @@ if ($overlay === 'impressum' || $overlay === 'legal' || $overlay === 'kolofon') 
             </section>
 
             <section class="about-section">
-                <h3 id="about-mentions-title">Erwähnungen</h3>
+                <h3 id="about-mentions-title"><?= $e($m['aboutMentionsTitle']) ?></h3>
                 <ul class="about-links" id="about-mentions">
-                    <li><a href="https://www.wuv.de/Archiv/So-tickt-die-Zukunft-Dokyo-auf-der-%22The-Next-Web-Conference%22" target="_blank" rel="noopener noreferrer">W&V</a> — DOKYO auf der Next Web Conference</li>
-                    <li><a href="https://www.wuv.de/Archiv/Wie-man-mit-Messenger-f%C3%BCr-die-Ehe-f%C3%BCr-alle-wirbt" target="_blank" rel="noopener noreferrer">W&V</a> — Ben & Jerry's „Ehe für alle"</li>
-                    <li><a href="https://www.testspiel.de/oliver-polak-interview-2/290215/" target="_blank" rel="noopener noreferrer">testspiel.de</a> — Oliver Polak Interview</li>
-                    <li><a href="https://www.testspiel.de/kid-simius-interview/276764/" target="_blank" rel="noopener noreferrer">testspiel.de</a> — Kid Simius Interview</li>
+<?php foreach ($m['mentions'] as $mention): ?>
+                    <li><a href="<?= $e($mention[0]) ?>" target="_blank" rel="noopener noreferrer"><?= $e($mention[1]) ?></a> — <?= $e($mention[2]) ?></li>
+<?php endforeach; ?>
                 </ul>
             </section>
 
-            <p class="about-notice" id="about-notice">Diese Seite ist als maschinenlesbare <a href="https://groundingpage.com/" target="_blank" rel="noopener noreferrer">Grounding Page</a> optimiert. Sie dient KI-Systemen und Suchmaschinen als verifizierbare Faktenquelle zu Oliver Eichhof.</p>
+            <p class="about-notice" id="about-notice"><?= $m['aboutNotice'] ?></p>
 
         </div>
     </div>
 
     <!-- JavaScript Modules -->
-    <script src="/js/theme.js?v=2"></script>
-    <script src="/js/language.js?v=2"></script>
-    <script src="/js/overlay.js?v=2"></script>
-    <script src="/js/contact.js?v=2"></script>
-    <script src="/js/about.js?v=2"></script>
-    <script src="/js/easter-egg.js?v=2"></script>
-    <script src="/js/link-preview.js?v=2"></script>
+    <script src="/js/theme.js?v=3"></script>
+    <script src="/js/language.js?v=3"></script>
+    <script src="/js/overlay.js?v=3"></script>
+    <script src="/js/contact.js?v=3"></script>
+    <script src="/js/about.js?v=3"></script>
+    <script src="/js/easter-egg.js?v=3"></script>
+    <script src="/js/link-preview.js?v=3"></script>
 </body>
 </html>
