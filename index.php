@@ -475,8 +475,8 @@ if ($overlay === 'impressum' || $overlay === 'legal' || $overlay === 'kolofon') 
             <section class="about-section">
                 <h3 id="about-mentions-title">Erwähnungen</h3>
                 <ul class="about-links" id="about-mentions">
-                    <li><a href="https://www.wuv.de/Archiv/Wie-man-mit-Messenger-f%C3%BCr-die-Ehe-f%C3%BCr-alle-wirbt" target="_blank" rel="noopener noreferrer">W&V</a> — Ben & Jerry's „Ehe für alle"</li>
                     <li><a href="https://www.wuv.de/Archiv/So-tickt-die-Zukunft-Dokyo-auf-der-%22The-Next-Web-Conference%22" target="_blank" rel="noopener noreferrer">W&V</a> — DOKYO auf der Next Web Conference</li>
+                    <li><a href="https://www.wuv.de/Archiv/Wie-man-mit-Messenger-f%C3%BCr-die-Ehe-f%C3%BCr-alle-wirbt" target="_blank" rel="noopener noreferrer">W&V</a> — Ben & Jerry's „Ehe für alle"</li>
                     <li><a href="https://www.testspiel.de/oliver-polak-interview-2/290215/" target="_blank" rel="noopener noreferrer">testspiel.de</a> — Oliver Polak Interview</li>
                     <li><a href="https://www.testspiel.de/kid-simius-interview/276764/" target="_blank" rel="noopener noreferrer">testspiel.de</a> — Kid Simius Interview</li>
                 </ul>
