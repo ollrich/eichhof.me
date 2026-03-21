@@ -3,7 +3,8 @@
  * About / Grounding Page — Multilingual
  * ======================================
  * Standalone crawlable page with full Person JSON-LD.
- * Human visitors are redirected to the main site with the about overlay.
+ * Crawlers (Googlebot, GPTBot, social media previews, etc.) see the full page.
+ * Human browsers get a 302 redirect to the main site with the about overlay.
  *
  * URLs:
  * - /ueber      → German
@@ -16,6 +17,47 @@ if (!in_array($lang, ['de', 'en', 'da'])) {
     $lang = 'de';
 }
 
+/**
+ * Crawler detection (allowlist approach)
+ * Known crawlers see the full page content with JSON-LD.
+ * Human browsers get a 302 redirect to the main site with the about overlay.
+ */
+function isCrawler(): bool {
+    $ua = $_SERVER['HTTP_USER_AGENT'] ?? '';
+    if ($ua === '') return true;
+
+    $crawlerPatterns = [
+        // Search engines
+        'Googlebot', 'Google-InspectionTool', 'GoogleOther', 'Storebot-Google',
+        'bingbot', 'Slurp', 'DuckDuckBot', 'Applebot',
+        // AI crawlers
+        'GPTBot', 'ChatGPT-User', 'ClaudeBot', 'Claude-Web', 'anthropic-ai',
+        'PerplexityBot', 'Bytespider', 'cohere-ai',
+        'Meta-ExternalAgent', 'meta-externalfetcher', 'Amazonbot',
+        // Social media previews
+        'facebookexternalhit', 'Twitterbot', 'LinkedInBot',
+        'WhatsApp', 'TelegramBot', 'Slackbot', 'Discordbot',
+        // Other
+        'Google-Site-Verification', 'W3C_Validator', 'archive.org_bot',
+    ];
+
+    foreach ($crawlerPatterns as $pattern) {
+        if (stripos($ua, $pattern) !== false) return true;
+    }
+    return false;
+}
+
+if (!isCrawler()) {
+    $redirectMap = [
+        'de' => '/?lang=de&overlay=ueber',
+        'en' => '/en/?overlay=about',
+        'da' => '/dk/?overlay=om',
+    ];
+    header('HTTP/1.1 302 Found');
+    header('Location: ' . $redirectMap[$lang]);
+    exit;
+}
+
 $meta = [
     'de' => [
         'htmlLang' => 'de',
@@ -25,7 +67,6 @@ $meta = [
         'ogUrl' => 'https://eichhof.me/ueber',
         'locale' => 'de_DE',
         'canonical' => 'https://eichhof.me/ueber',
-        'redirect' => '/?lang=de&overlay=ueber',
         'homeUrl' => 'https://eichhof.me/',
         'jobTitle' => 'Leiter Marketing',
         'personDescription' => 'Kommunikationsspezialist aus Hamburg mit Schwerpunkt Digital und Marketing. Seit rund 20 Jahren in Agenturen und Unternehmen für B2C- und B2B-Marken unterschiedlichster Branchen tätig.',
@@ -104,7 +145,6 @@ $meta = [
         'ogUrl' => 'https://eichhof.me/en/about',
         'locale' => 'en_GB',
         'canonical' => 'https://eichhof.me/en/about',
-        'redirect' => '/en/?overlay=about',
         'homeUrl' => 'https://eichhof.me/en/',
         'jobTitle' => 'Marketing Director',
         'personDescription' => 'Communication specialist from Hamburg with a focus on digital and marketing. Around 20 years of experience in agencies and companies for B2C and B2B brands across a wide range of industries.',
@@ -182,7 +222,6 @@ $meta = [
         'ogUrl' => 'https://eichhof.me/dk/om',
         'locale' => 'da_DK',
         'canonical' => 'https://eichhof.me/dk/om',
-        'redirect' => '/dk/?overlay=om',
         'homeUrl' => 'https://eichhof.me/dk/',
         'jobTitle' => 'Marketingchef',
         'personDescription' => 'Kommunikationsspecialist fra Hamborg med fokus på digital og marketing. Omkring 20 års erfaring i bureauer og virksomheder for B2C- og B2B-brands på tværs af mange forskellige brancher.',
@@ -357,7 +396,6 @@ $e = fn($s) => htmlspecialchars($s, ENT_QUOTES, 'UTF-8');
     }
     </script>
 
-    <script>window.location.replace('<?= $e($m['redirect']) ?>');</script>
 </head>
 <body>
     <main>
