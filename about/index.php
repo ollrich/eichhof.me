@@ -75,7 +75,7 @@ $meta = [
         'nationality' => 'Deutschland',
         'homeLocation' => 'Hamburg, Deutschland',
         'occupationName' => 'Leiter Marketing',
-        'occupationLocation' => 'Hamburg',
+        'occupationLocation' => 'Hamburg, Deutschland',
         'knowsAbout' => '["Marketing", "Markenentwicklung", "Zielgruppenanalyse", "Kampagnenplanung", "Kommunikationsstrategie", "Content-Strategie", "Digitale Kommunikation", "Employer Branding", "B2B-Kommunikation", "Journey Design", "KPI-Frameworks", "GEO/SEO/SEA", "Marketing Automation", "KI-gestützte Workflows", "Radio", "Audio", "Streaming Media", "Musik", "Musikmedien", "Bloggen"]',
         // Page content
         'h1' => 'Oliver Eichhof',
@@ -445,7 +445,7 @@ $e = fn($s) => htmlspecialchars($s, ENT_QUOTES, 'UTF-8');
             <h2><?= $e($m['profilesTitle']) ?></h2>
             <ul>
 <?php foreach ($m['profiles'] as $p): ?>
-                <li><a href="<?= $e($p[0]) ?>"><?= $e($p[1]) ?></a><?php if (!empty($p[2])): ?> — <?= $e($p[2]) ?><?php endif; ?></li>
+                <li><a href="<?= $e($p[0]) ?>"><?= $e($p[1]) ?></a></li>
 <?php endforeach; ?>
             </ul>
 

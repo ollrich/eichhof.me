@@ -696,12 +696,12 @@ if ($overlay === 'impressum' || $overlay === 'legal' || $overlay === 'kolofon') 
     </div>
 
     <!-- JavaScript Modules -->
-    <script src="/js/theme.js?v=3"></script>
-    <script src="/js/language.js?v=3"></script>
-    <script src="/js/overlay.js?v=3"></script>
-    <script src="/js/contact.js?v=3"></script>
-    <script src="/js/about.js?v=3"></script>
-    <script src="/js/easter-egg.js?v=3"></script>
-    <script src="/js/link-preview.js?v=3"></script>
+    <script src="/js/theme.js?v=4"></script>
+    <script src="/js/language.js?v=4"></script>
+    <script src="/js/overlay.js?v=4"></script>
+    <script src="/js/contact.js?v=4"></script>
+    <script src="/js/about.js?v=4"></script>
+    <script src="/js/easter-egg.js?v=4"></script>
+    <script src="/js/link-preview.js?v=4"></script>
 </body>
 </html>

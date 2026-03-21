@@ -240,55 +240,29 @@
     }
 
     /**
-     * Get translated error message
+     * Get translated error message (uses LanguageManager translations)
      */
+    const ERROR_KEY_MAP = {
+        name_invalid: 'contactErrorName',
+        email_invalid: 'contactErrorEmail',
+        message_invalid: 'contactErrorMessage',
+        rate_limit: 'contactErrorRateLimit',
+        send_failed: 'contactErrorGeneral',
+        general: 'contactErrorGeneral'
+    };
+
     function getErrorMessage(errorCode) {
-        const lang = window.LanguageManager ? window.LanguageManager.getCurrentLang() : 'de';
-
-        const messages = {
-            de: {
-                name_invalid: 'Bitte gib deinen Namen ein (mind. 2 Zeichen).',
-                email_invalid: 'Bitte gib eine gültige E-Mail-Adresse ein.',
-                message_invalid: 'Bitte gib eine Nachricht ein (mind. 10 Zeichen).',
-                rate_limit: 'Zu viele Anfragen. Bitte warte einige Minuten.',
-                send_failed: 'Leider ist ein Fehler aufgetreten. Bitte versuche es später erneut.',
-                general: 'Leider ist ein Fehler aufgetreten. Bitte versuche es später erneut.'
-            },
-            en: {
-                name_invalid: 'Please enter your name (at least 2 characters).',
-                email_invalid: 'Please enter a valid email address.',
-                message_invalid: 'Please enter a message (at least 10 characters).',
-                rate_limit: 'Too many requests. Please wait a few minutes.',
-                send_failed: 'An error occurred. Please try again later.',
-                general: 'An error occurred. Please try again later.'
-            },
-            da: {
-                name_invalid: 'Indtast venligst dit navn (mindst 2 tegn).',
-                email_invalid: 'Indtast venligst en gyldig e-mailadresse.',
-                message_invalid: 'Indtast venligst en besked (mindst 10 tegn).',
-                rate_limit: 'For mange anmodninger. Vent venligst et par minutter.',
-                send_failed: 'Der opstod en fejl. Prøv venligst igen senere.',
-                general: 'Der opstod en fejl. Prøv venligst igen senere.'
-            }
-        };
-
-        const langMessages = messages[lang] || messages.de;
-        return langMessages[errorCode] || langMessages.general;
+        if (!window.LanguageManager) return errorCode;
+        var key = ERROR_KEY_MAP[errorCode] || ERROR_KEY_MAP.general;
+        return window.LanguageManager.getTranslation(key);
     }
 
     /**
-     * Get translated success message
+     * Get translated success message (uses LanguageManager translations)
      */
     function getSuccessMessage() {
-        const lang = window.LanguageManager ? window.LanguageManager.getCurrentLang() : 'de';
-
-        const messages = {
-            de: 'Vielen Dank! Deine Nachricht wurde gesendet.',
-            en: 'Thank you! Your message has been sent.',
-            da: 'Tak! Din besked er blevet sendt.'
-        };
-
-        return messages[lang] || messages.de;
+        if (!window.LanguageManager) return '';
+        return window.LanguageManager.getTranslation('contactSuccess');
     }
 
     /**

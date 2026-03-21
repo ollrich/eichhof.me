@@ -439,6 +439,10 @@
     window.LanguageManager = {
         getCurrentLang: function() { return currentLang; },
         getEmailPrefix: function() { return currentEmailPrefix; },
+        getTranslation: function(key) {
+            var t = TRANSLATIONS[currentLang] || TRANSLATIONS.de;
+            return t[key] !== undefined ? t[key] : key;
+        },
         openEmail: openEmail
     };
 })();
