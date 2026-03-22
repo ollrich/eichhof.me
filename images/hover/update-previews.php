@@ -138,9 +138,10 @@ foreach ($config['screenshots'] as $index => $screenshot) {
         'no_ads' => 'true',              // Remove advertisements
         'no_tracking' => 'true',         // Block tracking scripts
 
-        // Custom CSS to hide schongeil.de cookie banner (sgcc- prefix)
+        // Custom CSS + JS to hide schongeil.de cookie banner (sgcc- prefix)
         // WHY: ApiFlash's no_cookie_banners doesn't detect this custom banner
-        'css' => '.sgcc-settings, .sgcc-overlay { display: none !important; }',
+        'css' => '[class*="sgcc"], [id*="sgcc"] { display: none !important; visibility: hidden !important; }',
+        'js' => 'document.querySelectorAll("[class*=sgcc],[id*=sgcc]").forEach(function(e){e.remove()});',
 
         'user_agent' => $config['user_agent']
     ]);
