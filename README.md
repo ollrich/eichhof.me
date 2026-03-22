@@ -24,7 +24,7 @@ Built with AI assistance as an exploration of modern web development practices. 
 
 ### Tech
 
-Pure HTML/CSS/JavaScript – no frameworks. Uses [Canvas-Confetti](https://github.com/catdad/canvas-confetti) for visual effects and [APIFlash](https://apiflash.com/) for generating link preview screenshots.
+Pure HTML/CSS/JavaScript – no frameworks. Server-side rendered (PHP) for all body texts per language. Uses [Canvas-Confetti](https://github.com/catdad/canvas-confetti) for visual effects and [APIFlash](https://apiflash.com/) for generating link preview screenshots.
 
 ### Automation
 
@@ -36,7 +36,7 @@ Every push to `main` automatically updates the sitemap's `<lastmod>` date via Gi
 eichhof.me/
 ├── index.php               # Main entry (multilingual routing, dynamic meta tags)
 ├── about/
-│   └── index.php           # Standalone grounding page (crawlable, JS redirect for browsers)
+│   └── index.php           # Standalone grounding page (crawlable, PHP 302 redirect for browsers)
 ├── .htaccess               # URL rewrites (/en/, /dk/, /ueber, /en/about, /dk/om, etc.)
 ├── robots.txt              # Crawler rules
 ├── sitemap.xml             # Multilingual sitemap with hreflang
@@ -93,7 +93,7 @@ Mit KI-Unterstützung gebaut als Exploration moderner Webentwicklung. Der Code i
 
 ### Technik
 
-Pures HTML/CSS/JavaScript – keine Frameworks. Nutzt [Canvas-Confetti](https://github.com/catdad/canvas-confetti) für visuelle Effekte und [APIFlash](https://apiflash.com/) für Link-Preview-Screenshots.
+Pures HTML/CSS/JavaScript – keine Frameworks. Server-Side Rendering (PHP) für alle Body-Texte je Sprache. Nutzt [Canvas-Confetti](https://github.com/catdad/canvas-confetti) für visuelle Effekte und [APIFlash](https://apiflash.com/) für Link-Preview-Screenshots.
 
 ### Automatisierung
 
@@ -123,7 +123,7 @@ Bygget med AI-assistance som en udforskning af moderne webudvikling. Koden er op
 
 ### Teknik
 
-Ren HTML/CSS/JavaScript – ingen frameworks. Bruger [Canvas-Confetti](https://github.com/catdad/canvas-confetti) til visuelle effekter og [APIFlash](https://apiflash.com/) til link-preview screenshots.
+Ren HTML/CSS/JavaScript – ingen frameworks. Server-side rendering (PHP) for alle body-tekster per sprog. Bruger [Canvas-Confetti](https://github.com/catdad/canvas-confetti) til visuelle effekter og [APIFlash](https://apiflash.com/) til link-preview screenshots.
 
 ### Automatisering
 
