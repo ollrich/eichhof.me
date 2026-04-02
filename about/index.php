@@ -50,6 +50,17 @@ $meta = [
         'footerMobile' => 'Mit <span aria-hidden="true">♥</span><span class="sr-only">Liebe</span> und KI realisiert',
         'githubTooltip' => 'Quellcode auf GitHub',
         'githubAriaLabel' => 'Quellcode auf GitHub',
+        // Impressum overlay
+        'closeOverlay' => 'Schließen',
+        'overlayTitle' => 'Impressum',
+        'overlayText1' => 'Diese Website wird betrieben von:',
+        'overlayText2' => 'Oliver Eichhof<br>Eismeerweg 9E<br>22145 Hamburg',
+        'overlayText3' => 'Kontakt:',
+        'overlayText3b' => 'Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV.',
+        'overlaySubtitle' => 'Datenverarbeitung',
+        'overlayText4' => 'Diese Website verwendet keine Cookies, keine Logfiles und keine Tracking-Tools. Lediglich deine Farbschema-Präferenz wird lokal in deinem Browser gespeichert.',
+        'overlayText5' => 'Bei Nutzung des Kontaktformulars werden dein Name, deine E-Mail-Adresse und deine Nachricht per E-Mail übermittelt. Zur Spam-Abwehr wird deine IP-Adresse temporär verarbeitet, aber nicht gespeichert.',
+        'overlayText6' => 'Links zu externen Plattformen (LinkedIn, XING, Bluesky, Mastodon, Instagram, SoundCloud, YouTube, Bandcamp, Unsplash, GitHub, REGIOCAST, W&V, testspiel.de) unterliegen deren eigenen Datenschutzbestimmungen.',
         // Page content
         'h1' => 'Oliver Eichhof',
         'humanNotice' => 'Diese Seite ist als maschinenlesbare <a href="https://groundingpage.com/" target="_blank" rel="noopener noreferrer">Grounding Page</a> optimiert. Sie dient KI-Systemen und Suchmaschinen als verifizierbare Faktenquelle zu Oliver Eichhof.',
@@ -142,6 +153,17 @@ $meta = [
         'footerMobile' => 'Made with <span aria-hidden="true">♥</span><span class="sr-only">love</span> and AI',
         'githubTooltip' => 'View source on GitHub',
         'githubAriaLabel' => 'View source on GitHub',
+        // Legal overlay
+        'closeOverlay' => 'Close',
+        'overlayTitle' => 'Legal Notice',
+        'overlayText1' => 'This website is operated by:',
+        'overlayText2' => 'Oliver Eichhof<br>Eismeerweg 9E<br>22145 Hamburg, Germany',
+        'overlayText3' => 'Contact:',
+        'overlayText3b' => 'Responsible for content according to § 18 para. 2 German Interstate Media Treaty (MStV).',
+        'overlaySubtitle' => 'Data Processing',
+        'overlayText4' => 'This website uses no cookies, no log files, and no tracking tools. Only your color scheme preference is stored locally in your browser.',
+        'overlayText5' => 'When using the contact form, your name, email address, and message are transmitted via email. Your IP address is temporarily processed for spam protection but not stored.',
+        'overlayText6' => 'Links to external platforms (LinkedIn, XING, Bluesky, Mastodon, Instagram, SoundCloud, YouTube, Bandcamp, Unsplash, GitHub, REGIOCAST, W&V, testspiel.de) are subject to their own privacy policies.',
         // Page content
         'h1' => 'Oliver Eichhof',
         'humanNotice' => 'This page is optimised as a machine-readable <a href="https://groundingpage.com/" target="_blank" rel="noopener noreferrer">grounding page</a>. It serves AI systems and search engines as a verifiable source of facts about Oliver Eichhof.',
@@ -234,6 +256,17 @@ $meta = [
         'footerMobile' => 'Lavet med <span aria-hidden="true">♥</span><span class="sr-only">kærlighed</span> og AI',
         'githubTooltip' => 'Se kildekoden på GitHub',
         'githubAriaLabel' => 'Se kildekoden på GitHub',
+        // Kolofon overlay
+        'closeOverlay' => 'Luk',
+        'overlayTitle' => 'Kolofon',
+        'overlayText1' => 'Denne hjemmeside drives af:',
+        'overlayText2' => 'Oliver Eichhof<br>Eismeerweg 9E<br>22145 Hamburg, Tyskland',
+        'overlayText3' => 'Kontakt:',
+        'overlayText3b' => 'Ansvarlig for indhold i henhold til § 18 stk. 2 tysk statslig medieaftale (MStV).',
+        'overlaySubtitle' => 'Databehandling',
+        'overlayText4' => 'Denne hjemmeside bruger ingen cookies, ingen logfiler og ingen sporingsværktøjer. Kun din farvevalg-præference gemmes lokalt i din browser.',
+        'overlayText5' => 'Ved brug af kontaktformularen sendes dit navn, din e-mailadresse og din besked via e-mail. Din IP-adresse behandles midlertidigt til spam-beskyttelse, men gemmes ikke.',
+        'overlayText6' => 'Links til eksterne platforme (LinkedIn, XING, Bluesky, Mastodon, Instagram, SoundCloud, YouTube, Bandcamp, Unsplash, GitHub, REGIOCAST, W&V, testspiel.de) er underlagt deres egne privatlivspolitikker.',
         // Page content
         'h1' => 'Oliver Eichhof',
         'humanNotice' => 'Denne side er optimeret som en maskinlæsbar <a href="https://groundingpage.com/" target="_blank" rel="noopener noreferrer">grounding page</a>. Den tjener AI-systemer og søgemaskiner som en verificerbar faktakilde om Oliver Eichhof.',
@@ -505,7 +538,7 @@ $e = fn($s) => htmlspecialchars($s, ENT_QUOTES, 'UTF-8');
         </div>
         <!-- Mobile-only footer -->
         <div class="mobile-footer">
-            <a href="<?= $m['legalUrl'] ?>"><?= $e($m['legalLink']) ?></a>
+            <a href="<?= $m['legalUrl'] ?>" id="footer-link-mobile"><?= $e($m['legalLink']) ?></a>
             <span class="sr-only"><?= $e($m['footerEntity']) ?></span>
             <span><?= $m['footerMobile'] ?></span>
         </div>
@@ -513,7 +546,7 @@ $e = fn($s) => htmlspecialchars($s, ENT_QUOTES, 'UTF-8');
 
     <!-- Footer Elements -->
     <div class="footer-left">
-        <a href="<?= $m['legalUrl'] ?>"><?= $e($m['legalLink']) ?></a>
+        <a href="<?= $m['legalUrl'] ?>" id="footer-link"><?= $e($m['legalLink']) ?></a>
     </div>
 
     <span class="sr-only"><?= $e($m['footerEntity']) ?></span>
@@ -530,6 +563,36 @@ $e = fn($s) => htmlspecialchars($s, ENT_QUOTES, 'UTF-8');
         </span>
     </div>
 
+    <!-- Modal Overlay (Impressum/Legal Notice) -->
+    <div class="overlay" id="overlay">
+        <div class="overlay-content">
+            <button class="close-overlay" id="close-overlay-btn" aria-label="<?= $e($m['closeOverlay']) ?>">
+                <svg width="16" height="16" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                    <line x1="2" y1="2" x2="12" y2="12"/><line x1="12" y1="2" x2="2" y2="12"/>
+                </svg>
+            </button>
+            <h2 id="overlay-title"><?= $e($m['overlayTitle']) ?></h2>
+            <p id="overlay-text-1"><?= $e($m['overlayText1']) ?></p>
+            <p id="overlay-text-2"><?= $m['overlayText2'] ?></p>
+            <p><span id="overlay-text-3"><?= $e($m['overlayText3']) ?></span> <a href="#" id="overlay-email-link" class="overlay-email-link"></a></p>
+            <p id="overlay-text-3b"><?= $e($m['overlayText3b']) ?></p>
+            <h3 id="overlay-subtitle"><?= $e($m['overlaySubtitle']) ?></h3>
+            <p id="overlay-text-4"><?= $e($m['overlayText4']) ?></p>
+            <p id="overlay-text-5"><?= $e($m['overlayText5']) ?></p>
+            <p id="overlay-text-6"><?= $e($m['overlayText6']) ?></p>
+        </div>
+    </div>
+
+    <script>
+    window.LanguageManager = { getCurrentLang: function() { return '<?= $m['htmlLang'] ?>'; } };
+    (function() {
+        var d = ['eichhof', 'me'], p = <?= json_encode(['de' => 'hallo', 'en' => 'hello', 'da' => 'hej'][$lang]) ?>;
+        var a = p + '@' + d[0] + '.' + d[1];
+        var el = document.getElementById('overlay-email-link');
+        if (el) { el.textContent = a; el.href = 'mailto:' + a; }
+    })();
+    </script>
     <script src="/js/theme.js?v=5"></script>
+    <script src="/js/overlay.js?v=5"></script>
 </body>
 </html>

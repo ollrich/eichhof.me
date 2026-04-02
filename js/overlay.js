@@ -147,9 +147,9 @@
         // Restore body scroll
         document.body.style.overflow = '';
 
-        // Update URL back to base (unless closing from popstate)
+        // Update URL back to original (unless closing from popstate)
         if (!skipHistory) {
-            history.pushState({ overlay: null }, '', getBaseUrl());
+            history.pushState({ overlay: null }, '', originalUrl || getBaseUrl());
         }
 
         // Restore previous focus
