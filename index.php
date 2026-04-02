@@ -24,6 +24,15 @@
 // LANGUAGE DETECTION
 // ============================================================================
 
+// Legacy ?lang= parameter: 301 redirect to clean URL
+if (isset($_GET['lang'])) {
+    $redirectMap = ['de' => '/', 'en' => '/en/', 'da' => '/dk/'];
+    $target = $redirectMap[$_GET['lang']] ?? '/';
+    header('HTTP/1.1 301 Moved Permanently');
+    header('Location: https://eichhof.me' . $target);
+    exit;
+}
+
 $lang = $_GET['lang'] ?? 'de';
 $overlay = $_GET['overlay'] ?? null;
 
