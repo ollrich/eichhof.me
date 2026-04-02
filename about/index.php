@@ -583,16 +583,8 @@ $e = fn($s) => htmlspecialchars($s, ENT_QUOTES, 'UTF-8');
         </div>
     </div>
 
-    <script>window.LanguageManager = { getCurrentLang: function() { return '<?= $m['htmlLang'] ?>'; } };</script>
+    <script src="/js/grounding-email.js?v=5"></script>
     <script src="/js/theme.js?v=5"></script>
     <script src="/js/overlay.js?v=5"></script>
-    <script>
-    (function() {
-        var d = ['eichhof', 'me'], p = <?= json_encode(['de' => 'hallo', 'en' => 'hello', 'da' => 'hej'][$lang]) ?>;
-        var a = p + '@' + d[0] + '.' + d[1];
-        var el = document.getElementById('overlay-email-link');
-        if (el) { el.textContent = a; el.href = 'mailto:' + a; }
-    })();
-    </script>
 </body>
 </html>
