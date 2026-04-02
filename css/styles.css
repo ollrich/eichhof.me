@@ -1382,6 +1382,46 @@ html.dark-mode .contact-submit:hover:not(:disabled) {
     text-decoration: underline;
 }
 
+/* Grounding page standalone layout */
+.grounding-page {
+    max-width: 560px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+    text-align: center;
+}
+
+.grounding-page .profile-photo {
+    width: 120px;
+    height: 120px;
+    margin-bottom: 1rem;
+}
+
+.grounding-page .name {
+    margin-bottom: 1.5rem;
+}
+
+.grounding-page .overlay-content {
+    max-height: none;
+    overflow-y: visible;
+    transform: none;
+    width: 100%;
+    text-align: left;
+    margin-top: 0;
+}
+
+.grounding-back {
+    display: inline-block;
+    color: rgba(255, 255, 255, 0.6);
+    text-decoration: none;
+    font-size: 0.85rem;
+    margin-bottom: 1.5rem;
+    transition: color 0.3s ease;
+}
+
+.grounding-back:hover {
+    color: rgba(255, 255, 255, 0.9);
+}
+
 /* Mobile adjustments for about */
 @media (max-width: 480px) {
     .about-triggers {

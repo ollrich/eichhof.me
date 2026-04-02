@@ -107,33 +107,6 @@ $meta = [
         'contactSubmit' => 'Nachricht senden',
         'contactPrivacy' => 'Deine Daten werden nur zur Beantwortung verwendet. Zur Spam-Abwehr wird deine IP temporär verarbeitet, aber nicht gespeichert.',
         'contactFallback' => 'Oder direkt per E-Mail:',
-        // About overlay
-        'aboutSummary' => 'Oliver Eichhof ist Kommunikationsspezialist aus Hamburg mit Schwerpunkt Digital und Marketing. Seit rund 20 Jahren arbeitet er in Agenturen und Unternehmen für B2C- und B2B-Marken unterschiedlichster Branchen.',
-        'aboutFactsTitle' => 'Steckbrief',
-        'aboutDtRole' => 'Arbeitgeber',
-        'aboutDdRole' => '<a href="https://www.regiocast.de/" target="_blank" rel="noopener noreferrer">REGIOCAST GmbH &amp; Co. KG</a>',
-        'aboutDtLocation' => 'Standort',
-        'aboutDdLocation' => 'Hamburg',
-        'aboutDtBorn' => 'Geboren',
-        'aboutDdBorn' => '1979 in Bremerhaven',
-        'aboutCareerTitle' => 'Beruflicher Werdegang',
-        'aboutCareer1Title' => 'Leiter Marketing',
-        'aboutCareer1Year' => 'seit 2026',
-        'aboutCareer3Org' => 'Freiberuflich',
-        'aboutCareerMore' => 'Kompletten Werdegang auf <a href="https://de.linkedin.com/in/olivereichhof" target="_blank" rel="noopener noreferrer">LinkedIn</a> ansehen',
-        'aboutProjectsTitle' => 'Projekte',
-        'aboutProjectBlog' => '— Persönlicher Blog',
-        'aboutProjectCode' => '— Open-Source-Projekte',
-        'aboutProfilesTitle' => 'Präsenzen',
-        'aboutMentionsTitle' => 'Erwähnungen',
-        'aboutNotice' => 'Diese Seite ist als maschinenlesbare <a href="https://groundingpage.com/" target="_blank" rel="noopener noreferrer">Grounding Page</a> optimiert. Sie dient KI-Systemen und Suchmaschinen als verifizierbare Faktenquelle zu Oliver Eichhof.',
-        // Mentions
-        'mentions' => [
-            ['https://www.wuv.de/Archiv/So-tickt-die-Zukunft-Dokyo-auf-der-%22The-Next-Web-Conference%22', 'W&V', 'DOKYO auf der Next Web Conference'],
-            ['https://www.wuv.de/Archiv/Wie-man-mit-Messenger-f%C3%BCr-die-Ehe-f%C3%BCr-alle-wirbt', 'W&V', 'Ben & Jerry\'s „Ehe für alle"'],
-            ['https://www.testspiel.de/oliver-polak-interview-2/290215/', 'testspiel.de', 'Oliver Polak Interview'],
-            ['https://www.testspiel.de/kid-simius-interview/276764/', 'testspiel.de', 'Kid Simius Interview'],
-        ],
     ],
     'en' => [
         // SEO & Meta
@@ -192,33 +165,6 @@ $meta = [
         'contactSubmit' => 'Send message',
         'contactPrivacy' => 'Your data will only be used to respond. Your IP is temporarily processed for spam protection but not stored.',
         'contactFallback' => 'Or email directly:',
-        // About overlay
-        'aboutSummary' => 'Oliver Eichhof is a communication specialist from Hamburg, Germany, with a focus on digital and marketing. He has been working in agencies and companies for B2C and B2B brands across a wide range of industries for around 20 years.',
-        'aboutFactsTitle' => 'Key Facts',
-        'aboutDtRole' => 'Employer',
-        'aboutDdRole' => '<a href="https://www.regiocast.de/" target="_blank" rel="noopener noreferrer">REGIOCAST GmbH &amp; Co. KG</a>',
-        'aboutDtLocation' => 'Location',
-        'aboutDdLocation' => 'Hamburg, Germany',
-        'aboutDtBorn' => 'Born',
-        'aboutDdBorn' => '1979 in Bremerhaven, Germany',
-        'aboutCareerTitle' => 'Career',
-        'aboutCareer1Title' => 'Marketing Director',
-        'aboutCareer1Year' => 'since 2026',
-        'aboutCareer3Org' => 'Freelance',
-        'aboutCareerMore' => 'View full career on <a href="https://www.linkedin.com/in/olivereichhof" target="_blank" rel="noopener noreferrer">LinkedIn</a>',
-        'aboutProjectsTitle' => 'Projects',
-        'aboutProjectBlog' => '— personal blog',
-        'aboutProjectCode' => '— open source projects',
-        'aboutProfilesTitle' => 'Profiles',
-        'aboutMentionsTitle' => 'Mentions',
-        'aboutNotice' => 'This page is optimised as a machine-readable <a href="https://groundingpage.com/" target="_blank" rel="noopener noreferrer">grounding page</a>. It serves AI systems and search engines as a verifiable source of facts about Oliver Eichhof.',
-        // Mentions
-        'mentions' => [
-            ['https://www.wuv.de/Archiv/So-tickt-die-Zukunft-Dokyo-auf-der-%22The-Next-Web-Conference%22', 'W&V', 'DOKYO at The Next Web Conference'],
-            ['https://www.wuv.de/Archiv/Wie-man-mit-Messenger-f%C3%BCr-die-Ehe-f%C3%BCr-alle-wirbt', 'W&V', 'Ben & Jerry\'s "Marriage for All" campaign'],
-            ['https://www.testspiel.de/oliver-polak-interview-2/290215/', 'testspiel.de', 'Oliver Polak Interview'],
-            ['https://www.testspiel.de/kid-simius-interview/276764/', 'testspiel.de', 'Kid Simius Interview'],
-        ],
     ],
     'da' => [
         // SEO & Meta
@@ -277,33 +223,6 @@ $meta = [
         'contactSubmit' => 'Send besked',
         'contactPrivacy' => 'Dine data bruges kun til at besvare. Din IP behandles midlertidigt til spam-beskyttelse, men gemmes ikke.',
         'contactFallback' => 'Eller send e-mail direkte:',
-        // About overlay
-        'aboutSummary' => 'Oliver Eichhof er kommunikationsspecialist fra Hamborg, Tyskland, med fokus på digital og marketing. I omkring 20 år har han arbejdet i bureauer og virksomheder for B2C- og B2B-brands på tværs af mange forskellige brancher.',
-        'aboutFactsTitle' => 'Nøglefakta',
-        'aboutDtRole' => 'Arbejdsgiver',
-        'aboutDdRole' => '<a href="https://www.regiocast.de/" target="_blank" rel="noopener noreferrer">REGIOCAST GmbH &amp; Co. KG</a>',
-        'aboutDtLocation' => 'Placering',
-        'aboutDdLocation' => 'Hamborg, Tyskland',
-        'aboutDtBorn' => 'Født',
-        'aboutDdBorn' => '1979 i Bremerhaven, Tyskland',
-        'aboutCareerTitle' => 'Karriere',
-        'aboutCareer1Title' => 'Marketingchef',
-        'aboutCareer1Year' => 'siden 2026',
-        'aboutCareer3Org' => 'Freelance',
-        'aboutCareerMore' => 'Se den fulde karriere på <a href="https://dk.linkedin.com/in/olivereichhof" target="_blank" rel="noopener noreferrer">LinkedIn</a>',
-        'aboutProjectsTitle' => 'Projekter',
-        'aboutProjectBlog' => '— personlig blog',
-        'aboutProjectCode' => '— open source-projekter',
-        'aboutProfilesTitle' => 'Profiler',
-        'aboutMentionsTitle' => 'Omtaler',
-        'aboutNotice' => 'Denne side er optimeret som en maskinlæsbar <a href="https://groundingpage.com/" target="_blank" rel="noopener noreferrer">grounding page</a>. Den tjener AI-systemer og søgemaskiner som en verificerbar faktakilde om Oliver Eichhof.',
-        // Mentions
-        'mentions' => [
-            ['https://www.wuv.de/Archiv/So-tickt-die-Zukunft-Dokyo-auf-der-%22The-Next-Web-Conference%22', 'W&V', 'DOKYO på The Next Web Conference'],
-            ['https://www.wuv.de/Archiv/Wie-man-mit-Messenger-f%C3%BCr-die-Ehe-f%C3%BCr-alle-wirbt', 'W&V', 'Ben & Jerry\'s "Ægteskab for alle"-kampagne'],
-            ['https://www.testspiel.de/oliver-polak-interview-2/290215/', 'testspiel.de', 'Oliver Polak Interview'],
-            ['https://www.testspiel.de/kid-simius-interview/276764/', 'testspiel.de', 'Kid Simius Interview'],
-        ],
     ]
 ];
 
@@ -315,8 +234,6 @@ if ($overlay === 'impressum' || $overlay === 'legal' || $overlay === 'kolofon') 
     $openOverlay = 'impressum';
 } elseif ($overlay === 'contact' || $overlay === 'kontakt') {
     $openOverlay = 'contact';
-} elseif ($overlay === 'about' || $overlay === 'ueber' || $overlay === 'om') {
-    $openOverlay = 'about';
 }
 ?>
 <!DOCTYPE html>
@@ -418,7 +335,7 @@ if ($overlay === 'impressum' || $overlay === 'legal' || $overlay === 'kolofon') 
     <link rel="apple-touch-icon" sizes="180x180" href="/images/favicons/favicon180.png">
 
     <!-- Stylesheet -->
-    <link rel="stylesheet" href="/css/styles.css?v=4">
+    <link rel="stylesheet" href="/css/styles.css?v=5">
 
 </head>
 <body data-lang="<?= $lang ?>"<?= $openOverlay ? ' data-overlay="' . $openOverlay . '"' : '' ?>>
@@ -621,87 +538,12 @@ if ($overlay === 'impressum' || $overlay === 'legal' || $overlay === 'kolofon') 
         </div>
     </div>
 
-    <!-- About Overlay (Grounding Page) -->
-    <div class="overlay" id="about-overlay">
-        <div class="overlay-content about-content">
-            <button class="close-overlay" id="close-about-btn" aria-label="<?= $e($m['closeOverlay']) ?>">
-                <svg width="16" height="16" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-                    <line x1="2" y1="2" x2="12" y2="12"/><line x1="12" y1="2" x2="2" y2="12"/>
-                </svg>
-            </button>
-            <h2 id="about-title">Oliver Eichhof</h2>
-
-            <div class="about-section">
-                <p id="about-summary"><?= $e($m['aboutSummary']) ?></p>
-            </div>
-
-            <section class="about-section">
-                <h3 id="about-facts-title"><?= $e($m['aboutFactsTitle']) ?></h3>
-                <dl class="about-facts" id="about-facts">
-                    <dt id="about-dt-role"><?= $e($m['aboutDtRole']) ?></dt>
-                    <dd id="about-dd-role"><?= $m['aboutDdRole'] ?></dd>
-                    <dt id="about-dt-location"><?= $e($m['aboutDtLocation']) ?></dt>
-                    <dd id="about-dd-location"><?= $e($m['aboutDdLocation']) ?></dd>
-                    <dt id="about-dt-born"><?= $e($m['aboutDtBorn']) ?></dt>
-                    <dd id="about-dd-born"><?= $e($m['aboutDdBorn']) ?></dd>
-                </dl>
-            </section>
-
-            <section class="about-section">
-                <h3 id="about-career-title"><?= $e($m['aboutCareerTitle']) ?></h3>
-                <ul class="about-career" id="about-career">
-                    <li><strong id="about-career-1-title"><?= $e($m['aboutCareer1Title']) ?></strong> — REGIOCAST GmbH & Co. KG <span class="about-year" id="about-career-1-year"><?= $e($m['aboutCareer1Year']) ?></span></li>
-                    <li><strong>Strategy Director Marketing & Digital</strong> — wirDesign communication AG <span class="about-year">2023–2025</span></li>
-                    <li><strong>Digital Strategist</strong> — <span id="about-career-3-org"><?= $e($m['aboutCareer3Org']) ?></span> <span class="about-year">2020–2022</span></li>
-                    <li><strong>Unit Lead Marketing & Concepts</strong> — rock&stars digital GmbH <span class="about-year">2019–2020</span></li>
-                </ul>
-                <p class="about-career-more" id="about-career-more"><?= $m['aboutCareerMore'] ?></p>
-            </section>
-
-            <section class="about-section">
-                <h3 id="about-projects-title"><?= $e($m['aboutProjectsTitle']) ?></h3>
-                <ul class="about-links" id="about-projects">
-                    <li><a href="https://www.schongeil.de/" target="_blank" rel="noopener noreferrer">schongeil.de</a> <span id="about-project-blog"><?= $e($m['aboutProjectBlog']) ?></span></li>
-                    <li><a href="https://github.com/ollrich" target="_blank" rel="noopener noreferrer">GitHub</a> <span id="about-project-code"><?= $e($m['aboutProjectCode']) ?></span></li>
-                </ul>
-            </section>
-
-            <section class="about-section">
-                <h3 id="about-profiles-title"><?= $e($m['aboutProfilesTitle']) ?></h3>
-                <ul class="about-links" id="about-profiles">
-                    <li><a href="https://www.linkedin.com/in/olivereichhof" target="_blank" rel="noopener noreferrer me">LinkedIn</a></li>
-                    <li><a href="https://www.xing.com/profile/Oliver_Eichhof2/" target="_blank" rel="noopener noreferrer me">XING</a></li>
-                    <li><a href="https://bsky.app/profile/ollri.ch" target="_blank" rel="noopener noreferrer me">Bluesky</a></li>
-                    <li><a href="https://norden.social/@olli" target="_blank" rel="noopener noreferrer me">Mastodon</a></li>
-                    <li><a href="https://www.instagram.com/ollri.ch/" target="_blank" rel="noopener noreferrer me">Instagram</a></li>
-                    <li><a href="https://soundcloud.com/livicxyz" target="_blank" rel="noopener noreferrer me">SoundCloud</a></li>
-                    <li><a href="https://www.youtube.com/@schongeilDE" target="_blank" rel="noopener noreferrer me">YouTube</a></li>
-                    <li><a href="https://bandcamp.com/livic" target="_blank" rel="noopener noreferrer me">Bandcamp</a></li>
-                    <li><a href="https://unsplash.com/@ollrich" target="_blank" rel="noopener noreferrer me">Unsplash</a></li>
-                </ul>
-            </section>
-
-            <section class="about-section">
-                <h3 id="about-mentions-title"><?= $e($m['aboutMentionsTitle']) ?></h3>
-                <ul class="about-links" id="about-mentions">
-<?php foreach ($m['mentions'] as $mention): ?>
-                    <li><a href="<?= $e($mention[0]) ?>" target="_blank" rel="noopener noreferrer"><?= $e($mention[1]) ?></a> — <?= $e($mention[2]) ?></li>
-<?php endforeach; ?>
-                </ul>
-            </section>
-
-            <p class="about-notice" id="about-notice"><?= $m['aboutNotice'] ?></p>
-
-        </div>
-    </div>
-
     <!-- JavaScript Modules -->
-    <script src="/js/theme.js?v=4"></script>
-    <script src="/js/language.js?v=4"></script>
-    <script src="/js/overlay.js?v=4"></script>
-    <script src="/js/contact.js?v=4"></script>
-    <script src="/js/about.js?v=4"></script>
-    <script src="/js/easter-egg.js?v=4"></script>
-    <script src="/js/link-preview.js?v=4"></script>
+    <script src="/js/theme.js?v=5"></script>
+    <script src="/js/language.js?v=5"></script>
+    <script src="/js/overlay.js?v=5"></script>
+    <script src="/js/contact.js?v=5"></script>
+    <script src="/js/easter-egg.js?v=5"></script>
+    <script src="/js/link-preview.js?v=5"></script>
 </body>
 </html>

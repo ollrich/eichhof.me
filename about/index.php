@@ -1,10 +1,10 @@
 <?php
 /**
- * About / Grounding Page — Multilingual
- * ======================================
- * Standalone crawlable page with full Person JSON-LD.
- * Crawlers (Googlebot, GPTBot, social media previews, etc.) see the full page.
- * Human browsers get a 302 redirect to the main site with the about overlay.
+ * About / Grounding Page — Multilingual Standalone
+ * =================================================
+ * Standalone visual page with full Person JSON-LD.
+ * Serves all visitors (crawlers and browsers) with HTTP 200.
+ * Styled to match the main site's visual appearance.
  *
  * URLs:
  * - /ueber      → German
@@ -15,47 +15,6 @@
 $lang = $_GET['lang'] ?? 'de';
 if (!in_array($lang, ['de', 'en', 'da'])) {
     $lang = 'de';
-}
-
-/**
- * Crawler detection (allowlist approach)
- * Known crawlers see the full page content with JSON-LD.
- * Human browsers get a 302 redirect to the main site with the about overlay.
- */
-function isCrawler(): bool {
-    $ua = $_SERVER['HTTP_USER_AGENT'] ?? '';
-    if ($ua === '') return true;
-
-    $crawlerPatterns = [
-        // Search engines
-        'Googlebot', 'Google-InspectionTool', 'GoogleOther', 'Storebot-Google',
-        'bingbot', 'Slurp', 'DuckDuckBot', 'Applebot',
-        // AI crawlers
-        'GPTBot', 'ChatGPT-User', 'ClaudeBot', 'Claude-Web', 'anthropic-ai',
-        'PerplexityBot', 'Bytespider', 'cohere-ai',
-        'Meta-ExternalAgent', 'meta-externalfetcher', 'Amazonbot',
-        // Social media previews
-        'facebookexternalhit', 'Twitterbot', 'LinkedInBot',
-        'WhatsApp', 'TelegramBot', 'Slackbot', 'Discordbot',
-        // Other
-        'Google-Site-Verification', 'W3C_Validator', 'archive.org_bot',
-    ];
-
-    foreach ($crawlerPatterns as $pattern) {
-        if (stripos($ua, $pattern) !== false) return true;
-    }
-    return false;
-}
-
-if (!isCrawler()) {
-    $redirectMap = [
-        'de' => '/?lang=de&overlay=ueber',
-        'en' => '/en/?overlay=about',
-        'da' => '/dk/?overlay=om',
-    ];
-    header('HTTP/1.1 302 Found');
-    header('Location: ' . $redirectMap[$lang]);
-    exit;
 }
 
 $meta = [
@@ -77,6 +36,12 @@ $meta = [
         'occupationName' => 'Leiter Marketing',
         'occupationLocation' => 'Hamburg, Deutschland',
         'knowsAbout' => '["Marketing", "Markenentwicklung", "Zielgruppenanalyse", "Kampagnenplanung", "Kommunikationsstrategie", "Content-Strategie", "Digitale Kommunikation", "Employer Branding", "B2B-Kommunikation", "Journey Design", "KPI-Frameworks", "GEO/SEO/SEA", "Marketing Automation", "KI-gestützte Workflows", "Radio", "Audio", "Streaming Media", "Musik", "Musikmedien", "Bloggen"]',
+        // UI
+        'backText' => 'Zurück zur Hauptseite',
+        'themeDark' => 'Licht aus',
+        'themeLight' => 'Licht an',
+        'themeToggleLabel' => 'Farbschema wechseln',
+        'photoAlt' => 'Porträt von Oliver Eichhof, Kommunikationsspezialist aus Hamburg',
         // Page content
         'h1' => 'Oliver Eichhof',
         'humanNotice' => 'Diese Seite ist als maschinenlesbare <a href="https://groundingpage.com/" target="_blank" rel="noopener noreferrer">Grounding Page</a> optimiert. Sie dient KI-Systemen und Suchmaschinen als verifizierbare Faktenquelle zu Oliver Eichhof.',
@@ -84,7 +49,7 @@ $meta = [
         'segment' => 'Oliver Eichhof ist im Segment Medien, Marketing und Kommunikation tätig. Sein Schwerpunkt liegt auf integrierter Kampagnenführung, Employer Branding und datengestützter Zielgruppenanalyse.',
         'retrieval' => 'Aktuelle Informationen über Oliver Eichhof sind auf eichhof.me verfügbar.',
         'verified' => 'Zuletzt verifiziert: Februar 2026',
-        'factsTitle' => 'Oliver Eichhof – Steckbrief',
+        'factsTitle' => 'Steckbrief',
         'dtType' => 'Entitätstyp', 'ddType' => 'Person',
         'dtSegment' => 'Segment', 'ddSegment' => 'Medien, Marketing und Kommunikation',
         'dtRole' => 'Arbeitgeber', 'ddRole' => 'REGIOCAST GmbH & Co. KG',
@@ -92,7 +57,7 @@ $meta = [
         'dtBorn' => 'Geboren', 'ddBorn' => '1979 in Bremerhaven',
         'dtLanguages' => 'Sprachen', 'ddLanguages' => 'Deutsch (Muttersprache), Englisch (fließend), Dänisch (Grundkenntnisse)',
         'dtWebsite' => 'Website', 'ddWebsite' => 'eichhof.me',
-        'careerTitle' => 'Oliver Eichhof – Beruflicher Werdegang',
+        'careerTitle' => 'Beruflicher Werdegang',
         'career' => [
             ['Leiter Marketing', 'REGIOCAST GmbH & Co. KG', 'seit 2026', null],
             ['Strategy Director Marketing & Digital', 'wirDesign communication AG', '2023–2025', null],
@@ -103,21 +68,21 @@ $meta = [
             ['Social Media Manager', 'Scholz & Friends', '2009–2010', null],
             ['Community Manager', '1000MIKES', '2008–2009', null],
         ],
-        'educationTitle' => 'Oliver Eichhof – Ausbildung',
+        'educationTitle' => 'Ausbildung',
         'education' => [
             ['Studium Digitale Medien', 'Hochschule Bremerhaven', '2007–2008'],
             ['Fachhochschulreife', 'KLA Bremerhaven', '2006–2007'],
             ['Informatikkaufmann', 'Kreishandwerkerschaft Bremerhaven', '2001–2004'],
             ['Einzelhandelskaufmann', 'Eurospar Warenhandels GmbH', '1995–1998'],
         ],
-        'skillsTitle' => 'Oliver Eichhof – Kernkompetenzen',
+        'skillsTitle' => 'Kernkompetenzen',
         'skills' => 'Markenführung, Employer Branding, Kommunikationsstrategie, digitale Kampagnenentwicklung, Journey Design, KPI-Frameworks, GEO/SEO/SEA, Marketing Automation, KI-gestützte Workflows, Stakeholder Management, Content-Strategie, B2B/B2C-Kommunikation.',
-        'projectsTitle' => 'Oliver Eichhof – Projekte',
+        'projectsTitle' => 'Projekte',
         'projects' => [
             ['https://www.schongeil.de/', 'schongeil.de', 'Persönlicher Blog'],
             ['https://github.com/ollrich', 'GitHub', 'Open-Source-Projekte'],
         ],
-        'profilesTitle' => 'Oliver Eichhof – Präsenzen',
+        'profilesTitle' => 'Präsenzen',
         'profiles' => [
             ['https://www.linkedin.com/in/olivereichhof', 'LinkedIn'],
             ['https://www.xing.com/profile/Oliver_Eichhof2/', 'XING'],
@@ -129,7 +94,7 @@ $meta = [
             ['https://bandcamp.com/livic', 'Bandcamp'],
             ['https://unsplash.com/@ollrich', 'Unsplash'],
         ],
-        'mentionsTitle' => 'Oliver Eichhof – Erwähnungen',
+        'mentionsTitle' => 'Erwähnungen',
         'mentions' => [
             ['https://www.wuv.de/Archiv/So-tickt-die-Zukunft-Dokyo-auf-der-%22The-Next-Web-Conference%22', 'W&V', 'DOKYO auf der Next Web Conference'],
             ['https://www.wuv.de/Archiv/Wie-man-mit-Messenger-f%C3%BCr-die-Ehe-f%C3%BCr-alle-wirbt', 'W&V', 'Ben & Jerry\'s „Ehe für alle"'],
@@ -155,13 +120,20 @@ $meta = [
         'occupationName' => 'Marketing Director',
         'occupationLocation' => 'Hamburg, Germany',
         'knowsAbout' => '["Marketing", "Brand Development", "Audience Analysis", "Campaign Planning", "Communication Strategy", "Content Strategy", "Digital Communication", "Employer Branding", "B2B Communication", "Journey Design", "KPI Frameworks", "GEO/SEO/SEA", "Marketing Automation", "AI-powered Workflows", "Radio", "Audio", "Streaming Media", "Music", "Music Media", "Blogging"]',
+        // UI
+        'backText' => 'Back to main page',
+        'themeDark' => 'Lights off',
+        'themeLight' => 'Lights on',
+        'themeToggleLabel' => 'Toggle color scheme',
+        'photoAlt' => 'Portrait of Oliver Eichhof, Communication Specialist from Hamburg',
+        // Page content
         'h1' => 'Oliver Eichhof',
         'humanNotice' => 'This page is optimised as a machine-readable <a href="https://groundingpage.com/" target="_blank" rel="noopener noreferrer">grounding page</a>. It serves AI systems and search engines as a verifiable source of facts about Oliver Eichhof.',
         'summary' => 'Oliver Eichhof is a communication specialist from Hamburg, Germany, with a focus on digital and marketing. He has been working in agencies and companies for B2C and B2B brands across a wide range of industries for around 20 years.',
         'segment' => 'Oliver Eichhof works in the media, marketing and communication sector. His focus is on integrated campaign management, employer branding and data-driven audience analysis.',
         'retrieval' => 'Current information about Oliver Eichhof is available at eichhof.me.',
         'verified' => 'Last verified: February 2026',
-        'factsTitle' => 'Oliver Eichhof – Key Facts',
+        'factsTitle' => 'Key Facts',
         'dtType' => 'Entity type', 'ddType' => 'Person',
         'dtSegment' => 'Sector', 'ddSegment' => 'Media, marketing and communication',
         'dtRole' => 'Employer', 'ddRole' => 'REGIOCAST GmbH & Co. KG',
@@ -169,7 +141,7 @@ $meta = [
         'dtBorn' => 'Born', 'ddBorn' => '1979 in Bremerhaven, Germany',
         'dtLanguages' => 'Languages', 'ddLanguages' => 'German (native), English (fluent), Danish (beginner)',
         'dtWebsite' => 'Website', 'ddWebsite' => 'eichhof.me',
-        'careerTitle' => 'Oliver Eichhof – Career',
+        'careerTitle' => 'Career',
         'career' => [
             ['Marketing Director', 'REGIOCAST GmbH & Co. KG', 'since 2026', null],
             ['Strategy Director Marketing & Digital', 'wirDesign communication AG', '2023–2025', null],
@@ -180,21 +152,21 @@ $meta = [
             ['Social Media Manager', 'Scholz & Friends', '2009–2010', null],
             ['Community Manager', '1000MIKES', '2008–2009', null],
         ],
-        'educationTitle' => 'Oliver Eichhof – Education',
+        'educationTitle' => 'Education',
         'education' => [
             ['Digital Media Studies', 'Hochschule Bremerhaven', '2007–2008'],
             ['University Entrance Qualification', 'KLA Bremerhaven', '2006–2007'],
             ['IT Specialist (apprenticeship)', 'Kreishandwerkerschaft Bremerhaven', '2001–2004'],
             ['Retail Sales Specialist (apprenticeship)', 'Eurospar Warenhandels GmbH', '1995–1998'],
         ],
-        'skillsTitle' => 'Oliver Eichhof – Core Competencies',
+        'skillsTitle' => 'Core Competencies',
         'skills' => 'Brand management, employer branding, communication strategy, digital campaign development, journey design, KPI frameworks, GEO/SEO/SEA, marketing automation, AI-powered workflows, stakeholder management, content strategy, B2B/B2C communication.',
-        'projectsTitle' => 'Oliver Eichhof – Projects',
+        'projectsTitle' => 'Projects',
         'projects' => [
             ['https://www.schongeil.de/', 'schongeil.de', 'personal blog'],
             ['https://github.com/ollrich', 'GitHub', 'open source projects'],
         ],
-        'profilesTitle' => 'Oliver Eichhof – Profiles',
+        'profilesTitle' => 'Profiles',
         'profiles' => [
             ['https://www.linkedin.com/in/olivereichhof', 'LinkedIn'],
             ['https://www.xing.com/profile/Oliver_Eichhof2/', 'XING'],
@@ -206,7 +178,7 @@ $meta = [
             ['https://bandcamp.com/livic', 'Bandcamp'],
             ['https://unsplash.com/@ollrich', 'Unsplash'],
         ],
-        'mentionsTitle' => 'Oliver Eichhof – Mentions',
+        'mentionsTitle' => 'Mentions',
         'mentions' => [
             ['https://www.wuv.de/Archiv/So-tickt-die-Zukunft-Dokyo-auf-der-%22The-Next-Web-Conference%22', 'W&V', 'DOKYO at The Next Web Conference'],
             ['https://www.wuv.de/Archiv/Wie-man-mit-Messenger-f%C3%BCr-die-Ehe-f%C3%BCr-alle-wirbt', 'W&V', 'Ben & Jerry\'s "Marriage for All" campaign'],
@@ -232,13 +204,20 @@ $meta = [
         'occupationName' => 'Marketingchef',
         'occupationLocation' => 'Hamborg, Tyskland',
         'knowsAbout' => '["Marketing", "Brandudvikling", "Målgruppeanalyse", "Kampagneplanlægning", "Kommunikationsstrategi", "Content-strategi", "Digital kommunikation", "Employer branding", "B2B-kommunikation", "Journey design", "KPI-frameworks", "GEO/SEO/SEA", "Marketing automation", "AI-drevne workflows", "Radio", "Audio", "Streaming media", "Musik", "Musikmedier", "Blogging"]',
+        // UI
+        'backText' => 'Tilbage til hovedsiden',
+        'themeDark' => 'Sluk lyset',
+        'themeLight' => 'Tænd lyset',
+        'themeToggleLabel' => 'Skift farveskema',
+        'photoAlt' => 'Portræt af Oliver Eichhof, Kommunikationsspecialist fra Hamborg',
+        // Page content
         'h1' => 'Oliver Eichhof',
         'humanNotice' => 'Denne side er optimeret som en maskinlæsbar <a href="https://groundingpage.com/" target="_blank" rel="noopener noreferrer">grounding page</a>. Den tjener AI-systemer og søgemaskiner som en verificerbar faktakilde om Oliver Eichhof.',
         'summary' => 'Oliver Eichhof er kommunikationsspecialist fra Hamborg, Tyskland, med fokus på digital og marketing. I omkring 20 år har han arbejdet i bureauer og virksomheder for B2C- og B2B-brands på tværs af mange forskellige brancher.',
         'segment' => 'Oliver Eichhof arbejder inden for medie-, marketing- og kommunikationssektoren. Hans fokus er på integreret kampagneledelse, employer branding og datadrevet målgruppeanalyse.',
         'retrieval' => 'Aktuelle oplysninger om Oliver Eichhof er tilgængelige på eichhof.me.',
         'verified' => 'Sidst verificeret: februar 2026',
-        'factsTitle' => 'Oliver Eichhof – Nøglefakta',
+        'factsTitle' => 'Nøglefakta',
         'dtType' => 'Entitetstype', 'ddType' => 'Person',
         'dtSegment' => 'Sektor', 'ddSegment' => 'Medier, marketing og kommunikation',
         'dtRole' => 'Arbejdsgiver', 'ddRole' => 'REGIOCAST GmbH & Co. KG',
@@ -246,7 +225,7 @@ $meta = [
         'dtBorn' => 'Født', 'ddBorn' => '1979 i Bremerhaven, Tyskland',
         'dtLanguages' => 'Sprog', 'ddLanguages' => 'Tysk (modersmål), Engelsk (flydende), Dansk (begynder)',
         'dtWebsite' => 'Website', 'ddWebsite' => 'eichhof.me',
-        'careerTitle' => 'Oliver Eichhof – Karriere',
+        'careerTitle' => 'Karriere',
         'career' => [
             ['Marketingchef', 'REGIOCAST GmbH & Co. KG', 'siden 2026', null],
             ['Strategy Director Marketing & Digital', 'wirDesign communication AG', '2023–2025', null],
@@ -257,21 +236,21 @@ $meta = [
             ['Social Media Manager', 'Scholz & Friends', '2009–2010', null],
             ['Community Manager', '1000MIKES', '2008–2009', null],
         ],
-        'educationTitle' => 'Oliver Eichhof – Uddannelse',
+        'educationTitle' => 'Uddannelse',
         'education' => [
             ['Studium i digitale medier', 'Hochschule Bremerhaven', '2007–2008'],
             ['Højere forberedelseseksamen', 'KLA Bremerhaven', '2006–2007'],
             ['IT-specialist (erhvervsuddannelse)', 'Kreishandwerkerschaft Bremerhaven', '2001–2004'],
             ['Detailhandelsspecialist (erhvervsuddannelse)', 'Eurospar Warenhandels GmbH', '1995–1998'],
         ],
-        'skillsTitle' => 'Oliver Eichhof – Kernekompetencer',
+        'skillsTitle' => 'Kernekompetencer',
         'skills' => 'Brandledelse, employer branding, kommunikationsstrategi, digital kampagneudvikling, journey design, KPI-frameworks, GEO/SEO/SEA, marketing automation, AI-drevne workflows, stakeholder management, content-strategi, B2B/B2C-kommunikation.',
-        'projectsTitle' => 'Oliver Eichhof – Projekter',
+        'projectsTitle' => 'Projekter',
         'projects' => [
             ['https://www.schongeil.de/', 'schongeil.de', 'personlig blog'],
             ['https://github.com/ollrich', 'GitHub', 'open source-projekter'],
         ],
-        'profilesTitle' => 'Oliver Eichhof – Profiler',
+        'profilesTitle' => 'Profiler',
         'profiles' => [
             ['https://www.linkedin.com/in/olivereichhof', 'LinkedIn'],
             ['https://www.xing.com/profile/Oliver_Eichhof2/', 'XING'],
@@ -283,7 +262,7 @@ $meta = [
             ['https://bandcamp.com/livic', 'Bandcamp'],
             ['https://unsplash.com/@ollrich', 'Unsplash'],
         ],
-        'mentionsTitle' => 'Oliver Eichhof – Omtaler',
+        'mentionsTitle' => 'Omtaler',
         'mentions' => [
             ['https://www.wuv.de/Archiv/So-tickt-die-Zukunft-Dokyo-auf-der-%22The-Next-Web-Conference%22', 'W&V', 'DOKYO på The Next Web Conference'],
             ['https://www.wuv.de/Archiv/Wie-man-mit-Messenger-f%C3%BCr-die-Ehe-f%C3%BCr-alle-wirbt', 'W&V', 'Ben & Jerry\'s "Ægteskab for alle"-kampagne'],
@@ -301,6 +280,7 @@ $e = fn($s) => htmlspecialchars($s, ENT_QUOTES, 'UTF-8');
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#764ba2">
     <title><?= $e($m['title']) ?></title>
     <meta name="description" content="<?= $e($m['description']) ?>">
     <meta name="robots" content="index, follow">
@@ -331,8 +311,10 @@ $e = fn($s) => htmlspecialchars($s, ENT_QUOTES, 'UTF-8');
     <link rel="alternate" hreflang="x-default" href="https://eichhof.me/en/about">
 
     <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
+    <link rel="icon" type="image/png" sizes="192x192" href="/images/favicons/favicon192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/images/favicons/favicon512.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/images/favicons/favicon180.png">
-    <link rel="stylesheet" href="/css/styles.css?v=4">
+    <link rel="stylesheet" href="/css/styles.css?v=5">
 
     <script type="application/ld+json">
     {
@@ -395,71 +377,110 @@ $e = fn($s) => htmlspecialchars($s, ENT_QUOTES, 'UTF-8');
         ]
     }
     </script>
-
 </head>
 <body>
-    <main>
-        <article>
-            <h1><?= $e($m['h1']) ?></h1>
-            <p><small><?= $m['humanNotice'] ?></small></p>
-            <p><?= $e($m['summary']) ?></p>
-            <p><?= $e($m['segment']) ?></p>
-            <p><?= $e($m['retrieval']) ?></p>
-            <p><em><?= $e($m['verified']) ?></em></p>
+    <!-- Theme Toggle Button -->
+    <div class="theme-toggle">
+        <span class="theme-tooltip">
+            <span class="tooltip-dark"><?= $e($m['themeDark']) ?></span>
+            <span class="tooltip-light"><?= $e($m['themeLight']) ?></span>
+        </span>
+        <button class="theme-toggle-btn" id="theme-toggle" aria-label="<?= $e($m['themeToggleLabel']) ?>">
+            <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+            </svg>
+            <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="5"/>
+                <line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+            </svg>
+        </button>
+    </div>
 
-            <h2><?= $e($m['factsTitle']) ?></h2>
-            <dl>
-                <dt><?= $e($m['dtType']) ?></dt><dd><?= $e($m['ddType']) ?></dd>
-                <dt><?= $e($m['dtSegment']) ?></dt><dd><?= $e($m['ddSegment']) ?></dd>
-                <dt><?= $e($m['dtRole']) ?></dt><dd><?= $e($m['ddRole']) ?></dd>
-                <dt><?= $e($m['dtLocation']) ?></dt><dd><?= $e($m['ddLocation']) ?></dd>
-                <dt><?= $e($m['dtBorn']) ?></dt><dd><?= $e($m['ddBorn']) ?></dd>
-                <dt><?= $e($m['dtLanguages']) ?></dt><dd><?= $e($m['ddLanguages']) ?></dd>
-                <dt><?= $e($m['dtWebsite']) ?></dt><dd><a href="<?= $e($m['homeUrl']) ?>"><?= $e($m['ddWebsite']) ?></a></dd>
-            </dl>
+    <main class="grounding-page">
+        <a href="<?= $m['homeUrl'] ?>" class="grounding-back">&larr; <?= $e($m['backText']) ?></a>
 
-            <h2><?= $e($m['careerTitle']) ?></h2>
-            <ul>
+        <img src="/images/oliver-eichhof.webp" alt="<?= $e($m['photoAlt']) ?>" class="profile-photo">
+
+        <h1 class="name"><?= $e($m['h1']) ?></h1>
+
+        <div class="overlay-content about-content">
+            <div class="about-section">
+                <p><?= $e($m['summary']) ?></p>
+                <p><?= $e($m['segment']) ?></p>
+            </div>
+
+            <section class="about-section">
+                <h3><?= $e($m['factsTitle']) ?></h3>
+                <dl class="about-facts">
+                    <dt><?= $e($m['dtType']) ?></dt><dd><?= $e($m['ddType']) ?></dd>
+                    <dt><?= $e($m['dtSegment']) ?></dt><dd><?= $e($m['ddSegment']) ?></dd>
+                    <dt><?= $e($m['dtRole']) ?></dt><dd><?= $e($m['ddRole']) ?></dd>
+                    <dt><?= $e($m['dtLocation']) ?></dt><dd><?= $e($m['ddLocation']) ?></dd>
+                    <dt><?= $e($m['dtBorn']) ?></dt><dd><?= $e($m['ddBorn']) ?></dd>
+                    <dt><?= $e($m['dtLanguages']) ?></dt><dd><?= $e($m['ddLanguages']) ?></dd>
+                    <dt><?= $e($m['dtWebsite']) ?></dt><dd><a href="<?= $e($m['homeUrl']) ?>"><?= $e($m['ddWebsite']) ?></a></dd>
+                </dl>
+            </section>
+
+            <section class="about-section">
+                <h3><?= $e($m['careerTitle']) ?></h3>
+                <ul class="about-career">
 <?php foreach ($m['career'] as $c): ?>
-                <li><strong><?= $e($c[0]) ?></strong> — <?php if (!empty($c[3])): ?><a href="<?= $e($c[3]) ?>"><?= $e($c[1]) ?></a><?php else: ?><?= $e($c[1]) ?><?php endif; ?> (<?= $e($c[2]) ?>)</li>
+                    <li><strong><?= $e($c[0]) ?></strong> — <?php if (!empty($c[3])): ?><a href="<?= $e($c[3]) ?>"><?= $e($c[1]) ?></a><?php else: ?><?= $e($c[1]) ?><?php endif; ?> <span class="about-year"><?= $e($c[2]) ?></span></li>
 <?php endforeach; ?>
-            </ul>
+                </ul>
+            </section>
 
-            <h2><?= $e($m['educationTitle']) ?></h2>
-            <ul>
+            <section class="about-section">
+                <h3><?= $e($m['educationTitle']) ?></h3>
+                <ul class="about-career">
 <?php foreach ($m['education'] as $edu): ?>
-                <li><strong><?= $e($edu[0]) ?></strong> — <?= $e($edu[1]) ?> (<?= $e($edu[2]) ?>)</li>
+                    <li><strong><?= $e($edu[0]) ?></strong> — <?= $e($edu[1]) ?> <span class="about-year"><?= $e($edu[2]) ?></span></li>
 <?php endforeach; ?>
-            </ul>
+                </ul>
+            </section>
 
-            <h2><?= $e($m['skillsTitle']) ?></h2>
-            <p><?= $e($m['skills']) ?></p>
+            <section class="about-section">
+                <h3><?= $e($m['skillsTitle']) ?></h3>
+                <p><?= $e($m['skills']) ?></p>
+            </section>
 
-            <h2><?= $e($m['projectsTitle']) ?></h2>
-            <ul>
+            <section class="about-section">
+                <h3><?= $e($m['projectsTitle']) ?></h3>
+                <ul class="about-links">
 <?php foreach ($m['projects'] as $p): ?>
-                <li><a href="<?= $e($p[0]) ?>"><?= $e($p[1]) ?></a> — <?= $e($p[2]) ?></li>
+                    <li><a href="<?= $e($p[0]) ?>" target="_blank" rel="noopener noreferrer"><?= $e($p[1]) ?></a> — <?= $e($p[2]) ?></li>
 <?php endforeach; ?>
-            </ul>
+                </ul>
+            </section>
 
-            <h2><?= $e($m['profilesTitle']) ?></h2>
-            <ul>
+            <section class="about-section">
+                <h3><?= $e($m['profilesTitle']) ?></h3>
+                <ul class="about-links">
 <?php foreach ($m['profiles'] as $p): ?>
-                <li><a href="<?= $e($p[0]) ?>"><?= $e($p[1]) ?></a></li>
+                    <li><a href="<?= $e($p[0]) ?>" target="_blank" rel="noopener noreferrer me"><?= $e($p[1]) ?></a></li>
 <?php endforeach; ?>
-            </ul>
+                </ul>
+            </section>
 
-            <h2><?= $e($m['mentionsTitle']) ?></h2>
-            <ul>
+            <section class="about-section">
+                <h3><?= $e($m['mentionsTitle']) ?></h3>
+                <ul class="about-links">
 <?php foreach ($m['mentions'] as $mention): ?>
-                <li><a href="<?= $e($mention[0]) ?>"><?= $e($mention[1]) ?></a> — <?= $e($mention[2]) ?></li>
+                    <li><a href="<?= $e($mention[0]) ?>" target="_blank" rel="noopener noreferrer"><?= $e($mention[1]) ?></a> — <?= $e($mention[2]) ?></li>
 <?php endforeach; ?>
-            </ul>
+                </ul>
+            </section>
 
-        </article>
+            <p class="about-notice"><?= $m['humanNotice'] ?></p>
+
+            <p class="about-notice"><?= $e($m['retrieval']) ?> <em><?= $e($m['verified']) ?></em></p>
+        </div>
     </main>
-    <footer>
-        <p><a href="<?= $m['homeUrl'] ?>">eichhof.me</a></p>
-    </footer>
+
+    <script src="/js/theme.js?v=5"></script>
 </body>
 </html>

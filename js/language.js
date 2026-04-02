@@ -69,27 +69,6 @@
             contactErrorRateLimit: "Zu viele Anfragen. Bitte warte einige Minuten.",
             contactPrivacy: "Deine Daten werden nur zur Beantwortung verwendet. Zur Spam-Abwehr wird deine IP temporär verarbeitet, aber nicht gespeichert.",
             contactFallback: "Oder direkt per E-Mail:",
-            // About overlay
-            aboutTitle: "Oliver Eichhof",
-            aboutSummary: "Oliver Eichhof ist Kommunikationsspezialist aus Hamburg mit Schwerpunkt Digital und Marketing. Seit rund 20 Jahren arbeitet er in Agenturen und Unternehmen für B2C- und B2B-Marken unterschiedlichster Branchen.",
-            aboutFactsTitle: "Steckbrief",
-            aboutDtRole: "Arbeitgeber",
-            aboutDdRole: '<a href="https://www.regiocast.de/" target="_blank" rel="noopener noreferrer">REGIOCAST GmbH & Co. KG</a>',
-            aboutDtLocation: "Standort",
-            aboutDdLocation: "Hamburg",
-            aboutDtBorn: "Geboren",
-            aboutDdBorn: "1979 in Bremerhaven",
-            aboutCareerTitle: "Beruflicher Werdegang",
-            aboutCareer1Title: "Leiter Marketing",
-            aboutCareer1Year: "seit 2026",
-            aboutCareer3Org: "Freiberuflich",
-            aboutCareerMore: 'Kompletten Werdegang auf <a href="https://de.linkedin.com/in/olivereichhof" target="_blank" rel="noopener noreferrer">LinkedIn</a> ansehen',
-            aboutProjectsTitle: "Projekte",
-            aboutProjectBlog: "— Persönlicher Blog",
-            aboutProjectCode: "— Open-Source-Projekte",
-            aboutProfilesTitle: "Präsenzen",
-            aboutMentionsTitle: "Erwähnungen",
-            aboutNotice: 'Diese Seite ist als maschinenlesbare <a href="https://groundingpage.com/" target="_blank" rel="noopener noreferrer">Grounding Page</a> optimiert. Sie dient KI-Systemen und Suchmaschinen als verifizierbare Faktenquelle zu Oliver Eichhof.',
             aboutTriggerLabel: "Über mich"
         },
         en: {
@@ -132,27 +111,6 @@
             contactErrorRateLimit: "Too many requests. Please wait a few minutes.",
             contactPrivacy: "Your data will only be used to respond. Your IP is temporarily processed for spam protection but not stored.",
             contactFallback: "Or email directly:",
-            // About overlay
-            aboutTitle: "Oliver Eichhof",
-            aboutSummary: "Oliver Eichhof is a communication specialist from Hamburg, Germany, with a focus on digital and marketing. He has been working in agencies and companies for B2C and B2B brands across a wide range of industries for around 20 years.",
-            aboutFactsTitle: "Key Facts",
-            aboutDtRole: "Employer",
-            aboutDdRole: '<a href="https://www.regiocast.de/" target="_blank" rel="noopener noreferrer">REGIOCAST GmbH & Co. KG</a>',
-            aboutDtLocation: "Location",
-            aboutDdLocation: "Hamburg, Germany",
-            aboutDtBorn: "Born",
-            aboutDdBorn: "1979 in Bremerhaven, Germany",
-            aboutCareerTitle: "Career",
-            aboutCareer1Title: "Marketing Director",
-            aboutCareer1Year: "since 2026",
-            aboutCareer3Org: "Freelance",
-            aboutCareerMore: 'View full career on <a href="https://www.linkedin.com/in/olivereichhof" target="_blank" rel="noopener noreferrer">LinkedIn</a>',
-            aboutProjectsTitle: "Projects",
-            aboutProjectBlog: "— personal blog",
-            aboutProjectCode: "— open source projects",
-            aboutProfilesTitle: "Profiles",
-            aboutMentionsTitle: "Mentions",
-            aboutNotice: 'This page is optimised as a machine-readable <a href="https://groundingpage.com/" target="_blank" rel="noopener noreferrer">grounding page</a>. It serves AI systems and search engines as a verifiable source of facts about Oliver Eichhof.',
             aboutTriggerLabel: "About me"
         },
         da: {
@@ -195,27 +153,6 @@
             contactErrorRateLimit: "For mange anmodninger. Vent venligst et par minutter.",
             contactPrivacy: "Dine data bruges kun til at besvare. Din IP behandles midlertidigt til spam-beskyttelse, men gemmes ikke.",
             contactFallback: "Eller send e-mail direkte:",
-            // About overlay
-            aboutTitle: "Oliver Eichhof",
-            aboutSummary: "Oliver Eichhof er kommunikationsspecialist fra Hamborg, Tyskland, med fokus på digital og marketing. I omkring 20 år har han arbejdet i bureauer og virksomheder for B2C- og B2B-brands på tværs af mange forskellige brancher.",
-            aboutFactsTitle: "Nøglefakta",
-            aboutDtRole: "Arbejdsgiver",
-            aboutDdRole: '<a href="https://www.regiocast.de/" target="_blank" rel="noopener noreferrer">REGIOCAST GmbH & Co. KG</a>',
-            aboutDtLocation: "Placering",
-            aboutDdLocation: "Hamborg, Tyskland",
-            aboutDtBorn: "Født",
-            aboutDdBorn: "1979 i Bremerhaven, Tyskland",
-            aboutCareerTitle: "Karriere",
-            aboutCareer1Title: "Marketingchef",
-            aboutCareer1Year: "siden 2026",
-            aboutCareer3Org: "Freelance",
-            aboutCareerMore: 'Se den fulde karriere på <a href="https://dk.linkedin.com/in/olivereichhof" target="_blank" rel="noopener noreferrer">LinkedIn</a>',
-            aboutProjectsTitle: "Projekter",
-            aboutProjectBlog: "— personlig blog",
-            aboutProjectCode: "— open source-projekter",
-            aboutProfilesTitle: "Profiler",
-            aboutMentionsTitle: "Omtaler",
-            aboutNotice: 'Denne side er optimeret som en maskinlæsbar <a href="https://groundingpage.com/" target="_blank" rel="noopener noreferrer">grounding page</a>. Den tjener AI-systemer og søgemaskiner som en verificerbar faktakilde om Oliver Eichhof.',
             aboutTriggerLabel: "Om mig"
         }
     };
@@ -370,29 +307,8 @@
             contactEmailLink.href = 'mailto:' + contactFallbackEmail;
         }
 
-        // Update about overlay content
-        updateElement('about-title', content.aboutTitle);
-        updateElement('about-summary', content.aboutSummary);
-        updateElement('about-facts-title', content.aboutFactsTitle);
-        updateElement('about-dt-role', content.aboutDtRole);
-        updateElement('about-dd-role', content.aboutDdRole, true);
-        updateElement('about-dt-location', content.aboutDtLocation);
-        updateElement('about-dd-location', content.aboutDdLocation);
-        updateElement('about-dt-born', content.aboutDtBorn);
-        updateElement('about-dd-born', content.aboutDdBorn);
-        updateElement('about-career-title', content.aboutCareerTitle);
-        updateElement('about-career-1-title', content.aboutCareer1Title);
-        updateElement('about-career-1-year', content.aboutCareer1Year);
-        updateElement('about-career-3-org', content.aboutCareer3Org);
-        updateElement('about-career-more', content.aboutCareerMore, true);
-        updateElement('about-projects-title', content.aboutProjectsTitle);
-        updateElement('about-project-blog', content.aboutProjectBlog);
-        updateElement('about-project-code', content.aboutProjectCode);
-        updateElement('about-profiles-title', content.aboutProfilesTitle);
-        updateElement('about-mentions-title', content.aboutMentionsTitle);
-        updateElement('about-notice', content.aboutNotice, true);
+        // Update about trigger
         updateAttr('about-trigger-card', 'aria-label', content.aboutTriggerLabel);
-        updateAttr('close-about-btn', 'aria-label', content.closeOverlay);
     }
 
     /**
@@ -410,9 +326,6 @@
             } else if (openOverlay === 'contact') {
                 const contactOverlay = document.getElementById('contact-overlay');
                 if (contactOverlay) contactOverlay.classList.add('active');
-            } else if (openOverlay === 'about') {
-                const aboutOverlay = document.getElementById('about-overlay');
-                if (aboutOverlay) aboutOverlay.classList.add('active');
             }
         }, 100);
     }
