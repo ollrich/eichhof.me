@@ -25,7 +25,8 @@
 // ============================================================================
 
 // Legacy ?lang= parameter: 301 redirect to clean URL
-if (isset($_GET['lang'])) {
+// Only when lang= is in the real request URI (not from internal .htaccess rewrite)
+if (isset($_GET['lang']) && preg_match('/[?&]lang=/', $_SERVER['REQUEST_URI'] ?? '')) {
     $redirectMap = ['de' => '/', 'en' => '/en/', 'da' => '/dk/'];
     $target = $redirectMap[$_GET['lang']] ?? '/';
     header('HTTP/1.1 301 Moved Permanently');
