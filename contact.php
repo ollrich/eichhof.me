@@ -35,7 +35,15 @@ $max_requests = 3;
 $time_window = 600; // 10 Minuten in Sekunden
 $min_submit_time = 3; // Mindestzeit in Sekunden
 
-// Session starten
+// Session starten (mit sicheren Cookie-Flags)
+session_set_cookie_params([
+    'lifetime' => 0,
+    'path'     => '/',
+    'domain'   => '',
+    'secure'   => true,
+    'httponly' => true,
+    'samesite' => 'Strict',
+]);
 session_start();
 
 // CORS Headers für AJAX
