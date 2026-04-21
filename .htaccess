@@ -52,13 +52,30 @@ DirectoryIndex index.php index.html
 # ============================================================================
 
 # Schutz sensibler Dateien und Verzeichnisse
+
+# 1. Alle Dotfiles blockieren (.webhook-secret, .contact-config.json,
+#    .contact-ratelimit.json, .apiflash-key, .deploy-log.txt, .env, .git, etc.)
 <FilesMatch "^\.">
     Require all denied
 </FilesMatch>
-<FilesMatch "\.(env|log|bak|sql|ini|sh|php)$">
+
+# 2. Sensible/interne Dateiendungen blockieren
+#    - md: Doku wie DEPLOY-SETUP.md, README.md gehört nicht ins Web
+#    - json/yml/yaml/lock: Config- und Lockfiles
+#    - env/log/bak/sql/ini/sh: klassische Leak-Kandidaten
+#    - php: standardmässig alles dicht; Entrypoints werden unten explizit freigegeben
+<FilesMatch "\.(env|log|bak|sql|ini|sh|php|md|json|yml|yaml|lock)$">
     Require all denied
 </FilesMatch>
-# Ausnahmen für PHP-Scripts
+
+# 3. Belt-and-suspenders: explizite Sperre für bekannte Secret-/State-Dateien.
+#    Redundant zu (1), macht aber Intent dokumentiert und schützt, falls ein
+#    zukünftiger Edit die Dotfile-Regel versehentlich aufweicht.
+<FilesMatch "^(\.webhook-secret|\.apiflash-key|\.contact-.*\.json|\.deploy-log\.txt)$">
+    Require all denied
+</FilesMatch>
+
+# Ausnahmen: öffentliche PHP-Entrypoints
 <Files "index.php">
     Require all granted
 </Files>
