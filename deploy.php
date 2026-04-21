@@ -154,18 +154,28 @@ if (!isGitHubRequest($clientIP, $github_ip_ranges)) {
     die('Forbidden: Invalid source IP');
 }
 
-// Webhook Secret validation
+// Webhook Secret validation (fail-closed: missing secret refuses deployment)
 $payload = file_get_contents('php://input');
 $signature = $_SERVER['HTTP_X_HUB_SIGNATURE_256'] ?? '';
 
-if (!empty($secret)) {
-    $expected_signature = 'sha256=' . hash_hmac('sha256', $payload, $secret);
+if ($secret === '') {
+    writeLog('ERROR: Webhook secret missing or empty - refusing to deploy');
+    http_response_code(500);
+    die('Server misconfigured: webhook secret not set');
+}
 
-    if (!hash_equals($expected_signature, $signature)) {
-        writeLog('ERROR: Invalid webhook signature');
-        http_response_code(403);
-        die('Invalid signature');
-    }
+if ($signature === '') {
+    writeLog('ERROR: Missing X-Hub-Signature-256 header');
+    http_response_code(403);
+    die('Missing signature');
+}
+
+$expected_signature = 'sha256=' . hash_hmac('sha256', $payload, $secret);
+
+if (!hash_equals($expected_signature, $signature)) {
+    writeLog('ERROR: Invalid webhook signature');
+    http_response_code(403);
+    die('Invalid signature');
 }
 
 // Event type check
