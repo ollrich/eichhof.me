@@ -549,11 +549,11 @@ if ($overlay === 'impressum' || $overlay === 'legal' || $overlay === 'kolofon') 
     </div>
 
     <!-- JavaScript Modules -->
-    <script src="/js/theme.js?v=5"></script>
-    <script src="/js/language.js?v=5"></script>
-    <script src="/js/overlay.js?v=5"></script>
-    <script src="/js/contact.js?v=5"></script>
-    <script src="/js/easter-egg.js?v=5"></script>
-    <script src="/js/link-preview.js?v=5"></script>
+    <script src="/js/theme.js?v=5" defer></script>
+    <script src="/js/language.js?v=5" defer></script>
+    <script src="/js/overlay.js?v=5" defer></script>
+    <script src="/js/contact.js?v=5" defer></script>
+    <script src="/js/easter-egg.js?v=5" defer></script>
+    <script src="/js/link-preview.js?v=5" defer></script>
 </body>
 </html>

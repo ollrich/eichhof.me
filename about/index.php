@@ -583,8 +583,8 @@ $e = fn($s) => htmlspecialchars($s, ENT_QUOTES, 'UTF-8');
         </div>
     </div>
 
-    <script src="/js/grounding-email.js?v=5"></script>
-    <script src="/js/theme.js?v=5"></script>
-    <script src="/js/overlay.js?v=5"></script>
+    <script src="/js/grounding-email.js?v=5" defer></script>
+    <script src="/js/theme.js?v=5" defer></script>
+    <script src="/js/overlay.js?v=5" defer></script>
 </body>
 </html>
