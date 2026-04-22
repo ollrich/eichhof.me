@@ -35,9 +35,11 @@ if (!$recipient_email || !$from_email) {
 }
 
 $rate_limit_file = __DIR__ . '/.contact-ratelimit.json';
-$max_requests = 3;
-$time_window = 600; // 10 Minuten in Sekunden
-$min_submit_time = 3; // Mindestzeit in Sekunden
+
+// Rate-Limit- und Anti-Spam-Schwellen
+const CONTACT_MAX_REQUESTS = 3;        // max. Anfragen pro IP-Hash im Fenster
+const CONTACT_TIME_WINDOW = 600;       // Fenster in Sekunden (10 Minuten)
+const CONTACT_MIN_SUBMIT_TIME = 3;     // Mindestzeit zwischen Form-Load und Submit
 
 // Session starten (mit sicheren Cookie-Flags)
 session_set_cookie_params([
@@ -172,7 +174,7 @@ if (!$data) {
 
 // Rate Limiting prüfen
 $clientIP = getClientIP();
-if (!checkRateLimit($clientIP, $rate_limit_file, $max_requests, $time_window)) {
+if (!checkRateLimit($clientIP, $rate_limit_file, CONTACT_MAX_REQUESTS, CONTACT_TIME_WINDOW)) {
     http_response_code(429);
     echo json_encode(['success' => false, 'error' => 'rate_limit']);
     exit;
@@ -200,7 +202,7 @@ if (!empty($honeypot)) {
 $formLoadTime = $data['_t'] ?? 0;
 $submitTime = time();
 
-if ($formLoadTime > 0 && ($submitTime - $formLoadTime) < $min_submit_time) {
+if ($formLoadTime > 0 && ($submitTime - $formLoadTime) < CONTACT_MIN_SUBMIT_TIME) {
     // Zu schnell = Bot, Fake-Erfolg
     echo json_encode(['success' => true]);
     exit;
