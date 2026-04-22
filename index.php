@@ -55,6 +55,12 @@ if (!in_array($lang, ['de', 'en', 'da'])) {
 // Helper function for HTML escaping
 $e = function($s) { return htmlspecialchars($s, ENT_QUOTES, 'UTF-8'); };
 
+// Explicit identity marker for $meta values that intentionally contain
+// trusted hardcoded HTML (e.g. <br>, <span class="sr-only">, <a>).
+// Using $rawHtml() at the callsite documents the intent so future readers
+// don't mistake a missing $e() for an oversight.
+$rawHtml = function($s) { return $s; };
+
 // ============================================================================
 // COMPLETE CONTENT PER LANGUAGE
 // ============================================================================
@@ -401,7 +407,7 @@ if ($overlay === 'impressum' || $overlay === 'legal' || $overlay === 'kolofon') 
         <div class="mobile-footer">
             <a href="<?= $m['legalUrl'] ?>" id="footer-link-mobile"><?= $e($m['legalLink']) ?></a>
             <span class="sr-only" id="footer-entity-mobile"><?= $e($m['footerEntity']) ?></span>
-            <span id="footer-text-mobile"><?= $m['footerMobile'] ?></span>
+            <span id="footer-text-mobile"><?= $rawHtml($m['footerMobile']) ?></span>
         </div>
     </div>
 </main>
@@ -415,7 +421,7 @@ if ($overlay === 'impressum' || $overlay === 'legal' || $overlay === 'kolofon') 
     <span class="sr-only" id="footer-entity-desktop"><?= $e($m['footerEntity']) ?></span>
 
     <div class="footer">
-        <span id="footer-text-desktop"><?= $m['footerDesktop'] ?></span>
+        <span id="footer-text-desktop"><?= $rawHtml($m['footerDesktop']) ?></span>
         <span class="github-link-wrapper">•
             <span class="github-tooltip" id="github-tooltip"><?= $e($m['githubTooltip']) ?></span>
             <a href="https://github.com/ollrich/eichhof.me" target="_blank" rel="noopener noreferrer" class="footer-link">
@@ -439,7 +445,7 @@ if ($overlay === 'impressum' || $overlay === 'legal' || $overlay === 'kolofon') 
             </button>
             <h2 id="overlay-title"><?= $e($m['overlayTitle']) ?></h2>
             <p id="overlay-text-1"><?= $e($m['overlayText1']) ?></p>
-            <p id="overlay-text-2"><?= $m['overlayText2'] ?></p>
+            <p id="overlay-text-2"><?= $rawHtml($m['overlayText2']) ?></p>
             <p><span id="overlay-text-3"><?= $e($m['overlayText3']) ?></span> <a href="#" id="overlay-email-link" class="overlay-email-link"></a></p>
             <p id="overlay-text-3b"><?= $e($m['overlayText3b']) ?></p>
             <h3 id="overlay-subtitle"><?= $e($m['overlaySubtitle']) ?></h3>

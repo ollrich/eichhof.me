@@ -332,6 +332,12 @@ $meta = [
 $m = $meta[$lang];
 $e = fn($s) => htmlspecialchars($s, ENT_QUOTES, 'UTF-8');
 
+// Explicit identity marker for $meta values that intentionally contain
+// trusted hardcoded HTML (e.g. <br>, <span class="sr-only">, <a>).
+// Using $rawHtml() at the callsite documents the intent so future readers
+// don't mistake a missing $e() for an oversight.
+$rawHtml = fn($s) => $s;
+
 // Shared Person-Schema-Daten (sameAs, subjectOf) — identisch zwischen Haupt- und About-Seite
 $person = require __DIR__ . '/../includes/config/person.php';
 ?>
@@ -498,7 +504,7 @@ $person = require __DIR__ . '/../includes/config/person.php';
                 </ul>
             </section>
 
-            <p class="about-notice"><?= $m['humanNotice'] ?></p>
+            <p class="about-notice"><?= $rawHtml($m['humanNotice']) ?></p>
 
             <p class="about-notice"><?= $e($m['retrieval']) ?> <em><?= $e($m['verified']) ?></em></p>
         </div>
@@ -506,7 +512,7 @@ $person = require __DIR__ . '/../includes/config/person.php';
         <div class="mobile-footer">
             <a href="<?= $m['legalUrl'] ?>" id="footer-link-mobile"><?= $e($m['legalLink']) ?></a>
             <span class="sr-only"><?= $e($m['footerEntity']) ?></span>
-            <span><?= $m['footerMobile'] ?></span>
+            <span><?= $rawHtml($m['footerMobile']) ?></span>
         </div>
     </main>
 
@@ -518,7 +524,7 @@ $person = require __DIR__ . '/../includes/config/person.php';
     <span class="sr-only"><?= $e($m['footerEntity']) ?></span>
 
     <div class="footer">
-        <span><?= $m['footerDesktop'] ?></span>
+        <span><?= $rawHtml($m['footerDesktop']) ?></span>
         <span class="github-link-wrapper">•
             <span class="github-tooltip"><?= $e($m['githubTooltip']) ?></span>
             <a href="https://github.com/ollrich/eichhof.me" target="_blank" rel="noopener noreferrer" class="footer-link">
@@ -539,7 +545,7 @@ $person = require __DIR__ . '/../includes/config/person.php';
             </button>
             <h2 id="overlay-title"><?= $e($m['overlayTitle']) ?></h2>
             <p id="overlay-text-1"><?= $e($m['overlayText1']) ?></p>
-            <p id="overlay-text-2"><?= $m['overlayText2'] ?></p>
+            <p id="overlay-text-2"><?= $rawHtml($m['overlayText2']) ?></p>
             <p><span id="overlay-text-3"><?= $e($m['overlayText3']) ?></span> <a href="#" id="overlay-email-link" class="overlay-email-link"></a></p>
             <p id="overlay-text-3b"><?= $e($m['overlayText3b']) ?></p>
             <h3 id="overlay-subtitle"><?= $e($m['overlaySubtitle']) ?></h3>
