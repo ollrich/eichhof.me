@@ -414,7 +414,7 @@ html.dark-mode .link-preview:hover {
     transform: translateY(0);
 }
 
-.link-card:focus {
+.link-card:focus-visible {
     outline: 2px solid rgba(255, 255, 255, 0.5);
     outline-offset: 2px;
 }
@@ -799,8 +799,11 @@ html.dark-mode .overlay-content::-webkit-scrollbar-thumb:hover {
         display: none;
     }
 
-    .link-preview {
-        display: none !important;
+    /* Match specificity of .link-preview.active (2 classes) so the hide wins
+       without !important if the active state lingers across a resize. */
+    .link-preview,
+    .link-preview.active {
+        display: none;
     }
 
     .profile-photo {
