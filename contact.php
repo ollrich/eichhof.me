@@ -21,10 +21,14 @@ if (!file_exists($config_file)) {
     exit;
 }
 $config = json_decode(file_get_contents($config_file), true);
-$recipient_email = $config['recipient_email'] ?? '';
-$from_email = $config['from_email'] ?? '';
 
-if (empty($recipient_email)) {
+// Config-Werte strikt als RFC-valide Adressen validieren.
+// Falls die Config je kompromittiert wird, schließt filter_var
+// u. a. CR/LF-Injection in From:/Reply-To-Headern aus.
+$recipient_email = filter_var($config['recipient_email'] ?? '', FILTER_VALIDATE_EMAIL);
+$from_email = filter_var($config['from_email'] ?? '', FILTER_VALIDATE_EMAIL);
+
+if (!$recipient_email || !$from_email) {
     http_response_code(500);
     echo json_encode(['success' => false, 'error' => 'config_invalid']);
     exit;
