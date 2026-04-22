@@ -54,7 +54,9 @@ eichhof.me/
 │   └── confetti.min.js     # Canvas-Confetti (lazy-loaded)
 ├── contact.php             # Contact form backend (rate limiting, CSRF, honeypot)
 ├── images/
-│   ├── oliver-eichhof.webp # Profile photo
+│   ├── oliver-eichhof.webp # Profile photo (960w, LCP hero)
+│   ├── oliver-eichhof-320.webp # Responsive variant (mobile srcset)
+│   ├── oliver-eichhof-640.webp # Responsive variant (tablet srcset)
 │   ├── og-image.png        # Open Graph image for social sharing
 │   ├── favicons/           # Favicon variants (180, 192, 512)
 │   ├── hover/              # Link preview screenshots
