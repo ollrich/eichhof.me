@@ -20,6 +20,7 @@
     let currentUrl = null;
     let isOverPreview = false;
     let isOverLink = false;
+    let taglineObserver = null;
 
     // Mobile OS detection: only disable previews on iOS/iPadOS and Android
     // Windows/macOS touchscreens with mouse should still get previews
@@ -235,12 +236,22 @@
         // Re-initialize when tagline content changes (language switch)
         // Using MutationObserver to detect changes
         if (taglineElement) {
-            const observer = new MutationObserver(function() {
+            taglineObserver = new MutationObserver(function() {
                 // Small delay to ensure DOM is updated
                 setTimeout(initLinkPreviews, 100);
             });
-            observer.observe(taglineElement, { childList: true, subtree: true });
+            taglineObserver.observe(taglineElement, { childList: true, subtree: true });
         }
+
+        window.addEventListener('pagehide', cleanup);
+    }
+
+    function cleanup() {
+        if (taglineObserver) {
+            taglineObserver.disconnect();
+            taglineObserver = null;
+        }
+        window.removeEventListener('pagehide', cleanup);
     }
 
     // Initialize when DOM is ready

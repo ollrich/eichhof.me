@@ -114,7 +114,8 @@
         if (prefersReducedMotion) return;
 
         const profilePhoto = document.querySelector('.profile-photo');
-        if (!profilePhoto) return;
+        // Guard against detached element — parentNode is needed for phantom insertion below
+        if (!profilePhoto || !profilePhoto.parentNode) return;
 
         isEasterEggActive = true;
 
@@ -285,6 +286,23 @@
     }
 
     /**
+     * Spacebar trigger (only if not in input/textarea).
+     * Named so it can be removed on pagehide — prevents listener accumulation
+     * when the page is restored from bfcache.
+     */
+    function handleSpacebar(e) {
+        if (e.key === ' ' && e.target === document.body) {
+            e.preventDefault();
+            triggerEasterEgg();
+        }
+    }
+
+    function cleanup() {
+        document.removeEventListener('keydown', handleSpacebar);
+        window.removeEventListener('pagehide', cleanup);
+    }
+
+    /**
      * Initialize Easter egg module
      */
     function init() {
@@ -297,13 +315,8 @@
         // Double-tap trigger (mobile)
         profilePhoto.addEventListener('touchend', handleDoubleTap);
 
-        // Spacebar trigger (only if not in input/textarea)
-        document.addEventListener('keydown', function(e) {
-            if (e.key === ' ' && e.target === document.body) {
-                e.preventDefault();
-                triggerEasterEgg();
-            }
-        });
+        document.addEventListener('keydown', handleSpacebar);
+        window.addEventListener('pagehide', cleanup);
 
         // Start hint loop and confetti timer
         startHintLoop();
