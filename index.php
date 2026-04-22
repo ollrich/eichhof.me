@@ -238,6 +238,9 @@ $meta = [
 
 $m = $meta[$lang];
 
+// Shared Person-Schema-Daten (sameAs, subjectOf) — identisch zwischen Haupt- und About-Seite
+$person = require __DIR__ . '/includes/config/person.php';
+
 // Determine overlay to open (if any)
 $openOverlay = null;
 if ($overlay === 'impressum' || $overlay === 'legal' || $overlay === 'kolofon') {
@@ -316,33 +319,13 @@ if ($overlay === 'impressum' || $overlay === 'legal' || $overlay === 'kolofon') 
             "name": "REGIOCAST GmbH & Co. KG",
             "url": "https://www.regiocast.de/"
         },
-        "sameAs": [
-            "https://www.linkedin.com/in/olivereichhof",
-            "https://www.xing.com/profile/Oliver_Eichhof2/",
-            "https://www.schongeil.de/",
-            "https://github.com/ollrich",
-            "https://bsky.app/profile/ollri.ch",
-            "https://norden.social/@olli",
-            "https://www.instagram.com/ollri.ch/",
-            "https://soundcloud.com/livicxyz",
-            "https://www.youtube.com/@schongeilDE",
-            "https://bandcamp.com/livic",
-            "https://unsplash.com/@ollrich"
-        ],
-        "subjectOf": [
-            { "@type": "Article", "url": "https://www.testspiel.de/oliver-polak-interview-2/290215/" },
-            { "@type": "Article", "url": "https://www.testspiel.de/kid-simius-interview/276764/" },
-            { "@type": "Article", "url": "https://www.wuv.de/Archiv/Wie-man-mit-Messenger-f%C3%BCr-die-Ehe-f%C3%BCr-alle-wirbt" },
-            { "@type": "Article", "url": "https://www.wuv.de/Archiv/So-tickt-die-Zukunft-Dokyo-auf-der-%22The-Next-Web-Conference%22" }
-        ]
+        "sameAs": <?= json_encode($person['sameAs'], JSON_UNESCAPED_SLASHES) ?>,
+        "subjectOf": <?= json_encode($person['subjectOf'], JSON_UNESCAPED_SLASHES) ?>
     }
     </script>
 
     <!-- Favicon configuration for various devices and contexts -->
-    <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
-    <link rel="icon" type="image/png" sizes="192x192" href="/images/favicons/favicon192.png">
-    <link rel="icon" type="image/png" sizes="512x512" href="/images/favicons/favicon512.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/images/favicons/favicon180.png">
+    <?php include __DIR__ . '/includes/head-favicons.php'; ?>
 
     <!-- Stylesheet -->
     <link rel="stylesheet" href="/css/styles.css?v=5">
@@ -351,28 +334,7 @@ if ($overlay === 'impressum' || $overlay === 'legal' || $overlay === 'kolofon') 
 <body data-lang="<?= $lang ?>"<?= $openOverlay ? ' data-overlay="' . $openOverlay . '"' : '' ?>>
     <main>
     <!-- Theme Toggle Button -->
-    <div class="theme-toggle">
-        <span class="theme-tooltip">
-            <span class="tooltip-dark" id="tooltip-dark"><?= $e($m['themeDark']) ?></span>
-            <span class="tooltip-light" id="tooltip-light"><?= $e($m['themeLight']) ?></span>
-        </span>
-        <button class="theme-toggle-btn" id="theme-toggle" aria-label="<?= $e($m['themeToggleLabel']) ?>">
-            <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
-            </svg>
-            <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="5"/>
-                <line x1="12" y1="1" x2="12" y2="3"/>
-                <line x1="12" y1="21" x2="12" y2="23"/>
-                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
-                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
-                <line x1="1" y1="12" x2="3" y2="12"/>
-                <line x1="21" y1="12" x2="23" y2="12"/>
-                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
-                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
-            </svg>
-        </button>
-    </div>
+    <?php include __DIR__ . '/includes/theme-toggle.php'; ?>
 
     <!-- Main Content Container -->
     <div class="container">
