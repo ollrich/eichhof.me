@@ -38,6 +38,7 @@ $meta = [
         'knowsAbout' => '["Marketing", "Markenentwicklung", "Zielgruppenanalyse", "Kampagnenplanung", "Kommunikationsstrategie", "Content-Strategie", "Digitale Kommunikation", "Employer Branding", "B2B-Kommunikation", "Journey Design", "KPI-Frameworks", "GEO/SEO/SEA", "Marketing Automation", "KI-gestützte Workflows", "Radio", "Audio", "Streaming Media", "Musik", "Musikmedien", "Bloggen"]',
         // UI
         'backText' => 'Zurück zur Hauptseite',
+        'skipLink' => 'Zum Inhalt springen',
         'themeDark' => 'Licht aus',
         'themeLight' => 'Licht an',
         'themeToggleLabel' => 'Farbschema wechseln',
@@ -141,6 +142,7 @@ $meta = [
         'knowsAbout' => '["Marketing", "Brand Development", "Audience Analysis", "Campaign Planning", "Communication Strategy", "Content Strategy", "Digital Communication", "Employer Branding", "B2B Communication", "Journey Design", "KPI Frameworks", "GEO/SEO/SEA", "Marketing Automation", "AI-powered Workflows", "Radio", "Audio", "Streaming Media", "Music", "Music Media", "Blogging"]',
         // UI
         'backText' => 'Back to main page',
+        'skipLink' => 'Skip to content',
         'themeDark' => 'Lights off',
         'themeLight' => 'Lights on',
         'themeToggleLabel' => 'Toggle color scheme',
@@ -244,6 +246,7 @@ $meta = [
         'knowsAbout' => '["Marketing", "Brandudvikling", "Målgruppeanalyse", "Kampagneplanlægning", "Kommunikationsstrategi", "Content-strategi", "Digital kommunikation", "Employer branding", "B2B-kommunikation", "Journey design", "KPI-frameworks", "GEO/SEO/SEA", "Marketing automation", "AI-drevne workflows", "Radio", "Audio", "Streaming media", "Musik", "Musikmedier", "Blogging"]',
         // UI
         'backText' => 'Tilbage til hovedsiden',
+        'skipLink' => 'Spring til indhold',
         'themeDark' => 'Sluk lyset',
         'themeLight' => 'Tænd lyset',
         'themeToggleLabel' => 'Skift farveskema',
@@ -425,10 +428,12 @@ $person = require __DIR__ . '/../includes/config/person.php';
     </script>
 </head>
 <body>
+    <a href="#main" class="skip-link"><?= $e($m['skipLink']) ?></a>
+
     <!-- Theme Toggle Button -->
     <?php include __DIR__ . '/../includes/theme-toggle.php'; ?>
 
-    <main class="grounding-page">
+    <main id="main" class="grounding-page">
         <a href="<?= $m['homeUrl'] ?>" class="grounding-back">&larr; <?= $e($m['backText']) ?></a>
 
         <img src="/images/oliver-eichhof.webp" alt="<?= $e($m['photoAlt']) ?>" class="profile-photo">

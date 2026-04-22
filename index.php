@@ -102,6 +102,7 @@ $meta = [
         'githubTooltip' => 'Quellcode auf GitHub',
         'githubAriaLabel' => 'Quellcode auf GitHub',
         'hint' => 'drücke leertaste',
+        'skipLink' => 'Zum Inhalt springen',
         // Close buttons
         'closeOverlay' => 'Schließen',
         'closePreview' => 'Vorschau schließen',
@@ -160,6 +161,7 @@ $meta = [
         'githubTooltip' => 'View source on GitHub',
         'githubAriaLabel' => 'View source on GitHub',
         'hint' => 'press space',
+        'skipLink' => 'Skip to content',
         // Close buttons
         'closeOverlay' => 'Close',
         'closePreview' => 'Close preview',
@@ -218,6 +220,7 @@ $meta = [
         'githubTooltip' => 'Se kildekoden på GitHub',
         'githubAriaLabel' => 'Se kildekoden på GitHub',
         'hint' => 'tryk mellemrum',
+        'skipLink' => 'Spring til indhold',
         // Close buttons
         'closeOverlay' => 'Luk',
         'closePreview' => 'Luk forhåndsvisning',
@@ -338,7 +341,8 @@ if ($overlay === 'impressum' || $overlay === 'legal' || $overlay === 'kolofon') 
 
 </head>
 <body data-lang="<?= $lang ?>"<?= $openOverlay ? ' data-overlay="' . $openOverlay . '"' : '' ?>>
-    <main>
+    <a href="#main" class="skip-link"><?= $e($m['skipLink']) ?></a>
+    <main id="main">
     <!-- Theme Toggle Button -->
     <?php include __DIR__ . '/includes/theme-toggle.php'; ?>
 
