@@ -380,7 +380,7 @@ $person = require __DIR__ . '/../includes/config/person.php';
     <link rel="alternate" hreflang="x-default" href="https://eichhof.me/en/about">
 
     <?php include __DIR__ . '/../includes/head-favicons.php'; ?>
-    <link rel="stylesheet" href="/css/styles.css?v=5">
+    <link rel="stylesheet" href="/css/styles.css?v=6">
 
     <script type="application/ld+json">
     {
@@ -567,8 +567,8 @@ $person = require __DIR__ . '/../includes/config/person.php';
         </div>
     </div>
 
-    <script src="/js/grounding-email.js?v=5" defer></script>
-    <script src="/js/theme.js?v=5" defer></script>
-    <script src="/js/overlay.js?v=5" defer></script>
+    <script src="/js/grounding-email.js?v=6" defer></script>
+    <script src="/js/theme.js?v=6" defer></script>
+    <script src="/js/overlay.js?v=6" defer></script>
 </body>
 </html>
