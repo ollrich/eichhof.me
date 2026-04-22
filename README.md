@@ -18,7 +18,7 @@ Built with AI assistance as an exploration of modern web development practices. 
 - 🔒 Privacy-first: no cookies, no tracking, no analytics
 - 📬 Contact form with spam protection (honeypot, rate limiting, time-based checks)
 - 🔍 SEO optimized with schema.org structured data (Person) and JSON-LD
-- 📄 About / Grounding Page – machine-readable identity page for AI systems and search engines (standalone + overlay)
+- 📄 About / Grounding Page – machine-readable identity page for AI systems and search engines (standalone, styled)
 - 🎊 Easter eggs (try pressing spacebar or double-clicking the photo)
 - ♿ Accessible: keyboard navigation, ARIA labels, reduced motion support
 
@@ -36,7 +36,7 @@ Every push to `main` automatically updates the sitemap's `<lastmod>` date via Gi
 eichhof.me/
 ├── index.php               # Main entry (multilingual routing, dynamic meta tags)
 ├── about/
-│   └── index.php           # Standalone grounding page (crawlable, PHP 302 redirect for browsers)
+│   └── index.php           # Standalone grounding page (crawlable, styled)
 ├── .htaccess               # URL rewrites (/en/, /dk/, /ueber, /en/about, /dk/om, etc.)
 ├── robots.txt              # Crawler rules
 ├── sitemap.xml             # Multilingual sitemap with hreflang
@@ -48,9 +48,9 @@ eichhof.me/
 │   ├── language.js         # Multilingual content switching
 │   ├── overlay.js          # Legal notice modal
 │   ├── contact.js          # Contact form modal + AJAX
-│   ├── about.js            # About overlay logic
 │   ├── easter-egg.js       # Animations + confetti
 │   ├── link-preview.js     # Hover previews
+│   ├── grounding-email.js  # Email obfuscation on grounding page
 │   └── confetti.min.js     # Canvas-Confetti (lazy-loaded)
 ├── contact.php             # Contact form backend (rate limiting, CSRF, honeypot)
 ├── images/
@@ -89,7 +89,7 @@ Mit KI-Unterstützung gebaut als Exploration moderner Webentwicklung. Der Code i
 - 🔒 Privacy-First: keine Cookies, kein Tracking, keine Analytik
 - 📬 Kontaktformular mit Spam-Schutz (Honeypot, Rate Limiting, Zeitprüfung)
 - 🔍 SEO-optimiert mit schema.org strukturierten Daten (Person) und JSON-LD
-- 📄 About / Grounding Page – maschinenlesbare Identitätsseite für KI-Systeme und Suchmaschinen (Standalone + Overlay)
+- 📄 About / Grounding Page – maschinenlesbare Identitätsseite für KI-Systeme und Suchmaschinen (Standalone, gestaltet)
 - 🎊 Easter Eggs (Leertaste drücken oder Foto doppelklicken)
 - ♿ Barrierefrei: Tastaturnavigation, ARIA-Labels, Reduced-Motion-Support
 
@@ -119,7 +119,7 @@ Bygget med AI-assistance som en udforskning af moderne webudvikling. Koden er op
 - 🔒 Privacy-first: ingen cookies, ingen tracking, ingen analytics
 - 📬 Kontaktformular med spam-beskyttelse (honeypot, rate limiting, tidscheck)
 - 🔍 SEO-optimeret med schema.org strukturerede data (Person) og JSON-LD
-- 📄 About / Grounding Page – maskinlæsbar identitetsside til AI-systemer og søgemaskiner (standalone + overlay)
+- 📄 About / Grounding Page – maskinlæsbar identitetsside til AI-systemer og søgemaskiner (standalone, styled)
 - 🎊 Easter eggs (tryk mellemrum eller dobbeltklik på billedet)
 - ♿ Tilgængelig: tastaturnavigation, ARIA-labels, reduced-motion support
 
