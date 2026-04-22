@@ -380,7 +380,7 @@ $person = require __DIR__ . '/../includes/config/person.php';
     <link rel="alternate" hreflang="de" href="https://eichhof.me/ueber">
     <link rel="alternate" hreflang="en" href="https://eichhof.me/en/about">
     <link rel="alternate" hreflang="da" href="https://eichhof.me/dk/om">
-    <link rel="alternate" hreflang="x-default" href="https://eichhof.me/en/about">
+    <link rel="alternate" hreflang="x-default" href="https://eichhof.me/ueber">
 
     <?php include __DIR__ . '/../includes/head-favicons.php'; ?>
     <link rel="stylesheet" href="/css/styles.css?v=6">
