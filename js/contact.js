@@ -14,6 +14,22 @@
     let focusableElements = [];
     let csrfToken = null;
 
+    const FETCH_TIMEOUT_MS = 15000;
+
+    /**
+     * fetch() wrapped with an AbortController timeout so a hung server
+     * doesn't leave the UI stuck in a loading state forever.
+     */
+    async function fetchWithTimeout(url, options, timeoutMs) {
+        const controller = new AbortController();
+        const timeoutId = setTimeout(function() { controller.abort(); }, timeoutMs);
+        try {
+            return await fetch(url, Object.assign({}, options, { signal: controller.signal }));
+        } finally {
+            clearTimeout(timeoutId);
+        }
+    }
+
     /**
      * Get the contact URL based on current language
      * @returns {string} URL path for contact
@@ -41,10 +57,10 @@
      */
     async function fetchCsrfToken() {
         try {
-            const response = await fetch('/contact.php', {
+            const response = await fetchWithTimeout('/contact.php', {
                 method: 'GET',
                 credentials: 'same-origin'
-            });
+            }, FETCH_TIMEOUT_MS);
 
             const result = await response.json();
 
@@ -248,6 +264,7 @@
         message_invalid: 'contactErrorMessage',
         rate_limit: 'contactErrorRateLimit',
         send_failed: 'contactErrorGeneral',
+        timeout: 'contactErrorTimeout',
         general: 'contactErrorGeneral'
     };
 
@@ -344,14 +361,14 @@
         };
 
         try {
-            const response = await fetch('/contact.php', {
+            const response = await fetchWithTimeout('/contact.php', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(formData),
                 credentials: 'same-origin'
-            });
+            }, FETCH_TIMEOUT_MS);
 
             const result = await response.json();
 
@@ -372,7 +389,8 @@
                 }
             }
         } catch (error) {
-            showFeedback(getErrorMessage('general'), false);
+            const errorKey = error && error.name === 'AbortError' ? 'timeout' : 'general';
+            showFeedback(getErrorMessage(errorKey), false);
 
             if (submitBtn) {
                 submitBtn.disabled = false;
