@@ -2,7 +2,6 @@
  * Grounding Page Email Obfuscation
  * =================================
  * Assembles the email address from parts to prevent scraping.
- * Also provides a minimal LanguageManager shim if not already loaded.
  */
 (function() {
     'use strict';
@@ -17,12 +16,5 @@
     if (el) {
         el.textContent = a;
         el.href = 'mailto:' + a;
-    }
-
-    // LanguageManager shim for overlay.js
-    if (!window.LanguageManager) {
-        window.LanguageManager = {
-            getCurrentLang: function() { return lang; }
-        };
     }
 })();

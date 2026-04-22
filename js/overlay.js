@@ -14,12 +14,19 @@
     let focusableElements = [];
     let originalUrl = null; // Store URL before opening overlay
 
+    // Fallback auf document.documentElement.lang, wenn language.js nicht
+    // geladen ist (z. B. auf der Grounding-Page).
+    function getCurrentLang() {
+        if (window.LanguageManager) return window.LanguageManager.getCurrentLang();
+        return document.documentElement.lang || 'de';
+    }
+
     /**
      * Get the legal notice URL based on current language
      * @returns {string} URL path for legal notice
      */
     function getLegalUrl() {
-        const lang = window.LanguageManager ? window.LanguageManager.getCurrentLang() : 'de';
+        const lang = getCurrentLang();
         if (lang === 'en') return '/en/legal-notice';
         if (lang === 'da') return '/dk/kolofon';
         return '/impressum';
@@ -30,7 +37,7 @@
      * @returns {string} Base URL path
      */
     function getBaseUrl() {
-        const lang = window.LanguageManager ? window.LanguageManager.getCurrentLang() : 'de';
+        const lang = getCurrentLang();
         if (lang === 'en') return '/en/';
         if (lang === 'da') return '/dk/';
         return '/';
