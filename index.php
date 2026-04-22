@@ -265,6 +265,8 @@ if ($overlay === 'impressum' || $overlay === 'legal' || $overlay === 'kolofon') 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <?php include __DIR__ . '/includes/theme-init.php'; ?>
+
     <!-- Theme color for browser UI (address bar on mobile) -->
     <meta name="theme-color" content="#764ba2">
 

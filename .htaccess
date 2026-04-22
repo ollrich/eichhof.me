@@ -111,7 +111,7 @@ FileETag None
     Header set Referrer-Policy "no-referrer"
     Header set Permissions-Policy "geolocation=(), microphone=(), camera=(), payment=(), usb=()"
     Header set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
-    Header set Content-Security-Policy "default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data: https:; font-src 'self'; connect-src 'self'; worker-src 'self' blob:; frame-ancestors 'self'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests"
+    Header set Content-Security-Policy "default-src 'none'; script-src 'self' 'sha256-MCyEvVOO67rI0IwZN9PCA4aINLRDAhxFdM6P0A8p6R4='; style-src 'self'; img-src 'self' data: https:; font-src 'self'; connect-src 'self'; worker-src 'self' blob:; frame-ancestors 'self'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests"
     Header set Cross-Origin-Opener-Policy "same-origin"
     Header set Cross-Origin-Embedder-Policy "unsafe-none"
     Header set Cross-Origin-Resource-Policy "same-origin"
