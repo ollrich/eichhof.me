@@ -436,7 +436,14 @@ $person = require __DIR__ . '/../includes/config/person.php';
     <main id="main" class="grounding-page">
         <a href="<?= $m['homeUrl'] ?>" class="grounding-back">&larr; <?= $e($m['backText']) ?></a>
 
-        <img src="/images/oliver-eichhof.webp" alt="<?= $e($m['photoAlt']) ?>" class="profile-photo">
+        <img src="/images/oliver-eichhof.webp"
+             srcset="/images/oliver-eichhof-320.webp 320w, /images/oliver-eichhof-640.webp 640w, /images/oliver-eichhof.webp 960w"
+             sizes="120px"
+             width="120" height="120"
+             decoding="async"
+             fetchpriority="high"
+             alt="<?= $e($m['photoAlt']) ?>"
+             class="profile-photo">
 
         <h1 class="name"><?= $e($m['h1']) ?></h1>
 

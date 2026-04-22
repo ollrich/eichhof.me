@@ -348,8 +348,17 @@ if ($overlay === 'impressum' || $overlay === 'legal' || $overlay === 'kolofon') 
 
     <!-- Main Content Container -->
     <div class="container">
-        <!-- Profile photo with Easter egg animation (double-click or spacebar) -->
-        <img src="/images/oliver-eichhof.webp" alt="<?= $e($m['photoAlt']) ?>" class="profile-photo">
+        <!-- Profile photo with Easter egg animation (double-click or spacebar).
+             fetchpriority=high / decoding=async — LCP-Hero, daher bewusst
+             kein loading=lazy. srcset liefert auf Mobile ~8 KB statt 141 KB. -->
+        <img src="/images/oliver-eichhof.webp"
+             srcset="/images/oliver-eichhof-320.webp 320w, /images/oliver-eichhof-640.webp 640w, /images/oliver-eichhof.webp 960w"
+             sizes="(max-width: 768px) 140px, 160px"
+             width="160" height="160"
+             decoding="async"
+             fetchpriority="high"
+             alt="<?= $e($m['photoAlt']) ?>"
+             class="profile-photo">
 
         <h1 class="name">Oliver Eichhof
             <span class="about-triggers">
