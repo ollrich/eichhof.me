@@ -1005,6 +1005,12 @@ html.dark-mode .overlay-content::-webkit-scrollbar-thumb:hover {
         cursor: pointer;
     }
 
+    /* Auf Mobile trennt space-between die Links — der Bullet wäre
+       ein drittes Flex-Item und würde den Abstand ungleich verteilen. */
+    .mobile-footer .footer-separator {
+        display: none;
+    }
+
     .overlay-content {
         padding: 1.75rem 1.25rem;
         width: 90%;
