@@ -275,8 +275,8 @@ if ($routeKey === 'contact') $openOverlay = 'contact';
 <body data-lang="<?= $lang ?>"<?= $openOverlay ? ' data-overlay="' . $openOverlay . '"' : '' ?>>
     <a href="#main" class="skip-link"><?= $e($m['skipLink']) ?></a>
     <main id="main">
-    <!-- Theme Toggle Button -->
-    <?php include __DIR__ . '/includes/theme-toggle.php'; ?>
+    <!-- Top-Right-Controls (Sprachwähler + Theme-Toggle) -->
+    <?php include __DIR__ . '/includes/top-right-controls.php'; ?>
 
     <!-- Main Content Container -->
     <div class="container">

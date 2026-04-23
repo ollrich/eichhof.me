@@ -198,15 +198,75 @@ body {
 }
 
 /* ========================================
-   THEME TOGGLE BUTTON
+   TOP-RIGHT-CONTROLS (Sprachwähler + Theme-Toggle)
    ========================================
-   Fixed button in top-right corner for switching between light/dark mode
+   Fixed-Wrapper oben rechts. Enthält links den Sprachwähler (DE/EN/DK)
+   und rechts daneben den Theme-Toggle (Sonne/Mond). Früher hatte
+   .theme-toggle selbst die Fixed-Position — jetzt sitzt sie am Wrapper,
+   damit beide Controls als eine Gruppe ausgerichtet werden.
 */
-.theme-toggle {
+.top-right-controls {
     position: fixed;
     top: 20px;
     right: 20px;
     z-index: 1000;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* Theme-Toggle läuft jetzt als Flex-Item im Wrapper. Die Absolut-
+   Positionierung des Tooltips relativ zum Button bleibt unberührt. */
+.top-right-controls .theme-toggle {
+    position: static;
+    top: auto;
+    right: auto;
+}
+
+/* Sprachwähler: drei gleich aussehende Textlinks. Bewusst KEINE
+   aktive-State-Markierung (kein fett, keine Farbe, keine Unterstreichung)
+   — die drei Buchstaben sollen sich visuell nicht voneinander abheben,
+   genauso wie die Sonne und der Mond im Theme-Toggle. */
+.lang-switcher {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.lang-switcher-link {
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    line-height: 1;
+    color: inherit;
+    text-decoration: none;
+    opacity: var(--toggle-opacity);
+    transition: opacity 0.3s ease, transform 0.2s ease;
+    padding: 4px 2px;
+    min-width: 18px;
+    text-align: center;
+}
+
+.lang-switcher-link:hover,
+.lang-switcher-link:focus-visible {
+    opacity: var(--toggle-hover);
+    transform: scale(1.1);
+}
+
+.lang-switcher-link:focus-visible {
+    outline: 2px solid rgba(255, 255, 255, 0.5);
+    outline-offset: 3px;
+    border-radius: 4px;
+}
+
+/* ========================================
+   THEME TOGGLE BUTTON
+   ========================================
+   Button im top-right-controls-Wrapper. Wechselt zwischen Dark und Light.
+*/
+.theme-toggle {
+    position: relative;
 }
 
 .theme-toggle-btn {
@@ -870,9 +930,19 @@ html.dark-mode .overlay-content::-webkit-scrollbar-thumb:hover {
    RESPONSIVE - TABLET
    ======================================== */
 @media (max-width: 768px) {
-    .theme-toggle {
+    .top-right-controls {
         top: 15px;
         right: 15px;
+        gap: 8px;
+    }
+
+    .lang-switcher {
+        gap: 4px;
+    }
+
+    .lang-switcher-link {
+        font-size: 12px;
+        min-width: 16px;
     }
 
     .theme-toggle-btn {

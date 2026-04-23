@@ -197,8 +197,8 @@ $routeKey = 'about';
 <body>
     <a href="#main" class="skip-link"><?= $e($m['skipLink']) ?></a>
 
-    <!-- Theme Toggle Button -->
-    <?php include __DIR__ . '/../includes/theme-toggle.php'; ?>
+    <!-- Top-Right-Controls (Sprachwähler + Theme-Toggle) -->
+    <?php include __DIR__ . '/../includes/top-right-controls.php'; ?>
 
     <main id="main" class="grounding-page">
         <a href="<?= $m['homeUrl'] ?>" class="grounding-back">&larr; <?= $e($m['backText']) ?></a>
