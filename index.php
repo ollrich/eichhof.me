@@ -411,7 +411,7 @@ if ($overlay === 'impressum' || $overlay === 'legal' || $overlay === 'kolofon') 
 
         <!-- Mobile-only footer -->
         <div class="mobile-footer">
-            <a href="<?= $m['legalUrl'] ?>" id="footer-link-mobile"><?= $e($m['legalLink']) ?></a><span class="footer-separator" aria-hidden="true"> · </span><a href="<?= $m['privacyUrl'] ?>" id="footer-privacy-link-mobile"><?= $e($m['privacyLink']) ?></a>
+            <a href="<?= $m['legalUrl'] ?>" id="footer-link-mobile"><?= $e($m['legalLink']) ?></a><span class="footer-separator" aria-hidden="true"> • </span><a href="<?= $m['privacyUrl'] ?>" id="footer-privacy-link-mobile"><?= $e($m['privacyLink']) ?></a>
             <span class="sr-only" id="footer-entity-mobile"><?= $e($m['footerEntity']) ?></span>
             <span id="footer-text-mobile"><?= $rawHtml($m['footerMobile']) ?></span>
         </div>
@@ -420,7 +420,7 @@ if ($overlay === 'impressum' || $overlay === 'legal' || $overlay === 'kolofon') 
 
     <!-- Footer Elements -->
     <div class="footer-left">
-        <a href="<?= $m['legalUrl'] ?>" id="footer-link"><?= $e($m['legalLink']) ?></a><span class="footer-separator" aria-hidden="true"> · </span><a href="<?= $m['privacyUrl'] ?>" id="footer-privacy-link"><?= $e($m['privacyLink']) ?></a>
+        <a href="<?= $m['legalUrl'] ?>" id="footer-link"><?= $e($m['legalLink']) ?></a><span class="footer-separator" aria-hidden="true"> • </span><a href="<?= $m['privacyUrl'] ?>" id="footer-privacy-link"><?= $e($m['privacyLink']) ?></a>
     </div>
 
     <!-- Hidden entity info for crawlers -->
@@ -428,7 +428,7 @@ if ($overlay === 'impressum' || $overlay === 'legal' || $overlay === 'kolofon') 
 
     <div class="footer">
         <span id="footer-text-desktop"><?= $rawHtml($m['footerDesktop']) ?></span>
-        <span class="github-link-wrapper">·
+        <span class="github-link-wrapper">•
             <span class="github-tooltip" id="github-tooltip"><?= $e($m['githubTooltip']) ?></span>
             <a href="https://github.com/ollrich/eichhof.me" target="_blank" rel="noopener noreferrer" class="footer-link">
                 <svg class="icon-github" viewBox="0 0 16 16" fill="currentColor" aria-label="<?= $e($m['githubAriaLabel']) ?>">
