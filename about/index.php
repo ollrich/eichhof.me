@@ -483,14 +483,20 @@ require_once __DIR__ . '/../includes/asset.php';
     <main id="main" class="grounding-page">
         <a href="<?= $m['homeUrl'] ?>" class="grounding-back">&larr; <?= $e($m['backText']) ?></a>
 
-        <img src="/images/oliver-eichhof.webp"
-             srcset="/images/oliver-eichhof-320.webp 320w, /images/oliver-eichhof-640.webp 640w, /images/oliver-eichhof.webp 960w"
-             sizes="120px"
-             width="120" height="120"
-             decoding="async"
-             fetchpriority="high"
-             alt="<?= $e($m['photoAlt']) ?>"
-             class="profile-photo">
+        <picture>
+            <source type="image/avif"
+                    srcset="/images/oliver-eichhof-320.avif 320w, /images/oliver-eichhof-640.avif 640w, /images/oliver-eichhof.avif 960w"
+                    sizes="120px">
+            <source type="image/webp"
+                    srcset="/images/oliver-eichhof-320.webp 320w, /images/oliver-eichhof-640.webp 640w, /images/oliver-eichhof.webp 960w"
+                    sizes="120px">
+            <img src="/images/oliver-eichhof.webp"
+                 width="120" height="120"
+                 decoding="async"
+                 fetchpriority="high"
+                 alt="<?= $e($m['photoAlt']) ?>"
+                 class="profile-photo">
+        </picture>
 
         <h1 class="name"><?= $e($m['h1']) ?></h1>
 

@@ -370,15 +370,22 @@ if ($overlay === 'impressum' || $overlay === 'legal' || $overlay === 'kolofon') 
     <div class="container">
         <!-- Profile photo with Easter egg animation (double-click or spacebar).
              fetchpriority=high / decoding=async — LCP-Hero, daher bewusst
-             kein loading=lazy. srcset liefert auf Mobile ~8 KB statt 141 KB. -->
-        <img src="/images/oliver-eichhof.webp"
-             srcset="/images/oliver-eichhof-320.webp 320w, /images/oliver-eichhof-640.webp 640w, /images/oliver-eichhof.webp 960w"
-             sizes="(max-width: 768px) 140px, 160px"
-             width="160" height="160"
-             decoding="async"
-             fetchpriority="high"
-             alt="<?= $e($m['photoAlt']) ?>"
-             class="profile-photo">
+             kein loading=lazy. <picture> liefert AVIF wo möglich, sonst
+             WebP als Fallback. srcset liefert auf Mobile ~2 KB statt 40 KB. -->
+        <picture>
+            <source type="image/avif"
+                    srcset="/images/oliver-eichhof-320.avif 320w, /images/oliver-eichhof-640.avif 640w, /images/oliver-eichhof.avif 960w"
+                    sizes="(max-width: 768px) 140px, 160px">
+            <source type="image/webp"
+                    srcset="/images/oliver-eichhof-320.webp 320w, /images/oliver-eichhof-640.webp 640w, /images/oliver-eichhof.webp 960w"
+                    sizes="(max-width: 768px) 140px, 160px">
+            <img src="/images/oliver-eichhof.webp"
+                 width="160" height="160"
+                 decoding="async"
+                 fetchpriority="high"
+                 alt="<?= $e($m['photoAlt']) ?>"
+                 class="profile-photo">
+        </picture>
 
         <h1 class="name">Oliver Eichhof</h1>
 
