@@ -356,6 +356,15 @@ if ($overlay === 'impressum' || $overlay === 'legal' || $overlay === 'kolofon') 
     <!-- Favicon configuration for various devices and contexts -->
     <?php include __DIR__ . '/includes/head-favicons.php'; ?>
 
+    <!-- Preload Hero-AVIF (LCP). `type="image/avif"` sorgt dafür, dass
+         Browser ohne AVIF-Support den Preload ignorieren und stattdessen
+         über den <picture>-Fallback die WebP-Variante laden. -->
+    <link rel="preload" as="image"
+          type="image/avif"
+          imagesrcset="/images/oliver-eichhof-320.avif 320w, /images/oliver-eichhof-640.avif 640w, /images/oliver-eichhof.avif 920w"
+          imagesizes="(max-width: 768px) 140px, 160px"
+          fetchpriority="high">
+
     <!-- Stylesheet -->
     <link rel="stylesheet" href="<?= asset('/css/styles.css') ?>">
 

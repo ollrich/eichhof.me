@@ -387,6 +387,15 @@ require_once __DIR__ . '/../includes/asset.php';
     <link rel="alternate" hreflang="x-default" href="https://eichhof.me/ueber">
 
     <?php include __DIR__ . '/../includes/head-favicons.php'; ?>
+
+    <!-- Preload Hero-AVIF (LCP). Ohne AVIF-Support ignoriert der Browser den
+         Hint; der <picture>-Fallback liefert dann WebP. -->
+    <link rel="preload" as="image"
+          type="image/avif"
+          imagesrcset="/images/oliver-eichhof-320.avif 320w, /images/oliver-eichhof-640.avif 640w, /images/oliver-eichhof.avif 920w"
+          imagesizes="120px"
+          fetchpriority="high">
+
     <link rel="stylesheet" href="<?= asset('/css/styles.css') ?>">
 
     <script type="application/ld+json">
