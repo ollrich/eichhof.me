@@ -194,10 +194,13 @@ $routeKey = 'about';
     }
     </script>
 </head>
-<body>
+<body class="about-page">
     <a href="#main" class="skip-link"><?= $e($m['skipLink']) ?></a>
 
-    <!-- Sprachwähler (oben links) und Theme-Toggle (oben rechts) -->
+    <!-- Sprachwähler (oben links) und Theme-Toggle (oben rechts).
+         Auf der Grounding-Page per .about-page-Regel auf position:absolute
+         gestellt, damit sie beim Scrollen mit weglaufen und nicht über den
+         Textblöcken hängen bleiben (anders als auf der schmalen Homepage). -->
     <?php include __DIR__ . '/../includes/lang-switcher.php'; ?>
     <?php include __DIR__ . '/../includes/theme-toggle.php'; ?>
 

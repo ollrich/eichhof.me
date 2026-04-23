@@ -1557,6 +1557,16 @@ html.dark-mode .contact-submit:hover:not(:disabled) {
     text-decoration: underline;
 }
 
+/* Auf der Grounding-Page scrollen die beiden Toggles mit dem Content weg —
+   die Seite hat breite Textblöcke (Definition Lists, Werdegang-Listen), über
+   denen fixe Toggles beim Scrollen unschön hängen würden. Auf der Homepage
+   bleiben sie weiterhin fixed (dort ist der Content schmal/zentriert und
+   die Randzonen sind leer). */
+.about-page .lang-switcher,
+.about-page .theme-toggle {
+    position: absolute;
+}
+
 /* Grounding page standalone layout */
 .grounding-page {
     max-width: 560px;
