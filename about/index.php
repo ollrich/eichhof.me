@@ -386,6 +386,9 @@ require_once __DIR__ . '/../includes/asset.php';
     <link rel="alternate" hreflang="da" href="https://eichhof.me/dk/om">
     <link rel="alternate" hreflang="x-default" href="https://eichhof.me/ueber">
 
+    <!-- Identity verification (IndieAuth / rel=me) -->
+    <link rel="me" href="https://sifa.id/p/ollri.ch">
+
     <?php include __DIR__ . '/../includes/head-favicons.php'; ?>
 
     <!-- Preload Hero-AVIF (LCP). Ohne AVIF-Support ignoriert der Browser den

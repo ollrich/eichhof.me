@@ -299,6 +299,9 @@ if ($overlay === 'impressum' || $overlay === 'legal' || $overlay === 'kolofon') 
     <link rel="alternate" hreflang="da" href="https://eichhof.me/dk/">
     <link rel="alternate" hreflang="x-default" href="https://eichhof.me/">
 
+    <!-- Identity verification (IndieAuth / rel=me) -->
+    <link rel="me" href="https://sifa.id/p/ollri.ch">
+
     <title><?= $e($m['title']) ?></title>
 
     <!-- JSON-LD structured data for rich search results (Google Knowledge Panel) -->
