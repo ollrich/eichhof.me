@@ -13,7 +13,7 @@ Built with AI assistance as an exploration of modern web development practices. 
 
 ### Highlights
 
-- 🌐 Multilingual (DE/EN/DA) with clean URLs (/en/, /dk/) and automatic browser language detection
+- 🌐 Multilingual (DE/EN/DA) with clean URLs (/en/, /dk/), automatic browser language detection, and a top-right language switcher
 - 🎨 Dark mode with system preference support
 - 🔒 Privacy-first: no cookies, no tracking, no analytics
 - 📬 Contact form with spam protection (honeypot, rate limiting, time-based checks)
@@ -45,7 +45,7 @@ eichhof.me/
 │   └── styles.css          # All styles (variables, themes, components)
 ├── js/
 │   ├── theme.js            # Dark mode toggle
-│   ├── language.js         # Multilingual content switching
+│   ├── language.js         # Language helper (inline i18n JSON, email fill, overlay routing)
 │   ├── overlay.js          # Legal notice modal
 │   ├── contact.js          # Contact form modal + AJAX
 │   ├── easter-egg.js       # Animations + confetti
@@ -88,7 +88,7 @@ Mit KI-Unterstützung gebaut als Exploration moderner Webentwicklung. Der Code i
 
 ### Highlights
 
-- 🌐 Mehrsprachig (DE/EN/DA) mit Clean URLs (/en/, /dk/) und automatischer Browser-Spracherkennung
+- 🌐 Mehrsprachig (DE/EN/DA) mit Clean URLs (/en/, /dk/), automatischer Browser-Spracherkennung und Sprachwähler oben rechts
 - 🎨 Dark Mode mit System-Präferenz-Unterstützung
 - 🔒 Privacy-First: keine Cookies, kein Tracking, keine Analytik
 - 📬 Kontaktformular mit Spam-Schutz (Honeypot, Rate Limiting, Zeitprüfung)
@@ -118,7 +118,7 @@ Bygget med AI-assistance som en udforskning af moderne webudvikling. Koden er op
 
 ### Highlights
 
-- 🌐 Flersproget (DE/EN/DA) med clean URLs (/en/, /dk/) og automatisk browser-sprogdetektering
+- 🌐 Flersproget (DE/EN/DA) med clean URLs (/en/, /dk/), automatisk browser-sprogdetektering og sprogskifter øverst til højre
 - 🎨 Dark mode med systempræference-support
 - 🔒 Privacy-first: ingen cookies, ingen tracking, ingen analytics
 - 📬 Kontaktformular med spam-beskyttelse (honeypot, rate limiting, tidscheck)
