@@ -543,7 +543,7 @@ require_once __DIR__ . '/../includes/asset.php';
 
     <div class="footer">
         <span><?= $rawHtml($m['footerDesktop']) ?></span>
-        <span class="github-link-wrapper">•
+        <span class="github-link-wrapper">·
             <span class="github-tooltip"><?= $e($m['githubTooltip']) ?></span>
             <a href="https://github.com/ollrich/eichhof.me" target="_blank" rel="noopener noreferrer" class="footer-link">
                 <svg class="icon-github" viewBox="0 0 16 16" fill="currentColor" aria-label="<?= $e($m['githubAriaLabel']) ?>">
