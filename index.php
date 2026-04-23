@@ -21,238 +21,132 @@
  */
 
 // ============================================================================
-// LANGUAGE DETECTION
+// LANGUAGE DETECTION — Weg 2 + Sprachwähler-Override
 // ============================================================================
+//
+// Quellen der Sprachentscheidung (in Priorität):
+//  1. Pfad   — /en/, /dk/, /impressum, /ueber etc. werden per .htaccess in
+//              index.php?lang=xx überführt. $_SERVER['REQUEST_URI'] enthält
+//              dort kein `?lang=` (die Substitution ist intern), daher
+//              vertrauen wir $_GET['lang'] direkt.
+//  2. ?lang= — Expliziter Override aus dem Sprachwähler auf dem echten
+//              bare-Root "/". `?lang=de` umgeht den Accept-Language-302
+//              (damit EN-/DA-Browser-User DE sehen können, wenn sie es
+//              aktiv anklicken). `?lang=en|da` führt eine 301-Legacy-
+//              Umleitung auf /en/ bzw. /dk/ durch, damit alte Inbound-
+//              Links eine saubere URL bekommen.
+//  3. Accept-Language — Nur auf bare Root "/": Browser-Präferenz bestimmt
+//              per 302-Redirect die Sprachversion. Bots werden
+//              ausgenommen, damit Google / OG-Scraper / LLM-Crawler
+//              "/" weiterhin als DE-Kanonical sehen.
+//
+// Header `Vary: Accept-Language` wird auf "/" immer gesetzt — Shared
+// Caches (CDN, Intermediaries) müssen zwischen den Browser-Sprachen
+// diskriminieren.
 
-// Legacy ?lang= parameter: 301 redirect to clean URL
-// Only when lang= is in the real request URI (not from internal .htaccess rewrite)
-if (isset($_GET['lang']) && preg_match('/[?&]lang=/', $_SERVER['REQUEST_URI'] ?? '')) {
-    $redirectMap = ['de' => '/', 'en' => '/en/', 'da' => '/dk/'];
-    $target = $redirectMap[$_GET['lang']] ?? '/';
-    header('HTTP/1.1 301 Moved Permanently');
-    header('Location: https://eichhof.me' . $target);
-    exit;
-}
+$requestUri   = $_SERVER['REQUEST_URI'] ?? '/';
+$parsedPath   = parse_url($requestUri, PHP_URL_PATH) ?: '/';
+$isBareRoot   = ($parsedPath === '/' || $parsedPath === '/index.php');
+$qLangMatch   = preg_match('/[?&]lang=([a-z]{2})/i', $requestUri, $qLangGroups);
+$explicitLang = $qLangMatch ? strtolower($qLangGroups[1]) : null;
 
-$lang = $_GET['lang'] ?? 'de';
-$overlay = $_GET['overlay'] ?? null;
+if ($isBareRoot) {
+    header('Vary: Accept-Language', false);
 
-// Validate language
-if (!in_array($lang, ['de', 'en', 'da'])) {
-    // Fallback to browser language detection
-    $acceptLang = $_SERVER['HTTP_ACCEPT_LANGUAGE'] ?? 'de';
-    $browserLang = strtolower(substr($acceptLang, 0, 2));
+    // Legacy: ?lang=en | ?lang=da auf Root → 301 zur kanonischen URL.
+    if ($explicitLang === 'en') {
+        header('Location: https://eichhof.me/en/', true, 301);
+        exit;
+    }
+    if ($explicitLang === 'da') {
+        header('Location: https://eichhof.me/dk/', true, 301);
+        exit;
+    }
 
-    if ($browserLang === 'en') {
-        $lang = 'en';
-    } elseif ($browserLang === 'da') {
-        $lang = 'da';
-    } else {
-        $lang = 'de';
+    // Kein expliziter DE-Override → Accept-Language-basierter 302 (nur Mensch).
+    if ($explicitLang !== 'de') {
+        $ua = $_SERVER['HTTP_USER_AGENT'] ?? '';
+        $isBot = (bool) preg_match(
+            '~bot|crawler|spider|crawling|facebookexternalhit|slackbot|twitterbot|whatsapp|telegrambot|linkedinbot|discordbot|applebot~i',
+            $ua
+        );
+        if (!$isBot) {
+            $acceptLang = $_SERVER['HTTP_ACCEPT_LANGUAGE'] ?? '';
+            $primary    = strtolower(substr(trim(explode(',', $acceptLang)[0] ?? ''), 0, 2));
+            if ($primary === 'en') {
+                header('Location: /en/', true, 302);
+                exit;
+            }
+            if ($primary === 'da') {
+                header('Location: /dk/', true, 302);
+                exit;
+            }
+            // de, leer oder andere: DE servieren (kein Redirect).
+        }
     }
 }
 
-// Helper function for HTML escaping
+// Finale Sprachbestimmung: $_GET['lang'] kommt entweder aus .htaccess-
+// Rewrite (vertrauenswürdig) oder aus ?lang=de-Override auf Root.
+$lang = $_GET['lang'] ?? 'de';
+if (!in_array($lang, ['de', 'en', 'da'], true)) {
+    $lang = 'de';
+}
+$overlay = $_GET['overlay'] ?? null;
+
+// ============================================================================
+// TEMPLATE HELPERS
+// ============================================================================
+
+// HTML-Escape für Attribute / Textinhalte.
 $e = function($s) { return htmlspecialchars($s, ENT_QUOTES, 'UTF-8'); };
 
-// Explicit identity marker for $meta values that intentionally contain
-// trusted hardcoded HTML (e.g. <br>, <span class="sr-only">, <a>).
-// Using $rawHtml() at the callsite documents the intent so future readers
-// don't mistake a missing $e() for an oversight.
+// Explicit identity marker for $m-Werte, die bewusst vertrauenswürdigen
+// Inline-HTML enthalten (<br>, <span class="sr-only">, <a>). $rawHtml() an
+// der Callsite dokumentiert den Intent, damit künftige Reviewer ein
+// fehlendes $e() nicht als Oversight missverstehen.
 $rawHtml = function($s) { return $s; };
 
 // ============================================================================
-// COMPLETE CONTENT PER LANGUAGE
+// CONTENT LOADING
 // ============================================================================
+// $m      = gemeinsame Strings (common) + hauptseitenspezifische (home) für $lang.
+// $routes = Sprachrouten-Map für den Sprachwähler / Hreflang-Varianten.
 
-$meta = [
-    'de' => [
-        // SEO & Meta
-        'lang' => 'de',
-        'title' => 'Oliver Eichhof – Kommunikationsspezialist aus Hamburg',
-        'description' => 'Kommunikationsspezialist aus Hamburg für digitale Markenführung und Zielgruppenanalyse, geprägt von Musikmedien und Streaming.',
-        'locale' => 'de_DE',
-        'url' => 'https://eichhof.me/',
-        'baseUrl' => '/',
-        'legalUrl' => '/impressum',
-        'privacyUrl' => '/datenverarbeitung',
-        'contactUrl' => '/kontakt',
-        'linkedinUrl' => 'https://de.linkedin.com/in/olivereichhof',
-        'schema_description' => 'Kommunikationsspezialist aus Hamburg für digitale Markenführung und Zielgruppenanalyse, geprägt von Musikmedien und Streaming.',
-        'jobTitle' => 'Leiter Marketing',
-        'knowsAbout' => '["Marketing", "Markenentwicklung", "Zielgruppenanalyse", "Kampagnenplanung", "Kommunikationsstrategie", "Content-Strategie", "Digitale Kommunikation", "Employer Branding", "B2B-Kommunikation", "Journey Design", "KPI-Frameworks", "GEO/SEO/SEA", "Marketing Automation", "KI-gestützte Workflows", "Radio", "Audio", "Streaming Media", "Musik", "Musikmedien", "Bloggen"]',
-        // Photo
-        'photoAlt' => 'Porträt von Oliver Eichhof, Kommunikationsspezialist aus Hamburg',
-        // Tagline (HTML)
-        'tagline' => 'Ich arbeite in der Medienbranche und rede im Job gern über gute Kommunikation und was Zielgruppen brauchen. Ab und zu <a href="https://www.schongeil.de/" target="_blank" rel="noopener noreferrer">blogge</a> ich und <a href="https://soundcloud.com/livicxyz" target="_blank" rel="noopener noreferrer">lege</a> Platten auf. Mehr zu <a href="/ueber">meinem Werdegang und meiner Arbeit</a>.',
-        // Theme toggle
-        'themeDark' => 'Licht aus',
-        'themeLight' => 'Licht an',
-        'themeToggleLabel' => 'Farbschema wechseln',
-        // Email
-        'emailText' => 'E-Mail',
-        'emailAriaLabel' => 'E-Mail senden',
-        // Footer
-        'legalLink' => 'Impressum',
-        'privacyLink' => 'Datenverarbeitung',
-        'footerEntity' => 'Oliver Eichhof, Kommunikationsspezialist aus Hamburg',
-        'footerDesktop' => 'Mit <span aria-hidden="true">♥</span><span class="sr-only">Liebe</span> und KI in Hamburg erstellt',
-        'footerMobile' => 'Mit <span aria-hidden="true">♥</span><span class="sr-only">Liebe</span> und KI realisiert',
-        'githubTooltip' => 'Quellcode auf GitHub',
-        'githubAriaLabel' => 'Quellcode auf GitHub',
-        'hint' => 'drücke leertaste',
-        'skipLink' => 'Zum Inhalt springen',
-        // Close buttons
-        'closeOverlay' => 'Schließen',
-        'closePreview' => 'Vorschau schließen',
-        // Impressum overlay
-        'overlayTitle' => 'Impressum',
-        'overlayText1' => 'Diese Website wird betrieben von:',
-        'overlayText2' => 'Oliver Eichhof<br>Eismeerweg 9E<br>22145 Hamburg',
-        'overlayText3' => 'Kontakt:',
-        'overlayText3b' => 'Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV.',
-        // Privacy overlay
-        'privacyTitle' => 'Datenschutzerklärung',
-        // Contact form
-        'contactTitle' => 'Kontakt',
-        'contactName' => 'Dein Name',
-        'contactEmail' => 'Deine E-Mail-Adresse',
-        'contactMessage' => 'Deine Nachricht',
-        'contactSubmit' => 'Nachricht senden',
-        'contactPrivacy' => 'Deine Daten werden nur zur Beantwortung verwendet. Zur Spam-Abwehr wird deine IP temporär verarbeitet, aber nicht gespeichert.',
-        'contactFallback' => 'Oder direkt per E-Mail:',
-    ],
-    'en' => [
-        // SEO & Meta
-        'lang' => 'en',
-        'title' => 'Oliver Eichhof – Communication Specialist from Hamburg',
-        'description' => 'Communication specialist from Hamburg for digital brand management and audience analysis, shaped by music media and streaming.',
-        'locale' => 'en_GB',
-        'url' => 'https://eichhof.me/en/',
-        'baseUrl' => '/en/',
-        'legalUrl' => '/en/legal-notice',
-        'privacyUrl' => '/en/privacy',
-        'contactUrl' => '/en/contact',
-        'linkedinUrl' => 'https://www.linkedin.com/in/olivereichhof',
-        'schema_description' => 'Communication specialist from Hamburg for digital brand management and audience analysis, shaped by music media and streaming.',
-        'jobTitle' => 'Marketing Director',
-        'knowsAbout' => '["Marketing", "Brand Development", "Audience Analysis", "Campaign Planning", "Communication Strategy", "Content Strategy", "Digital Communication", "Employer Branding", "B2B Communication", "Journey Design", "KPI Frameworks", "GEO/SEO/SEA", "Marketing Automation", "AI-powered Workflows", "Radio", "Audio", "Streaming Media", "Music", "Music Media", "Blogging"]',
-        // Photo
-        'photoAlt' => 'Portrait of Oliver Eichhof, Communication Specialist from Hamburg',
-        // Tagline (HTML)
-        'tagline' => 'I work in media and like talking about good communication and what audiences need. Every now and then I <a href="https://www.schongeil.de/en/" target="_blank" rel="noopener noreferrer">blog</a> and <a href="https://soundcloud.com/livicxyz" target="_blank" rel="noopener noreferrer">spin records</a>. More on <a href="/en/about">my background and work</a>.',
-        // Theme toggle
-        'themeDark' => 'Lights off',
-        'themeLight' => 'Lights on',
-        'themeToggleLabel' => 'Toggle color scheme',
-        // Email
-        'emailText' => 'Email',
-        'emailAriaLabel' => 'Send email',
-        // Footer
-        'legalLink' => 'Legal Notice',
-        'privacyLink' => 'Privacy Policy',
-        'footerEntity' => 'Oliver Eichhof, Communication Specialist from Hamburg',
-        'footerDesktop' => 'Made with <span aria-hidden="true">♥</span><span class="sr-only">love</span> and AI in Hamburg',
-        'footerMobile' => 'Made with <span aria-hidden="true">♥</span><span class="sr-only">love</span> and AI',
-        'githubTooltip' => 'View source on GitHub',
-        'githubAriaLabel' => 'View source on GitHub',
-        'hint' => 'press space',
-        'skipLink' => 'Skip to content',
-        // Close buttons
-        'closeOverlay' => 'Close',
-        'closePreview' => 'Close preview',
-        // Legal overlay
-        'overlayTitle' => 'Legal Notice',
-        'overlayText1' => 'This website is operated by:',
-        'overlayText2' => 'Oliver Eichhof<br>Eismeerweg 9E<br>22145 Hamburg, Germany',
-        'overlayText3' => 'Contact:',
-        'overlayText3b' => 'Responsible for content according to § 18 para. 2 German Interstate Media Treaty (MStV).',
-        // Privacy overlay
-        'privacyTitle' => 'Privacy Policy',
-        // Contact form
-        'contactTitle' => 'Contact',
-        'contactName' => 'Your name',
-        'contactEmail' => 'Your email address',
-        'contactMessage' => 'Your message',
-        'contactSubmit' => 'Send message',
-        'contactPrivacy' => 'Your data will only be used to respond. Your IP is temporarily processed for spam protection but not stored.',
-        'contactFallback' => 'Or email directly:',
-    ],
-    'da' => [
-        // SEO & Meta
-        'lang' => 'da',
-        'title' => 'Oliver Eichhof – Kommunikationsspecialist fra Hamborg',
-        'description' => 'Kommunikationsspecialist fra Hamborg for digital brandledelse og målgruppeanalyse, formet af musikmedier og streaming.',
-        'locale' => 'da_DK',
-        'url' => 'https://eichhof.me/dk/',
-        'baseUrl' => '/dk/',
-        'legalUrl' => '/dk/kolofon',
-        'privacyUrl' => '/dk/privatlivspolitik',
-        'contactUrl' => '/dk/kontakt',
-        'linkedinUrl' => 'https://dk.linkedin.com/in/olivereichhof',
-        'schema_description' => 'Kommunikationsspecialist fra Hamborg for digital brandledelse og målgruppeanalyse, formet af musikmedier og streaming.',
-        'jobTitle' => 'Marketingchef',
-        'knowsAbout' => '["Marketing", "Brandudvikling", "Målgruppeanalyse", "Kampagneplanlægning", "Kommunikationsstrategi", "Content-strategi", "Digital kommunikation", "Employer branding", "B2B-kommunikation", "Journey design", "KPI-frameworks", "GEO/SEO/SEA", "Marketing automation", "AI-drevne workflows", "Radio", "Audio", "Streaming media", "Musik", "Musikmedier", "Blogging"]',
-        // Photo
-        'photoAlt' => 'Portræt af Oliver Eichhof, Kommunikationsspecialist fra Hamborg',
-        // Tagline (HTML)
-        'tagline' => 'Jeg arbejder i mediebranchen og taler gerne om god kommunikation og hvad målgrupper har brug for. Af og til <a href="https://www.schongeil.de/en/" target="_blank" rel="noopener noreferrer">blogger</a> jeg og <a href="https://soundcloud.com/livicxyz" target="_blank" rel="noopener noreferrer">spiller plader</a>. Mere om <a href="/dk/om">min baggrund og mit arbejde</a>.',
-        // Theme toggle
-        'themeDark' => 'Sluk lyset',
-        'themeLight' => 'Tænd lyset',
-        'themeToggleLabel' => 'Skift farveskema',
-        // Email
-        'emailText' => 'E-Mail',
-        'emailAriaLabel' => 'Send e-mail',
-        // Footer
-        'legalLink' => 'Kolofon',
-        'privacyLink' => 'Privatlivspolitik',
-        'footerEntity' => 'Oliver Eichhof, Kommunikationsspecialist fra Hamborg',
-        'footerDesktop' => 'Lavet med <span aria-hidden="true">♥</span><span class="sr-only">kærlighed</span> og AI i Hamburg',
-        'footerMobile' => 'Lavet med <span aria-hidden="true">♥</span><span class="sr-only">kærlighed</span> og AI',
-        'githubTooltip' => 'Se kildekoden på GitHub',
-        'githubAriaLabel' => 'Se kildekoden på GitHub',
-        'hint' => 'tryk mellemrum',
-        'skipLink' => 'Spring til indhold',
-        // Close buttons
-        'closeOverlay' => 'Luk',
-        'closePreview' => 'Luk forhåndsvisning',
-        // Kolofon overlay
-        'overlayTitle' => 'Kolofon',
-        'overlayText1' => 'Denne hjemmeside drives af:',
-        'overlayText2' => 'Oliver Eichhof<br>Eismeerweg 9E<br>22145 Hamburg, Tyskland',
-        'overlayText3' => 'Kontakt:',
-        'overlayText3b' => 'Ansvarlig for indhold i henhold til § 18 stk. 2 tysk statslig medieaftale (MStV).',
-        // Privacy overlay
-        'privacyTitle' => 'Privatlivspolitik',
-        // Contact form
-        'contactTitle' => 'Kontakt',
-        'contactName' => 'Dit navn',
-        'contactEmail' => 'Din e-mailadresse',
-        'contactMessage' => 'Din besked',
-        'contactSubmit' => 'Send besked',
-        'contactPrivacy' => 'Dine data bruges kun til at besvare. Din IP behandles midlertidigt til spam-beskyttelse, men gemmes ikke.',
-        'contactFallback' => 'Eller send e-mail direkte:',
-    ]
-];
+$i18nAll = require __DIR__ . '/includes/config/i18n.php';
+$routes  = $i18nAll['common']['routes'];
+$m       = array_merge($i18nAll['common'][$lang], $i18nAll['home'][$lang]);
 
-$m = $meta[$lang];
+// Aliased / derived fields, damit Templates ohne Umschreiben weiterlaufen.
+$m['lang']       = $lang;                        // 2-Zeichen-Code (Template: <html lang="…">)
+$m['baseUrl']    = $routes[$lang]['home'];
+$m['legalUrl']   = $routes[$lang]['legal'];
+$m['privacyUrl'] = $routes[$lang]['privacy'];
+$m['contactUrl'] = $routes[$lang]['contact'];
+$m['aboutUrl']   = $routes[$lang]['about'];
 
-// Shared Person-Schema-Daten (sameAs, subjectOf) — identisch zwischen Haupt- und About-Seite
+// Shared Person-Schema-Daten (sameAs, subjectOf) — identisch zwischen Haupt- und About-Seite.
 $person = require __DIR__ . '/includes/config/person.php';
 
-// Asset-Helper für automatische Cache-Busting-Versionierung via filemtime()
+// Asset-Helper für automatische Cache-Busting-Versionierung via filemtime().
 require_once __DIR__ . '/includes/asset.php';
 
-// Determine overlay to open (if any)
-$openOverlay = null;
+// Normalisierter Route-Key (für Sprachwähler + data-overlay).
+$routeKey = 'home';
 if ($overlay === 'impressum' || $overlay === 'legal' || $overlay === 'kolofon') {
-    $openOverlay = 'impressum';
+    $routeKey = 'legal';
 } elseif ($overlay === 'privacy') {
-    $openOverlay = 'privacy';
+    $routeKey = 'privacy';
 } elseif ($overlay === 'contact' || $overlay === 'kontakt') {
-    $openOverlay = 'contact';
+    $routeKey = 'contact';
 }
+
+// data-overlay-Wert: normalisiert auf impressum/privacy/contact, damit
+// language.js / overlay.js keine Sprachvarianten kennen müssen.
+$openOverlay = null;
+if ($routeKey === 'legal')   $openOverlay = 'impressum';
+if ($routeKey === 'privacy') $openOverlay = 'privacy';
+if ($routeKey === 'contact') $openOverlay = 'contact';
 ?>
 <!DOCTYPE html>
 <html lang="<?= $m['lang'] ?>">
@@ -339,7 +233,7 @@ if ($overlay === 'impressum' || $overlay === 'legal' || $overlay === 'kolofon') 
                 "url": "https://eichhof.me/",
                 "image": "https://eichhof.me/images/oliver-eichhof.webp",
                 "jobTitle": "<?= $e($m['jobTitle']) ?>",
-                "description": "<?= $e($m['schema_description']) ?>",
+                "description": "<?= $e($m['description']) ?>",
                 "knowsAbout": <?= $m['knowsAbout'] ?>,
                 "homeLocation": { "@type": "Place", "name": "Hamburg" },
                 "birthPlace": { "@type": "Place", "name": "Bremerhaven" },
@@ -371,6 +265,12 @@ if ($overlay === 'impressum' || $overlay === 'legal' || $overlay === 'kolofon') 
     <!-- Stylesheet -->
     <link rel="stylesheet" href="<?= asset('/css/styles.css') ?>">
 
+    <!-- i18n-Daten für JS (Single Source mit PHP geteilt).
+         `type="application/json"` ist kein ausführbares Script — keine CSP-Hash
+         nötig. `JSON_HEX_TAG | JSON_HEX_AMP` verhindert, dass eingebettetes
+         HTML (z. B. `</script>` im Tagline-Text, falls jemals möglich) den
+         Parser ausbrechen lässt. -->
+    <script id="i18n-data" type="application/json"><?= json_encode($m, JSON_HEX_TAG | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE) ?></script>
 </head>
 <body data-lang="<?= $lang ?>"<?= $openOverlay ? ' data-overlay="' . $openOverlay . '"' : '' ?>>
     <a href="#main" class="skip-link"><?= $e($m['skipLink']) ?></a>

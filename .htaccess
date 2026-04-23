@@ -9,17 +9,12 @@ RewriteRule ^(.*)$ https://eichhof.me/$1 [L,R=301]
 # MULTILINGUAL URL ROUTING
 # ============================================================================
 
-# Legacy ?lang= Query-Strings auf saubere URLs umleiten (301)
-# Nur bei direkten Requests, nicht bei internen Rewrites
-RewriteCond %{ENV:REDIRECT_STATUS} ^$
-RewriteCond %{QUERY_STRING} ^lang=da$ [NC]
-RewriteRule ^(index\.php)?$ /dk/? [L,R=301]
-RewriteCond %{ENV:REDIRECT_STATUS} ^$
-RewriteCond %{QUERY_STRING} ^lang=en$ [NC]
-RewriteRule ^(index\.php)?$ /en/? [L,R=301]
-RewriteCond %{ENV:REDIRECT_STATUS} ^$
-RewriteCond %{QUERY_STRING} ^lang=de$ [NC]
-RewriteRule ^(index\.php)?$ /? [L,R=301]
+# Hinweis: Das ?lang=-Query-Handling (301-Redirect auf /en/, /dk/ bzw. 302
+# Accept-Language-Auswertung auf /) passiert ausschliesslich in index.php.
+# Grund: ?lang=de muss als Override funktionieren (Sprachwähler auf /en/
+# klickt "DE" → /?lang=de), damit der serverseitige Accept-Language-302
+# nicht den EN-Browser-User wieder auf /en/ zurückschubst. Würde Apache
+# /?lang=de bereits auf / umleiten, ginge der Override verloren.
 
 # /about/ direkt → saubere URL (301)
 RewriteCond %{ENV:REDIRECT_STATUS} ^$
