@@ -777,7 +777,8 @@ html.dark-mode .overlay-content::-webkit-scrollbar-thumb:hover {
     letter-spacing: 0.5px;
 }
 
-.overlay-content p {
+.overlay-content p,
+.overlay-content li {
     font-size: 1rem;
     line-height: 1.6;
     font-weight: 300;
@@ -786,6 +787,23 @@ html.dark-mode .overlay-content::-webkit-scrollbar-thumb:hover {
 
 .overlay-content p + p {
     margin-top: 1rem;
+}
+
+.overlay-content ul {
+    padding-inline-start: 1.5rem;
+    margin: 0.75rem 0 1rem;
+}
+
+.overlay-content li + li {
+    margin-top: 0.35rem;
+}
+
+/* Links im Fließtext der Overlays (z. B. Aufsichtsbehörde im
+   Datenschutz-Partial). Farbe vom Container erben, damit sie nicht
+   im Browser-Default-Blau/-Violett rendern. */
+.overlay-content a {
+    color: inherit;
+    text-decoration: underline;
 }
 
 .close-overlay {
@@ -901,7 +919,8 @@ html.dark-mode .overlay-content::-webkit-scrollbar-thumb:hover {
         margin-bottom: 1.25rem;
     }
 
-    .overlay-content p {
+    .overlay-content p,
+    .overlay-content li {
         font-size: 0.95rem;
     }
 
@@ -995,7 +1014,8 @@ html.dark-mode .overlay-content::-webkit-scrollbar-thumb:hover {
         font-size: 1.15rem;
     }
 
-    .overlay-content p {
+    .overlay-content p,
+    .overlay-content li {
         font-size: 0.9rem;
     }
 
