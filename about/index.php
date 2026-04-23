@@ -393,7 +393,9 @@ require_once __DIR__ . '/../includes/asset.php';
         "@id": "https://eichhof.me/#person",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "<?= $m['canonical'] ?>"
+            "@id": "<?= $m['canonical'] ?>",
+            "datePublished": "2026-02-19",
+            "dateModified": "<?= $person['dateModified'] ?>"
         },
         "name": "Oliver Eichhof",
         "givenName": "Oliver",

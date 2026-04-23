@@ -318,7 +318,9 @@ if ($overlay === 'impressum' || $overlay === 'legal' || $overlay === 'kolofon') 
         "@id": "https://eichhof.me/#person",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "<?= $m['url'] ?>"
+            "@id": "<?= $m['url'] ?>",
+            "datePublished": "2026-01-22",
+            "dateModified": "<?= $person['dateModified'] ?>"
         },
         "name": "Oliver Eichhof",
         "givenName": "Oliver",
