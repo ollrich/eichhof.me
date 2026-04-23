@@ -1,18 +1,11 @@
 /**
  * Overlay/Modal Module
  * ====================
- * Handles the legal notice modal with proper accessibility features
- * including focus trap for keyboard navigation and URL history management.
+ * Verwaltet mehrere Overlays (Impressum/Legal und Datenschutz/Privacy)
+ * mit Fokus-Trap, ESC-Key und URL-History-Sync.
  */
 (function() {
     'use strict';
-
-    let overlay = null;
-    let overlayContent = null;
-    let closeButton = null;
-    let previousActiveElement = null;
-    let focusableElements = [];
-    let originalUrl = null; // Store URL before opening overlay
 
     // Fallback auf document.documentElement.lang, wenn language.js nicht
     // geladen ist (z. B. auf der Grounding-Page).
@@ -21,10 +14,6 @@
         return document.documentElement.lang || 'de';
     }
 
-    /**
-     * Get the legal notice URL based on current language
-     * @returns {string} URL path for legal notice
-     */
     function getLegalUrl() {
         const lang = getCurrentLang();
         if (lang === 'en') return '/en/legal-notice';
@@ -32,10 +21,13 @@
         return '/impressum';
     }
 
-    /**
-     * Get the base URL for current language
-     * @returns {string} Base URL path
-     */
+    function getPrivacyUrl() {
+        const lang = getCurrentLang();
+        if (lang === 'en') return '/en/privacy';
+        if (lang === 'da') return '/dk/privatlivspolitik';
+        return '/datenverarbeitung';
+    }
+
     function getBaseUrl() {
         const lang = getCurrentLang();
         if (lang === 'en') return '/en/';
@@ -44,12 +36,27 @@
     }
 
     /**
-     * Get all focusable elements within the overlay
-     * @returns {Array} Array of focusable DOM elements
+     * Registry aller Overlays.
+     * key  = history-State-Identifier
+     * el   = äußeres .overlay-Element
+     * content = .overlay-content-Container
+     * closeBtn = X-Button
+     * triggers = Footer-Links, die das Overlay öffnen
+     * getUrl = liefert die URL beim Öffnen
+     * titleId = ID des <h2> für aria-labelledby
      */
-    function getFocusableElements() {
-        if (!overlayContent) return [];
+    const OVERLAYS = {};
 
+    let activeKey = null;               // welches Overlay aktuell offen ist
+    let previousActiveElement = null;   // Fokus vor dem Öffnen
+    let originalUrl = null;             // URL, auf die beim Schließen zurückgesetzt wird
+
+    function getActive() {
+        return activeKey ? OVERLAYS[activeKey] : null;
+    }
+
+    function getFocusableElements(content) {
+        if (!content) return [];
         const selector = [
             'button',
             '[href]',
@@ -58,46 +65,36 @@
             'textarea:not([disabled])',
             '[tabindex]:not([tabindex="-1"])'
         ].join(', ');
-
-        return Array.from(overlayContent.querySelectorAll(selector))
+        return Array.from(content.querySelectorAll(selector))
             .filter(el => !el.hasAttribute('disabled') && el.offsetParent !== null);
     }
 
-    /**
-     * Handle Tab key for focus trapping
-     * @param {KeyboardEvent} e - Keyboard event
-     */
     function handleTabKey(e) {
-        if (!overlay || !overlay.classList.contains('active')) return;
+        const active = getActive();
+        if (!active || !active.el.classList.contains('active')) return;
 
-        focusableElements = getFocusableElements();
-        if (focusableElements.length === 0) return;
+        const focusable = getFocusableElements(active.content);
+        if (focusable.length === 0) return;
 
-        const firstElement = focusableElements[0];
-        const lastElement = focusableElements[focusableElements.length - 1];
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
 
         if (e.shiftKey) {
-            // Shift+Tab: If at first element, wrap to last
-            if (document.activeElement === firstElement) {
+            if (document.activeElement === first) {
                 e.preventDefault();
-                lastElement.focus();
+                last.focus();
             }
         } else {
-            // Tab: If at last element, wrap to first
-            if (document.activeElement === lastElement) {
+            if (document.activeElement === last) {
                 e.preventDefault();
-                firstElement.focus();
+                first.focus();
             }
         }
     }
 
-    /**
-     * Handle keyboard events for the overlay
-     * @param {KeyboardEvent} e - Keyboard event
-     */
     function handleKeydown(e) {
-        if (!overlay || !overlay.classList.contains('active')) return;
-
+        const active = getActive();
+        if (!active || !active.el.classList.contains('active')) return;
         if (e.key === 'Escape') {
             e.preventDefault();
             closeOverlay();
@@ -107,175 +104,185 @@
     }
 
     /**
-     * Open the overlay modal
-     * @param {boolean} skipHistory - If true, don't push to history (used for popstate)
+     * Öffnet ein Overlay. Schließt ein ggf. anderes aktives Overlay.
+     * @param {string} key - Schlüssel in OVERLAYS
+     * @param {boolean} skipHistory - true bei popstate / Server-Init
      */
-    function openOverlay(skipHistory) {
-        if (!overlay) return;
+    function openOverlay(key, skipHistory) {
+        const target = OVERLAYS[key];
+        if (!target) return;
 
-        // Store current focus to restore later
-        previousActiveElement = document.activeElement;
-
-        // Update URL (unless opening from popstate or server-side)
-        if (!skipHistory && !document.body.dataset.overlay) {
-            originalUrl = window.location.pathname;
-            history.pushState({ overlay: 'legal' }, '', getLegalUrl());
+        // Anderes Overlay noch offen? Schließen ohne History-Push.
+        if (activeKey && activeKey !== key) {
+            const other = OVERLAYS[activeKey];
+            if (other) {
+                other.el.classList.remove('active');
+            }
+        } else if (!activeKey) {
+            // Nur wenn KEIN Overlay offen war, merken wir den Fokus
+            previousActiveElement = document.activeElement;
         }
 
-        // Show overlay
-        overlay.classList.add('active');
+        if (!skipHistory && !document.body.dataset.overlay) {
+            // Nur beim allerersten Öffnen die Ausgangs-URL merken
+            if (originalUrl === null) {
+                originalUrl = window.location.pathname;
+            }
+            history.pushState({ overlay: key }, '', target.getUrl());
+        }
 
-        // Prevent body scroll
+        target.el.classList.add('active');
+        activeKey = key;
+
         document.body.style.overflow = 'hidden';
 
-        // Focus the overlay content container (not a specific button)
-        // to satisfy accessibility without triggering a visible focus ring on X
         setTimeout(function() {
-            focusableElements = getFocusableElements();
-            if (overlayContent) {
-                overlayContent.setAttribute('tabindex', '-1');
-                overlayContent.focus({ preventScroll: true });
+            if (target.content) {
+                target.content.setAttribute('tabindex', '-1');
+                target.content.focus({ preventScroll: true });
             }
-        }, 100); // Small delay for transition
+        }, 100);
 
-        // Add keyboard listener
         document.addEventListener('keydown', handleKeydown);
     }
 
-    /**
-     * Close the overlay modal
-     * @param {boolean} skipHistory - If true, don't modify history (used for popstate)
-     */
     function closeOverlay(skipHistory) {
-        if (!overlay) return;
+        const active = getActive();
+        if (!active) return;
 
-        overlay.classList.remove('active');
-
-        // Restore body scroll
+        active.el.classList.remove('active');
         document.body.style.overflow = '';
 
-        // Update URL back to original (unless closing from popstate)
         if (!skipHistory) {
             history.pushState({ overlay: null }, '', originalUrl || getBaseUrl());
         }
 
-        // Restore previous focus
+        activeKey = null;
+
         if (previousActiveElement) {
             previousActiveElement.focus();
             previousActiveElement = null;
         }
 
-        // Remove keyboard listener
         document.removeEventListener('keydown', handleKeydown);
     }
 
-    /**
-     * Handle browser back/forward navigation
-     */
     function handlePopState(e) {
-        if (e.state && e.state.overlay === 'legal') {
-            openOverlay(true); // Skip history push
-        } else if (overlay && overlay.classList.contains('active')) {
-            closeOverlay(true); // Skip history push
+        const state = e.state;
+        if (state && state.overlay && OVERLAYS[state.overlay]) {
+            openOverlay(state.overlay, true);
+        } else if (activeKey) {
+            closeOverlay(true);
         }
     }
 
     /**
-     * Initialize overlay module
+     * Registriert ein Overlay aus dem DOM.
+     * Gibt true zurück, wenn das Overlay-Element existiert.
      */
-    function init() {
-        overlay = document.getElementById('overlay');
-        if (!overlay) return;
+    function register(key, config) {
+        const el = document.getElementById(config.overlayId);
+        if (!el) return false;
 
-        overlayContent = overlay.querySelector('.overlay-content');
-        closeButton = document.getElementById('close-overlay-btn');
+        const content = el.querySelector('.overlay-content');
+        const closeBtn = document.getElementById(config.closeBtnId);
 
-        // Make overlay content accessible
-        if (overlayContent) {
-            overlayContent.setAttribute('role', 'dialog');
-            overlayContent.setAttribute('aria-modal', 'true');
-            overlayContent.setAttribute('aria-labelledby', 'overlay-title');
+        if (content) {
+            content.setAttribute('role', 'dialog');
+            content.setAttribute('aria-modal', 'true');
+            if (config.titleId) {
+                content.setAttribute('aria-labelledby', config.titleId);
+            }
         }
 
-        // Close button click
-        if (closeButton) {
-            closeButton.addEventListener('click', function() {
-                closeOverlay();
-            });
+        if (closeBtn) {
+            closeBtn.addEventListener('click', function() { closeOverlay(); });
         }
 
-        // Click outside to close
-        overlay.addEventListener('click', function(e) {
-            if (e.target === overlay) {
-                closeOverlay();
+        // Klick auf Backdrop schließt
+        el.addEventListener('click', function(e) {
+            if (e.target === el) closeOverlay();
+        });
+        if (content) {
+            content.addEventListener('click', function(e) { e.stopPropagation(); });
+        }
+
+        // Footer-Trigger
+        (config.triggerIds || []).forEach(function(id) {
+            const trigger = document.getElementById(id);
+            if (trigger) {
+                trigger.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    openOverlay(key);
+                });
             }
         });
 
-        // Prevent clicks inside content from closing
-        if (overlayContent) {
-            overlayContent.addEventListener('click', function(e) {
-                e.stopPropagation();
-            });
-        }
+        OVERLAYS[key] = {
+            el: el,
+            content: content,
+            closeBtn: closeBtn,
+            getUrl: config.getUrl,
+            titleId: config.titleId
+        };
+        return true;
+    }
 
-        // Set up footer link triggers
-        const footerLink = document.getElementById('footer-link');
-        const footerLinkMobile = document.getElementById('footer-link-mobile');
+    function init() {
+        const hasLegal = register('legal', {
+            overlayId: 'overlay',
+            closeBtnId: 'close-overlay-btn',
+            triggerIds: ['footer-link', 'footer-link-mobile'],
+            titleId: 'overlay-title',
+            getUrl: getLegalUrl
+        });
 
-        if (footerLink) {
-            footerLink.addEventListener('click', function(e) {
-                e.preventDefault();
-                openOverlay();
-            });
-        }
+        const hasPrivacy = register('privacy', {
+            overlayId: 'privacy-overlay',
+            closeBtnId: 'close-privacy-btn',
+            triggerIds: ['footer-privacy-link', 'footer-privacy-link-mobile'],
+            titleId: 'privacy-title',
+            getUrl: getPrivacyUrl
+        });
 
-        if (footerLinkMobile) {
-            footerLinkMobile.addEventListener('click', function(e) {
-                e.preventDefault();
-                openOverlay();
-            });
-        }
+        if (!hasLegal && !hasPrivacy) return;
 
-        // Listen for browser back/forward
         window.addEventListener('popstate', handlePopState);
-
-        // Cleanup on page unload
         window.addEventListener('pagehide', cleanup);
 
-        // Set initial history state (for proper back navigation)
         if (!document.body.dataset.overlay) {
             history.replaceState({ overlay: null }, '', window.location.pathname);
         }
 
-        // Check for URL parameter to auto-open (legacy support)
+        // Legacy: ?impressum oder ?legal öffnet das Legal-Overlay
         const urlParams = new URLSearchParams(window.location.search);
-        if (urlParams.get('impressum') !== null || urlParams.get('legal') !== null) {
-            setTimeout(function() { openOverlay(true); }, 100);
+        if ((urlParams.get('impressum') !== null || urlParams.get('legal') !== null) && hasLegal) {
+            setTimeout(function() { openOverlay('legal', true); }, 100);
         }
     }
 
-    /**
-     * Cleanup event listeners on page unload
-     */
     function cleanup() {
         window.removeEventListener('popstate', handlePopState);
         window.removeEventListener('pagehide', cleanup);
         document.removeEventListener('keydown', handleKeydown);
     }
 
-    // Initialize when DOM is ready
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', init);
     } else {
         init();
     }
 
-    // Export for external use
+    // Public API — default-Overlay ist 'legal' (Backward-Kompat).
     window.OverlayManager = {
-        open: openOverlay,
-        close: closeOverlay,
-        isOpen: function() {
-            return overlay && overlay.classList.contains('active');
-        }
+        open: function(key) { openOverlay(key || 'legal'); },
+        close: function() { closeOverlay(); },
+        isOpen: function(key) {
+            if (key) {
+                return OVERLAYS[key] && OVERLAYS[key].el.classList.contains('active');
+            }
+            return activeKey !== null;
+        },
+        getActiveKey: function() { return activeKey; }
     };
 })();

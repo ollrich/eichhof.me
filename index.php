@@ -75,6 +75,7 @@ $meta = [
         'url' => 'https://eichhof.me/',
         'baseUrl' => '/',
         'legalUrl' => '/impressum',
+        'privacyUrl' => '/datenverarbeitung',
         'contactUrl' => '/kontakt',
         'aboutUrl' => '/ueber',
         'linkedinUrl' => 'https://de.linkedin.com/in/olivereichhof',
@@ -95,7 +96,8 @@ $meta = [
         'emailText' => 'E-Mail',
         'emailAriaLabel' => 'E-Mail senden',
         // Footer
-        'legalLink' => 'Impressum & Datenverarbeitung',
+        'legalLink' => 'Impressum',
+        'privacyLink' => 'Datenverarbeitung',
         'footerEntity' => 'Oliver Eichhof, Kommunikationsspezialist aus Hamburg',
         'footerDesktop' => 'Mit <span aria-hidden="true">♥</span><span class="sr-only">Liebe</span> und KI in Hamburg erstellt',
         'footerMobile' => 'Mit <span aria-hidden="true">♥</span><span class="sr-only">Liebe</span> und KI realisiert',
@@ -112,10 +114,8 @@ $meta = [
         'overlayText2' => 'Oliver Eichhof<br>Eismeerweg 9E<br>22145 Hamburg',
         'overlayText3' => 'Kontakt:',
         'overlayText3b' => 'Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV.',
-        'overlaySubtitle' => 'Datenverarbeitung',
-        'overlayText4' => 'Diese Website verwendet keine Cookies, keine Logfiles und keine Tracking-Tools. Lediglich deine Farbschema-Präferenz wird lokal in deinem Browser gespeichert.',
-        'overlayText5' => 'Bei Nutzung des Kontaktformulars werden dein Name, deine E-Mail-Adresse und deine Nachricht per E-Mail übermittelt. Zur Spam-Abwehr wird deine IP-Adresse temporär verarbeitet, aber nicht gespeichert.',
-        'overlayText6' => 'Links zu externen Plattformen (LinkedIn, XING, Bluesky, Mastodon, Instagram, SoundCloud, YouTube, Bandcamp, Unsplash, GitHub, REGIOCAST, W&V, testspiel.de) unterliegen deren eigenen Datenschutzbestimmungen.',
+        // Privacy overlay
+        'privacyTitle' => 'Datenschutzerklärung',
         // Contact form
         'contactTitle' => 'Kontakt',
         'contactName' => 'Dein Name',
@@ -134,6 +134,7 @@ $meta = [
         'url' => 'https://eichhof.me/en/',
         'baseUrl' => '/en/',
         'legalUrl' => '/en/legal-notice',
+        'privacyUrl' => '/en/privacy',
         'contactUrl' => '/en/contact',
         'aboutUrl' => '/en/about',
         'linkedinUrl' => 'https://www.linkedin.com/in/olivereichhof',
@@ -154,7 +155,8 @@ $meta = [
         'emailText' => 'Email',
         'emailAriaLabel' => 'Send email',
         // Footer
-        'legalLink' => 'Legal Notice & Data Processing',
+        'legalLink' => 'Legal Notice',
+        'privacyLink' => 'Privacy Policy',
         'footerEntity' => 'Oliver Eichhof, Communication Specialist from Hamburg',
         'footerDesktop' => 'Made with <span aria-hidden="true">♥</span><span class="sr-only">love</span> and AI in Hamburg',
         'footerMobile' => 'Made with <span aria-hidden="true">♥</span><span class="sr-only">love</span> and AI',
@@ -171,10 +173,8 @@ $meta = [
         'overlayText2' => 'Oliver Eichhof<br>Eismeerweg 9E<br>22145 Hamburg, Germany',
         'overlayText3' => 'Contact:',
         'overlayText3b' => 'Responsible for content according to § 18 para. 2 German Interstate Media Treaty (MStV).',
-        'overlaySubtitle' => 'Data Processing',
-        'overlayText4' => 'This website uses no cookies, no log files, and no tracking tools. Only your color scheme preference is stored locally in your browser.',
-        'overlayText5' => 'When using the contact form, your name, email address, and message are transmitted via email. Your IP address is temporarily processed for spam protection but not stored.',
-        'overlayText6' => 'Links to external platforms (LinkedIn, XING, Bluesky, Mastodon, Instagram, SoundCloud, YouTube, Bandcamp, Unsplash, GitHub, REGIOCAST, W&V, testspiel.de) are subject to their own privacy policies.',
+        // Privacy overlay
+        'privacyTitle' => 'Privacy Policy',
         // Contact form
         'contactTitle' => 'Contact',
         'contactName' => 'Your name',
@@ -193,6 +193,7 @@ $meta = [
         'url' => 'https://eichhof.me/dk/',
         'baseUrl' => '/dk/',
         'legalUrl' => '/dk/kolofon',
+        'privacyUrl' => '/dk/privatlivspolitik',
         'contactUrl' => '/dk/kontakt',
         'aboutUrl' => '/dk/om',
         'linkedinUrl' => 'https://dk.linkedin.com/in/olivereichhof',
@@ -213,7 +214,8 @@ $meta = [
         'emailText' => 'E-Mail',
         'emailAriaLabel' => 'Send e-mail',
         // Footer
-        'legalLink' => 'Kolofon & Databehandling',
+        'legalLink' => 'Kolofon',
+        'privacyLink' => 'Privatlivspolitik',
         'footerEntity' => 'Oliver Eichhof, Kommunikationsspecialist fra Hamborg',
         'footerDesktop' => 'Lavet med <span aria-hidden="true">♥</span><span class="sr-only">kærlighed</span> og AI i Hamburg',
         'footerMobile' => 'Lavet med <span aria-hidden="true">♥</span><span class="sr-only">kærlighed</span> og AI',
@@ -230,10 +232,8 @@ $meta = [
         'overlayText2' => 'Oliver Eichhof<br>Eismeerweg 9E<br>22145 Hamburg, Tyskland',
         'overlayText3' => 'Kontakt:',
         'overlayText3b' => 'Ansvarlig for indhold i henhold til § 18 stk. 2 tysk statslig medieaftale (MStV).',
-        'overlaySubtitle' => 'Databehandling',
-        'overlayText4' => 'Denne hjemmeside bruger ingen cookies, ingen logfiler og ingen sporingsværktøjer. Kun din farvevalg-præference gemmes lokalt i din browser.',
-        'overlayText5' => 'Ved brug af kontaktformularen sendes dit navn, din e-mailadresse og din besked via e-mail. Din IP-adresse behandles midlertidigt til spam-beskyttelse, men gemmes ikke.',
-        'overlayText6' => 'Links til eksterne platforme (LinkedIn, XING, Bluesky, Mastodon, Instagram, SoundCloud, YouTube, Bandcamp, Unsplash, GitHub, REGIOCAST, W&V, testspiel.de) er underlagt deres egne privatlivspolitikker.',
+        // Privacy overlay
+        'privacyTitle' => 'Privatlivspolitik',
         // Contact form
         'contactTitle' => 'Kontakt',
         'contactName' => 'Dit navn',
@@ -257,6 +257,8 @@ require_once __DIR__ . '/includes/asset.php';
 $openOverlay = null;
 if ($overlay === 'impressum' || $overlay === 'legal' || $overlay === 'kolofon') {
     $openOverlay = 'impressum';
+} elseif ($overlay === 'privacy') {
+    $openOverlay = 'privacy';
 } elseif ($overlay === 'contact' || $overlay === 'kontakt') {
     $openOverlay = 'contact';
 }
@@ -424,7 +426,7 @@ if ($overlay === 'impressum' || $overlay === 'legal' || $overlay === 'kolofon') 
 
         <!-- Mobile-only footer -->
         <div class="mobile-footer">
-            <a href="<?= $m['legalUrl'] ?>" id="footer-link-mobile"><?= $e($m['legalLink']) ?></a>
+            <a href="<?= $m['legalUrl'] ?>" id="footer-link-mobile"><?= $e($m['legalLink']) ?></a><span class="footer-separator" aria-hidden="true"> · </span><a href="<?= $m['privacyUrl'] ?>" id="footer-privacy-link-mobile"><?= $e($m['privacyLink']) ?></a>
             <span class="sr-only" id="footer-entity-mobile"><?= $e($m['footerEntity']) ?></span>
             <span id="footer-text-mobile"><?= $rawHtml($m['footerMobile']) ?></span>
         </div>
@@ -433,7 +435,7 @@ if ($overlay === 'impressum' || $overlay === 'legal' || $overlay === 'kolofon') 
 
     <!-- Footer Elements -->
     <div class="footer-left">
-        <a href="<?= $m['legalUrl'] ?>" id="footer-link"><?= $e($m['legalLink']) ?></a>
+        <a href="<?= $m['legalUrl'] ?>" id="footer-link"><?= $e($m['legalLink']) ?></a><span class="footer-separator" aria-hidden="true"> · </span><a href="<?= $m['privacyUrl'] ?>" id="footer-privacy-link"><?= $e($m['privacyLink']) ?></a>
     </div>
 
     <!-- Hidden entity info for crawlers -->
@@ -467,10 +469,19 @@ if ($overlay === 'impressum' || $overlay === 'legal' || $overlay === 'kolofon') 
             <p id="overlay-text-2"><?= $rawHtml($m['overlayText2']) ?></p>
             <p><span id="overlay-text-3"><?= $e($m['overlayText3']) ?></span> <a href="#" id="overlay-email-link" class="overlay-email-link"></a></p>
             <p id="overlay-text-3b"><?= $e($m['overlayText3b']) ?></p>
-            <h3 id="overlay-subtitle"><?= $e($m['overlaySubtitle']) ?></h3>
-            <p id="overlay-text-4"><?= $e($m['overlayText4']) ?></p>
-            <p id="overlay-text-5"><?= $e($m['overlayText5']) ?></p>
-            <p id="overlay-text-6"><?= $e($m['overlayText6']) ?></p>
+        </div>
+    </div>
+
+    <!-- Modal Overlay (Privacy / Datenschutzerklärung) -->
+    <div class="overlay" id="privacy-overlay">
+        <div class="overlay-content">
+            <button class="close-overlay" id="close-privacy-btn" aria-label="<?= $e($m['closeOverlay']) ?>">
+                <svg width="16" height="16" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                    <line x1="2" y1="2" x2="12" y2="12"/><line x1="12" y1="2" x2="2" y2="12"/>
+                </svg>
+            </button>
+            <h2 id="privacy-title"><?= $e($m['privacyTitle']) ?></h2>
+            <?php include __DIR__ . '/includes/overlays/privacy-' . ($lang === 'da' ? 'da' : $lang) . '.php'; ?>
         </div>
     </div>
 

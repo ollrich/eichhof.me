@@ -673,6 +673,10 @@ html.dark-mode .link-preview:hover {
     outline-offset: 2px;
 }
 
+.footer-separator {
+    color: var(--footer-color);
+}
+
 /* Mobile footer */
 .mobile-footer {
     display: none;

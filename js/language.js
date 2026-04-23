@@ -31,15 +31,13 @@
     const TRANSLATIONS = {
         de: {
             title: "Impressum",
-            link: "Impressum & Datenverarbeitung",
+            link: "Impressum",
+            privacyLink: "Datenverarbeitung",
+            privacyTitle: "Datenschutzerklärung",
             text1: "Diese Website wird betrieben von:",
             text2: "Oliver Eichhof<br>Eismeerweg 9E<br>22145 Hamburg",
             text3: "Kontakt:",
             text3b: "Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV.",
-            subtitle: "Datenverarbeitung",
-            text4: "Diese Website verwendet keine Cookies, keine Logfiles und keine Tracking-Tools. Lediglich deine Farbschema-Präferenz wird lokal in deinem Browser gespeichert.",
-            text5: "Bei Nutzung des Kontaktformulars werden dein Name, deine E-Mail-Adresse und deine Nachricht per E-Mail übermittelt. Zur Spam-Abwehr wird deine IP-Adresse temporär verarbeitet, aber nicht gespeichert.",
-            text6: "Links zu externen Plattformen (LinkedIn, XING, Bluesky, Mastodon, Instagram, SoundCloud, YouTube, Bandcamp, Unsplash, GitHub, REGIOCAST, W&V, testspiel.de) unterliegen deren eigenen Datenschutzbestimmungen.",
             email: "E-Mail",
             emailPrefix: "hallo",
             emailAriaLabel: "E-Mail senden",
@@ -74,15 +72,13 @@
         },
         en: {
             title: "Legal Notice",
-            link: "Legal Notice & Data Processing",
+            link: "Legal Notice",
+            privacyLink: "Privacy Policy",
+            privacyTitle: "Privacy Policy",
             text1: "This website is operated by:",
             text2: "Oliver Eichhof<br>Eismeerweg 9E<br>22145 Hamburg, Germany",
             text3: "Contact:",
             text3b: "Responsible for content according to § 18 para. 2 German Interstate Media Treaty (MStV).",
-            subtitle: "Data Processing",
-            text4: "This website uses no cookies, no log files, and no tracking tools. Only your color scheme preference is stored locally in your browser.",
-            text5: "When using the contact form, your name, email address, and message are transmitted via email. Your IP address is temporarily processed for spam protection but not stored.",
-            text6: "Links to external platforms (LinkedIn, XING, Bluesky, Mastodon, Instagram, SoundCloud, YouTube, Bandcamp, Unsplash, GitHub, REGIOCAST, W&V, testspiel.de) are subject to their own privacy policies.",
             email: "Email",
             emailPrefix: "hello",
             emailAriaLabel: "Send email",
@@ -117,15 +113,13 @@
         },
         da: {
             title: "Kolofon",
-            link: "Kolofon & Databehandling",
+            link: "Kolofon",
+            privacyLink: "Privatlivspolitik",
+            privacyTitle: "Privatlivspolitik",
             text1: "Denne hjemmeside drives af:",
             text2: "Oliver Eichhof<br>Eismeerweg 9E<br>22145 Hamburg, Tyskland",
             text3: "Kontakt:",
             text3b: "Ansvarlig for indhold i henhold til § 18 stk. 2 tysk statslig medieaftale (MStV).",
-            subtitle: "Databehandling",
-            text4: "Denne hjemmeside bruger ingen cookies, ingen logfiler og ingen sporingsværktøjer. Kun din farvevalg-præference gemmes lokalt i din browser.",
-            text5: "Ved brug af kontaktformularen sendes dit navn, din e-mailadresse og din besked via e-mail. Din IP-adresse behandles midlertidigt til spam-beskyttelse, men gemmes ikke.",
-            text6: "Links til eksterne platforme (LinkedIn, XING, Bluesky, Mastodon, Instagram, SoundCloud, YouTube, Bandcamp, Unsplash, GitHub, REGIOCAST, W&V, testspiel.de) er underlagt deres egne privatlivspolitikker.",
             email: "E-Mail",
             emailPrefix: "hej",
             emailAriaLabel: "Send e-mail",
@@ -242,28 +236,29 @@
         const tagline = document.getElementById('tagline');
         if (tagline) tagline.innerHTML = TAGLINES[langCode];
 
-        // Update overlay content
+        // Update Impressum-Overlay
         updateElement('overlay-title', content.title);
-        updateElement('overlay-subtitle', content.subtitle);
         updateElement('overlay-text-1', content.text1);
         updateElement('overlay-text-2', content.text2, true);
         updateElement('overlay-text-3', content.text3);
         updateElement('overlay-text-3b', content.text3b);
-        updateElement('overlay-text-4', content.text4);
-        updateElement('overlay-text-5', content.text5);
-        updateElement('overlay-text-6', content.text6);
 
-        // Update email in overlay
+        // Update Privacy-Overlay-Titel (der Fließtext ist server-gerendert)
+        updateElement('privacy-title', content.privacyTitle);
+
+        // E-Mail-Link in allen Overlays befüllen (Klasse statt ID,
+        // damit sowohl Impressum- als auch Privacy-Overlay versorgt werden).
         const email = buildEmail(content.emailPrefix);
-        const overlayEmailLink = document.getElementById('overlay-email-link');
-        if (overlayEmailLink) {
-            overlayEmailLink.textContent = email;
-            overlayEmailLink.href = 'mailto:' + email;
-        }
+        document.querySelectorAll('.overlay-email-link').forEach(function(el) {
+            el.textContent = email;
+            el.href = 'mailto:' + email;
+        });
 
         // Update footer links
         updateElement('footer-link', content.link);
         updateElement('footer-link-mobile', content.link);
+        updateElement('footer-privacy-link', content.privacyLink);
+        updateElement('footer-privacy-link-mobile', content.privacyLink);
         updateElement('footer-text-desktop', content.footerDesktop, true);
         updateElement('footer-text-mobile', content.footerMobile, true);
         updateElement('footer-entity-desktop', content.footerEntity);
@@ -279,6 +274,7 @@
         // Update aria labels
         updateAttr('theme-toggle', 'aria-label', content.themeToggleLabel);
         updateAttr('close-overlay-btn', 'aria-label', content.closeOverlay);
+        updateAttr('close-privacy-btn', 'aria-label', content.closeOverlay);
         updateAttr('preview-close', 'aria-label', content.closePreview);
         updateAttr('email-link', 'aria-label', content.emailAriaLabel);
 
@@ -326,6 +322,9 @@
             if (openOverlay === 'impressum') {
                 const overlay = document.getElementById('overlay');
                 if (overlay) overlay.classList.add('active');
+            } else if (openOverlay === 'privacy') {
+                const privacyOverlay = document.getElementById('privacy-overlay');
+                if (privacyOverlay) privacyOverlay.classList.add('active');
             } else if (openOverlay === 'contact') {
                 const contactOverlay = document.getElementById('contact-overlay');
                 if (contactOverlay) contactOverlay.classList.add('active');

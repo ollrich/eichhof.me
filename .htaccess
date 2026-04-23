@@ -31,16 +31,19 @@ RewriteRule ^dk/?$ index.php?lang=da [L,QSA]
 
 # German subpages (no language prefix)
 RewriteRule ^impressum/?$ index.php?lang=de&overlay=impressum [L,QSA]
+RewriteRule ^datenverarbeitung/?$ index.php?lang=de&overlay=privacy [L,QSA]
 RewriteRule ^kontakt/?$ index.php?lang=de&overlay=kontakt [L,QSA]
 RewriteRule ^ueber/?$ about/index.php?lang=de [L,QSA]
 
 # English subpages (/en/...)
 RewriteRule ^en/legal-notice/?$ index.php?lang=en&overlay=legal [L,QSA]
+RewriteRule ^en/privacy/?$ index.php?lang=en&overlay=privacy [L,QSA]
 RewriteRule ^en/contact/?$ index.php?lang=en&overlay=contact [L,QSA]
 RewriteRule ^en/about/?$ about/index.php?lang=en [L,QSA]
 
 # Danish subpages (/dk/...)
 RewriteRule ^dk/kolofon/?$ index.php?lang=da&overlay=kolofon [L,QSA]
+RewriteRule ^dk/privatlivspolitik/?$ index.php?lang=da&overlay=privacy [L,QSA]
 RewriteRule ^dk/kontakt/?$ index.php?lang=da&overlay=kontakt [L,QSA]
 RewriteRule ^dk/om/?$ about/index.php?lang=da [L,QSA]
 
