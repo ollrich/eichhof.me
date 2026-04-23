@@ -1,317 +1,137 @@
 /**
- * Language Detection and Content Management Module
- * =================================================
- * Handles multilingual content switching based on:
- * 1. Server-detected language (from URL path like /en/ or /da/)
- * 2. URL parameter (?lang=de|en|da)
- * 3. Browser language preference
+ * Client-Side Language Support
+ * ============================
+ * Seit die Sprachstrings serverseitig aus includes/config/i18n.php gerendert
+ * werden, macht dieses Modul nur noch drei Dinge:
+ *
+ * 1. Es liest das inline-JSON aus <script id="i18n-data" type="application/json">
+ *    ein (nur auf der Hauptseite vorhanden), damit JS-Konsumenten (contact.js,
+ *    overlay.js, link-preview.js) Strings abfragen können — ohne doppelte
+ *    Übersetzungs-Tabelle, die auseinanderlaufen kann.
+ *
+ * 2. Es räumt `?lang=de|en|da` nach dem Sprachwähler-Klick per
+ *    history.replaceState aus der URL, damit Bookmarks und Teilen sauber
+ *    bleiben. Der Query ist nur ein Redirect-Override beim Seitenaufruf,
+ *    danach nicht mehr interessant.
+ *
+ * 3. Es öffnet serverseitig angeforderte Overlays (data-overlay-Attribut am
+ *    <body>) und setzt die Social-Row-Reihenfolge (Mastodon-first für DE).
+ *
+ * Exportiert window.LanguageManager mit getCurrentLang(), getEmailPrefix(),
+ * getTranslation(key), openEmail() — die API bleibt stabil, damit die
+ * bestehenden Konsumenten unverändert weiterlaufen.
  */
 (function() {
     'use strict';
 
-    /**
-     * Email configuration (obfuscated to prevent scraping)
-     */
+    // E-Mail-Domain bleibt obfuskiert im JS-Code, damit sie im rohen HTML
+    // keinem Scraper direkt ins Auge springt.
     const EMAIL_CONFIG = {
         domain: ['eichhof', 'me']
     };
 
-    /**
-     * Tagline content for each supported language
-     */
-    const TAGLINES = {
-        de: 'Ich arbeite in der Medienbranche und rede im Job gern über gute Kommunikation und was Zielgruppen brauchen. Ab und zu <a href="https://www.schongeil.de/" target="_blank" rel="noopener noreferrer">blogge</a> ich und <a href="https://soundcloud.com/livicxyz" target="_blank" rel="noopener noreferrer">lege</a> Platten auf. Mehr zu <a href="/ueber">meinem Werdegang und meiner Arbeit</a>.',
-        en: 'I work in media and like talking about good communication and what audiences need. Every now and then I <a href="https://www.schongeil.de/en/" target="_blank" rel="noopener noreferrer">blog</a> and <a href="https://soundcloud.com/livicxyz" target="_blank" rel="noopener noreferrer">spin records</a>. More on <a href="/en/about">my background and work</a>.',
-        da: 'Jeg arbejder i mediebranchen og taler gerne om god kommunikation og hvad målgrupper har brug for. Af og til <a href="https://www.schongeil.de/en/" target="_blank" rel="noopener noreferrer">blogger</a> jeg og <a href="https://soundcloud.com/livicxyz" target="_blank" rel="noopener noreferrer">spiller plader</a>. Mere om <a href="/dk/om">min baggrund og mit arbejde</a>.'
+    // Minimaler Fallback, falls das inline-JSON fehlt (z. B. auf /ueber)
+    // oder korrupt ist. Deckt nur, was JS wirklich braucht.
+    const FALLBACK = {
+        de: { emailPrefix: 'hallo' },
+        en: { emailPrefix: 'hello' },
+        da: { emailPrefix: 'hej' }
     };
 
     /**
-     * Complete translations for all UI elements
+     * Parsen des serverseitigen i18n-JSON (nur auf Seiten mit language.js +
+     * Kontakformular vorhanden). Liefert das $m-Dict, wie PHP es hinterlegt.
      */
-    const TRANSLATIONS = {
-        de: {
-            title: "Impressum",
-            link: "Impressum",
-            privacyLink: "Datenverarbeitung",
-            privacyTitle: "Datenschutzerklärung",
-            text1: "Diese Website wird betrieben von:",
-            text2: "Oliver Eichhof<br>Eismeerweg 9E<br>22145 Hamburg",
-            text3: "Kontakt:",
-            text3b: "Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV.",
-            email: "E-Mail",
-            emailPrefix: "hallo",
-            emailAriaLabel: "E-Mail senden",
-            hint: "drücke leertaste",
-            themeDark: "Licht aus",
-            themeLight: "Licht an",
-            themeToggleLabel: "Farbschema wechseln",
-            closeOverlay: "Schließen",
-            closePreview: "Vorschau schließen",
-            footerDesktop: 'Mit <span aria-hidden="true">♥</span><span class="sr-only">Liebe</span> und KI in Hamburg erstellt',
-            footerMobile: 'Mit <span aria-hidden="true">♥</span><span class="sr-only">Liebe</span> und KI realisiert',
-            footerEntity: 'Oliver Eichhof, Kommunikationsspezialist aus Hamburg',
-            githubTooltip: "Quellcode auf GitHub",
-            githubAriaLabel: "Quellcode auf GitHub",
-            // Kontaktformular
-            contactTitle: "Kontakt",
-            contactName: "Dein Name",
-            contactEmail: "Deine E-Mail-Adresse",
-            contactMessage: "Deine Nachricht",
-            contactSubmit: "Nachricht senden",
-            contactSending: "Wird gesendet...",
-            contactSuccess: "Vielen Dank! Deine Nachricht wurde gesendet.",
-            contactErrorGeneral: "Leider ist ein Fehler aufgetreten. Bitte versuche es später erneut.",
-            contactErrorName: "Bitte gib deinen Namen ein (mind. 2 Zeichen).",
-            contactErrorEmail: "Bitte gib eine gültige E-Mail-Adresse ein.",
-            contactErrorMessage: "Bitte gib eine Nachricht ein (mind. 10 Zeichen).",
-            contactErrorRateLimit: "Zu viele Anfragen. Bitte warte einige Minuten.",
-            contactErrorTimeout: "Zeitüberschreitung. Bitte prüfe deine Verbindung und versuche es erneut.",
-            contactPrivacy: "Deine Daten werden nur zur Beantwortung verwendet. Zur Spam-Abwehr wird deine IP temporär verarbeitet, aber nicht gespeichert.",
-            contactFallback: "Oder direkt per E-Mail:"
-        },
-        en: {
-            title: "Legal Notice",
-            link: "Legal Notice",
-            privacyLink: "Privacy Policy",
-            privacyTitle: "Privacy Policy",
-            text1: "This website is operated by:",
-            text2: "Oliver Eichhof<br>Eismeerweg 9E<br>22145 Hamburg, Germany",
-            text3: "Contact:",
-            text3b: "Responsible for content according to § 18 para. 2 German Interstate Media Treaty (MStV).",
-            email: "Email",
-            emailPrefix: "hello",
-            emailAriaLabel: "Send email",
-            hint: "press space",
-            themeDark: "Lights off",
-            themeLight: "Lights on",
-            themeToggleLabel: "Toggle color scheme",
-            closeOverlay: "Close",
-            closePreview: "Close preview",
-            footerDesktop: 'Made with <span aria-hidden="true">♥</span><span class="sr-only">love</span> and AI in Hamburg',
-            footerMobile: 'Made with <span aria-hidden="true">♥</span><span class="sr-only">love</span> and AI',
-            footerEntity: 'Oliver Eichhof, Communication Specialist from Hamburg',
-            githubTooltip: "View source on GitHub",
-            githubAriaLabel: "View source on GitHub",
-            // Contact form
-            contactTitle: "Contact",
-            contactName: "Your name",
-            contactEmail: "Your email address",
-            contactMessage: "Your message",
-            contactSubmit: "Send message",
-            contactSending: "Sending...",
-            contactSuccess: "Thank you! Your message has been sent.",
-            contactErrorGeneral: "An error occurred. Please try again later.",
-            contactErrorName: "Please enter your name (at least 2 characters).",
-            contactErrorEmail: "Please enter a valid email address.",
-            contactErrorMessage: "Please enter a message (at least 10 characters).",
-            contactErrorRateLimit: "Too many requests. Please wait a few minutes.",
-            contactErrorTimeout: "Request timed out. Please check your connection and try again.",
-            contactPrivacy: "Your data will only be used to respond. Your IP is temporarily processed for spam protection but not stored.",
-            contactFallback: "Or email directly:"
-        },
-        da: {
-            title: "Kolofon",
-            link: "Kolofon",
-            privacyLink: "Privatlivspolitik",
-            privacyTitle: "Privatlivspolitik",
-            text1: "Denne hjemmeside drives af:",
-            text2: "Oliver Eichhof<br>Eismeerweg 9E<br>22145 Hamburg, Tyskland",
-            text3: "Kontakt:",
-            text3b: "Ansvarlig for indhold i henhold til § 18 stk. 2 tysk statslig medieaftale (MStV).",
-            email: "E-Mail",
-            emailPrefix: "hej",
-            emailAriaLabel: "Send e-mail",
-            hint: "tryk mellemrum",
-            themeDark: "Sluk lyset",
-            themeLight: "Tænd lyset",
-            themeToggleLabel: "Skift farveskema",
-            closeOverlay: "Luk",
-            closePreview: "Luk forhåndsvisning",
-            footerDesktop: 'Lavet med <span aria-hidden="true">♥</span><span class="sr-only">kærlighed</span> og AI i Hamburg',
-            footerMobile: 'Lavet med <span aria-hidden="true">♥</span><span class="sr-only">kærlighed</span> og AI',
-            footerEntity: 'Oliver Eichhof, Kommunikationsspecialist fra Hamborg',
-            githubTooltip: "Se kildekoden på GitHub",
-            githubAriaLabel: "Se kildekoden på GitHub",
-            // Kontaktformular
-            contactTitle: "Kontakt",
-            contactName: "Dit navn",
-            contactEmail: "Din e-mailadresse",
-            contactMessage: "Din besked",
-            contactSubmit: "Send besked",
-            contactSending: "Sender...",
-            contactSuccess: "Tak! Din besked er blevet sendt.",
-            contactErrorGeneral: "Der opstod en fejl. Prøv venligst igen senere.",
-            contactErrorName: "Indtast venligst dit navn (mindst 2 tegn).",
-            contactErrorEmail: "Indtast venligst en gyldig e-mailadresse.",
-            contactErrorMessage: "Indtast venligst en besked (mindst 10 tegn).",
-            contactErrorRateLimit: "For mange anmodninger. Vent venligst et par minutter.",
-            contactErrorTimeout: "Forespørgslen fik timeout. Tjek din forbindelse og prøv igen.",
-            contactPrivacy: "Dine data bruges kun til at besvare. Din IP behandles midlertidigt til spam-beskyttelse, men gemmes ikke.",
-            contactFallback: "Eller send e-mail direkte:"
+    function readServerI18n() {
+        const el = document.getElementById('i18n-data');
+        if (!el) return null;
+        try {
+            return JSON.parse(el.textContent);
+        } catch (e) {
+            return null;
         }
-    };
-
-    // Current state
-    let currentLang = 'de';
-    let currentEmailPrefix = 'hallo';
-
-    /**
-     * Detect language from server, URL parameter, or browser settings
-     * Priority: Server-set lang > URL param > Browser language > Default (German)
-     * @returns {string} Language code (de, en, or da)
-     */
-    function detectLanguage() {
-        // Check if server already detected language (from /en/ or /da/ path)
-        const serverLang = document.body.dataset.lang;
-        if (serverLang && ['de', 'en', 'da'].includes(serverLang)) {
-            return serverLang;
-        }
-
-        // Check URL parameter (legacy support for ?lang=xx)
-        const urlParams = new URLSearchParams(window.location.search);
-        const urlLang = urlParams.get('lang');
-        if (urlLang && ['de', 'en', 'da'].includes(urlLang)) {
-            return urlLang;
-        }
-
-        // Fall back to browser language detection
-        const userLang = (navigator.language || navigator.userLanguage).toLowerCase().split('-')[0];
-        if (userLang === 'en') return 'en';
-        if (userLang === 'da') return 'da';
-
-        return 'de'; // Default
     }
 
     /**
-     * Build email address from obfuscated parts
-     * @param {string} prefix - Email prefix (hallo, hello, hej)
-     * @returns {string} Complete email address
+     * Aktuelle Sprache vom <body data-lang="…"> (serverseitig gesetzt).
+     */
+    function readServerLang() {
+        const lang = document.body && document.body.dataset.lang;
+        return (lang && ['de', 'en', 'da'].includes(lang)) ? lang : 'de';
+    }
+
+    const currentLang   = readServerLang();
+    const serverI18n    = readServerI18n();
+    // Wenn das inline-JSON fehlt (auf Seiten ohne Kontaktformular), liefert
+    // der FALLBACK wenigstens emailPrefix. Alles andere geben wir als Key
+    // zurück — Konsumenten fragen solche Keys dort eh nicht ab.
+    const translations  = serverI18n || FALLBACK[currentLang] || FALLBACK.de;
+    const emailPrefix   = translations.emailPrefix || 'hallo';
+
+    /**
+     * Baut die obfuskierte E-Mail-Adresse aus Prefix + Domain-Parts.
      */
     function buildEmail(prefix) {
         return prefix + '@' + EMAIL_CONFIG.domain[0] + '.' + EMAIL_CONFIG.domain[1];
     }
 
-    /**
-     * Open email client with obfuscated address
-     */
     function openEmail() {
-        const email = buildEmail(currentEmailPrefix);
-        window.location.href = 'mailto:' + email;
+        window.location.href = 'mailto:' + buildEmail(emailPrefix);
     }
 
     /**
-     * Update all page content for the detected language
+     * ?lang= raus aus der URL, sobald die Seite sichtbar ist. Der Query
+     * war nur ein Override gegen den Accept-Language-302 — weitergeschickt
+     * müsste er nicht werden.
      */
-    function applyLanguage() {
-        const langCode = detectLanguage();
-        currentLang = langCode;
+    function cleanLangQueryParam() {
+        if (!window.history || !window.history.replaceState) return;
+        const url = new URL(window.location.href);
+        if (!url.searchParams.has('lang')) return;
+        url.searchParams.delete('lang');
+        const cleaned = url.pathname + (url.searchParams.toString() ? '?' + url.searchParams.toString() : '') + url.hash;
+        window.history.replaceState(null, '', cleaned);
+    }
 
-        const content = TRANSLATIONS[langCode];
-        currentEmailPrefix = content.emailPrefix;
+    /**
+     * Social-Row-Reihenfolge: Für DE steht Mastodon links, sonst Bluesky.
+     * Rein kosmetisch — kleine lokale Präferenz, die nicht im Markup
+     * dupliziert werden muss.
+     */
+    function applySocialRowOrder() {
+        const socialRow = document.getElementById('social-row');
+        if (!socialRow) return;
+        socialRow.classList.toggle('mastodon-first', currentLang === 'de');
+    }
 
-        // Update HTML lang attribute for accessibility
-        document.documentElement.lang = langCode;
-
-        // Helper function to safely update element content
-        const updateElement = (id, value, isHTML) => {
-            const el = document.getElementById(id);
-            if (el) {
-                if (isHTML) {
-                    el.innerHTML = value;
-                } else {
-                    el.textContent = value;
-                }
-            }
-        };
-
-        const updateAttr = (id, attr, value) => {
-            const el = document.getElementById(id);
-            if (el) el.setAttribute(attr, value);
-        };
-
-        // Update tagline
-        const tagline = document.getElementById('tagline');
-        if (tagline) tagline.innerHTML = TAGLINES[langCode];
-
-        // Update Impressum-Overlay
-        updateElement('overlay-title', content.title);
-        updateElement('overlay-text-1', content.text1);
-        updateElement('overlay-text-2', content.text2, true);
-        updateElement('overlay-text-3', content.text3);
-        updateElement('overlay-text-3b', content.text3b);
-
-        // Update Privacy-Overlay-Titel (der Fließtext ist server-gerendert)
-        updateElement('privacy-title', content.privacyTitle);
-
-        // E-Mail-Link in allen Overlays befüllen (Klasse statt ID,
-        // damit sowohl Impressum- als auch Privacy-Overlay versorgt werden).
-        const email = buildEmail(content.emailPrefix);
+    /**
+     * Befüllt alle E-Mail-Links (Impressum-/Privacy-Overlay, Kontakt-Fallback)
+     * mit der zusammengesetzten Adresse. Server rendert sie bewusst leer —
+     * so landet die Adresse nicht im rohen HTML für Scraper.
+     */
+    function fillEmailLinks() {
+        const email  = buildEmail(emailPrefix);
+        const mailto = 'mailto:' + email;
+        // Overlay-E-Mails (Impressum + Privacy).
         document.querySelectorAll('.overlay-email-link').forEach(function(el) {
             el.textContent = email;
-            el.href = 'mailto:' + email;
+            el.href = mailto;
         });
-
-        // Update footer links
-        updateElement('footer-link', content.link);
-        updateElement('footer-link-mobile', content.link);
-        updateElement('footer-privacy-link', content.privacyLink);
-        updateElement('footer-privacy-link-mobile', content.privacyLink);
-        updateElement('footer-text-desktop', content.footerDesktop, true);
-        updateElement('footer-text-mobile', content.footerMobile, true);
-        updateElement('footer-entity-desktop', content.footerEntity);
-        updateElement('footer-entity-mobile', content.footerEntity);
-        updateElement('github-tooltip', content.githubTooltip);
-        updateElement('email-text', content.email);
-        updateElement('footer-hint', content.hint);
-
-        // Update tooltips
-        updateElement('tooltip-dark', content.themeDark);
-        updateElement('tooltip-light', content.themeLight);
-
-        // Update aria labels
-        updateAttr('theme-toggle', 'aria-label', content.themeToggleLabel);
-        updateAttr('close-overlay-btn', 'aria-label', content.closeOverlay);
-        updateAttr('close-privacy-btn', 'aria-label', content.closeOverlay);
-        updateAttr('preview-close', 'aria-label', content.closePreview);
-        updateAttr('email-link', 'aria-label', content.emailAriaLabel);
-
-        // Update social row order (Mastodon first for German visitors)
-        const socialRow = document.getElementById('social-row');
-        if (socialRow) {
-            if (langCode === 'de') {
-                socialRow.classList.add('mastodon-first');
-            } else {
-                socialRow.classList.remove('mastodon-first');
-            }
-        }
-
-        // Update contact form content
-        updateElement('contact-title', content.contactTitle);
-        updateAttr('contact-name', 'placeholder', content.contactName);
-        updateAttr('contact-email', 'placeholder', content.contactEmail);
-        updateAttr('contact-message', 'placeholder', content.contactMessage);
-        updateElement('contact-submit-text', content.contactSubmit);
-        updateElement('contact-privacy', content.contactPrivacy);
-        updateElement('contact-fallback-text', content.contactFallback);
-        updateAttr('close-contact-btn', 'aria-label', content.closeOverlay);
-
-        // Update contact email fallback link
-        const contactFallbackEmail = buildEmail(content.emailPrefix);
-        const contactEmailLink = document.getElementById('contact-fallback-link');
-        if (contactEmailLink) {
-            contactEmailLink.textContent = contactFallbackEmail;
-            contactEmailLink.href = 'mailto:' + contactFallbackEmail;
+        // Kontakt-Fallback-Link (Kontaktformular-Popup).
+        const fallback = document.getElementById('contact-fallback-link');
+        if (fallback) {
+            fallback.textContent = email;
+            fallback.href = mailto;
         }
     }
 
     /**
-     * Open overlay if server requested it (from /impressum, /kontakt etc.)
+     * Öffnet vom Server angefordertes Overlay (/impressum, /kontakt, /…).
+     * Der kleine Timeout wartet, bis overlay.js / contact.js gebunden haben.
      */
     function handleServerOverlay() {
         const openOverlay = document.body.dataset.overlay;
         if (!openOverlay) return;
-
-        // Small delay to ensure overlay.js has initialized
         setTimeout(function() {
             if (openOverlay === 'impressum') {
                 const overlay = document.getElementById('overlay');
@@ -326,32 +146,24 @@
         }, 100);
     }
 
-    /**
-     * Initialize language module
-     */
     function init() {
-        applyLanguage();
+        cleanLangQueryParam();
+        applySocialRowOrder();
+        fillEmailLinks();
         handleServerOverlay();
-
-        // Note: Email link click handler is now in contact.js
-        // which opens the contact form popup instead of mailto
     }
 
-    // Initialize when DOM is ready
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', init);
     } else {
         init();
     }
 
-    // Export for external use
+    // Externes API — stabil gehalten für contact.js, overlay.js, link-preview.js.
     window.LanguageManager = {
-        getCurrentLang: function() { return currentLang; },
-        getEmailPrefix: function() { return currentEmailPrefix; },
-        getTranslation: function(key) {
-            var t = TRANSLATIONS[currentLang] || TRANSLATIONS.de;
-            return t[key] !== undefined ? t[key] : key;
-        },
-        openEmail: openEmail
+        getCurrentLang:  function()     { return currentLang; },
+        getEmailPrefix:  function()     { return emailPrefix; },
+        getTranslation:  function(key)  { return translations[key] !== undefined ? translations[key] : key; },
+        openEmail:       openEmail
     };
 })();
