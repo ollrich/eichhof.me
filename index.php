@@ -250,6 +250,9 @@ $m = $meta[$lang];
 // Shared Person-Schema-Daten (sameAs, subjectOf) — identisch zwischen Haupt- und About-Seite
 $person = require __DIR__ . '/includes/config/person.php';
 
+// Asset-Helper für automatische Cache-Busting-Versionierung via filemtime()
+require_once __DIR__ . '/includes/asset.php';
+
 // Determine overlay to open (if any)
 $openOverlay = null;
 if ($overlay === 'impressum' || $overlay === 'legal' || $overlay === 'kolofon') {
@@ -340,7 +343,7 @@ if ($overlay === 'impressum' || $overlay === 'legal' || $overlay === 'kolofon') 
     <?php include __DIR__ . '/includes/head-favicons.php'; ?>
 
     <!-- Stylesheet -->
-    <link rel="stylesheet" href="/css/styles.css?v=7">
+    <link rel="stylesheet" href="<?= asset('/css/styles.css') ?>">
 
 </head>
 <body data-lang="<?= $lang ?>"<?= $openOverlay ? ' data-overlay="' . $openOverlay . '"' : '' ?>>
@@ -533,11 +536,11 @@ if ($overlay === 'impressum' || $overlay === 'legal' || $overlay === 'kolofon') 
     </div>
 
     <!-- JavaScript Modules -->
-    <script src="/js/theme.js?v=7" defer></script>
-    <script src="/js/language.js?v=7" defer></script>
-    <script src="/js/overlay.js?v=7" defer></script>
-    <script src="/js/contact.js?v=7" defer></script>
-    <script src="/js/easter-egg.js?v=7" defer></script>
-    <script src="/js/link-preview.js?v=7" defer></script>
+    <script src="<?= asset('/js/theme.js') ?>" defer></script>
+    <script src="<?= asset('/js/language.js') ?>" defer></script>
+    <script src="<?= asset('/js/overlay.js') ?>" defer></script>
+    <script src="<?= asset('/js/contact.js') ?>" defer></script>
+    <script src="<?= asset('/js/easter-egg.js') ?>" defer></script>
+    <script src="<?= asset('/js/link-preview.js') ?>" defer></script>
 </body>
 </html>

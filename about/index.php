@@ -343,6 +343,9 @@ $rawHtml = fn($s) => $s;
 
 // Shared Person-Schema-Daten (sameAs, subjectOf) — identisch zwischen Haupt- und About-Seite
 $person = require __DIR__ . '/../includes/config/person.php';
+
+// Asset-Helper für automatische Cache-Busting-Versionierung via filemtime()
+require_once __DIR__ . '/../includes/asset.php';
 ?>
 <!DOCTYPE html>
 <html lang="<?= $m['htmlLang'] ?>">
@@ -384,7 +387,7 @@ $person = require __DIR__ . '/../includes/config/person.php';
     <link rel="alternate" hreflang="x-default" href="https://eichhof.me/ueber">
 
     <?php include __DIR__ . '/../includes/head-favicons.php'; ?>
-    <link rel="stylesheet" href="/css/styles.css?v=7">
+    <link rel="stylesheet" href="<?= asset('/css/styles.css') ?>">
 
     <script type="application/ld+json">
     {
@@ -571,8 +574,8 @@ $person = require __DIR__ . '/../includes/config/person.php';
         </div>
     </div>
 
-    <script src="/js/grounding-email.js?v=7" defer></script>
-    <script src="/js/theme.js?v=7" defer></script>
-    <script src="/js/overlay.js?v=7" defer></script>
+    <script src="<?= asset('/js/grounding-email.js') ?>" defer></script>
+    <script src="<?= asset('/js/theme.js') ?>" defer></script>
+    <script src="<?= asset('/js/overlay.js') ?>" defer></script>
 </body>
 </html>
