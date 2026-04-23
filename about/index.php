@@ -383,7 +383,7 @@ $person = require __DIR__ . '/../includes/config/person.php';
     <link rel="alternate" hreflang="x-default" href="https://eichhof.me/ueber">
 
     <?php include __DIR__ . '/../includes/head-favicons.php'; ?>
-    <link rel="stylesheet" href="/css/styles.css?v=6">
+    <link rel="stylesheet" href="/css/styles.css?v=7">
 
     <script type="application/ld+json">
     {
@@ -570,8 +570,8 @@ $person = require __DIR__ . '/../includes/config/person.php';
         </div>
     </div>
 
-    <script src="/js/grounding-email.js?v=6" defer></script>
-    <script src="/js/theme.js?v=6" defer></script>
-    <script src="/js/overlay.js?v=6" defer></script>
+    <script src="/js/grounding-email.js?v=7" defer></script>
+    <script src="/js/theme.js?v=7" defer></script>
+    <script src="/js/overlay.js?v=7" defer></script>
 </body>
 </html>

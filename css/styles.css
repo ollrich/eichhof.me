@@ -137,8 +137,8 @@ html.dark-mode {
     --tagline-link: rgba(255, 255, 255, 0.7);
     --card-hover-bg: rgba(var(--accent-purple), 0.1);
     --card-hover-border: rgba(var(--accent-purple), 0.4);
-    --footer-color: rgba(255, 255, 255, 0.4);
-    --footer-link: rgba(255, 255, 255, 0.5);
+    --footer-color: rgba(255, 255, 255, 0.5);
+    --footer-link: rgba(255, 255, 255, 0.6);
     --footer-link-hover: rgba(255, 255, 255, 0.7);
     --overlay-bg: rgba(20, 15, 35, 0.95);
     --overlay-content-bg: rgba(var(--accent-purple), 0.15);
@@ -169,8 +169,8 @@ html.dark-mode {
         --tagline-link: rgba(255, 255, 255, 0.7);
         --card-hover-bg: rgba(var(--accent-purple), 0.1);
         --card-hover-border: rgba(var(--accent-purple), 0.4);
-        --footer-color: rgba(255, 255, 255, 0.4);
-        --footer-link: rgba(255, 255, 255, 0.5);
+        --footer-color: rgba(255, 255, 255, 0.5);
+        --footer-link: rgba(255, 255, 255, 0.6);
         --footer-link-hover: rgba(255, 255, 255, 0.7);
         --overlay-bg: rgba(20, 15, 35, 0.95);
         --overlay-content-bg: rgba(var(--accent-purple), 0.15);

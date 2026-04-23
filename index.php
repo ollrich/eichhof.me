@@ -339,7 +339,7 @@ if ($overlay === 'impressum' || $overlay === 'legal' || $overlay === 'kolofon') 
     <?php include __DIR__ . '/includes/head-favicons.php'; ?>
 
     <!-- Stylesheet -->
-    <link rel="stylesheet" href="/css/styles.css?v=6">
+    <link rel="stylesheet" href="/css/styles.css?v=7">
 
 </head>
 <body data-lang="<?= $lang ?>"<?= $openOverlay ? ' data-overlay="' . $openOverlay . '"' : '' ?>>
@@ -532,11 +532,11 @@ if ($overlay === 'impressum' || $overlay === 'legal' || $overlay === 'kolofon') 
     </div>
 
     <!-- JavaScript Modules -->
-    <script src="/js/theme.js?v=6" defer></script>
-    <script src="/js/language.js?v=6" defer></script>
-    <script src="/js/overlay.js?v=6" defer></script>
-    <script src="/js/contact.js?v=6" defer></script>
-    <script src="/js/easter-egg.js?v=6" defer></script>
-    <script src="/js/link-preview.js?v=6" defer></script>
+    <script src="/js/theme.js?v=7" defer></script>
+    <script src="/js/language.js?v=7" defer></script>
+    <script src="/js/overlay.js?v=7" defer></script>
+    <script src="/js/contact.js?v=7" defer></script>
+    <script src="/js/easter-egg.js?v=7" defer></script>
+    <script src="/js/link-preview.js?v=7" defer></script>
 </body>
 </html>
