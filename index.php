@@ -268,7 +268,8 @@ if ($overlay === 'impressum' || $overlay === 'legal' || $overlay === 'kolofon') 
     <?php include __DIR__ . '/includes/theme-init.php'; ?>
 
     <!-- Theme color for browser UI (address bar on mobile) -->
-    <meta name="theme-color" content="#764ba2">
+    <meta name="theme-color" content="#764ba2" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#0d0d14" media="(prefers-color-scheme: dark)">
 
     <!-- SEO meta tags for search engines -->
     <meta name="description" content="<?= $e($m['description']) ?>">

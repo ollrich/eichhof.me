@@ -352,7 +352,8 @@ $person = require __DIR__ . '/../includes/config/person.php';
 
     <?php include __DIR__ . '/../includes/theme-init.php'; ?>
 
-    <meta name="theme-color" content="#764ba2">
+    <meta name="theme-color" content="#764ba2" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#0d0d14" media="(prefers-color-scheme: dark)">
     <title><?= $e($m['title']) ?></title>
     <meta name="description" content="<?= $e($m['description']) ?>">
     <meta name="robots" content="index, follow">
