@@ -54,11 +54,11 @@ eichhof.me/
 │   └── confetti.min.js     # Canvas-Confetti (lazy-loaded)
 ├── contact.php             # Contact form backend (rate limiting, CSRF, honeypot)
 ├── images/
-│   ├── oliver-eichhof.png  # Profile photo master (1024w, lossless — Build-Quelle für WebP/AVIF)
-│   ├── oliver-eichhof.avif # Profile photo (960w, AVIF — primary, ~40 KB)
+│   ├── oliver-eichhof.png  # Profile photo master (920w, lossless — Build-Quelle für WebP/AVIF)
+│   ├── oliver-eichhof.avif # Profile photo (920w, AVIF — primary, ~54 KB)
 │   ├── oliver-eichhof-320.avif # Responsive AVIF (mobile srcset)
 │   ├── oliver-eichhof-640.avif # Responsive AVIF (tablet srcset)
-│   ├── oliver-eichhof.webp # Profile photo (960w, WebP — fallback, ~77 KB)
+│   ├── oliver-eichhof.webp # Profile photo (920w, WebP — fallback, ~99 KB)
 │   ├── oliver-eichhof-320.webp # Responsive WebP (mobile srcset)
 │   ├── oliver-eichhof-640.webp # Responsive WebP (tablet srcset)
 │   ├── og-image.png        # Open Graph image for social sharing

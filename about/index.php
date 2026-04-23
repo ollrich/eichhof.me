@@ -485,10 +485,10 @@ require_once __DIR__ . '/../includes/asset.php';
 
         <picture>
             <source type="image/avif"
-                    srcset="/images/oliver-eichhof-320.avif 320w, /images/oliver-eichhof-640.avif 640w, /images/oliver-eichhof.avif 960w"
+                    srcset="/images/oliver-eichhof-320.avif 320w, /images/oliver-eichhof-640.avif 640w, /images/oliver-eichhof.avif 920w"
                     sizes="120px">
             <source type="image/webp"
-                    srcset="/images/oliver-eichhof-320.webp 320w, /images/oliver-eichhof-640.webp 640w, /images/oliver-eichhof.webp 960w"
+                    srcset="/images/oliver-eichhof-320.webp 320w, /images/oliver-eichhof-640.webp 640w, /images/oliver-eichhof.webp 920w"
                     sizes="120px">
             <img src="/images/oliver-eichhof.webp"
                  width="120" height="120"

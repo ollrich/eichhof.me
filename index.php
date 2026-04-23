@@ -374,10 +374,10 @@ if ($overlay === 'impressum' || $overlay === 'legal' || $overlay === 'kolofon') 
              WebP als Fallback. srcset liefert auf Mobile ~2 KB statt 40 KB. -->
         <picture>
             <source type="image/avif"
-                    srcset="/images/oliver-eichhof-320.avif 320w, /images/oliver-eichhof-640.avif 640w, /images/oliver-eichhof.avif 960w"
+                    srcset="/images/oliver-eichhof-320.avif 320w, /images/oliver-eichhof-640.avif 640w, /images/oliver-eichhof.avif 920w"
                     sizes="(max-width: 768px) 140px, 160px">
             <source type="image/webp"
-                    srcset="/images/oliver-eichhof-320.webp 320w, /images/oliver-eichhof-640.webp 640w, /images/oliver-eichhof.webp 960w"
+                    srcset="/images/oliver-eichhof-320.webp 320w, /images/oliver-eichhof-640.webp 640w, /images/oliver-eichhof.webp 920w"
                     sizes="(max-width: 768px) 140px, 160px">
             <img src="/images/oliver-eichhof.webp"
                  width="160" height="160"
