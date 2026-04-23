@@ -231,10 +231,27 @@ body {
     cursor: pointer;
     opacity: var(--toggle-opacity);
     transition: opacity 0.3s ease, transform 0.2s ease;
-    padding: 4px 2px;
-    min-width: 22px;
     text-align: center;
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Trigger ist pixel-gleich zum Theme-Toggle-Button (44×44). Dadurch liegt
+   der Text-Mittelpunkt bei ~42px vom linken Rand — identisch mit dem
+   Sonnen-/Mond-Icon-Mittelpunkt rechts. Ohne diese Angleichung würde der
+   kleinere Text-Button optisch näher an der Ecke kleben. */
+.lang-switcher-current {
+    width: 44px;
+    height: 44px;
+    padding: 0;
+}
+
+/* Menu-Links dürfen kompakter sein — sie tauchen nur bei Hover/Tap auf
+   und sollen das Menü nicht auseinanderziehen. */
+.lang-switcher-link {
+    padding: 6px 4px;
+    min-width: 32px;
 }
 
 .lang-switcher-current:hover,
@@ -252,18 +269,20 @@ body {
     border-radius: 4px;
 }
 
-/* Menü-Container. Absolut unter dem Trigger, collapsed per default. */
+/* Menü-Container. Absolut unter dem Trigger, collapsed per default.
+   Negatives top zieht das Menü ein Stück in den Trigger rein, damit die
+   Hover-Zone kontinuierlich bleibt und die Maus nicht auf einen Gap trifft. */
 .lang-switcher-menu {
     position: absolute;
-    top: 100%;
+    top: calc(100% - 4px);
     left: 50%;
     transform: translateX(-50%) translateY(-4px);
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 2px;
+    gap: 4px;
     margin: 0;
-    padding: 2px 0 0;
+    padding: 0;
     list-style: none;
 
     max-height: 0;
@@ -276,7 +295,7 @@ body {
 /* Expanded — :hover (Desktop), :focus-within (Tastatur), data-expanded (JS). */
 @media (hover: hover) {
     .lang-switcher:hover .lang-switcher-menu {
-        max-height: 120px;
+        max-height: 160px;
         opacity: 1;
         pointer-events: auto;
         transform: translateX(-50%) translateY(0);
@@ -285,7 +304,7 @@ body {
 
 .lang-switcher:focus-within .lang-switcher-menu,
 .lang-switcher[data-expanded="true"] .lang-switcher-menu {
-    max-height: 120px;
+    max-height: 160px;
     opacity: 1;
     pointer-events: auto;
     transform: translateX(-50%) translateY(0);
@@ -974,10 +993,18 @@ html.dark-mode .overlay-content::-webkit-scrollbar-thumb:hover {
         right: 15px;
     }
 
-    .lang-switcher-current,
+    /* Trigger behält 44×44 (Parität zum Theme-Toggle). Menu-Links dagegen
+       bekommen auf Touch mehr Luft: größere Tap-Fläche und sichtbarer
+       Abstand zwischen DE/EN/DK, damit man nicht versehentlich daneben
+       tippt. */
     .lang-switcher-link {
-        font-size: 12px;
-        min-width: 20px;
+        padding: 10px 8px;
+        min-width: 40px;
+        font-size: 13px;
+    }
+
+    .lang-switcher-menu {
+        gap: 6px;
     }
 
     .theme-toggle-btn {
