@@ -275,8 +275,9 @@ if ($routeKey === 'contact') $openOverlay = 'contact';
 <body data-lang="<?= $lang ?>"<?= $openOverlay ? ' data-overlay="' . $openOverlay . '"' : '' ?>>
     <a href="#main" class="skip-link"><?= $e($m['skipLink']) ?></a>
     <main id="main">
-    <!-- Top-Right-Controls (Sprachwähler + Theme-Toggle) -->
-    <?php include __DIR__ . '/includes/top-right-controls.php'; ?>
+    <!-- Sprachwähler (oben links) und Theme-Toggle (oben rechts) -->
+    <?php include __DIR__ . '/includes/lang-switcher.php'; ?>
+    <?php include __DIR__ . '/includes/theme-toggle.php'; ?>
 
     <!-- Main Content Container -->
     <div class="container">
@@ -471,6 +472,7 @@ if ($routeKey === 'contact') $openOverlay = 'contact';
 
     <!-- JavaScript Modules -->
     <script src="<?= asset('/js/theme.js') ?>" defer></script>
+    <script src="<?= asset('/js/lang-switcher.js') ?>" defer></script>
     <script src="<?= asset('/js/language.js') ?>" defer></script>
     <script src="<?= asset('/js/overlay.js') ?>" defer></script>
     <script src="<?= asset('/js/contact.js') ?>" defer></script>

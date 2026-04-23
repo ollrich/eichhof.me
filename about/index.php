@@ -197,8 +197,9 @@ $routeKey = 'about';
 <body>
     <a href="#main" class="skip-link"><?= $e($m['skipLink']) ?></a>
 
-    <!-- Top-Right-Controls (Sprachwähler + Theme-Toggle) -->
-    <?php include __DIR__ . '/../includes/top-right-controls.php'; ?>
+    <!-- Sprachwähler (oben links) und Theme-Toggle (oben rechts) -->
+    <?php include __DIR__ . '/../includes/lang-switcher.php'; ?>
+    <?php include __DIR__ . '/../includes/theme-toggle.php'; ?>
 
     <main id="main" class="grounding-page">
         <a href="<?= $m['homeUrl'] ?>" class="grounding-back">&larr; <?= $e($m['backText']) ?></a>
@@ -351,6 +352,7 @@ $routeKey = 'about';
 
     <script src="<?= asset('/js/grounding-email.js') ?>" defer></script>
     <script src="<?= asset('/js/theme.js') ?>" defer></script>
+    <script src="<?= asset('/js/lang-switcher.js') ?>" defer></script>
     <script src="<?= asset('/js/overlay.js') ?>" defer></script>
 </body>
 </html>

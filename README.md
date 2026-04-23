@@ -13,7 +13,7 @@ Built with AI assistance as an exploration of modern web development practices. 
 
 ### Highlights
 
-- 🌐 Multilingual (DE/EN/DA) with clean URLs (/en/, /dk/), automatic browser language detection, and a top-right language switcher
+- 🌐 Multilingual (DE/EN/DA) with clean URLs (/en/, /dk/), automatic browser language detection, and a top-left disclosure language switcher (hover/tap to reveal the other two languages)
 - 🎨 Dark mode with system preference support
 - 🔒 Privacy-first: no cookies, no tracking, no analytics
 - 📬 Contact form with spam protection (honeypot, rate limiting, time-based checks)
@@ -24,7 +24,7 @@ Built with AI assistance as an exploration of modern web development practices. 
 
 ### Tech
 
-Pure HTML/CSS/JavaScript – no frameworks. Server-side rendered (PHP) for all body texts per language. Uses [Canvas-Confetti](https://github.com/catdad/canvas-confetti) for visual effects and [APIFlash](https://apiflash.com/) for generating link preview screenshots.
+Pure HTML/CSS/JavaScript – no frameworks. Server-side rendered (PHP) for all body texts per language. All translations live in a single PHP array (`includes/config/i18n.php`) shared between server templates and browser-side JS via an inline `<script type="application/json">` block – no duplicated translation tables. Uses [Canvas-Confetti](https://github.com/catdad/canvas-confetti) for visual effects and [APIFlash](https://apiflash.com/) for generating link preview screenshots.
 
 ### Automation
 
@@ -34,9 +34,19 @@ Every push to `main` automatically updates the sitemap's `<lastmod>` date via Gi
 
 ```
 eichhof.me/
-├── index.php               # Main entry (multilingual routing, dynamic meta tags)
+├── index.php               # Main entry (multilingual routing, Accept-Language 302, meta tags)
 ├── about/
-│   └── index.php           # Standalone grounding page (crawlable, styled)
+│   └── index.php           # Grounding page (crawlable, styled) — consumes i18n.php
+├── includes/
+│   ├── config/
+│   │   ├── i18n.php        # Single source of truth for all translations (DE/EN/DA + routes)
+│   │   └── person.php      # Shared schema.org Person data (sameAs, subjectOf)
+│   ├── lang-switcher.php   # Top-left disclosure menu (current lang as trigger)
+│   ├── theme-toggle.php    # Top-right dark/light toggle
+│   ├── overlays/           # Impressum/Privacy/Contact modal partials
+│   ├── head-favicons.php   # Favicon <link> block
+│   ├── theme-init.php      # Inline no-flash theme bootstrap
+│   └── asset.php           # filemtime()-based cache-busting helper
 ├── .htaccess               # URL rewrites (/en/, /dk/, /ueber, /en/about, /dk/om, etc.)
 ├── robots.txt              # Crawler rules
 ├── sitemap.xml             # Multilingual sitemap with hreflang
@@ -45,7 +55,8 @@ eichhof.me/
 │   └── styles.css          # All styles (variables, themes, components)
 ├── js/
 │   ├── theme.js            # Dark mode toggle
-│   ├── language.js         # Language helper (inline i18n JSON, email fill, overlay routing)
+│   ├── lang-switcher.js    # Disclosure-menu toggle (aria-expanded, outside-click, Escape)
+│   ├── language.js         # Reads inline i18n JSON; email fill, overlay routing, ?lang= cleanup
 │   ├── overlay.js          # Legal notice modal
 │   ├── contact.js          # Contact form modal + AJAX
 │   ├── easter-egg.js       # Animations + confetti
@@ -88,7 +99,7 @@ Mit KI-Unterstützung gebaut als Exploration moderner Webentwicklung. Der Code i
 
 ### Highlights
 
-- 🌐 Mehrsprachig (DE/EN/DA) mit Clean URLs (/en/, /dk/), automatischer Browser-Spracherkennung und Sprachwähler oben rechts
+- 🌐 Mehrsprachig (DE/EN/DA) mit Clean URLs (/en/, /dk/), automatischer Browser-Spracherkennung und Disclosure-Sprachwähler oben links (Hover/Tap blendet die anderen zwei Sprachen ein)
 - 🎨 Dark Mode mit System-Präferenz-Unterstützung
 - 🔒 Privacy-First: keine Cookies, kein Tracking, keine Analytik
 - 📬 Kontaktformular mit Spam-Schutz (Honeypot, Rate Limiting, Zeitprüfung)
@@ -99,7 +110,7 @@ Mit KI-Unterstützung gebaut als Exploration moderner Webentwicklung. Der Code i
 
 ### Technik
 
-Pures HTML/CSS/JavaScript – keine Frameworks. Server-Side Rendering (PHP) für alle Body-Texte je Sprache. Nutzt [Canvas-Confetti](https://github.com/catdad/canvas-confetti) für visuelle Effekte und [APIFlash](https://apiflash.com/) für Link-Preview-Screenshots.
+Pures HTML/CSS/JavaScript – keine Frameworks. Server-Side Rendering (PHP) für alle Body-Texte je Sprache. Alle Übersetzungen liegen in einem einzigen PHP-Array (`includes/config/i18n.php`), das sich Server-Templates und Browser-JS über einen Inline-`<script type="application/json">`-Block teilen – keine doppelten Übersetzungs-Tabellen. Nutzt [Canvas-Confetti](https://github.com/catdad/canvas-confetti) für visuelle Effekte und [APIFlash](https://apiflash.com/) für Link-Preview-Screenshots.
 
 ### Automatisierung
 
@@ -118,7 +129,7 @@ Bygget med AI-assistance som en udforskning af moderne webudvikling. Koden er op
 
 ### Highlights
 
-- 🌐 Flersproget (DE/EN/DA) med clean URLs (/en/, /dk/), automatisk browser-sprogdetektering og sprogskifter øverst til højre
+- 🌐 Flersproget (DE/EN/DA) med clean URLs (/en/, /dk/), automatisk browser-sprogdetektering og disclosure-sprogskifter øverst til venstre (hover/tap viser de to andre sprog)
 - 🎨 Dark mode med systempræference-support
 - 🔒 Privacy-first: ingen cookies, ingen tracking, ingen analytics
 - 📬 Kontaktformular med spam-beskyttelse (honeypot, rate limiting, tidscheck)
@@ -129,7 +140,7 @@ Bygget med AI-assistance som en udforskning af moderne webudvikling. Koden er op
 
 ### Teknik
 
-Ren HTML/CSS/JavaScript – ingen frameworks. Server-side rendering (PHP) for alle body-tekster per sprog. Bruger [Canvas-Confetti](https://github.com/catdad/canvas-confetti) til visuelle effekter og [APIFlash](https://apiflash.com/) til link-preview screenshots.
+Ren HTML/CSS/JavaScript – ingen frameworks. Server-side rendering (PHP) for alle body-tekster per sprog. Alle oversættelser ligger i ét PHP-array (`includes/config/i18n.php`), som server-templates og browser-JS deler via en inline `<script type="application/json">`-blok – ingen duplikerede oversættelsestabeller. Bruger [Canvas-Confetti](https://github.com/catdad/canvas-confetti) til visuelle effekter og [APIFlash](https://apiflash.com/) til link-preview screenshots.
 
 ### Automatisering
 

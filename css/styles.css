@@ -198,41 +198,26 @@ body {
 }
 
 /* ========================================
-   TOP-RIGHT-CONTROLS (Sprachwähler + Theme-Toggle)
+   LANGUAGE SWITCHER (top-left) als Disclosure-Menü
    ========================================
-   Fixed-Wrapper oben rechts. Enthält links den Sprachwähler (DE/EN/DK)
-   und rechts daneben den Theme-Toggle (Sonne/Mond). Früher hatte
-   .theme-toggle selbst die Fixed-Position — jetzt sitzt sie am Wrapper,
-   damit beide Controls als eine Gruppe ausgerichtet werden.
+   Zeigt standardmässig nur die aktuelle Sprache als Button-Trigger.
+   Auf :hover (Desktop), :focus-within (Tastatur) oder
+   [data-expanded="true"] (JS für Mobile-Tap) slidet das Menü mit den
+   beiden anderen Sprachen darunter auf. Alle drei Trigger feuern
+   dieselbe CSS-Regel — Maus/Tastatur/Touch-Parität.
+
+   Absichtlich KEINE aktive-State-Markierung: der Trigger sieht genauso
+   aus wie die Menü-Items, damit die drei Buchstaben visuell gleich
+   wirken — wie Sonne/Mond beim Theme-Toggle auf der anderen Seite.
 */
-.top-right-controls {
+.lang-switcher {
     position: fixed;
     top: 20px;
-    right: 20px;
+    left: 20px;
     z-index: 1000;
-    display: flex;
-    align-items: center;
-    gap: 12px;
 }
 
-/* Theme-Toggle läuft jetzt als Flex-Item im Wrapper. Die Absolut-
-   Positionierung des Tooltips relativ zum Button bleibt unberührt. */
-.top-right-controls .theme-toggle {
-    position: static;
-    top: auto;
-    right: auto;
-}
-
-/* Sprachwähler: drei gleich aussehende Textlinks. Bewusst KEINE
-   aktive-State-Markierung (kein fett, keine Farbe, keine Unterstreichung)
-   — die drei Buchstaben sollen sich visuell nicht voneinander abheben,
-   genauso wie die Sonne und der Mond im Theme-Toggle. */
-.lang-switcher {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-}
-
+.lang-switcher-current,
 .lang-switcher-link {
     font-family: inherit;
     font-size: 13px;
@@ -241,32 +226,81 @@ body {
     line-height: 1;
     color: inherit;
     text-decoration: none;
+    background: none;
+    border: none;
+    cursor: pointer;
     opacity: var(--toggle-opacity);
     transition: opacity 0.3s ease, transform 0.2s ease;
     padding: 4px 2px;
-    min-width: 18px;
+    min-width: 22px;
     text-align: center;
+    display: block;
 }
 
+.lang-switcher-current:hover,
+.lang-switcher-current:focus-visible,
 .lang-switcher-link:hover,
 .lang-switcher-link:focus-visible {
     opacity: var(--toggle-hover);
     transform: scale(1.1);
 }
 
+.lang-switcher-current:focus-visible,
 .lang-switcher-link:focus-visible {
     outline: 2px solid rgba(255, 255, 255, 0.5);
     outline-offset: 3px;
     border-radius: 4px;
 }
 
+/* Menü-Container. Absolut unter dem Trigger, collapsed per default. */
+.lang-switcher-menu {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-4px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    margin: 0;
+    padding: 2px 0 0;
+    list-style: none;
+
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transition: max-height 0.25s ease, opacity 0.2s ease, transform 0.2s ease;
+}
+
+/* Expanded — :hover (Desktop), :focus-within (Tastatur), data-expanded (JS). */
+@media (hover: hover) {
+    .lang-switcher:hover .lang-switcher-menu {
+        max-height: 120px;
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateX(-50%) translateY(0);
+    }
+}
+
+.lang-switcher:focus-within .lang-switcher-menu,
+.lang-switcher[data-expanded="true"] .lang-switcher-menu {
+    max-height: 120px;
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(-50%) translateY(0);
+}
+
 /* ========================================
-   THEME TOGGLE BUTTON
+   THEME TOGGLE BUTTON (top-right)
    ========================================
-   Button im top-right-controls-Wrapper. Wechselt zwischen Dark und Light.
+   Fixed oben rechts, Gegenstück zum Sprachwähler auf der linken Seite.
 */
 .theme-toggle {
-    position: relative;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
 }
 
 .theme-toggle-btn {
@@ -930,19 +964,20 @@ html.dark-mode .overlay-content::-webkit-scrollbar-thumb:hover {
    RESPONSIVE - TABLET
    ======================================== */
 @media (max-width: 768px) {
-    .top-right-controls {
+    .lang-switcher {
+        top: 15px;
+        left: 15px;
+    }
+
+    .theme-toggle {
         top: 15px;
         right: 15px;
-        gap: 8px;
     }
 
-    .lang-switcher {
-        gap: 4px;
-    }
-
+    .lang-switcher-current,
     .lang-switcher-link {
         font-size: 12px;
-        min-width: 16px;
+        min-width: 20px;
     }
 
     .theme-toggle-btn {
