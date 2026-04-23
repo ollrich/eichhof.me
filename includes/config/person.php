@@ -25,6 +25,7 @@ return [
         'https://www.youtube.com/@schongeilDE',
         'https://bandcamp.com/livic',
         'https://unsplash.com/@ollrich',
+        'https://sifa.id/p/ollri.ch',
     ],
     'subjectOf' => [
         ['@type' => 'Article', 'url' => 'https://www.testspiel.de/oliver-polak-interview-2/290215/'],
