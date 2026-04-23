@@ -77,7 +77,6 @@ $meta = [
         'legalUrl' => '/impressum',
         'privacyUrl' => '/datenverarbeitung',
         'contactUrl' => '/kontakt',
-        'aboutUrl' => '/ueber',
         'linkedinUrl' => 'https://de.linkedin.com/in/olivereichhof',
         'schema_description' => 'Kommunikationsspezialist aus Hamburg für digitale Markenführung und Zielgruppenanalyse, geprägt von Musikmedien und Streaming.',
         'jobTitle' => 'Leiter Marketing',
@@ -85,13 +84,11 @@ $meta = [
         // Photo
         'photoAlt' => 'Porträt von Oliver Eichhof, Kommunikationsspezialist aus Hamburg',
         // Tagline (HTML)
-        'tagline' => 'Ich arbeite in der Medienbranche und rede im Job gern über gute Kommunikation und was Zielgruppen brauchen. Ab und zu <a href="https://www.schongeil.de/" target="_blank" rel="noopener noreferrer">blogge</a> ich und <a href="https://soundcloud.com/livicxyz" target="_blank" rel="noopener noreferrer">lege</a> Platten auf.',
+        'tagline' => 'Ich arbeite in der Medienbranche und rede im Job gern über gute Kommunikation und was Zielgruppen brauchen. Ab und zu <a href="https://www.schongeil.de/" target="_blank" rel="noopener noreferrer">blogge</a> ich und <a href="https://soundcloud.com/livicxyz" target="_blank" rel="noopener noreferrer">lege</a> Platten auf. Mehr zu <a href="/ueber">meinem Werdegang und meiner Arbeit</a>.',
         // Theme toggle
         'themeDark' => 'Licht aus',
         'themeLight' => 'Licht an',
         'themeToggleLabel' => 'Farbschema wechseln',
-        // About trigger
-        'aboutTriggerLabel' => 'Über mich',
         // Email
         'emailText' => 'E-Mail',
         'emailAriaLabel' => 'E-Mail senden',
@@ -136,7 +133,6 @@ $meta = [
         'legalUrl' => '/en/legal-notice',
         'privacyUrl' => '/en/privacy',
         'contactUrl' => '/en/contact',
-        'aboutUrl' => '/en/about',
         'linkedinUrl' => 'https://www.linkedin.com/in/olivereichhof',
         'schema_description' => 'Communication specialist from Hamburg for digital brand management and audience analysis, shaped by music media and streaming.',
         'jobTitle' => 'Marketing Director',
@@ -144,13 +140,11 @@ $meta = [
         // Photo
         'photoAlt' => 'Portrait of Oliver Eichhof, Communication Specialist from Hamburg',
         // Tagline (HTML)
-        'tagline' => 'I work in media and like talking about good communication and what audiences need. Every now and then I <a href="https://www.schongeil.de/en/" target="_blank" rel="noopener noreferrer">blog</a> and <a href="https://soundcloud.com/livicxyz" target="_blank" rel="noopener noreferrer">spin records</a>.',
+        'tagline' => 'I work in media and like talking about good communication and what audiences need. Every now and then I <a href="https://www.schongeil.de/en/" target="_blank" rel="noopener noreferrer">blog</a> and <a href="https://soundcloud.com/livicxyz" target="_blank" rel="noopener noreferrer">spin records</a>. More on <a href="/en/about">my background and work</a>.',
         // Theme toggle
         'themeDark' => 'Lights off',
         'themeLight' => 'Lights on',
         'themeToggleLabel' => 'Toggle color scheme',
-        // About trigger
-        'aboutTriggerLabel' => 'About me',
         // Email
         'emailText' => 'Email',
         'emailAriaLabel' => 'Send email',
@@ -195,7 +189,6 @@ $meta = [
         'legalUrl' => '/dk/kolofon',
         'privacyUrl' => '/dk/privatlivspolitik',
         'contactUrl' => '/dk/kontakt',
-        'aboutUrl' => '/dk/om',
         'linkedinUrl' => 'https://dk.linkedin.com/in/olivereichhof',
         'schema_description' => 'Kommunikationsspecialist fra Hamborg for digital brandledelse og målgruppeanalyse, formet af musikmedier og streaming.',
         'jobTitle' => 'Marketingchef',
@@ -203,13 +196,11 @@ $meta = [
         // Photo
         'photoAlt' => 'Portræt af Oliver Eichhof, Kommunikationsspecialist fra Hamborg',
         // Tagline (HTML)
-        'tagline' => 'Jeg arbejder i mediebranchen og taler gerne om god kommunikation og hvad målgrupper har brug for. Af og til <a href="https://www.schongeil.de/en/" target="_blank" rel="noopener noreferrer">blogger</a> jeg og <a href="https://soundcloud.com/livicxyz" target="_blank" rel="noopener noreferrer">spiller plader</a>.',
+        'tagline' => 'Jeg arbejder i mediebranchen og taler gerne om god kommunikation og hvad målgrupper har brug for. Af og til <a href="https://www.schongeil.de/en/" target="_blank" rel="noopener noreferrer">blogger</a> jeg og <a href="https://soundcloud.com/livicxyz" target="_blank" rel="noopener noreferrer">spiller plader</a>. Mere om <a href="/dk/om">min baggrund og mit arbejde</a>.',
         // Theme toggle
         'themeDark' => 'Sluk lyset',
         'themeLight' => 'Tænd lyset',
         'themeToggleLabel' => 'Skift farveskema',
-        // About trigger
-        'aboutTriggerLabel' => 'Om mig',
         // Email
         'emailText' => 'E-Mail',
         'emailAriaLabel' => 'Send e-mail',
@@ -370,15 +361,7 @@ if ($overlay === 'impressum' || $overlay === 'legal' || $overlay === 'kolofon') 
              alt="<?= $e($m['photoAlt']) ?>"
              class="profile-photo">
 
-        <h1 class="name">Oliver Eichhof
-            <span class="about-triggers">
-                <a href="<?= $m['aboutUrl'] ?>" class="about-trigger about-trigger-card" id="about-trigger-card" aria-label="<?= $e($m['aboutTriggerLabel']) ?>">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                        <rect x="2" y="4" width="20" height="16" rx="2"/><circle cx="8" cy="11" r="2.5"/><path d="M4 18c0-2 1.5-3 4-3s4 1 4 3"/><line x1="15" y1="9" x2="20" y2="9"/><line x1="15" y1="13" x2="20" y2="13"/>
-                    </svg>
-                </a>
-            </span>
-        </h1>
+        <h1 class="name">Oliver Eichhof</h1>
 
         <!-- Tagline with inline links -->
         <p class="tagline" id="tagline"><?= $m['tagline'] ?></p>

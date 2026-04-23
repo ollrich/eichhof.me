@@ -20,9 +20,9 @@
      * Tagline content for each supported language
      */
     const TAGLINES = {
-        de: 'Ich arbeite in der Medienbranche und rede im Job gern über gute Kommunikation und was Zielgruppen brauchen. Ab und zu <a href="https://www.schongeil.de/" target="_blank" rel="noopener noreferrer">blogge</a> ich und <a href="https://soundcloud.com/livicxyz" target="_blank" rel="noopener noreferrer">lege</a> Platten auf.',
-        en: 'I work in media and like talking about good communication and what audiences need. Every now and then I <a href="https://www.schongeil.de/en/" target="_blank" rel="noopener noreferrer">blog</a> and <a href="https://soundcloud.com/livicxyz" target="_blank" rel="noopener noreferrer">spin records</a>.',
-        da: 'Jeg arbejder i mediebranchen og taler gerne om god kommunikation og hvad målgrupper har brug for. Af og til <a href="https://www.schongeil.de/en/" target="_blank" rel="noopener noreferrer">blogger</a> jeg og <a href="https://soundcloud.com/livicxyz" target="_blank" rel="noopener noreferrer">spiller plader</a>.'
+        de: 'Ich arbeite in der Medienbranche und rede im Job gern über gute Kommunikation und was Zielgruppen brauchen. Ab und zu <a href="https://www.schongeil.de/" target="_blank" rel="noopener noreferrer">blogge</a> ich und <a href="https://soundcloud.com/livicxyz" target="_blank" rel="noopener noreferrer">lege</a> Platten auf. Mehr zu <a href="/ueber">meinem Werdegang und meiner Arbeit</a>.',
+        en: 'I work in media and like talking about good communication and what audiences need. Every now and then I <a href="https://www.schongeil.de/en/" target="_blank" rel="noopener noreferrer">blog</a> and <a href="https://soundcloud.com/livicxyz" target="_blank" rel="noopener noreferrer">spin records</a>. More on <a href="/en/about">my background and work</a>.',
+        da: 'Jeg arbejder i mediebranchen og taler gerne om god kommunikation og hvad målgrupper har brug for. Af og til <a href="https://www.schongeil.de/en/" target="_blank" rel="noopener noreferrer">blogger</a> jeg og <a href="https://soundcloud.com/livicxyz" target="_blank" rel="noopener noreferrer">spiller plader</a>. Mere om <a href="/dk/om">min baggrund og mit arbejde</a>.'
     };
 
     /**
@@ -67,8 +67,7 @@
             contactErrorRateLimit: "Zu viele Anfragen. Bitte warte einige Minuten.",
             contactErrorTimeout: "Zeitüberschreitung. Bitte prüfe deine Verbindung und versuche es erneut.",
             contactPrivacy: "Deine Daten werden nur zur Beantwortung verwendet. Zur Spam-Abwehr wird deine IP temporär verarbeitet, aber nicht gespeichert.",
-            contactFallback: "Oder direkt per E-Mail:",
-            aboutTriggerLabel: "Über mich"
+            contactFallback: "Oder direkt per E-Mail:"
         },
         en: {
             title: "Legal Notice",
@@ -108,8 +107,7 @@
             contactErrorRateLimit: "Too many requests. Please wait a few minutes.",
             contactErrorTimeout: "Request timed out. Please check your connection and try again.",
             contactPrivacy: "Your data will only be used to respond. Your IP is temporarily processed for spam protection but not stored.",
-            contactFallback: "Or email directly:",
-            aboutTriggerLabel: "About me"
+            contactFallback: "Or email directly:"
         },
         da: {
             title: "Kolofon",
@@ -149,8 +147,7 @@
             contactErrorRateLimit: "For mange anmodninger. Vent venligst et par minutter.",
             contactErrorTimeout: "Forespørgslen fik timeout. Tjek din forbindelse og prøv igen.",
             contactPrivacy: "Dine data bruges kun til at besvare. Din IP behandles midlertidigt til spam-beskyttelse, men gemmes ikke.",
-            contactFallback: "Eller send e-mail direkte:",
-            aboutTriggerLabel: "Om mig"
+            contactFallback: "Eller send e-mail direkte:"
         }
     };
 
@@ -305,9 +302,6 @@
             contactEmailLink.textContent = contactFallbackEmail;
             contactEmailLink.href = 'mailto:' + contactFallbackEmail;
         }
-
-        // Update about trigger
-        updateAttr('about-trigger-card', 'aria-label', content.aboutTriggerLabel);
     }
 
     /**
