@@ -35,6 +35,7 @@ $meta = [
         'homeLocation' => 'Hamburg, Deutschland',
         'occupationName' => 'Leiter Marketing',
         'occupationLocation' => 'Hamburg, Deutschland',
+        'breadcrumbLabel' => 'Über mich',
         'knowsAbout' => '["Marketing", "Markenentwicklung", "Zielgruppenanalyse", "Kampagnenplanung", "Kommunikationsstrategie", "Content-Strategie", "Digitale Kommunikation", "Employer Branding", "B2B-Kommunikation", "Journey Design", "KPI-Frameworks", "GEO/SEO/SEA", "Marketing Automation", "KI-gestützte Workflows", "Radio", "Audio", "Streaming Media", "Musik", "Musikmedien", "Bloggen"]',
         // UI
         'backText' => 'Zurück zur Hauptseite',
@@ -138,6 +139,7 @@ $meta = [
         'homeLocation' => 'Hamburg, Germany',
         'occupationName' => 'Marketing Director',
         'occupationLocation' => 'Hamburg, Germany',
+        'breadcrumbLabel' => 'About me',
         'knowsAbout' => '["Marketing", "Brand Development", "Audience Analysis", "Campaign Planning", "Communication Strategy", "Content Strategy", "Digital Communication", "Employer Branding", "B2B Communication", "Journey Design", "KPI Frameworks", "GEO/SEO/SEA", "Marketing Automation", "AI-powered Workflows", "Radio", "Audio", "Streaming Media", "Music", "Music Media", "Blogging"]',
         // UI
         'backText' => 'Back to main page',
@@ -241,6 +243,7 @@ $meta = [
         'homeLocation' => 'Hamborg, Tyskland',
         'occupationName' => 'Marketingchef',
         'occupationLocation' => 'Hamborg, Tyskland',
+        'breadcrumbLabel' => 'Om mig',
         'knowsAbout' => '["Marketing", "Brandudvikling", "Målgruppeanalyse", "Kampagneplanlægning", "Kommunikationsstrategi", "Content-strategi", "Digital kommunikation", "Employer branding", "B2B-kommunikation", "Journey design", "KPI-frameworks", "GEO/SEO/SEA", "Marketing automation", "AI-drevne workflows", "Radio", "Audio", "Streaming media", "Musik", "Musikmedier", "Blogging"]',
         // UI
         'backText' => 'Tilbage til hovedsiden',
@@ -389,47 +392,85 @@ require_once __DIR__ . '/../includes/asset.php';
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
-        "@type": "Person",
-        "@id": "https://eichhof.me/#person",
-        "mainEntityOfPage": {
-            "@type": "WebPage",
-            "@id": "<?= $m['canonical'] ?>",
-            "datePublished": "2026-02-19",
-            "dateModified": "<?= $person['dateModified'] ?>"
-        },
-        "name": "Oliver Eichhof",
-        "givenName": "Oliver",
-        "familyName": "Eichhof",
-        "url": "https://eichhof.me/",
-        "image": "https://eichhof.me/images/oliver-eichhof.webp",
-        "jobTitle": "<?= $e($m['jobTitle']) ?>",
-        "description": "<?= $e($m['personDescription']) ?>",
-        "inLanguage": "<?= $m['inLanguage'] ?>",
-        "birthPlace": { "@type": "Place", "name": "<?= $e($m['birthPlace']) ?>" },
-        "birthDate": "1979",
-        "homeLocation": { "@type": "Place", "name": "<?= $e($m['homeLocation']) ?>" },
-        "nationality": { "@type": "Country", "name": "<?= $e($m['nationality']) ?>" },
-        "knowsLanguage": ["de", "en", "da"],
-        "knowsAbout": <?= $m['knowsAbout'] ?>,
-        "worksFor": {
-            "@type": "Organization",
-            "name": "REGIOCAST GmbH & Co. KG",
-            "url": "https://www.regiocast.de/"
-        },
-        "alumniOf": [
-            { "@type": "EducationalOrganization", "name": "Hochschule Bremerhaven" },
-            { "@type": "EducationalOrganization", "name": "KLA Bremerhaven" },
-            { "@type": "EducationalOrganization", "name": "Kreishandwerkerschaft Bremerhaven" }
-        ],
-        "hasOccupation": [
+        "@graph": [
             {
-                "@type": "Occupation",
-                "name": "<?= $e($m['occupationName']) ?>",
-                "occupationLocation": { "@type": "Place", "name": "<?= $e($m['occupationLocation']) ?>" }
+                "@type": "WebSite",
+                "@id": "https://eichhof.me/#website",
+                "url": "https://eichhof.me/",
+                "name": "Oliver Eichhof",
+                "inLanguage": ["de", "en", "da"],
+                "publisher": { "@id": "https://eichhof.me/#person" }
+            },
+            {
+                "@type": "WebPage",
+                "@id": "<?= $m['canonical'] ?>#webpage",
+                "url": "<?= $m['canonical'] ?>",
+                "name": "<?= $e($m['title']) ?>",
+                "description": "<?= $e($m['description']) ?>",
+                "inLanguage": "<?= $m['inLanguage'] ?>",
+                "isPartOf": { "@id": "https://eichhof.me/#website" },
+                "about": { "@id": "https://eichhof.me/#person" },
+                "breadcrumb": { "@id": "<?= $m['canonical'] ?>#breadcrumbs" },
+                "primaryImageOfPage": "https://eichhof.me/images/oliver-eichhof.webp",
+                "datePublished": "2026-02-19",
+                "dateModified": "<?= $person['dateModified'] ?>"
+            },
+            {
+                "@type": "BreadcrumbList",
+                "@id": "<?= $m['canonical'] ?>#breadcrumbs",
+                "itemListElement": [
+                    {
+                        "@type": "ListItem",
+                        "position": 1,
+                        "name": "Oliver Eichhof",
+                        "item": "<?= $m['homeUrl'] ?>"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 2,
+                        "name": "<?= $e($m['breadcrumbLabel']) ?>",
+                        "item": "<?= $m['canonical'] ?>"
+                    }
+                ]
+            },
+            {
+                "@type": "Person",
+                "@id": "https://eichhof.me/#person",
+                "name": "Oliver Eichhof",
+                "givenName": "Oliver",
+                "familyName": "Eichhof",
+                "url": "https://eichhof.me/",
+                "image": "https://eichhof.me/images/oliver-eichhof.webp",
+                "jobTitle": "<?= $e($m['jobTitle']) ?>",
+                "description": "<?= $e($m['personDescription']) ?>",
+                "birthPlace": { "@type": "Place", "name": "<?= $e($m['birthPlace']) ?>" },
+                "birthDate": "1979",
+                "homeLocation": { "@type": "Place", "name": "<?= $e($m['homeLocation']) ?>" },
+                "nationality": { "@type": "Country", "name": "<?= $e($m['nationality']) ?>" },
+                "knowsLanguage": ["de", "en", "da"],
+                "knowsAbout": <?= $m['knowsAbout'] ?>,
+                "worksFor": {
+                    "@type": "Organization",
+                    "name": "REGIOCAST GmbH & Co. KG",
+                    "url": "https://www.regiocast.de/"
+                },
+                "alumniOf": [
+                    { "@type": "EducationalOrganization", "name": "Hochschule Bremerhaven" },
+                    { "@type": "EducationalOrganization", "name": "KLA Bremerhaven" },
+                    { "@type": "EducationalOrganization", "name": "Kreishandwerkerschaft Bremerhaven" }
+                ],
+                "hasOccupation": [
+                    {
+                        "@type": "Occupation",
+                        "name": "<?= $e($m['occupationName']) ?>",
+                        "occupationLocation": { "@type": "Place", "name": "<?= $e($m['occupationLocation']) ?>" }
+                    }
+                ],
+                "sameAs": <?= json_encode($person['sameAs'], JSON_UNESCAPED_SLASHES) ?>,
+                "subjectOf": <?= json_encode($person['subjectOf'], JSON_UNESCAPED_SLASHES) ?>,
+                "mainEntityOfPage": { "@id": "<?= $m['canonical'] ?>#webpage" }
             }
-        ],
-        "sameAs": <?= json_encode($person['sameAs'], JSON_UNESCAPED_SLASHES) ?>,
-        "subjectOf": <?= json_encode($person['subjectOf'], JSON_UNESCAPED_SLASHES) ?>
+        ]
     }
     </script>
 </head>

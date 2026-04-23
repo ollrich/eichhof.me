@@ -305,32 +305,51 @@ if ($overlay === 'impressum' || $overlay === 'legal' || $overlay === 'kolofon') 
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
-        "@type": "Person",
-        "@id": "https://eichhof.me/#person",
-        "mainEntityOfPage": {
-            "@type": "WebPage",
-            "@id": "<?= $m['url'] ?>",
-            "datePublished": "2026-01-22",
-            "dateModified": "<?= $person['dateModified'] ?>"
-        },
-        "name": "Oliver Eichhof",
-        "givenName": "Oliver",
-        "familyName": "Eichhof",
-        "url": "https://eichhof.me/",
-        "image": "https://eichhof.me/images/oliver-eichhof.webp",
-        "jobTitle": "<?= $e($m['jobTitle']) ?>",
-        "description": "<?= $e($m['schema_description']) ?>",
-        "inLanguage": "<?= $m['lang'] ?>",
-        "knowsAbout": <?= $m['knowsAbout'] ?>,
-        "homeLocation": { "@type": "Place", "name": "Hamburg" },
-        "birthPlace": { "@type": "Place", "name": "Bremerhaven" },
-        "worksFor": {
-            "@type": "Organization",
-            "name": "REGIOCAST GmbH & Co. KG",
-            "url": "https://www.regiocast.de/"
-        },
-        "sameAs": <?= json_encode($person['sameAs'], JSON_UNESCAPED_SLASHES) ?>,
-        "subjectOf": <?= json_encode($person['subjectOf'], JSON_UNESCAPED_SLASHES) ?>
+        "@graph": [
+            {
+                "@type": "WebSite",
+                "@id": "https://eichhof.me/#website",
+                "url": "https://eichhof.me/",
+                "name": "Oliver Eichhof",
+                "inLanguage": ["de", "en", "da"],
+                "publisher": { "@id": "https://eichhof.me/#person" }
+            },
+            {
+                "@type": "WebPage",
+                "@id": "<?= $m['url'] ?>#webpage",
+                "url": "<?= $m['url'] ?>",
+                "name": "<?= $e($m['title']) ?>",
+                "description": "<?= $e($m['description']) ?>",
+                "inLanguage": "<?= $m['lang'] ?>",
+                "isPartOf": { "@id": "https://eichhof.me/#website" },
+                "about": { "@id": "https://eichhof.me/#person" },
+                "primaryImageOfPage": "https://eichhof.me/images/oliver-eichhof.webp",
+                "datePublished": "2026-01-22",
+                "dateModified": "<?= $person['dateModified'] ?>"
+            },
+            {
+                "@type": "Person",
+                "@id": "https://eichhof.me/#person",
+                "name": "Oliver Eichhof",
+                "givenName": "Oliver",
+                "familyName": "Eichhof",
+                "url": "https://eichhof.me/",
+                "image": "https://eichhof.me/images/oliver-eichhof.webp",
+                "jobTitle": "<?= $e($m['jobTitle']) ?>",
+                "description": "<?= $e($m['schema_description']) ?>",
+                "knowsAbout": <?= $m['knowsAbout'] ?>,
+                "homeLocation": { "@type": "Place", "name": "Hamburg" },
+                "birthPlace": { "@type": "Place", "name": "Bremerhaven" },
+                "worksFor": {
+                    "@type": "Organization",
+                    "name": "REGIOCAST GmbH & Co. KG",
+                    "url": "https://www.regiocast.de/"
+                },
+                "sameAs": <?= json_encode($person['sameAs'], JSON_UNESCAPED_SLASHES) ?>,
+                "subjectOf": <?= json_encode($person['subjectOf'], JSON_UNESCAPED_SLASHES) ?>,
+                "mainEntityOfPage": { "@id": "<?= $m['url'] ?>#webpage" }
+            }
+        ]
     }
     </script>
 
