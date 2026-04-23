@@ -9,10 +9,13 @@
  *    overlay.js, link-preview.js) Strings abfragen können — ohne doppelte
  *    Übersetzungs-Tabelle, die auseinanderlaufen kann.
  *
- * 2. Es räumt `?lang=de|en|da` nach dem Sprachwähler-Klick per
- *    history.replaceState aus der URL, damit Bookmarks und Teilen sauber
- *    bleiben. Der Query ist nur ein Redirect-Override beim Seitenaufruf,
- *    danach nicht mehr interessant.
+ * 2. Es räumt `?lang=de` nach dem Sprachwähler-Klick per history.replaceState
+ *    aus der URL, damit Bookmarks und Teilen sauber bleiben. ABER nur, wenn
+ *    die Browsersprache DE ist — bei fremdsprachigen Browsern muss der Query
+ *    stehen bleiben, weil sonst ein Neuladen den Accept-Language-302 in
+ *    index.php triggert, der den User umgehend zurück auf /en/ oder /dk/
+ *    wirft. Der Query ist dann kein Bookmark-Dreck, sondern der Haltegriff
+ *    gegen den Redirect-Loop.
  *
  * 3. Es öffnet serverseitig angeforderte Overlays (data-overlay-Attribut am
  *    <body>) und setzt die Social-Row-Reihenfolge (Mastodon-first für DE).
@@ -80,14 +83,33 @@
     }
 
     /**
-     * ?lang= raus aus der URL, sobald die Seite sichtbar ist. Der Query
-     * war nur ein Override gegen den Accept-Language-302 — weitergeschickt
-     * müsste er nicht werden.
+     * ?lang= raus aus der URL, sobald die Seite sichtbar ist — aber nur,
+     * wenn das sicher ist.
+     *
+     * Knifflig ist nur `?lang=de` auf der DE-Home ("/") aus einem EN-/DA-
+     * Browser: ohne den Query würde das nächste Neuladen über den
+     * Accept-Language-302 in index.php sofort wieder nach /en/ bzw. /dk/
+     * umgeleitet. In diesem Fall ist der Query kein Bookmark-Dreck, sondern
+     * das einzige serverseitige Signal, das den Loop bricht — wir lassen
+     * ihn stehen.
+     *
+     * Alles andere (DE-Browser, oder ?lang=en|da — die vom Server schon
+     * längst wegredirected wurden) räumen wir auf, damit geteilte URLs
+     * sauber bleiben.
      */
     function cleanLangQueryParam() {
         if (!window.history || !window.history.replaceState) return;
         const url = new URL(window.location.href);
         if (!url.searchParams.has('lang')) return;
+
+        const qLang      = url.searchParams.get('lang');
+        const browserLang = ((navigator.language || navigator.userLanguage || '')
+            .slice(0, 2)
+            .toLowerCase());
+        const isBareRoot = url.pathname === '/' || url.pathname === '/index.php';
+
+        if (qLang === 'de' && isBareRoot && browserLang !== 'de') return;
+
         url.searchParams.delete('lang');
         const cleaned = url.pathname + (url.searchParams.toString() ? '?' + url.searchParams.toString() : '') + url.hash;
         window.history.replaceState(null, '', cleaned);
