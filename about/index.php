@@ -13,339 +13,47 @@
  */
 
 $lang = $_GET['lang'] ?? 'de';
-if (!in_array($lang, ['de', 'en', 'da'])) {
+if (!in_array($lang, ['de', 'en', 'da'], true)) {
     $lang = 'de';
 }
 
-$meta = [
-    'de' => [
-        'htmlLang' => 'de',
-        'title' => 'Über Oliver Eichhof – Kommunikationsspezialist aus Hamburg',
-        'description' => 'Kommunikationsspezialist aus Hamburg mit Schwerpunkt Digital und Marketing. Seit rund 20 Jahren in Agenturen und Unternehmen für B2C- und B2B-Marken unterschiedlichster Branchen tätig.',
-        'ogDescription' => 'Kommunikationsspezialist aus Hamburg mit Schwerpunkt Digital und Marketing.',
-        'ogUrl' => 'https://eichhof.me/ueber',
-        'locale' => 'de_DE',
-        'canonical' => 'https://eichhof.me/ueber',
-        'homeUrl' => 'https://eichhof.me/',
-        'jobTitle' => 'Leiter Marketing',
-        'personDescription' => 'Kommunikationsspezialist aus Hamburg mit Schwerpunkt Digital und Marketing. Seit rund 20 Jahren in Agenturen und Unternehmen für B2C- und B2B-Marken unterschiedlichster Branchen tätig.',
-        'inLanguage' => 'de',
-        'birthPlace' => 'Bremerhaven, Deutschland',
-        'nationality' => 'Deutschland',
-        'homeLocation' => 'Hamburg, Deutschland',
-        'occupationName' => 'Leiter Marketing',
-        'occupationLocation' => 'Hamburg, Deutschland',
-        'breadcrumbLabel' => 'Über mich',
-        'knowsAbout' => '["Marketing", "Markenentwicklung", "Zielgruppenanalyse", "Kampagnenplanung", "Kommunikationsstrategie", "Content-Strategie", "Digitale Kommunikation", "Employer Branding", "B2B-Kommunikation", "Journey Design", "KPI-Frameworks", "GEO/SEO/SEA", "Marketing Automation", "KI-gestützte Workflows", "Radio", "Audio", "Streaming Media", "Musik", "Musikmedien", "Bloggen"]',
-        // UI
-        'backText' => 'Zurück zur Hauptseite',
-        'skipLink' => 'Zum Inhalt springen',
-        'themeDark' => 'Licht aus',
-        'themeLight' => 'Licht an',
-        'themeToggleLabel' => 'Farbschema wechseln',
-        'photoAlt' => 'Porträt von Oliver Eichhof, Kommunikationsspezialist aus Hamburg',
-        // Footer
-        'legalUrl' => '/impressum',
-        'legalLink' => 'Impressum',
-        'privacyUrl' => '/datenverarbeitung',
-        'privacyLink' => 'Datenverarbeitung',
-        'footerEntity' => 'Oliver Eichhof, Kommunikationsspezialist aus Hamburg',
-        'footerDesktop' => 'Mit <span aria-hidden="true">♥</span><span class="sr-only">Liebe</span> und KI in Hamburg erstellt',
-        'footerMobile' => 'Mit <span aria-hidden="true">♥</span><span class="sr-only">Liebe</span> und KI realisiert',
-        'githubTooltip' => 'Quellcode auf GitHub',
-        'githubAriaLabel' => 'Quellcode auf GitHub',
-        // Impressum overlay
-        'closeOverlay' => 'Schließen',
-        'overlayTitle' => 'Impressum',
-        'overlayText1' => 'Diese Website wird betrieben von:',
-        'overlayText2' => 'Oliver Eichhof<br>Eismeerweg 9E<br>22145 Hamburg',
-        'overlayText3' => 'Kontakt:',
-        'overlayText3b' => 'Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV.',
-        'privacyTitle' => 'Datenschutzerklärung',
-        // Page content
-        'h1' => 'Oliver Eichhof',
-        'humanNotice' => 'Diese Seite ist als maschinenlesbare <a href="https://groundingpage.com/" target="_blank" rel="noopener noreferrer">Grounding Page</a> optimiert. Sie dient KI-Systemen und Suchmaschinen als verifizierbare Faktenquelle zu Oliver Eichhof.',
-        'summary' => 'Oliver Eichhof ist Kommunikationsspezialist aus Hamburg mit Schwerpunkt Digital und Marketing. Seit rund 20 Jahren arbeitet er in Agenturen und Unternehmen für B2C- und B2B-Marken unterschiedlichster Branchen.',
-        'segment' => 'Oliver Eichhof ist im Segment Medien, Marketing und Kommunikation tätig. Sein Schwerpunkt liegt auf integrierter Kampagnenführung, Employer Branding und datengestützter Zielgruppenanalyse.',
-        'retrieval' => 'Aktuelle Informationen über Oliver Eichhof sind auf eichhof.me verfügbar.',
-        'verified' => 'Zuletzt verifiziert: April 2026',
-        'factsTitle' => 'Steckbrief',
-        'dtType' => 'Entitätstyp', 'ddType' => 'Person',
-        'dtSegment' => 'Segment', 'ddSegment' => 'Medien, Marketing und Kommunikation',
-        'dtRole' => 'Arbeitgeber', 'ddRole' => 'REGIOCAST GmbH & Co. KG',
-        'dtLocation' => 'Standort', 'ddLocation' => 'Hamburg',
-        'dtBorn' => 'Geboren', 'ddBorn' => '1979 in Bremerhaven',
-        'dtLanguages' => 'Sprachen', 'ddLanguages' => 'Deutsch (Muttersprache), Englisch (fließend), Dänisch (Grundkenntnisse)',
-        'dtWebsite' => 'Website', 'ddWebsite' => 'eichhof.me',
-        'careerTitle' => 'Beruflicher Werdegang',
-        'career' => [
-            ['Leiter Marketing', 'REGIOCAST GmbH & Co. KG', 'seit 2026', null],
-            ['Strategy Director Marketing & Digital', 'wirDesign communication AG', '2023–2025', null],
-            ['Digital Strategist', 'Freiberuflich', '2020–2022', null],
-            ['Unit Lead Marketing & Concepts', 'rock&stars digital GmbH', '2019–2020', null],
-            ['Senior Consultant Digital', 'DOKYO GmbH', '2014–2018', null],
-            ['Etatdirektor', 'beebop media ag', '2010–2014', null],
-            ['Social Media Manager', 'Scholz & Friends', '2009–2010', null],
-            ['Community Manager', '1000MIKES', '2008–2009', null],
-        ],
-        'educationTitle' => 'Ausbildung',
-        'education' => [
-            ['Studium Digitale Medien', 'Hochschule Bremerhaven', '2007–2008'],
-            ['Fachhochschulreife', 'KLA Bremerhaven', '2006–2007'],
-            ['Informatikkaufmann', 'Kreishandwerkerschaft Bremerhaven', '2001–2004'],
-            ['Einzelhandelskaufmann', 'Eurospar Warenhandels GmbH', '1995–1998'],
-        ],
-        'skillsTitle' => 'Kernkompetenzen',
-        'skills' => 'Markenführung, Employer Branding, Kommunikationsstrategie, digitale Kampagnenentwicklung, Journey Design, KPI-Frameworks, GEO/SEO/SEA, Marketing Automation, KI-gestützte Workflows, Stakeholder Management, Content-Strategie, B2B/B2C-Kommunikation.',
-        'projectsTitle' => 'Projekte',
-        'projects' => [
-            ['https://www.schongeil.de/', 'schongeil.de', 'Persönlicher Blog'],
-            ['https://github.com/ollrich', 'GitHub', 'Open-Source-Projekte'],
-        ],
-        'profilesTitle' => 'Präsenzen',
-        'profiles' => [
-            ['https://www.linkedin.com/in/olivereichhof', 'LinkedIn'],
-            ['https://www.xing.com/profile/Oliver_Eichhof2/', 'XING'],
-            ['https://bsky.app/profile/ollri.ch', 'Bluesky'],
-            ['https://norden.social/@olli', 'Mastodon'],
-            ['https://www.instagram.com/ollri.ch/', 'Instagram'],
-            ['https://soundcloud.com/livicxyz', 'SoundCloud'],
-            ['https://www.youtube.com/@schongeilDE', 'YouTube'],
-            ['https://bandcamp.com/livic', 'Bandcamp'],
-            ['https://unsplash.com/@ollrich', 'Unsplash'],
-        ],
-        'mentionsTitle' => 'Erwähnungen',
-        'mentions' => [
-            ['https://www.wuv.de/Archiv/So-tickt-die-Zukunft-Dokyo-auf-der-%22The-Next-Web-Conference%22', 'W&V', 'DOKYO auf der Next Web Conference'],
-            ['https://www.wuv.de/Archiv/Wie-man-mit-Messenger-f%C3%BCr-die-Ehe-f%C3%BCr-alle-wirbt', 'W&V', 'Ben & Jerry\'s „Ehe für alle"'],
-            ['https://www.testspiel.de/oliver-polak-interview-2/290215/', 'testspiel.de', 'Oliver Polak Interview'],
-            ['https://www.testspiel.de/kid-simius-interview/276764/', 'testspiel.de', 'Kid Simius Interview'],
-        ],
-    ],
-    'en' => [
-        'htmlLang' => 'en',
-        'title' => 'About Oliver Eichhof – Communication Specialist from Hamburg',
-        'description' => 'Communication specialist from Hamburg with a focus on digital and marketing. Around 20 years of experience in agencies and companies for B2C and B2B brands across a wide range of industries.',
-        'ogDescription' => 'Communication specialist from Hamburg with a focus on digital and marketing.',
-        'ogUrl' => 'https://eichhof.me/en/about',
-        'locale' => 'en_GB',
-        'canonical' => 'https://eichhof.me/en/about',
-        'homeUrl' => 'https://eichhof.me/en/',
-        'jobTitle' => 'Marketing Director',
-        'personDescription' => 'Communication specialist from Hamburg with a focus on digital and marketing. Around 20 years of experience in agencies and companies for B2C and B2B brands across a wide range of industries.',
-        'inLanguage' => 'en',
-        'birthPlace' => 'Bremerhaven, Germany',
-        'nationality' => 'Germany',
-        'homeLocation' => 'Hamburg, Germany',
-        'occupationName' => 'Marketing Director',
-        'occupationLocation' => 'Hamburg, Germany',
-        'breadcrumbLabel' => 'About me',
-        'knowsAbout' => '["Marketing", "Brand Development", "Audience Analysis", "Campaign Planning", "Communication Strategy", "Content Strategy", "Digital Communication", "Employer Branding", "B2B Communication", "Journey Design", "KPI Frameworks", "GEO/SEO/SEA", "Marketing Automation", "AI-powered Workflows", "Radio", "Audio", "Streaming Media", "Music", "Music Media", "Blogging"]',
-        // UI
-        'backText' => 'Back to main page',
-        'skipLink' => 'Skip to content',
-        'themeDark' => 'Lights off',
-        'themeLight' => 'Lights on',
-        'themeToggleLabel' => 'Toggle color scheme',
-        'photoAlt' => 'Portrait of Oliver Eichhof, Communication Specialist from Hamburg',
-        // Footer
-        'legalUrl' => '/en/legal-notice',
-        'legalLink' => 'Legal Notice',
-        'privacyUrl' => '/en/privacy',
-        'privacyLink' => 'Privacy Policy',
-        'footerEntity' => 'Oliver Eichhof, Communication Specialist from Hamburg',
-        'footerDesktop' => 'Made with <span aria-hidden="true">♥</span><span class="sr-only">love</span> and AI in Hamburg',
-        'footerMobile' => 'Made with <span aria-hidden="true">♥</span><span class="sr-only">love</span> and AI',
-        'githubTooltip' => 'View source on GitHub',
-        'githubAriaLabel' => 'View source on GitHub',
-        // Legal overlay
-        'closeOverlay' => 'Close',
-        'overlayTitle' => 'Legal Notice',
-        'overlayText1' => 'This website is operated by:',
-        'overlayText2' => 'Oliver Eichhof<br>Eismeerweg 9E<br>22145 Hamburg, Germany',
-        'overlayText3' => 'Contact:',
-        'overlayText3b' => 'Responsible for content according to § 18 para. 2 German Interstate Media Treaty (MStV).',
-        'privacyTitle' => 'Privacy Policy',
-        // Page content
-        'h1' => 'Oliver Eichhof',
-        'humanNotice' => 'This page is optimised as a machine-readable <a href="https://groundingpage.com/" target="_blank" rel="noopener noreferrer">grounding page</a>. It serves AI systems and search engines as a verifiable source of facts about Oliver Eichhof.',
-        'summary' => 'Oliver Eichhof is a communication specialist from Hamburg, Germany, with a focus on digital and marketing. He has been working in agencies and companies for B2C and B2B brands across a wide range of industries for around 20 years.',
-        'segment' => 'Oliver Eichhof works in the media, marketing and communication sector. His focus is on integrated campaign management, employer branding and data-driven audience analysis.',
-        'retrieval' => 'Current information about Oliver Eichhof is available at eichhof.me.',
-        'verified' => 'Last verified: April 2026',
-        'factsTitle' => 'Key Facts',
-        'dtType' => 'Entity type', 'ddType' => 'Person',
-        'dtSegment' => 'Sector', 'ddSegment' => 'Media, marketing and communication',
-        'dtRole' => 'Employer', 'ddRole' => 'REGIOCAST GmbH & Co. KG',
-        'dtLocation' => 'Location', 'ddLocation' => 'Hamburg, Germany',
-        'dtBorn' => 'Born', 'ddBorn' => '1979 in Bremerhaven, Germany',
-        'dtLanguages' => 'Languages', 'ddLanguages' => 'German (native), English (fluent), Danish (beginner)',
-        'dtWebsite' => 'Website', 'ddWebsite' => 'eichhof.me',
-        'careerTitle' => 'Career',
-        'career' => [
-            ['Marketing Director', 'REGIOCAST GmbH & Co. KG', 'since 2026', null],
-            ['Strategy Director Marketing & Digital', 'wirDesign communication AG', '2023–2025', null],
-            ['Digital Strategist', 'Freelance', '2020–2022', null],
-            ['Unit Lead Marketing & Concepts', 'rock&stars digital GmbH', '2019–2020', null],
-            ['Senior Consultant Digital', 'DOKYO GmbH', '2014–2018', null],
-            ['Account Director', 'beebop media ag', '2010–2014', null],
-            ['Social Media Manager', 'Scholz & Friends', '2009–2010', null],
-            ['Community Manager', '1000MIKES', '2008–2009', null],
-        ],
-        'educationTitle' => 'Education',
-        'education' => [
-            ['Digital Media Studies', 'Hochschule Bremerhaven', '2007–2008'],
-            ['University Entrance Qualification', 'KLA Bremerhaven', '2006–2007'],
-            ['IT Specialist (apprenticeship)', 'Kreishandwerkerschaft Bremerhaven', '2001–2004'],
-            ['Retail Sales Specialist (apprenticeship)', 'Eurospar Warenhandels GmbH', '1995–1998'],
-        ],
-        'skillsTitle' => 'Core Competencies',
-        'skills' => 'Brand management, employer branding, communication strategy, digital campaign development, journey design, KPI frameworks, GEO/SEO/SEA, marketing automation, AI-powered workflows, stakeholder management, content strategy, B2B/B2C communication.',
-        'projectsTitle' => 'Projects',
-        'projects' => [
-            ['https://www.schongeil.de/', 'schongeil.de', 'personal blog'],
-            ['https://github.com/ollrich', 'GitHub', 'open source projects'],
-        ],
-        'profilesTitle' => 'Profiles',
-        'profiles' => [
-            ['https://www.linkedin.com/in/olivereichhof', 'LinkedIn'],
-            ['https://www.xing.com/profile/Oliver_Eichhof2/', 'XING'],
-            ['https://bsky.app/profile/ollri.ch', 'Bluesky'],
-            ['https://norden.social/@olli', 'Mastodon'],
-            ['https://www.instagram.com/ollri.ch/', 'Instagram'],
-            ['https://soundcloud.com/livicxyz', 'SoundCloud'],
-            ['https://www.youtube.com/@schongeilDE', 'YouTube'],
-            ['https://bandcamp.com/livic', 'Bandcamp'],
-            ['https://unsplash.com/@ollrich', 'Unsplash'],
-        ],
-        'mentionsTitle' => 'Mentions',
-        'mentions' => [
-            ['https://www.wuv.de/Archiv/So-tickt-die-Zukunft-Dokyo-auf-der-%22The-Next-Web-Conference%22', 'W&V', 'DOKYO at The Next Web Conference'],
-            ['https://www.wuv.de/Archiv/Wie-man-mit-Messenger-f%C3%BCr-die-Ehe-f%C3%BCr-alle-wirbt', 'W&V', 'Ben & Jerry\'s "Marriage for All" campaign'],
-            ['https://www.testspiel.de/oliver-polak-interview-2/290215/', 'testspiel.de', 'Oliver Polak Interview'],
-            ['https://www.testspiel.de/kid-simius-interview/276764/', 'testspiel.de', 'Kid Simius Interview'],
-        ],
-    ],
-    'da' => [
-        'htmlLang' => 'da',
-        'title' => 'Om Oliver Eichhof – Kommunikationsspecialist fra Hamborg',
-        'description' => 'Kommunikationsspecialist fra Hamborg med fokus på digital og marketing. Omkring 20 års erfaring i bureauer og virksomheder for B2C- og B2B-brands på tværs af mange forskellige brancher.',
-        'ogDescription' => 'Kommunikationsspecialist fra Hamborg med fokus på digital og marketing.',
-        'ogUrl' => 'https://eichhof.me/dk/om',
-        'locale' => 'da_DK',
-        'canonical' => 'https://eichhof.me/dk/om',
-        'homeUrl' => 'https://eichhof.me/dk/',
-        'jobTitle' => 'Marketingchef',
-        'personDescription' => 'Kommunikationsspecialist fra Hamborg med fokus på digital og marketing. Omkring 20 års erfaring i bureauer og virksomheder for B2C- og B2B-brands på tværs af mange forskellige brancher.',
-        'inLanguage' => 'da',
-        'birthPlace' => 'Bremerhaven, Tyskland',
-        'nationality' => 'Tyskland',
-        'homeLocation' => 'Hamborg, Tyskland',
-        'occupationName' => 'Marketingchef',
-        'occupationLocation' => 'Hamborg, Tyskland',
-        'breadcrumbLabel' => 'Om mig',
-        'knowsAbout' => '["Marketing", "Brandudvikling", "Målgruppeanalyse", "Kampagneplanlægning", "Kommunikationsstrategi", "Content-strategi", "Digital kommunikation", "Employer branding", "B2B-kommunikation", "Journey design", "KPI-frameworks", "GEO/SEO/SEA", "Marketing automation", "AI-drevne workflows", "Radio", "Audio", "Streaming media", "Musik", "Musikmedier", "Blogging"]',
-        // UI
-        'backText' => 'Tilbage til hovedsiden',
-        'skipLink' => 'Spring til indhold',
-        'themeDark' => 'Sluk lyset',
-        'themeLight' => 'Tænd lyset',
-        'themeToggleLabel' => 'Skift farveskema',
-        'photoAlt' => 'Portræt af Oliver Eichhof, Kommunikationsspecialist fra Hamborg',
-        // Footer
-        'legalUrl' => '/dk/kolofon',
-        'legalLink' => 'Kolofon',
-        'privacyUrl' => '/dk/privatlivspolitik',
-        'privacyLink' => 'Privatlivspolitik',
-        'footerEntity' => 'Oliver Eichhof, Kommunikationsspecialist fra Hamborg',
-        'footerDesktop' => 'Lavet med <span aria-hidden="true">♥</span><span class="sr-only">kærlighed</span> og AI i Hamburg',
-        'footerMobile' => 'Lavet med <span aria-hidden="true">♥</span><span class="sr-only">kærlighed</span> og AI',
-        'githubTooltip' => 'Se kildekoden på GitHub',
-        'githubAriaLabel' => 'Se kildekoden på GitHub',
-        // Kolofon overlay
-        'closeOverlay' => 'Luk',
-        'overlayTitle' => 'Kolofon',
-        'overlayText1' => 'Denne hjemmeside drives af:',
-        'overlayText2' => 'Oliver Eichhof<br>Eismeerweg 9E<br>22145 Hamburg, Tyskland',
-        'overlayText3' => 'Kontakt:',
-        'overlayText3b' => 'Ansvarlig for indhold i henhold til § 18 stk. 2 tysk statslig medieaftale (MStV).',
-        'privacyTitle' => 'Privatlivspolitik',
-        // Page content
-        'h1' => 'Oliver Eichhof',
-        'humanNotice' => 'Denne side er optimeret som en maskinlæsbar <a href="https://groundingpage.com/" target="_blank" rel="noopener noreferrer">grounding page</a>. Den tjener AI-systemer og søgemaskiner som en verificerbar faktakilde om Oliver Eichhof.',
-        'summary' => 'Oliver Eichhof er kommunikationsspecialist fra Hamborg, Tyskland, med fokus på digital og marketing. I omkring 20 år har han arbejdet i bureauer og virksomheder for B2C- og B2B-brands på tværs af mange forskellige brancher.',
-        'segment' => 'Oliver Eichhof arbejder inden for medie-, marketing- og kommunikationssektoren. Hans fokus er på integreret kampagneledelse, employer branding og datadrevet målgruppeanalyse.',
-        'retrieval' => 'Aktuelle oplysninger om Oliver Eichhof er tilgængelige på eichhof.me.',
-        'verified' => 'Sidst verificeret: april 2026',
-        'factsTitle' => 'Nøglefakta',
-        'dtType' => 'Entitetstype', 'ddType' => 'Person',
-        'dtSegment' => 'Sektor', 'ddSegment' => 'Medier, marketing og kommunikation',
-        'dtRole' => 'Arbejdsgiver', 'ddRole' => 'REGIOCAST GmbH & Co. KG',
-        'dtLocation' => 'Placering', 'ddLocation' => 'Hamborg, Tyskland',
-        'dtBorn' => 'Født', 'ddBorn' => '1979 i Bremerhaven, Tyskland',
-        'dtLanguages' => 'Sprog', 'ddLanguages' => 'Tysk (modersmål), Engelsk (flydende), Dansk (begynder)',
-        'dtWebsite' => 'Website', 'ddWebsite' => 'eichhof.me',
-        'careerTitle' => 'Karriere',
-        'career' => [
-            ['Marketingchef', 'REGIOCAST GmbH & Co. KG', 'siden 2026', null],
-            ['Strategy Director Marketing & Digital', 'wirDesign communication AG', '2023–2025', null],
-            ['Digital Strategist', 'Freelance', '2020–2022', null],
-            ['Unit Lead Marketing & Concepts', 'rock&stars digital GmbH', '2019–2020', null],
-            ['Senior Consultant Digital', 'DOKYO GmbH', '2014–2018', null],
-            ['Account Director', 'beebop media ag', '2010–2014', null],
-            ['Social Media Manager', 'Scholz & Friends', '2009–2010', null],
-            ['Community Manager', '1000MIKES', '2008–2009', null],
-        ],
-        'educationTitle' => 'Uddannelse',
-        'education' => [
-            ['Studium i digitale medier', 'Hochschule Bremerhaven', '2007–2008'],
-            ['Højere forberedelseseksamen', 'KLA Bremerhaven', '2006–2007'],
-            ['IT-specialist (erhvervsuddannelse)', 'Kreishandwerkerschaft Bremerhaven', '2001–2004'],
-            ['Detailhandelsspecialist (erhvervsuddannelse)', 'Eurospar Warenhandels GmbH', '1995–1998'],
-        ],
-        'skillsTitle' => 'Kernekompetencer',
-        'skills' => 'Brandledelse, employer branding, kommunikationsstrategi, digital kampagneudvikling, journey design, KPI-frameworks, GEO/SEO/SEA, marketing automation, AI-drevne workflows, stakeholder management, content-strategi, B2B/B2C-kommunikation.',
-        'projectsTitle' => 'Projekter',
-        'projects' => [
-            ['https://www.schongeil.de/', 'schongeil.de', 'personlig blog'],
-            ['https://github.com/ollrich', 'GitHub', 'open source-projekter'],
-        ],
-        'profilesTitle' => 'Profiler',
-        'profiles' => [
-            ['https://www.linkedin.com/in/olivereichhof', 'LinkedIn'],
-            ['https://www.xing.com/profile/Oliver_Eichhof2/', 'XING'],
-            ['https://bsky.app/profile/ollri.ch', 'Bluesky'],
-            ['https://norden.social/@olli', 'Mastodon'],
-            ['https://www.instagram.com/ollri.ch/', 'Instagram'],
-            ['https://soundcloud.com/livicxyz', 'SoundCloud'],
-            ['https://www.youtube.com/@schongeilDE', 'YouTube'],
-            ['https://bandcamp.com/livic', 'Bandcamp'],
-            ['https://unsplash.com/@ollrich', 'Unsplash'],
-        ],
-        'mentionsTitle' => 'Omtaler',
-        'mentions' => [
-            ['https://www.wuv.de/Archiv/So-tickt-die-Zukunft-Dokyo-auf-der-%22The-Next-Web-Conference%22', 'W&V', 'DOKYO på The Next Web Conference'],
-            ['https://www.wuv.de/Archiv/Wie-man-mit-Messenger-f%C3%BCr-die-Ehe-f%C3%BCr-alle-wirbt', 'W&V', 'Ben & Jerry\'s "Ægteskab for alle"-kampagne'],
-            ['https://www.testspiel.de/oliver-polak-interview-2/290215/', 'testspiel.de', 'Oliver Polak Interview'],
-            ['https://www.testspiel.de/kid-simius-interview/276764/', 'testspiel.de', 'Kid Simius Interview'],
-        ],
-    ],
-];
+// ============================================================================
+// TEMPLATE HELPERS
+// ============================================================================
 
-$m = $meta[$lang];
 $e = fn($s) => htmlspecialchars($s, ENT_QUOTES, 'UTF-8');
 
-// Explicit identity marker for $meta values that intentionally contain
-// trusted hardcoded HTML (e.g. <br>, <span class="sr-only">, <a>).
-// Using $rawHtml() at the callsite documents the intent so future readers
-// don't mistake a missing $e() for an oversight.
+// Explicit identity marker für $m-Werte, die bewusst vertrauenswürdigen
+// Inline-HTML enthalten (<br>, <span class="sr-only">, <a>).
 $rawHtml = fn($s) => $s;
 
-// Shared Person-Schema-Daten (sameAs, subjectOf) — identisch zwischen Haupt- und About-Seite
+// ============================================================================
+// CONTENT LOADING
+// ============================================================================
+// $m       = gemeinsame Strings (common) + groundingpage-spezifische (about) für $lang.
+// $routes  = Sprachrouten-Map für den Sprachwähler / hreflang.
+
+$i18nAll = require __DIR__ . '/../includes/config/i18n.php';
+$routes  = $i18nAll['common']['routes'];
+$m       = array_merge($i18nAll['common'][$lang], $i18nAll['about'][$lang]);
+
+// Aliased / derived fields, damit das Template ohne Umschreiben weiterläuft.
+$m['lang']          = $lang;               // 2-Zeichen-Code (<html lang="…">)
+$m['inLanguage']    = $lang;               // JSON-LD-Property
+$m['canonical']     = $m['url'];           // about-spezifisch: Canonical = url
+$m['ogUrl']         = $m['url'];
+$m['homeUrl']       = 'https://eichhof.me' . $routes[$lang]['home'];
+$m['legalUrl']      = $routes[$lang]['legal'];
+$m['privacyUrl']    = $routes[$lang]['privacy'];
+
+// Shared Person-Schema-Daten (sameAs, subjectOf) — identisch zwischen Haupt- und About-Seite.
 $person = require __DIR__ . '/../includes/config/person.php';
 
-// Asset-Helper für automatische Cache-Busting-Versionierung via filemtime()
+// Asset-Helper für automatische Cache-Busting-Versionierung via filemtime().
 require_once __DIR__ . '/../includes/asset.php';
+
+// Route-Key für den Sprachwähler.
+$routeKey = 'about';
 ?>
 <!DOCTYPE html>
 <html lang="<?= $m['htmlLang'] ?>">
