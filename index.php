@@ -52,13 +52,16 @@ if ($isBareRoot) {
     header('Vary: Accept-Language', false);
 
     $ua    = $_SERVER['HTTP_USER_AGENT'] ?? '';
+    // Bots + Audit-Tools (PSI, Lighthouse, GTmetrix, WebPageTest, Headless)
+    // bekommen den deterministischen 301 auf /de/ – sonst würde PSI mit
+    // Accept-Language: en-US reports immer gegen /en/ erstellen.
     $isBot = (bool) preg_match(
-        '~bot|crawler|spider|crawling|facebookexternalhit|slackbot|twitterbot|whatsapp|telegrambot|linkedinbot|discordbot|applebot~i',
+        '~bot|crawler|spider|crawling|facebookexternalhit|slackbot|twitterbot|whatsapp|telegrambot|linkedinbot|discordbot|applebot|chrome-lighthouse|pagespeed|gtmetrix|ptst|webpagetest|headlesschrome~i',
         $ua
     );
 
     if ($isBot) {
-        // Konsistente Kanonical für Bots: / → /de/ (permanent).
+        // Konsistente Kanonical für Bots + Audit-Tools: / → /de/ (permanent).
         header('Location: https://eichhof.me/de/', true, 301);
         exit;
     }
