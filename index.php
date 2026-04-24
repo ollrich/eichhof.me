@@ -6,7 +6,9 @@
  * while keeping client-side language switching for UI elements via language.js.
  *
  * URL Structure:
- * - /              → German (default)
+ * - /              → Pure router: 302 to /de/|/en/|/dk/ per Accept-Language
+ *                     (Bots: 301 to /de/ — konsistente Kanonical, kein Cloaking)
+ * - /de/           → German
  * - /en/           → English
  * - /dk/           → Danish
  * - /impressum     → German legal notice
@@ -21,73 +23,62 @@
  */
 
 // ============================================================================
-// LANGUAGE DETECTION — Weg 2 + Sprachwähler-Override
+// BARE-ROOT ROUTER — reine Weiterleitung, nie selbst Content ausliefern
 // ============================================================================
 //
-// Quellen der Sprachentscheidung (in Priorität):
-//  1. Pfad   — /en/, /dk/, /impressum, /ueber etc. werden per .htaccess in
-//              index.php?lang=xx überführt. $_SERVER['REQUEST_URI'] enthält
-//              dort kein `?lang=` (die Substitution ist intern), daher
-//              vertrauen wir $_GET['lang'] direkt.
-//  2. ?lang= — Expliziter Override aus dem Sprachwähler auf dem echten
-//              bare-Root "/". `?lang=de` umgeht den Accept-Language-302
-//              (damit EN-/DA-Browser-User DE sehen können, wenn sie es
-//              aktiv anklicken). `?lang=en|da` führt eine 301-Legacy-
-//              Umleitung auf /en/ bzw. /dk/ durch, damit alte Inbound-
-//              Links eine saubere URL bekommen.
-//  3. Accept-Language — Nur auf bare Root "/": Browser-Präferenz bestimmt
-//              per 302-Redirect die Sprachversion. Bots werden
-//              ausgenommen, damit Google / OG-Scraper / LLM-Crawler
-//              "/" weiterhin als DE-Kanonical sehen.
+// Philosophie: "/" ist keine Sprache mehr, sondern ein sprach-agnostischer
+// Einstiegspunkt. Jede der drei Sprachen hat ihre eigene Kanonische URL
+// (/de/, /en/, /dk/). Das löst den Redirect-Loop, den der alte ?lang=de-
+// Override brauchte, und liefert gleichzeitig sauberes SEO: keine Seite
+// existiert unter zwei URLs.
 //
-// Header `Vary: Accept-Language` wird auf "/" immer gesetzt — Shared
-// Caches (CDN, Intermediaries) müssen zwischen den Browser-Sprachen
-// diskriminieren.
+//  Bots   — 301 auf /de/ (permanent, damit Link-Equity der kurzen URL
+//           konsolidiert wird; DE ist die Default-Sprache, x-default
+//           zeigt weiterhin auf die kurze /).
+//  Humans — 302 auf /de/|/en/|/dk/ je nach Accept-Language.
+//           302, damit Browser/CDNs die Antwort nicht cachen und der
+//           Nutzer beim nächsten Besuch nicht an eine Sprache klebt,
+//           die nur einmal präferiert war.
+//  Vary: Accept-Language — Shared Caches müssen pro Browser-Sprache
+//                          separat speichern.
 
-$requestUri   = $_SERVER['REQUEST_URI'] ?? '/';
-$parsedPath   = parse_url($requestUri, PHP_URL_PATH) ?: '/';
-$isBareRoot   = ($parsedPath === '/' || $parsedPath === '/index.php');
-$qLangMatch   = preg_match('/[?&]lang=([a-z]{2})/i', $requestUri, $qLangGroups);
-$explicitLang = $qLangMatch ? strtolower($qLangGroups[1]) : null;
+$requestUri = $_SERVER['REQUEST_URI'] ?? '/';
+$parsedPath = parse_url($requestUri, PHP_URL_PATH) ?: '/';
+$isBareRoot = ($parsedPath === '/' || $parsedPath === '/index.php');
 
 if ($isBareRoot) {
     header('Vary: Accept-Language', false);
 
-    // Legacy: ?lang=en | ?lang=da auf Root → 301 zur kanonischen URL.
-    if ($explicitLang === 'en') {
-        header('Location: https://eichhof.me/en/', true, 301);
-        exit;
-    }
-    if ($explicitLang === 'da') {
-        header('Location: https://eichhof.me/dk/', true, 301);
+    $ua    = $_SERVER['HTTP_USER_AGENT'] ?? '';
+    $isBot = (bool) preg_match(
+        '~bot|crawler|spider|crawling|facebookexternalhit|slackbot|twitterbot|whatsapp|telegrambot|linkedinbot|discordbot|applebot~i',
+        $ua
+    );
+
+    if ($isBot) {
+        // Konsistente Kanonical für Bots: / → /de/ (permanent).
+        header('Location: https://eichhof.me/de/', true, 301);
         exit;
     }
 
-    // Kein expliziter DE-Override → Accept-Language-basierter 302 (nur Mensch).
-    if ($explicitLang !== 'de') {
-        $ua = $_SERVER['HTTP_USER_AGENT'] ?? '';
-        $isBot = (bool) preg_match(
-            '~bot|crawler|spider|crawling|facebookexternalhit|slackbot|twitterbot|whatsapp|telegrambot|linkedinbot|discordbot|applebot~i',
-            $ua
-        );
-        if (!$isBot) {
-            $acceptLang = $_SERVER['HTTP_ACCEPT_LANGUAGE'] ?? '';
-            $primary    = strtolower(substr(trim(explode(',', $acceptLang)[0] ?? ''), 0, 2));
-            if ($primary === 'en') {
-                header('Location: /en/', true, 302);
-                exit;
-            }
-            if ($primary === 'da') {
-                header('Location: /dk/', true, 302);
-                exit;
-            }
-            // de, leer oder andere: DE servieren (kein Redirect).
-        }
+    // Humans: Accept-Language-basierter 302.
+    $acceptLang = $_SERVER['HTTP_ACCEPT_LANGUAGE'] ?? '';
+    $primary    = strtolower(substr(trim(explode(',', $acceptLang)[0] ?? ''), 0, 2));
+    if ($primary === 'en') {
+        header('Location: /en/', true, 302);
+        exit;
     }
+    if ($primary === 'da') {
+        header('Location: /dk/', true, 302);
+        exit;
+    }
+    // Default (DE oder andere/leer): /de/.
+    header('Location: /de/', true, 302);
+    exit;
 }
 
-// Finale Sprachbestimmung: $_GET['lang'] kommt entweder aus .htaccess-
-// Rewrite (vertrauenswürdig) oder aus ?lang=de-Override auf Root.
+// Finale Sprachbestimmung: $_GET['lang'] kommt aus .htaccess-Rewrite
+// (/de/, /en/, /dk/, /ueber, /en/about, /kontakt etc.) — vertrauenswürdig.
 $lang = $_GET['lang'] ?? 'de';
 if (!in_array($lang, ['de', 'en', 'da'], true)) {
     $lang = 'de';
@@ -188,7 +179,7 @@ if ($routeKey === 'contact') $openOverlay = 'contact';
 
     <!-- Canonical URL and hreflang for international SEO -->
     <link rel="canonical" href="<?= $m['url'] ?>">
-    <link rel="alternate" hreflang="de" href="https://eichhof.me/">
+    <link rel="alternate" hreflang="de" href="https://eichhof.me/de/">
     <link rel="alternate" hreflang="en" href="https://eichhof.me/en/">
     <link rel="alternate" hreflang="da" href="https://eichhof.me/dk/">
     <link rel="alternate" hreflang="x-default" href="https://eichhof.me/">

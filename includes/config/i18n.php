@@ -34,7 +34,7 @@ return [
         // --------------------------------------------------------------------
         'routes' => [
             'de' => [
-                'home' => '/',
+                'home' => '/de/',
                 'about' => '/ueber',
                 'legal' => '/impressum',
                 'privacy' => '/datenverarbeitung',
@@ -155,7 +155,7 @@ return [
             // SEO & Meta
             'title' => 'Oliver Eichhof – Kommunikationsspezialist aus Hamburg',
             'description' => 'Kommunikationsspezialist aus Hamburg für digitale Markenführung und Zielgruppenanalyse, geprägt von Musikmedien und Streaming.',
-            'url' => 'https://eichhof.me/',
+            'url' => 'https://eichhof.me/de/',
             'linkedinUrl' => 'https://de.linkedin.com/in/olivereichhof',
             // Tagline (HTML mit inline-Links)
             'tagline' => 'Ich arbeite in der Medienbranche und rede im Job gern über gute Kommunikation und was Zielgruppen brauchen. Ab und zu <a href="https://www.schongeil.de/" target="_blank" rel="noopener noreferrer">blogge</a> ich und <a href="https://soundcloud.com/livicxyz" target="_blank" rel="noopener noreferrer">lege</a> Platten auf. Mehr zu <a href="/ueber">meinem Werdegang und meiner Arbeit</a>.',

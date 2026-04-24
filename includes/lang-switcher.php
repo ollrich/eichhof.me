@@ -16,11 +16,10 @@
  * Erwartet aus dem Parent-Scope: $lang, $routeKey, $routes, $m, $e
  * (siehe includes/config/i18n.php).
  *
- * Besonderheit beim DE-Home-Link (/): Ruft ein EN- oder DA-Browser-User
- * "DE" auf, müsste er erst den Accept-Language-302 in index.php umgehen,
- * der ihn sonst sofort wieder auf /en/ bzw. /dk/ zurückschubst. Daher
- * hängen wir in dem Fall ?lang=de als Override an. JS räumt das ?lang=
- * danach per history.replaceState aus der URL raus.
+ * Sprachrouten sind symmetrisch: /de/, /en/, /dk/ — jede Sprache hat ihre
+ * eigene Kanonische URL, und der Sprachwähler verlinkt direkt dorthin.
+ * Bare-Root "/" ist ein reiner Accept-Language-Router (siehe index.php)
+ * und wird nie von UI-Elementen adressiert.
  */
 
 // Feste Reihenfolge DE/EN/DK. Der aktuelle Code wird als Trigger gerendert,
@@ -42,15 +41,7 @@ $currentLabel = $switcherOrder[$lang] ?? 'DE';
     <ul class="lang-switcher-menu">
         <?php foreach ($switcherOrder as $code => $label): ?>
             <?php if ($code === $lang) continue; ?>
-            <?php
-            $target = $routes[$code][$routeKey];
-            // DE-Home aus fremdsprachigem Kontext: ?lang=de-Override gegen
-            // das Accept-Language-302 auf / in index.php.
-            if ($code === 'de' && $routeKey === 'home' && $lang !== 'de') {
-                $target .= '?lang=de';
-            }
-            ?>
-            <li><a href="<?= $e($target) ?>"
+            <li><a href="<?= $e($routes[$code][$routeKey]) ?>"
                    class="lang-switcher-link"
                    hreflang="<?= $code ?>"><?= $label ?></a></li>
         <?php endforeach; ?>
