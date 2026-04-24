@@ -47,7 +47,7 @@ eichhof.me/
 │   ├── head-favicons.php   # Favicon <link> block
 │   ├── theme-init.php      # Inline no-flash theme bootstrap
 │   └── asset.php           # filemtime()-based cache-busting helper
-├── .htaccess               # URL rewrites (/de/, /en/, /da/, /ueber, /en/about, /da/om, etc.)
+├── .htaccess               # URL rewrites (/de/, /en/, /da/, /de/ueber, /en/about, /da/om, etc.)
 ├── robots.txt              # Crawler rules
 ├── sitemap.xml             # Multilingual sitemap with hreflang
 ├── sitemap-images.xml      # Image sitemap

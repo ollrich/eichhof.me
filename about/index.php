@@ -7,7 +7,7 @@
  * Styled to match the main site's visual appearance.
  *
  * URLs:
- * - /ueber      → German
+ * - /de/ueber   → German (legacy /ueber → 301 in .htaccess)
  * - /en/about   → English
  * - /da/om      → Danish (legacy /dk/om → 301 in .htaccess)
  */
@@ -89,10 +89,10 @@ $routeKey = 'about';
     <meta name="twitter:image" content="https://eichhof.me/images/og-image.png">
 
     <link rel="canonical" href="<?= $m['canonical'] ?>">
-    <link rel="alternate" hreflang="de" href="https://eichhof.me/ueber">
+    <link rel="alternate" hreflang="de" href="https://eichhof.me/de/ueber">
     <link rel="alternate" hreflang="en" href="https://eichhof.me/en/about">
     <link rel="alternate" hreflang="da" href="https://eichhof.me/da/om">
-    <link rel="alternate" hreflang="x-default" href="https://eichhof.me/ueber">
+    <link rel="alternate" hreflang="x-default" href="https://eichhof.me/de/ueber">
 
     <!-- Identity verification (IndieAuth / rel=me) -->
     <link rel="me" href="https://sifa.id/p/ollri.ch">

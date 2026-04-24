@@ -22,20 +22,25 @@ RewriteRule ^(.*)$ https://eichhof.me/$1 [L,R=301]
 RewriteRule ^dk/?$ /da/ [L,R=301]
 RewriteRule ^dk/(.+)$ /da/$1 [L,R=301]
 
-# /about/ direkt → saubere URL (301)
+# Legacy 301: /ueber → /de/ueber. Das About-URL-Scheme folgt jetzt dem
+# symmetrischen Language-Prefix (wie /en/about, /da/om). Muss VOR der
+# neuen /de/ueber-Rule stehen, damit die 301-Umleitung greift.
+RewriteRule ^ueber/?$ /de/ueber [L,R=301]
+
+# /about/ direkt → saubere DE-URL (301)
 RewriteCond %{ENV:REDIRECT_STATUS} ^$
-RewriteRule ^about/(index\.php)?$ /ueber [L,R=301]
+RewriteRule ^about/(index\.php)?$ /de/ueber [L,R=301]
 
 # Language paths: /de/, /en/, /da/ → index.php with lang parameter
 RewriteRule ^de/?$ index.php?lang=de [L,QSA]
 RewriteRule ^en/?$ index.php?lang=en [L,QSA]
 RewriteRule ^da/?$ index.php?lang=da [L,QSA]
 
-# German subpages (no language prefix)
+# German subpages
 RewriteRule ^impressum/?$ index.php?lang=de&overlay=impressum [L,QSA]
 RewriteRule ^datenverarbeitung/?$ index.php?lang=de&overlay=privacy [L,QSA]
 RewriteRule ^kontakt/?$ index.php?lang=de&overlay=kontakt [L,QSA]
-RewriteRule ^ueber/?$ about/index.php?lang=de [L,QSA]
+RewriteRule ^de/ueber/?$ about/index.php?lang=de [L,QSA]
 
 # English subpages (/en/...)
 RewriteRule ^en/legal-notice/?$ index.php?lang=en&overlay=legal [L,QSA]

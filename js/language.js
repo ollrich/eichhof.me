@@ -29,7 +29,7 @@
         domain: ['eichhof', 'me']
     };
 
-    // Minimaler Fallback, falls das inline-JSON fehlt (z. B. auf /ueber)
+    // Minimaler Fallback, falls das inline-JSON fehlt (z. B. auf /de/ueber)
     // oder korrupt ist. Deckt nur, was JS wirklich braucht.
     const FALLBACK = {
         de: { emailPrefix: 'hallo' },

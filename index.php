@@ -17,11 +17,13 @@
  * - /kontakt       → German contact
  * - /en/contact    → English contact
  * - /da/kontakt    → Danish contact
- * - /ueber         → German about (grounding page)
+ * - /de/ueber      → German about (grounding page)
  * - /en/about      → English about (grounding page)
  * - /da/om         → Danish about (grounding page)
  *
- * Legacy: /dk/* wird in .htaccess per 301 auf /da/* umgeleitet.
+ * Legacy 301 in .htaccess:
+ *   /dk/* → /da/*  (ISO 639-1 statt Country-Code)
+ *   /ueber → /de/ueber  (symmetrisches Language-Prefix)
  */
 
 // ============================================================================
@@ -83,7 +85,7 @@ if ($isBareRoot) {
 }
 
 // Finale Sprachbestimmung: $_GET['lang'] kommt aus .htaccess-Rewrite
-// (/de/, /en/, /da/, /ueber, /en/about, /kontakt etc.) — vertrauenswürdig.
+// (/de/, /en/, /da/, /de/ueber, /en/about, /kontakt etc.) — vertrauenswürdig.
 $lang = $_GET['lang'] ?? 'de';
 if (!in_array($lang, ['de', 'en', 'da'], true)) {
     $lang = 'de';

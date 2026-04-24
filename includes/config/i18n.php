@@ -12,7 +12,7 @@
  *               (Theme, Footer, Legal/Privacy-Overlay, Share-Metadaten, …)
  *   common/routes — URL-Map pro Sprache, für den Sprachwähler
  *   home/     — Nur auf der Hauptseite gebraucht (Tagline, Kontaktformular, …)
- *   about/    — Nur auf /ueber gebraucht (Career, Education, Facts, …)
+ *   about/    — Nur auf /de/ueber gebraucht (Career, Education, Facts, …)
  *
  * Neue Keys immer in der passenden Gruppe anlegen und für alle drei
  * Sprachen gleichzeitig pflegen — keine halbe Übersetzung einchecken.
@@ -20,7 +20,7 @@
 
 return [
     // ========================================================================
-    // COMMON — geteilt zwischen Hauptseite und /ueber
+    // COMMON — geteilt zwischen Hauptseite und /de/ueber
     // ========================================================================
     'common' => [
 
@@ -35,7 +35,7 @@ return [
         'routes' => [
             'de' => [
                 'home' => '/de/',
-                'about' => '/ueber',
+                'about' => '/de/ueber',
                 'legal' => '/impressum',
                 'privacy' => '/datenverarbeitung',
                 'contact' => '/kontakt',
@@ -158,7 +158,7 @@ return [
             'url' => 'https://eichhof.me/de/',
             'linkedinUrl' => 'https://de.linkedin.com/in/olivereichhof',
             // Tagline (HTML mit inline-Links)
-            'tagline' => 'Ich arbeite in der Medienbranche und rede im Job gern über gute Kommunikation und was Zielgruppen brauchen. Ab und zu <a href="https://www.schongeil.de/" target="_blank" rel="noopener noreferrer">blogge</a> ich und <a href="https://soundcloud.com/livicxyz" target="_blank" rel="noopener noreferrer">lege</a> Platten auf. Mehr zu <a href="/ueber">meinem Werdegang und meiner Arbeit</a>.',
+            'tagline' => 'Ich arbeite in der Medienbranche und rede im Job gern über gute Kommunikation und was Zielgruppen brauchen. Ab und zu <a href="https://www.schongeil.de/" target="_blank" rel="noopener noreferrer">blogge</a> ich und <a href="https://soundcloud.com/livicxyz" target="_blank" rel="noopener noreferrer">lege</a> Platten auf. Mehr zu <a href="/de/ueber">meinem Werdegang und meiner Arbeit</a>.',
             // Easter-Egg-Hinweis (nur Hauptseite)
             'hint' => 'drücke leertaste',
             // E-Mail
@@ -242,7 +242,7 @@ return [
     ],
 
     // ========================================================================
-    // ABOUT — nur für about/index.php (/ueber, /en/about, /da/om)
+    // ABOUT — nur für about/index.php (/de/ueber, /en/about, /da/om)
     // ========================================================================
     'about' => [
         'de' => [
@@ -250,7 +250,7 @@ return [
             'title' => 'Über Oliver Eichhof – Kommunikationsspezialist aus Hamburg',
             'description' => 'Kommunikationsspezialist aus Hamburg mit Schwerpunkt Digital und Marketing. Seit rund 20 Jahren in Agenturen und Unternehmen für B2C- und B2B-Marken unterschiedlichster Branchen tätig.',
             'ogDescription' => 'Kommunikationsspezialist aus Hamburg mit Schwerpunkt Digital und Marketing.',
-            'url' => 'https://eichhof.me/ueber',
+            'url' => 'https://eichhof.me/de/ueber',
             // Person-Context (JSON-LD + Facts)
             'personDescription' => 'Kommunikationsspezialist aus Hamburg mit Schwerpunkt Digital und Marketing. Seit rund 20 Jahren in Agenturen und Unternehmen für B2C- und B2B-Marken unterschiedlichster Branchen tätig.',
             'birthPlace' => 'Bremerhaven, Deutschland',
