@@ -13,7 +13,7 @@ Built with AI assistance as an exploration of modern web development practices. 
 
 ### Highlights
 
-- 🌐 Multilingual (DE/EN/DA) with symmetric clean URLs (/de/, /en/, /dk/); bare root `/` is a pure Accept-Language router (302 for humans, 301 → /de/ for bots); top-right disclosure language switcher below the theme toggle (hover/tap to reveal the other two languages)
+- 🌐 Multilingual (DE/EN/DA) with symmetric clean URLs (/de/, /en/, /dk/); bare root `/` is a pure Accept-Language router (302 for humans, 301 → /de/ for bots); top-right disclosure language switcher to the right of the theme toggle (hover/tap reveals the other two languages)
 - 🎨 Dark mode with system preference support
 - 🔒 Privacy-first: no cookies, no tracking, no analytics
 - 📬 Contact form with spam protection (honeypot, rate limiting, time-based checks)
@@ -99,7 +99,7 @@ Mit KI-Unterstützung gebaut als Exploration moderner Webentwicklung. Der Code i
 
 ### Highlights
 
-- 🌐 Mehrsprachig (DE/EN/DA) mit symmetrischen Clean URLs (/de/, /en/, /dk/); Bare-Root `/` ist ein reiner Accept-Language-Router (302 für Menschen, 301 → /de/ für Bots); Disclosure-Sprachwähler oben rechts unter dem Theme-Toggle (Hover/Tap blendet die anderen zwei Sprachen ein)
+- 🌐 Mehrsprachig (DE/EN/DA) mit symmetrischen Clean URLs (/de/, /en/, /dk/); Bare-Root `/` ist ein reiner Accept-Language-Router (302 für Menschen, 301 → /de/ für Bots); Disclosure-Sprachwähler oben rechts, rechts neben dem Theme-Toggle (Hover/Tap blendet die anderen zwei Sprachen ein)
 - 🎨 Dark Mode mit System-Präferenz-Unterstützung
 - 🔒 Privacy-First: keine Cookies, kein Tracking, keine Analytik
 - 📬 Kontaktformular mit Spam-Schutz (Honeypot, Rate Limiting, Zeitprüfung)
@@ -129,7 +129,7 @@ Bygget med AI-assistance som en udforskning af moderne webudvikling. Koden er op
 
 ### Highlights
 
-- 🌐 Flersproget (DE/EN/DA) med symmetriske clean URLs (/de/, /en/, /dk/); bare root `/` er en ren Accept-Language-router (302 for mennesker, 301 → /de/ for bots); disclosure-sprogskifter øverst til højre under theme-toggle (hover/tap viser de to andre sprog)
+- 🌐 Flersproget (DE/EN/DA) med symmetriske clean URLs (/de/, /en/, /dk/); bare root `/` er en ren Accept-Language-router (302 for mennesker, 301 → /de/ for bots); disclosure-sprogskifter øverst til højre, til højre for theme-toggle (hover/tap viser de to andre sprog)
 - 🎨 Dark mode med systempræference-support
 - 🔒 Privacy-first: ingen cookies, ingen tracking, ingen analytics
 - 📬 Kontaktformular med spam-beskyttelse (honeypot, rate limiting, tidscheck)

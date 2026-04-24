@@ -198,7 +198,7 @@ body {
 }
 
 /* ========================================
-   LANGUAGE SWITCHER (top-right, unter Theme-Toggle) als Disclosure-Menü
+   LANGUAGE SWITCHER (top-right corner) als Disclosure-Menü
    ========================================
    Zeigt standardmässig nur die aktuelle Sprache als Button-Trigger.
    Auf :hover (Desktop), :focus-within (Tastatur) oder
@@ -206,15 +206,17 @@ body {
    beiden anderen Sprachen darunter auf. Alle drei Trigger feuern
    dieselbe CSS-Regel — Maus/Tastatur/Touch-Parität.
 
-   Positionierung als vertikaler Stack rechts: Theme-Toggle (44×44) bei
-   top:20, darunter 8px Gap, dann der Sprachwähler-Trigger bei top:72.
-   Absichtlich KEINE aktive-State-Markierung: der Trigger sieht genauso
-   aus wie die Menü-Items, damit die drei Buchstaben visuell gleich
-   wirken — wie Sonne/Mond beim Theme-Toggle direkt darüber.
+   Positionierung: Der Sprachwähler-Trigger (44×44) sitzt in der rechten
+   oberen Ecke, direkt links daneben der Theme-Toggle. DOM-Reihenfolge
+   ist theme-toggle→lang-switcher, damit Tab-Order der visuellen LTR-
+   Reihenfolge folgt. Absichtlich KEINE aktive-State-Markierung: der
+   Trigger sieht genauso aus wie die Menü-Items, damit die drei
+   Buchstaben visuell gleich wirken — wie Sonne/Mond beim Theme-Toggle
+   direkt daneben.
 */
 .lang-switcher {
     position: fixed;
-    top: 72px;
+    top: 20px;
     right: 20px;
     z-index: 1000;
 }
@@ -313,15 +315,17 @@ body {
 }
 
 /* ========================================
-   THEME TOGGLE BUTTON (top-right)
+   THEME TOGGLE BUTTON (top-right, links vom Sprachwähler)
    ========================================
-   Fixed oben rechts. Der Sprachwähler sitzt direkt darunter in derselben
-   rechten Spalte (siehe .lang-switcher für das Stack-Layout).
+   Fixed oben rechts, direkt links neben dem Sprachwähler. Breite 44px
+   plus 8px Gap ergibt right: 72px. Tooltip öffnet nach links (ins freie
+   Feld neben dem Button), nicht nach rechts — dort klebt der Sprach-
+   wähler-Trigger, und ein Tooltip würde in dessen Hover-Zone fallen.
 */
 .theme-toggle {
     position: fixed;
     top: 20px;
-    right: 20px;
+    right: 72px;
     z-index: 1000;
 }
 
@@ -987,13 +991,13 @@ html.dark-mode .overlay-content::-webkit-scrollbar-thumb:hover {
    ======================================== */
 @media (max-width: 768px) {
     .lang-switcher {
-        top: 67px;
+        top: 15px;
         right: 15px;
     }
 
     .theme-toggle {
         top: 15px;
-        right: 15px;
+        right: 67px;
     }
 
     /* Trigger behält 44×44 (Parität zum Theme-Toggle). Menu-Links dagegen
