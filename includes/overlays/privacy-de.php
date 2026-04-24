@@ -28,7 +28,7 @@
 </ul>
 
 <h3>Kontaktformular</h3>
-<p>Auf den Seiten /kontakt, /en/contact und /dk/kontakt steht ein Kontaktformular zur Verfügung.</p>
+<p>Auf den Seiten /kontakt, /en/contact und /da/kontakt steht ein Kontaktformular zur Verfügung.</p>
 <p>Erhobene Daten: Name, E-Mail-Adresse, Nachrichtentext. Alle Angaben erfolgen freiwillig durch den Nutzer.</p>
 <p>Zweck: Beantwortung der Anfrage.</p>
 <p>Rechtsgrundlage: Art.&nbsp;6 Abs.&nbsp;1 lit.&nbsp;f DSGVO (berechtigtes Interesse an der Kommunikation mit Anfragenden).</p>

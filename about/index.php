@@ -9,7 +9,7 @@
  * URLs:
  * - /ueber      → German
  * - /en/about   → English
- * - /dk/om      → Danish
+ * - /da/om      → Danish (legacy /dk/om → 301 in .htaccess)
  */
 
 $lang = $_GET['lang'] ?? 'de';
@@ -91,7 +91,7 @@ $routeKey = 'about';
     <link rel="canonical" href="<?= $m['canonical'] ?>">
     <link rel="alternate" hreflang="de" href="https://eichhof.me/ueber">
     <link rel="alternate" hreflang="en" href="https://eichhof.me/en/about">
-    <link rel="alternate" hreflang="da" href="https://eichhof.me/dk/om">
+    <link rel="alternate" hreflang="da" href="https://eichhof.me/da/om">
     <link rel="alternate" hreflang="x-default" href="https://eichhof.me/ueber">
 
     <!-- Identity verification (IndieAuth / rel=me) -->

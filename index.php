@@ -6,20 +6,22 @@
  * while keeping client-side language switching for UI elements via language.js.
  *
  * URL Structure:
- * - /              → Pure router: 302 to /de/|/en/|/dk/ per Accept-Language
+ * - /              → Pure router: 302 to /de/|/en/|/da/ per Accept-Language
  *                     (Bots: 301 to /de/ — konsistente Kanonical, kein Cloaking)
  * - /de/           → German
  * - /en/           → English
- * - /dk/           → Danish
+ * - /da/           → Danish
  * - /impressum     → German legal notice
  * - /en/legal-notice → English legal notice
- * - /dk/kolofon    → Danish legal notice
+ * - /da/kolofon    → Danish legal notice
  * - /kontakt       → German contact
  * - /en/contact    → English contact
- * - /dk/kontakt    → Danish contact
+ * - /da/kontakt    → Danish contact
  * - /ueber         → German about (grounding page)
  * - /en/about      → English about (grounding page)
- * - /dk/om         → Danish about (grounding page)
+ * - /da/om         → Danish about (grounding page)
+ *
+ * Legacy: /dk/* wird in .htaccess per 301 auf /da/* umgeleitet.
  */
 
 // ============================================================================
@@ -28,14 +30,14 @@
 //
 // Philosophie: "/" ist keine Sprache mehr, sondern ein sprach-agnostischer
 // Einstiegspunkt. Jede der drei Sprachen hat ihre eigene Kanonische URL
-// (/de/, /en/, /dk/). Das löst den Redirect-Loop, den der alte ?lang=de-
+// (/de/, /en/, /da/). Das löst den Redirect-Loop, den der alte ?lang=de-
 // Override brauchte, und liefert gleichzeitig sauberes SEO: keine Seite
 // existiert unter zwei URLs.
 //
 //  Bots   — 301 auf /de/ (permanent, damit Link-Equity der kurzen URL
 //           konsolidiert wird; DE ist die Default-Sprache, x-default
 //           zeigt weiterhin auf die kurze /).
-//  Humans — 302 auf /de/|/en/|/dk/ je nach Accept-Language.
+//  Humans — 302 auf /de/|/en/|/da/ je nach Accept-Language.
 //           302, damit Browser/CDNs die Antwort nicht cachen und der
 //           Nutzer beim nächsten Besuch nicht an eine Sprache klebt,
 //           die nur einmal präferiert war.
@@ -69,7 +71,7 @@ if ($isBareRoot) {
         exit;
     }
     if ($primary === 'da') {
-        header('Location: /dk/', true, 302);
+        header('Location: /da/', true, 302);
         exit;
     }
     // Default (DE oder andere/leer): /de/.
@@ -78,7 +80,7 @@ if ($isBareRoot) {
 }
 
 // Finale Sprachbestimmung: $_GET['lang'] kommt aus .htaccess-Rewrite
-// (/de/, /en/, /dk/, /ueber, /en/about, /kontakt etc.) — vertrauenswürdig.
+// (/de/, /en/, /da/, /ueber, /en/about, /kontakt etc.) — vertrauenswürdig.
 $lang = $_GET['lang'] ?? 'de';
 if (!in_array($lang, ['de', 'en', 'da'], true)) {
     $lang = 'de';
@@ -181,7 +183,7 @@ if ($routeKey === 'contact') $openOverlay = 'contact';
     <link rel="canonical" href="<?= $m['url'] ?>">
     <link rel="alternate" hreflang="de" href="https://eichhof.me/de/">
     <link rel="alternate" hreflang="en" href="https://eichhof.me/en/">
-    <link rel="alternate" hreflang="da" href="https://eichhof.me/dk/">
+    <link rel="alternate" hreflang="da" href="https://eichhof.me/da/">
     <link rel="alternate" hreflang="x-default" href="https://eichhof.me/">
 
     <!-- Identity verification (IndieAuth / rel=me) -->

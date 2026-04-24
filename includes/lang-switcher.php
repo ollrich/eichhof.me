@@ -8,7 +8,7 @@
  *
  *   DE            DE
  *                 EN      ← nach Hover/Tap
- *                 DK
+ *                 DA
  *
  * Klick auf einen anderen Eintrag navigiert; auf der neuen Seite ist dann
  * wieder nur die (neue) aktuelle Sprache als Trigger sichtbar.
@@ -16,19 +16,20 @@
  * Erwartet aus dem Parent-Scope: $lang, $routeKey, $routes, $m, $e
  * (siehe includes/config/i18n.php).
  *
- * Sprachrouten sind symmetrisch: /de/, /en/, /dk/ — jede Sprache hat ihre
+ * Sprachrouten sind symmetrisch: /de/, /en/, /da/ — jede Sprache hat ihre
  * eigene Kanonische URL, und der Sprachwähler verlinkt direkt dorthin.
  * Bare-Root "/" ist ein reiner Accept-Language-Router (siehe index.php)
  * und wird nie von UI-Elementen adressiert.
  */
 
-// Feste Reihenfolge DE/EN/DK. Der aktuelle Code wird als Trigger gerendert,
+// Feste Reihenfolge DE/EN/DA. Der aktuelle Code wird als Trigger gerendert,
 // die beiden anderen als Menü-Items darunter — so bleibt die Reihenfolge
 // der Menü-Einträge konstant, egal in welcher Sprache man gerade ist.
+// Labels folgen ISO 639-1: DA (Dänisch als Sprache), nicht DK (Country-Code).
 $switcherOrder = [
     'de' => 'DE',
     'en' => 'EN',
-    'da' => 'DK',
+    'da' => 'DA',
 ];
 $currentLabel = $switcherOrder[$lang] ?? 'DE';
 ?>

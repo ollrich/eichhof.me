@@ -17,21 +17,21 @@
     function getLegalUrl() {
         const lang = getCurrentLang();
         if (lang === 'en') return '/en/legal-notice';
-        if (lang === 'da') return '/dk/kolofon';
+        if (lang === 'da') return '/da/kolofon';
         return '/impressum';
     }
 
     function getPrivacyUrl() {
         const lang = getCurrentLang();
         if (lang === 'en') return '/en/privacy';
-        if (lang === 'da') return '/dk/privatlivspolitik';
+        if (lang === 'da') return '/da/privatlivspolitik';
         return '/datenverarbeitung';
     }
 
     function getBaseUrl() {
         const lang = getCurrentLang();
         if (lang === 'en') return '/en/';
-        if (lang === 'da') return '/dk/';
+        if (lang === 'da') return '/da/';
         return '/';
     }
 

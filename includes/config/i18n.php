@@ -48,11 +48,11 @@ return [
                 'contact' => '/en/contact',
             ],
             'da' => [
-                'home' => '/dk/',
-                'about' => '/dk/om',
-                'legal' => '/dk/kolofon',
-                'privacy' => '/dk/privatlivspolitik',
-                'contact' => '/dk/kontakt',
+                'home' => '/da/',
+                'about' => '/da/om',
+                'legal' => '/da/kolofon',
+                'privacy' => '/da/privatlivspolitik',
+                'contact' => '/da/kontakt',
             ],
         ],
 
@@ -148,7 +148,7 @@ return [
     ],
 
     // ========================================================================
-    // HOME — nur für index.php (/, /en/, /dk/ + overlays)
+    // HOME — nur für index.php (/, /de/, /en/, /da/ + overlays)
     // ========================================================================
     'home' => [
         'de' => [
@@ -215,9 +215,9 @@ return [
         'da' => [
             'title' => 'Oliver Eichhof – Kommunikationsspecialist fra Hamborg',
             'description' => 'Kommunikationsspecialist fra Hamborg for digital brandledelse og målgruppeanalyse, formet af musikmedier og streaming.',
-            'url' => 'https://eichhof.me/dk/',
+            'url' => 'https://eichhof.me/da/',
             'linkedinUrl' => 'https://dk.linkedin.com/in/olivereichhof',
-            'tagline' => 'Jeg arbejder i mediebranchen og taler gerne om god kommunikation og hvad målgrupper har brug for. Af og til <a href="https://www.schongeil.de/en/" target="_blank" rel="noopener noreferrer">blogger</a> jeg og <a href="https://soundcloud.com/livicxyz" target="_blank" rel="noopener noreferrer">spiller plader</a>. Mere om <a href="/dk/om">min baggrund og mit arbejde</a>.',
+            'tagline' => 'Jeg arbejder i mediebranchen og taler gerne om god kommunikation og hvad målgrupper har brug for. Af og til <a href="https://www.schongeil.de/en/" target="_blank" rel="noopener noreferrer">blogger</a> jeg og <a href="https://soundcloud.com/livicxyz" target="_blank" rel="noopener noreferrer">spiller plader</a>. Mere om <a href="/da/om">min baggrund og mit arbejde</a>.',
             'hint' => 'tryk mellemrum',
             'emailText' => 'E-Mail',
             'emailAriaLabel' => 'Send e-mail',
@@ -242,7 +242,7 @@ return [
     ],
 
     // ========================================================================
-    // ABOUT — nur für about/index.php (/ueber, /en/about, /dk/om)
+    // ABOUT — nur für about/index.php (/ueber, /en/about, /da/om)
     // ========================================================================
     'about' => [
         'de' => [
@@ -399,7 +399,7 @@ return [
             'title' => 'Om Oliver Eichhof – Kommunikationsspecialist fra Hamborg',
             'description' => 'Kommunikationsspecialist fra Hamborg med fokus på digital og marketing. Omkring 20 års erfaring i bureauer og virksomheder for B2C- og B2B-brands på tværs af mange forskellige brancher.',
             'ogDescription' => 'Kommunikationsspecialist fra Hamborg med fokus på digital og marketing.',
-            'url' => 'https://eichhof.me/dk/om',
+            'url' => 'https://eichhof.me/da/om',
             'personDescription' => 'Kommunikationsspecialist fra Hamborg med fokus på digital og marketing. Omkring 20 års erfaring i bureauer og virksomheder for B2C- og B2B-brands på tværs af mange forskellige brancher.',
             'birthPlace' => 'Bremerhaven, Tyskland',
             'nationality' => 'Tyskland',

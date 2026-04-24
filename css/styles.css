@@ -1002,7 +1002,7 @@ html.dark-mode .overlay-content::-webkit-scrollbar-thumb:hover {
 
     /* Trigger behält 44×44 (Parität zum Theme-Toggle). Menu-Links dagegen
        bekommen auf Touch mehr Luft: größere Tap-Fläche und sichtbarer
-       Abstand zwischen DE/EN/DK, damit man nicht versehentlich daneben
+       Abstand zwischen DE/EN/DA, damit man nicht versehentlich daneben
        tippt. */
     .lang-switcher-link {
         padding: 10px 8px;

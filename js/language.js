@@ -12,7 +12,7 @@
  * 2. Es öffnet serverseitig angeforderte Overlays (data-overlay-Attribut am
  *    <body>) und setzt die Social-Row-Reihenfolge (Mastodon-first für DE).
  *
- * Kein URL-Aufräumen mehr: /de/, /en/, /dk/ sind symmetrisch und bereits
+ * Kein URL-Aufräumen mehr: /de/, /en/, /da/ sind symmetrisch und bereits
  * kanonisch. Bare-Root "/" ist reiner Router in index.php, taucht nie als
  * Ziel eines Sprachwähler-Klicks auf.
  *

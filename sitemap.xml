@@ -7,7 +7,7 @@
     <loc>https://eichhof.me/de/</loc>
     <xhtml:link rel="alternate" hreflang="de" href="https://eichhof.me/de/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://eichhof.me/en/"/>
-    <xhtml:link rel="alternate" hreflang="da" href="https://eichhof.me/dk/"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://eichhof.me/da/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://eichhof.me/"/>
     <lastmod>2026-04-24</lastmod>
     <changefreq>monthly</changefreq>
@@ -19,7 +19,7 @@
     <loc>https://eichhof.me/en/</loc>
     <xhtml:link rel="alternate" hreflang="de" href="https://eichhof.me/de/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://eichhof.me/en/"/>
-    <xhtml:link rel="alternate" hreflang="da" href="https://eichhof.me/dk/"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://eichhof.me/da/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://eichhof.me/"/>
     <lastmod>2026-04-24</lastmod>
     <changefreq>monthly</changefreq>
@@ -28,10 +28,10 @@
 
   <!-- Danish Home -->
   <url>
-    <loc>https://eichhof.me/dk/</loc>
+    <loc>https://eichhof.me/da/</loc>
     <xhtml:link rel="alternate" hreflang="de" href="https://eichhof.me/de/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://eichhof.me/en/"/>
-    <xhtml:link rel="alternate" hreflang="da" href="https://eichhof.me/dk/"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://eichhof.me/da/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://eichhof.me/"/>
     <lastmod>2026-04-24</lastmod>
     <changefreq>monthly</changefreq>
@@ -43,7 +43,7 @@
     <loc>https://eichhof.me/ueber</loc>
     <xhtml:link rel="alternate" hreflang="de" href="https://eichhof.me/ueber"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://eichhof.me/en/about"/>
-    <xhtml:link rel="alternate" hreflang="da" href="https://eichhof.me/dk/om"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://eichhof.me/da/om"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://eichhof.me/en/about"/>
     <lastmod>2026-04-24</lastmod>
     <changefreq>monthly</changefreq>
@@ -55,7 +55,7 @@
     <loc>https://eichhof.me/en/about</loc>
     <xhtml:link rel="alternate" hreflang="de" href="https://eichhof.me/ueber"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://eichhof.me/en/about"/>
-    <xhtml:link rel="alternate" hreflang="da" href="https://eichhof.me/dk/om"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://eichhof.me/da/om"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://eichhof.me/en/about"/>
     <lastmod>2026-04-24</lastmod>
     <changefreq>monthly</changefreq>
@@ -64,10 +64,10 @@
 
   <!-- Danish About (Grounding Page) -->
   <url>
-    <loc>https://eichhof.me/dk/om</loc>
+    <loc>https://eichhof.me/da/om</loc>
     <xhtml:link rel="alternate" hreflang="de" href="https://eichhof.me/ueber"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://eichhof.me/en/about"/>
-    <xhtml:link rel="alternate" hreflang="da" href="https://eichhof.me/dk/om"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://eichhof.me/da/om"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://eichhof.me/en/about"/>
     <lastmod>2026-04-24</lastmod>
     <changefreq>monthly</changefreq>

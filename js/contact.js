@@ -37,7 +37,7 @@
     function getContactUrl() {
         const lang = window.LanguageManager ? window.LanguageManager.getCurrentLang() : 'de';
         if (lang === 'en') return '/en/contact';
-        if (lang === 'da') return '/dk/kontakt';
+        if (lang === 'da') return '/da/kontakt';
         return '/kontakt';
     }
 
@@ -48,7 +48,7 @@
     function getBaseUrl() {
         const lang = window.LanguageManager ? window.LanguageManager.getCurrentLang() : 'de';
         if (lang === 'en') return '/en/';
-        if (lang === 'da') return '/dk/';
+        if (lang === 'da') return '/da/';
         return '/';
     }
 

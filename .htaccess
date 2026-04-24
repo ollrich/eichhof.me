@@ -10,18 +10,26 @@ RewriteRule ^(.*)$ https://eichhof.me/$1 [L,R=301]
 # ============================================================================
 
 # Hinweis: Die bare-Root-"/"-Logik (reiner Accept-Language-Router mit Bot-
-# 301 auf /de/, Human-302 auf /de/|/en/|/dk/) lebt in index.php. Apache
+# 301 auf /de/, Human-302 auf /de/|/en/|/da/) lebt in index.php. Apache
 # routet hier nur die expliziten Sprachpfade auf den passenden index.php-
 # Aufruf.
+
+# Legacy 301: /dk/* → /da/* (permanent). Das Sprachpräfix folgt jetzt
+# ISO 639-1 (da = Dänisch als Sprache), nicht dem Country-Code dk.
+# Muss VOR den /da/-Rewrites stehen, damit die 301-Umleitung greift,
+# bevor irgendein anderer Rule den Request frisst. Bare /dk → /da/;
+# Unterpfade /dk/foo → /da/foo.
+RewriteRule ^dk/?$ /da/ [L,R=301]
+RewriteRule ^dk/(.+)$ /da/$1 [L,R=301]
 
 # /about/ direkt → saubere URL (301)
 RewriteCond %{ENV:REDIRECT_STATUS} ^$
 RewriteRule ^about/(index\.php)?$ /ueber [L,R=301]
 
-# Language paths: /de/, /en/, /dk/ → index.php with lang parameter
+# Language paths: /de/, /en/, /da/ → index.php with lang parameter
 RewriteRule ^de/?$ index.php?lang=de [L,QSA]
 RewriteRule ^en/?$ index.php?lang=en [L,QSA]
-RewriteRule ^dk/?$ index.php?lang=da [L,QSA]
+RewriteRule ^da/?$ index.php?lang=da [L,QSA]
 
 # German subpages (no language prefix)
 RewriteRule ^impressum/?$ index.php?lang=de&overlay=impressum [L,QSA]
@@ -35,11 +43,11 @@ RewriteRule ^en/privacy/?$ index.php?lang=en&overlay=privacy [L,QSA]
 RewriteRule ^en/contact/?$ index.php?lang=en&overlay=contact [L,QSA]
 RewriteRule ^en/about/?$ about/index.php?lang=en [L,QSA]
 
-# Danish subpages (/dk/...)
-RewriteRule ^dk/kolofon/?$ index.php?lang=da&overlay=kolofon [L,QSA]
-RewriteRule ^dk/privatlivspolitik/?$ index.php?lang=da&overlay=privacy [L,QSA]
-RewriteRule ^dk/kontakt/?$ index.php?lang=da&overlay=kontakt [L,QSA]
-RewriteRule ^dk/om/?$ about/index.php?lang=da [L,QSA]
+# Danish subpages (/da/...)
+RewriteRule ^da/kolofon/?$ index.php?lang=da&overlay=kolofon [L,QSA]
+RewriteRule ^da/privatlivspolitik/?$ index.php?lang=da&overlay=privacy [L,QSA]
+RewriteRule ^da/kontakt/?$ index.php?lang=da&overlay=kontakt [L,QSA]
+RewriteRule ^da/om/?$ about/index.php?lang=da [L,QSA]
 
 # Default: serve index.php (German, with browser detection fallback)
 DirectoryIndex index.php index.html
