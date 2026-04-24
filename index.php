@@ -275,9 +275,10 @@ if ($routeKey === 'contact') $openOverlay = 'contact';
 <body data-lang="<?= $lang ?>"<?= $openOverlay ? ' data-overlay="' . $openOverlay . '"' : '' ?>>
     <a href="#main" class="skip-link"><?= $e($m['skipLink']) ?></a>
     <main id="main">
-    <!-- Sprachwähler (oben links) und Theme-Toggle (oben rechts) -->
-    <?php include __DIR__ . '/includes/lang-switcher.php'; ?>
+    <!-- Theme-Toggle (oben rechts) und Sprachwähler (direkt darunter).
+         Reihenfolge im DOM = visuelle Reihenfolge = Tab-Reihenfolge. -->
     <?php include __DIR__ . '/includes/theme-toggle.php'; ?>
+    <?php include __DIR__ . '/includes/lang-switcher.php'; ?>
 
     <!-- Main Content Container -->
     <div class="container">

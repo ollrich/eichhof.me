@@ -13,7 +13,7 @@ Built with AI assistance as an exploration of modern web development practices. 
 
 ### Highlights
 
-- 🌐 Multilingual (DE/EN/DA) with clean URLs (/en/, /dk/), automatic browser language detection, and a top-left disclosure language switcher (hover/tap to reveal the other two languages)
+- 🌐 Multilingual (DE/EN/DA) with clean URLs (/en/, /dk/), automatic browser language detection, and a top-right disclosure language switcher below the theme toggle (hover/tap to reveal the other two languages)
 - 🎨 Dark mode with system preference support
 - 🔒 Privacy-first: no cookies, no tracking, no analytics
 - 📬 Contact form with spam protection (honeypot, rate limiting, time-based checks)
@@ -99,7 +99,7 @@ Mit KI-Unterstützung gebaut als Exploration moderner Webentwicklung. Der Code i
 
 ### Highlights
 
-- 🌐 Mehrsprachig (DE/EN/DA) mit Clean URLs (/en/, /dk/), automatischer Browser-Spracherkennung und Disclosure-Sprachwähler oben links (Hover/Tap blendet die anderen zwei Sprachen ein)
+- 🌐 Mehrsprachig (DE/EN/DA) mit Clean URLs (/en/, /dk/), automatischer Browser-Spracherkennung und Disclosure-Sprachwähler oben rechts unter dem Theme-Toggle (Hover/Tap blendet die anderen zwei Sprachen ein)
 - 🎨 Dark Mode mit System-Präferenz-Unterstützung
 - 🔒 Privacy-First: keine Cookies, kein Tracking, keine Analytik
 - 📬 Kontaktformular mit Spam-Schutz (Honeypot, Rate Limiting, Zeitprüfung)
@@ -129,7 +129,7 @@ Bygget med AI-assistance som en udforskning af moderne webudvikling. Koden er op
 
 ### Highlights
 
-- 🌐 Flersproget (DE/EN/DA) med clean URLs (/en/, /dk/), automatisk browser-sprogdetektering og disclosure-sprogskifter øverst til venstre (hover/tap viser de to andre sprog)
+- 🌐 Flersproget (DE/EN/DA) med clean URLs (/en/, /dk/), automatisk browser-sprogdetektering og disclosure-sprogskifter øverst til højre under theme-toggle (hover/tap viser de to andre sprog)
 - 🎨 Dark mode med systempræference-support
 - 🔒 Privacy-first: ingen cookies, ingen tracking, ingen analytics
 - 📬 Kontaktformular med spam-beskyttelse (honeypot, rate limiting, tidscheck)

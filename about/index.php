@@ -197,12 +197,13 @@ $routeKey = 'about';
 <body class="about-page">
     <a href="#main" class="skip-link"><?= $e($m['skipLink']) ?></a>
 
-    <!-- Sprachwähler (oben links) und Theme-Toggle (oben rechts).
+    <!-- Theme-Toggle (oben rechts) und Sprachwähler (direkt darunter).
+         Reihenfolge im DOM = visuelle Reihenfolge = Tab-Reihenfolge.
          Auf der Grounding-Page per .about-page-Regel auf position:absolute
          gestellt, damit sie beim Scrollen mit weglaufen und nicht über den
          Textblöcken hängen bleiben (anders als auf der schmalen Homepage). -->
-    <?php include __DIR__ . '/../includes/lang-switcher.php'; ?>
     <?php include __DIR__ . '/../includes/theme-toggle.php'; ?>
+    <?php include __DIR__ . '/../includes/lang-switcher.php'; ?>
 
     <main id="main" class="grounding-page">
         <a href="<?= $m['homeUrl'] ?>" class="grounding-back">&larr; <?= $e($m['backText']) ?></a>
