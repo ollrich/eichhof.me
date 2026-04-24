@@ -59,6 +59,8 @@ return [
         'de' => [
             'htmlLang' => 'de',
             'locale' => 'de_DE',
+            // H2 (sr-only) — SEO-Heading unterhalb des Namens
+            'subtitle' => 'Kommunikationsspezialist aus Hamburg',
             // Photo
             'photoAlt' => 'Porträt von Oliver Eichhof, Kommunikationsspezialist aus Hamburg',
             // JSON-LD shared
@@ -95,6 +97,7 @@ return [
         'en' => [
             'htmlLang' => 'en',
             'locale' => 'en_GB',
+            'subtitle' => 'Communication Specialist from Hamburg',
             'photoAlt' => 'Portrait of Oliver Eichhof, Communication Specialist from Hamburg',
             'jobTitle' => 'Marketing Director',
             'knowsAbout' => '["Marketing", "Brand Development", "Audience Analysis", "Campaign Planning", "Communication Strategy", "Content Strategy", "Digital Communication", "Employer Branding", "B2B Communication", "Journey Design", "KPI Frameworks", "GEO/SEO/SEA", "Marketing Automation", "AI-powered Workflows", "Radio", "Audio", "Streaming Media", "Music", "Music Media", "Blogging"]',
@@ -122,6 +125,7 @@ return [
         'da' => [
             'htmlLang' => 'da',
             'locale' => 'da_DK',
+            'subtitle' => 'Kommunikationsspecialist fra Hamborg',
             'photoAlt' => 'Portræt af Oliver Eichhof, Kommunikationsspecialist fra Hamborg',
             'jobTitle' => 'Marketingchef',
             'knowsAbout' => '["Marketing", "Brandudvikling", "Målgruppeanalyse", "Kampagneplanlægning", "Kommunikationsstrategi", "Content-strategi", "Digital kommunikation", "Employer branding", "B2B-kommunikation", "Journey design", "KPI-frameworks", "GEO/SEO/SEA", "Marketing automation", "AI-drevne workflows", "Radio", "Audio", "Streaming media", "Musik", "Musikmedier", "Blogging"]',

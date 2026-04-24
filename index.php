@@ -161,7 +161,12 @@ if ($routeKey === 'contact') $openOverlay = 'contact';
 
     <!-- SEO meta tags for search engines -->
     <meta name="description" content="<?= $e($m['description']) ?>">
-    <meta name="robots" content="index, follow">
+    <?php // Overlay-URLs (/kontakt, /impressum, /datenverarbeitung etc.) rendern
+          // dieselbe Home-HTML wie /de/ nur mit data-overlay-Attribut. Canonical
+          // zeigt bereits auf /de/, zusätzlich noindex verhindert, dass Google
+          // sie als Thin-Duplicates behandelt. follow bleibt, damit Link-Juice
+          // durch die Footer-Nav fließt. ?>
+    <meta name="robots" content="<?= $overlay !== null ? 'noindex, follow' : 'index, follow' ?>">
     <meta name="author" content="Oliver Eichhof">
 
     <!-- Open Graph meta tags for rich social media sharing (Facebook, LinkedIn) -->
@@ -300,6 +305,11 @@ if ($routeKey === 'contact') $openOverlay = 'contact';
         </picture>
 
         <h1 class="name">Oliver Eichhof</h1>
+
+        <!-- Visually-hidden H2 as topical SEO heading (Role + Location).
+             Breaks the H1 → P gap without affecting the minimalist visual
+             layout. Screen-readers pick it up as secondary heading. -->
+        <h2 class="sr-only"><?= $e($m['subtitle']) ?></h2>
 
         <!-- Tagline with inline links -->
         <p class="tagline" id="tagline"><?= $m['tagline'] ?></p>
