@@ -11,19 +11,22 @@
  * - /de/           → German
  * - /en/           → English
  * - /da/           → Danish
- * - /impressum     → German legal notice
- * - /en/legal-notice → English legal notice
- * - /da/kolofon    → Danish legal notice
- * - /kontakt       → German contact
- * - /en/contact    → English contact
- * - /da/kontakt    → Danish contact
- * - /de/ueber      → German about (grounding page)
- * - /en/about      → English about (grounding page)
- * - /da/om         → Danish about (grounding page)
+ * - /de/impressum         → German legal notice
+ * - /en/legal-notice      → English legal notice
+ * - /da/kolofon           → Danish legal notice
+ * - /de/kontakt           → German contact
+ * - /en/contact           → English contact
+ * - /da/kontakt           → Danish contact
+ * - /de/ueber             → German about (grounding page)
+ * - /en/about             → English about (grounding page)
+ * - /da/om                → Danish about (grounding page)
  *
  * Legacy 301 in .htaccess:
- *   /dk/* → /da/*  (ISO 639-1 statt Country-Code)
- *   /ueber → /de/ueber  (symmetrisches Language-Prefix)
+ *   /dk/*              → /da/*               (ISO 639-1 statt Country-Code)
+ *   /ueber             → /de/ueber           (symmetrisches Language-Prefix)
+ *   /impressum         → /de/impressum       (symmetrisches Language-Prefix)
+ *   /datenverarbeitung → /de/datenverarbeitung
+ *   /kontakt           → /de/kontakt
  */
 
 // ============================================================================
@@ -85,7 +88,7 @@ if ($isBareRoot) {
 }
 
 // Finale Sprachbestimmung: $_GET['lang'] kommt aus .htaccess-Rewrite
-// (/de/, /en/, /da/, /de/ueber, /en/about, /kontakt etc.) — vertrauenswürdig.
+// (/de/, /en/, /da/, /de/ueber, /en/about, /de/kontakt etc.) — vertrauenswürdig.
 $lang = $_GET['lang'] ?? 'de';
 if (!in_array($lang, ['de', 'en', 'da'], true)) {
     $lang = 'de';
@@ -161,7 +164,7 @@ if ($routeKey === 'contact') $openOverlay = 'contact';
 
     <!-- SEO meta tags for search engines -->
     <meta name="description" content="<?= $e($m['description']) ?>">
-    <?php // Overlay-URLs (/kontakt, /impressum, /datenverarbeitung etc.) rendern
+    <?php // Overlay-URLs (/de/kontakt, /de/impressum, /de/datenverarbeitung etc.) rendern
           // dieselbe Home-HTML wie /de/ nur mit data-overlay-Attribut. Canonical
           // zeigt bereits auf /de/, zusätzlich noindex verhindert, dass Google
           // sie als Thin-Duplicates behandelt. follow bleibt, damit Link-Juice

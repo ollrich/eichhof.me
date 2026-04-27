@@ -111,7 +111,7 @@
     }
 
     /**
-     * Öffnet vom Server angefordertes Overlay (/impressum, /kontakt, /…).
+     * Öffnet vom Server angefordertes Overlay (/de/impressum, /de/kontakt, /…).
      * Der kleine Timeout wartet, bis overlay.js / contact.js gebunden haben.
      */
     function handleServerOverlay() {

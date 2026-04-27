@@ -38,7 +38,7 @@
         const lang = window.LanguageManager ? window.LanguageManager.getCurrentLang() : 'de';
         if (lang === 'en') return '/en/contact';
         if (lang === 'da') return '/da/kontakt';
-        return '/kontakt';
+        return '/de/kontakt';
     }
 
     /**

@@ -18,14 +18,14 @@
         const lang = getCurrentLang();
         if (lang === 'en') return '/en/legal-notice';
         if (lang === 'da') return '/da/kolofon';
-        return '/impressum';
+        return '/de/impressum';
     }
 
     function getPrivacyUrl() {
         const lang = getCurrentLang();
         if (lang === 'en') return '/en/privacy';
         if (lang === 'da') return '/da/privatlivspolitik';
-        return '/datenverarbeitung';
+        return '/de/datenverarbeitung';
     }
 
     function getBaseUrl() {

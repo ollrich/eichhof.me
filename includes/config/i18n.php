@@ -36,9 +36,9 @@ return [
             'de' => [
                 'home' => '/de/',
                 'about' => '/de/ueber',
-                'legal' => '/impressum',
-                'privacy' => '/datenverarbeitung',
-                'contact' => '/kontakt',
+                'legal' => '/de/impressum',
+                'privacy' => '/de/datenverarbeitung',
+                'contact' => '/de/kontakt',
             ],
             'en' => [
                 'home' => '/en/',

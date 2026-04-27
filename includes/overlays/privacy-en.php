@@ -28,7 +28,7 @@
 </ul>
 
 <h3>Contact Form</h3>
-<p>A contact form is available at /kontakt, /en/contact and /da/kontakt.</p>
+<p>A contact form is available at /de/kontakt, /en/contact and /da/kontakt.</p>
 <p>Data collected: name, email address, message text. All entries are made voluntarily by the user.</p>
 <p>Purpose: responding to the inquiry.</p>
 <p>Legal basis: Art.&nbsp;6(1)(f) GDPR (legitimate interest in communicating with the person making the inquiry).</p>

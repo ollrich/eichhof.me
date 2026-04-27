@@ -28,7 +28,7 @@
 </ul>
 
 <h3>Kontaktformular</h3>
-<p>På siderne /kontakt, /en/contact og /da/kontakt er der et kontaktformular.</p>
+<p>På siderne /de/kontakt, /en/contact og /da/kontakt er der et kontaktformular.</p>
 <p>Indsamlede oplysninger: navn, e-mailadresse, beskedtekst. Oplysningerne afgives frivilligt af brugeren.</p>
 <p>Formål: besvarelse af henvendelsen.</p>
 <p>Retsgrundlag: artikel&nbsp;6, stk.&nbsp;1, litra&nbsp;f, i GDPR (legitim interesse i at kommunikere med den, der henvender sig).</p>
