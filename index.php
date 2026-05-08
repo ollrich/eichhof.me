@@ -197,7 +197,7 @@ if ($routeKey === 'contact') $openOverlay = 'contact';
     <link rel="alternate" hreflang="de" href="https://eichhof.me/de/">
     <link rel="alternate" hreflang="en" href="https://eichhof.me/en/">
     <link rel="alternate" hreflang="da" href="https://eichhof.me/da/">
-    <link rel="alternate" hreflang="x-default" href="https://eichhof.me/">
+    <link rel="alternate" hreflang="x-default" href="https://eichhof.me/de/">
 
     <!-- Identity verification (IndieAuth / rel=me) -->
     <link rel="me" href="https://sifa.id/p/ollri.ch">
