@@ -12,7 +12,7 @@ return [
     // dateModified wird bei jedem main-Push automatisch auf das
     // Action-Datum gesetzt (siehe .github/workflows/update-sitemap.yml).
     // datePublished ist pro Seite im jeweiligen JSON-LD hinterlegt.
-    'dateModified' => '2026-04-30',
+    'dateModified' => '2026-05-08',
     'sameAs' => [
         'https://www.linkedin.com/in/olivereichhof',
         'https://www.xing.com/profile/Oliver_Eichhof2/',
