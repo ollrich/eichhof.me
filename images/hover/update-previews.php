@@ -27,10 +27,25 @@
  * - Exit codes for cron monitoring (0=success, 1=error)
  *
  * SECURITY:
+ * - CLI-only: Aufruf über das Web wird hart abgewiesen. Sonst könnte jeder
+ *   den Endpoint anstossen und damit kostenpflichtige ApiFlash-Calls
+ *   auslösen (Kontingent-/Kosten-Amplification). Cron läuft ohnehin via CLI.
  * - API key stored in separate file (.apiflash-key)
  * - File is gitignored and blocked by .htaccess
  * - Privacy-respecting API options (no_cookie_banners, no_ads, no_tracking)
  */
+
+// ============================================================================
+// CLI-GUARD
+// ============================================================================
+// Nur über die Kommandozeile / Cron ausführbar. Ein HTTP-Aufruf (SAPI != cli)
+// wird mit 403 abgewiesen, bevor irgendein API-Call passiert.
+if (PHP_SAPI !== 'cli') {
+    http_response_code(403);
+    header('Content-Type: text/plain; charset=utf-8');
+    echo "Forbidden: this script runs on the command line only.\n";
+    exit(1);
+}
 
 // ============================================================================
 // CONFIGURATION LOADING

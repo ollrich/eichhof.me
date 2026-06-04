@@ -104,13 +104,20 @@ DirectoryIndex index.php index.html
 <Files "deploy.php">
     Require all granted
 </Files>
-<Files "update-previews.php">
-    Require all granted
-</Files>
 <Files "contact.php">
     Require all granted
 </Files>
+# update-previews.php ist bewusst NICHT freigegeben: Das Script läuft
+# CLI-only (Cron) und braucht keine Web-Erreichbarkeit. Die generelle
+# PHP-Sperre oben blockt es damit auf Apache-Ebene (Defense-in-Depth zum
+# CLI-Guard im Script selbst).
 RedirectMatch 404 /\.git
+
+# Server-generiertes Screenshot-Log nicht über das Web ausliefern
+# (.htaccess blockt zwar *.log, die Datei endet aber auf .txt).
+<Files "update-log.txt">
+    Require all denied
+</Files>
 
 # Content-Type für Sitemaps
 <Files "sitemap.xml">
