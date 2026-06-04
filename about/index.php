@@ -54,6 +54,12 @@ require_once __DIR__ . '/../includes/asset.php';
 
 // Route-Key für den Sprachwähler.
 $routeKey = 'about';
+
+// Created-Datum dieser Seite (datePublished). Einmalige Quelle für JSON-LD
+// UND die sichtbare Timestamp-Zeile, damit beide nicht auseinanderlaufen.
+// Updated/Verified kommen aus $person['dateModified'] (Action-gebumpt) bzw.
+// $m['tsVerifiedValue'] (manuell gepflegt).
+$datePublished = '2026-02-19';
 ?>
 <!DOCTYPE html>
 <html lang="<?= $m['htmlLang'] ?>">
@@ -132,7 +138,7 @@ $routeKey = 'about';
                 "about": { "@id": "https://eichhof.me/#person" },
                 "breadcrumb": { "@id": "<?= $m['canonical'] ?>#breadcrumbs" },
                 "primaryImageOfPage": "https://eichhof.me/images/oliver-eichhof.webp",
-                "datePublished": "2026-02-19",
+                "datePublished": "<?= $datePublished ?>",
                 "dateModified": "<?= $person['dateModified'] ?>"
             },
             {
@@ -172,7 +178,11 @@ $routeKey = 'about';
                 "worksFor": {
                     "@type": "Organization",
                     "name": "REGIOCAST GmbH & Co. KG",
-                    "url": "https://www.regiocast.de/"
+                    "url": "https://www.regiocast.de/",
+                    "sameAs": [
+                        "https://de.wikipedia.org/wiki/Regiocast",
+                        "https://www.linkedin.com/company/regiocast/"
+                    ]
                 },
                 "alumniOf": [
                     { "@type": "EducationalOrganization", "name": "Hochschule Bremerhaven" },
@@ -183,7 +193,8 @@ $routeKey = 'about';
                     {
                         "@type": "Occupation",
                         "name": "<?= $e($m['occupationName']) ?>",
-                        "occupationLocation": { "@type": "Place", "name": "<?= $e($m['occupationLocation']) ?>" }
+                        "occupationLocation": { "@type": "Place", "name": "<?= $e($m['occupationLocation']) ?>" },
+                        "startDate": "2026"
                     }
                 ],
                 "sameAs": <?= json_encode($person['sameAs'], JSON_UNESCAPED_SLASHES) ?>,
@@ -230,6 +241,11 @@ $routeKey = 'about';
                 <p><?= $e($m['summary']) ?></p>
                 <p><?= $e($m['segment']) ?></p>
             </div>
+
+            <section class="about-section">
+                <h3><?= $e($m['distinctionTitle']) ?></h3>
+                <p><?= $e($m['distinction']) ?></p>
+            </section>
 
             <section class="about-section">
                 <h3><?= $e($m['factsTitle']) ?></h3>
@@ -296,7 +312,13 @@ $routeKey = 'about';
 
             <p class="about-notice"><?= $rawHtml($m['humanNotice']) ?></p>
 
-            <p class="about-notice"><?= $e($m['retrieval']) ?> <em><?= $e($m['verified']) ?></em></p>
+            <p class="about-notice"><?= $e($m['retrieval']) ?></p>
+
+            <p class="about-notice about-timestamps">
+                <?= $e($m['tsCreatedLabel']) ?>: <time datetime="<?= $e($datePublished) ?>"><?= $e($datePublished) ?></time> ·
+                <?= $e($m['tsUpdatedLabel']) ?>: <time datetime="<?= $e($person['dateModified']) ?>"><?= $e($person['dateModified']) ?></time> ·
+                <?= $e($m['tsVerifiedLabel']) ?>: <?= $e($m['tsVerifiedValue']) ?>
+            </p>
         </div>
         <!-- Mobile-only footer -->
         <div class="mobile-footer">

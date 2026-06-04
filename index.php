@@ -246,7 +246,11 @@ if ($routeKey === 'contact') $openOverlay = 'contact';
                 "worksFor": {
                     "@type": "Organization",
                     "name": "REGIOCAST GmbH & Co. KG",
-                    "url": "https://www.regiocast.de/"
+                    "url": "https://www.regiocast.de/",
+                    "sameAs": [
+                        "https://de.wikipedia.org/wiki/Regiocast",
+                        "https://www.linkedin.com/company/regiocast/"
+                    ]
                 },
                 "sameAs": <?= json_encode($person['sameAs'], JSON_UNESCAPED_SLASHES) ?>,
                 "subjectOf": <?= json_encode($person['subjectOf'], JSON_UNESCAPED_SLASHES) ?>,
