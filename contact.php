@@ -57,28 +57,15 @@ header('Content-Type: application/json; charset=utf-8');
 header('X-Content-Type-Options: nosniff');
 
 /**
- * Get client IP (handles proxies)
+ * Client-IP fürs Rate-Limiting.
+ *
+ * Bewusst NUR REMOTE_ADDR: Die Seite läuft ohne CDN/Reverse-Proxy direkt
+ * beim Hoster. Proxy-Header wie X-Forwarded-For / CF-Connecting-IP sind
+ * daher nicht vertrauenswürdig — würde man sie auswerten, könnte ein
+ * Angreifer pro Request einen anderen Wert senden und das Rate-Limit
+ * trivial umgehen (jede gefälschte IP = neuer Hash-Bucket).
  */
 function getClientIP() {
-    $headers = [
-        'HTTP_CF_CONNECTING_IP',
-        'HTTP_X_FORWARDED_FOR',
-        'HTTP_X_REAL_IP',
-        'REMOTE_ADDR'
-    ];
-
-    foreach ($headers as $header) {
-        if (!empty($_SERVER[$header])) {
-            $ip = $_SERVER[$header];
-            if (strpos($ip, ',') !== false) {
-                $ip = trim(explode(',', $ip)[0]);
-            }
-            if (filter_var($ip, FILTER_VALIDATE_IP)) {
-                return $ip;
-            }
-        }
-    }
-
     return $_SERVER['REMOTE_ADDR'] ?? '0.0.0.0';
 }
 
@@ -93,19 +80,30 @@ function generateCsrfToken() {
  * Check rate limit for IP
  */
 function checkRateLimit($ip, $file, $max, $window) {
-    $data = [];
-
     // Hash IP for privacy (rate limiting doesn't need the actual IP)
     $ipHash = hash('sha256', $ip . 'rate_limit_salt');
-
-    if (file_exists($file)) {
-        $content = file_get_contents($file);
-        $data = json_decode($content, true) ?: [];
-    }
-
     $now = time();
 
-    // Alte Einträge entfernen
+    // 'c+': zum Lesen/Schreiben öffnen, Datei anlegen falls sie fehlt,
+    // OHNE sie zu truncaten. Der exklusive Lock serialisiert gleichzeitige
+    // Submits, damit das read-modify-write nicht durch eine Race verloren
+    // geht (ohne Lock könnten parallele Requests sich gegenseitig
+    // überschreiben und das Limit aushebeln oder die Datei korrumpieren).
+    $fh = @fopen($file, 'c+');
+    if ($fh === false) {
+        // Datei nicht öffenbar: im Zweifel den Request durchlassen, statt
+        // das Kontaktformular komplett zu blockieren.
+        return true;
+    }
+    if (!flock($fh, LOCK_EX)) {
+        fclose($fh);
+        return true;
+    }
+
+    $content = stream_get_contents($fh);
+    $data = json_decode($content, true) ?: [];
+
+    // Alte Einträge ausserhalb des Zeitfensters entfernen
     foreach ($data as $storedHash => $timestamps) {
         $data[$storedHash] = array_filter($timestamps, function($t) use ($now, $window) {
             return ($now - $t) < $window;
@@ -117,16 +115,21 @@ function checkRateLimit($ip, $file, $max, $window) {
 
     // IP-Hash prüfen
     $ipRequests = $data[$ipHash] ?? [];
+    $allowed = count($ipRequests) < $max;
 
-    if (count($ipRequests) >= $max) {
-        return false;
+    if ($allowed) {
+        // Neuen Request speichern (mit Hash) und Datei von vorne neu schreiben
+        $data[$ipHash][] = $now;
+        rewind($fh);
+        ftruncate($fh, 0);
+        fwrite($fh, json_encode($data));
+        fflush($fh);
     }
 
-    // Neuen Request speichern (mit Hash)
-    $data[$ipHash][] = $now;
-    file_put_contents($file, json_encode($data));
+    flock($fh, LOCK_UN);
+    fclose($fh);
 
-    return true;
+    return $allowed;
 }
 
 /**
