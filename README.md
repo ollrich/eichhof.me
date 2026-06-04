@@ -51,6 +51,10 @@ eichhof.me/
 ├── robots.txt              # Crawler rules
 ├── sitemap.xml             # Multilingual sitemap with hreflang
 ├── sitemap-images.xml      # Image sitemap
+├── .github/
+│   └── workflows/
+│       └── update-sitemap.yml  # Auto-bumps <lastmod> on every push to main
+├── LICENSE                 # Open-source license
 ├── css/
 │   └── styles.css          # All styles (variables, themes, components)
 ├── js/
@@ -64,6 +68,8 @@ eichhof.me/
 │   ├── grounding-email.js  # Email obfuscation on grounding page
 │   └── confetti.min.js     # Canvas-Confetti (lazy-loaded)
 ├── contact.php             # Contact form backend (rate limiting, CSRF, honeypot)
+├── deploy.php              # GitHub webhook deploy (IP allowlist + HMAC signature, fail-closed)
+├── DEPLOY-SETUP.md         # Deployment / webhook setup guide
 ├── images/
 │   ├── oliver-eichhof.png  # Profile photo master (920w, lossless — Build-Quelle für WebP/AVIF)
 │   ├── oliver-eichhof.avif # Profile photo (920w, AVIF — primary, ~54 KB)
@@ -74,11 +80,10 @@ eichhof.me/
 │   ├── oliver-eichhof-640.webp # Responsive WebP (tablet srcset)
 │   ├── og-image.png        # Open Graph image for social sharing
 │   ├── favicons/           # Favicon variants (180, 192, 512)
-│   ├── hover/              # Link preview screenshots
-│   │   ├── update-previews.php  # Screenshot generation script
-│   │   ├── *.webp          # Preview images (server-only, gitignored)
-│   │   └── .apiflash-key   # APIFlash API key (server-only, gitignored)
-│   └── icons.svg           # SVG sprite
+│   └── hover/              # Link preview screenshots
+│       ├── update-previews.php  # Screenshot generation script (CLI-only, run via cron)
+│       ├── *.webp          # Preview images (server-only, gitignored)
+│       └── .apiflash-key   # APIFlash API key (server-only, gitignored)
 │
 │   # Server-only (not in repo, gitignored)
 ├── .contact-config.json    # Email config (recipient, from address)
