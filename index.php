@@ -39,9 +39,9 @@
 // Override brauchte, und liefert gleichzeitig sauberes SEO: keine Seite
 // existiert unter zwei URLs.
 //
-//  Bots   — 301 auf /de/ (permanent, damit Link-Equity der kurzen URL
-//           konsolidiert wird; DE ist die Default-Sprache, x-default
-//           zeigt weiterhin auf die kurze /).
+//  Bots   — 301 auf /de/ (permanent, damit Link-Equity konsolidiert
+//           wird; DE ist die Default-Sprache, und hreflang x-default
+//           zeigt direkt auf /de/ — ohne Umweg über die kurze /).
 //  Humans — 302 auf /de/|/en/|/da/ je nach Accept-Language.
 //           302, damit Browser/CDNs die Antwort nicht cachen und der
 //           Nutzer beim nächsten Besuch nicht an eine Sprache klebt,
@@ -454,14 +454,17 @@ if ($routeKey === 'contact') $openOverlay = 'contact';
                 <input type="hidden" name="csrf_token" id="contact-csrf">
 
                 <div class="contact-field">
+                    <label class="sr-only" for="contact-name"><?= $e($m['contactName']) ?></label>
                     <input type="text" id="contact-name" name="name" placeholder="<?= $e($m['contactName']) ?>" required minlength="2" maxlength="100" autocomplete="name">
                 </div>
 
                 <div class="contact-field">
+                    <label class="sr-only" for="contact-email"><?= $e($m['contactEmail']) ?></label>
                     <input type="email" id="contact-email" name="email" placeholder="<?= $e($m['contactEmail']) ?>" required autocomplete="email">
                 </div>
 
                 <div class="contact-field">
+                    <label class="sr-only" for="contact-message"><?= $e($m['contactMessage']) ?></label>
                     <textarea id="contact-message" name="message" placeholder="<?= $e($m['contactMessage']) ?>" required minlength="10" maxlength="5000" rows="5"></textarea>
                 </div>
 
