@@ -81,9 +81,10 @@ eichhof.me/
 │   ├── og-image.png        # Open Graph image for social sharing
 │   ├── favicons/           # Favicon variants (180, 192, 512)
 │   └── hover/              # Link preview screenshots
-│       ├── update-previews.php  # Screenshot generation script (CLI-only, run via cron)
+│       ├── update-previews.php  # Screenshot generation script (token-protected, run via cron)
 │       ├── *.webp          # Preview images (server-only, gitignored)
-│       └── .apiflash-key   # APIFlash API key (server-only, gitignored)
+│       ├── .apiflash-key   # APIFlash API key (server-only, gitignored)
+│       └── .preview-cron-token  # Secret token for HTTP cron trigger (server-only, gitignored)
 │
 │   # Server-only (not in repo, gitignored)
 ├── .contact-config.json    # Email config (recipient, from address)

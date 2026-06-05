@@ -29,6 +29,7 @@ Desktop.ini
 deploy-config.php
 .webhook-secret
 .apiflash-key
+.preview-cron-token
 .contact-config.json
 .contact-ratelimit.json
 

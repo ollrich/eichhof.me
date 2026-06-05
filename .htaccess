@@ -107,10 +107,13 @@ DirectoryIndex index.php index.html
 <Files "contact.php">
     Require all granted
 </Files>
-# update-previews.php ist bewusst NICHT freigegeben: Das Script läuft
-# CLI-only (Cron) und braucht keine Web-Erreichbarkeit. Die generelle
-# PHP-Sperre oben blockt es damit auf Apache-Ebene (Defense-in-Depth zum
-# CLI-Guard im Script selbst).
+# update-previews.php über HTTP erreichbar (Cron ruft die URL mit ?token=…
+# auf), aber im Script selbst durch einen Secret-Token geschützt: ohne
+# gültigen Token antwortet es mit 403, bevor ein API-Call passiert. Der
+# Token liegt in .preview-cron-token (Dotfile → oben web-gesperrt).
+<Files "update-previews.php">
+    Require all granted
+</Files>
 RedirectMatch 404 /\.git
 
 # Server-generiertes Screenshot-Log nicht über das Web ausliefern

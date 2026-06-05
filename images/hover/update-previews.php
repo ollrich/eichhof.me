@@ -27,24 +27,35 @@
  * - Exit codes for cron monitoring (0=success, 1=error)
  *
  * SECURITY:
- * - CLI-only: Aufruf über das Web wird hart abgewiesen. Sonst könnte jeder
- *   den Endpoint anstossen und damit kostenpflichtige ApiFlash-Calls
- *   auslösen (Kontingent-/Kosten-Amplification). Cron läuft ohnehin via CLI.
+ * - Zugriffsschutz: läuft über CLI (Cron-Kommandozeile) ODER über HTTP mit
+ *   gültigem Secret-Token (?token=…, geprüft via hash_equals gegen die Datei
+ *   .preview-cron-token). Ein HTTP-Aufruf ohne korrekten Token wird mit 403
+ *   abgewiesen, BEVOR ein API-Call passiert — verhindert, dass Fremde
+ *   kostenpflichtige ApiFlash-Calls auslösen (Kosten-Amplification).
  * - API key stored in separate file (.apiflash-key)
  * - File is gitignored and blocked by .htaccess
  * - Privacy-respecting API options (no_cookie_banners, no_ads, no_tracking)
  */
 
 // ============================================================================
-// CLI-GUARD
+// ACCESS GUARD
 // ============================================================================
-// Nur über die Kommandozeile / Cron ausführbar. Ein HTTP-Aufruf (SAPI != cli)
-// wird mit 403 abgewiesen, bevor irgendein API-Call passiert.
+// Läuft über CLI (Cron per Kommandozeile) ODER über HTTP mit gültigem
+// Secret-Token. Der Token liegt serverseitig in .preview-cron-token
+// (gitignored; als Dotfile per .htaccess web-gesperrt). Ein HTTP-Aufruf
+// ohne korrekten Token wird mit 403 abgewiesen, bevor ein kostenpflichtiger
+// API-Call passiert. Fail-closed: fehlt der Token-File serverseitig oder ist
+// er leer, ist über HTTP gar kein Zugriff möglich (nur noch CLI).
 if (PHP_SAPI !== 'cli') {
-    http_response_code(403);
-    header('Content-Type: text/plain; charset=utf-8');
-    echo "Forbidden: this script runs on the command line only.\n";
-    exit(1);
+    $token_file = __DIR__ . '/.preview-cron-token';
+    $expected   = is_readable($token_file) ? trim((string) file_get_contents($token_file)) : '';
+    $provided   = $_GET['token'] ?? '';
+    if ($expected === '' || !is_string($provided) || !hash_equals($expected, $provided)) {
+        http_response_code(403);
+        header('Content-Type: text/plain; charset=utf-8');
+        echo "Forbidden.\n";
+        exit(1);
+    }
 }
 
 // ============================================================================
