@@ -240,7 +240,7 @@ if ($routeKey === 'contact') $openOverlay = 'contact';
                 "image": "https://eichhof.me/images/oliver-eichhof.webp",
                 "jobTitle": "<?= $e($m['jobTitle']) ?>",
                 "description": "<?= $e($m['description']) ?>",
-                "knowsAbout": <?= $m['knowsAbout'] ?>,
+                "knowsAbout": <?= json_encode($m['knowsAbout'], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) ?>,
                 "homeLocation": { "@type": "Place", "name": "Hamburg" },
                 "birthPlace": { "@type": "Place", "name": "Bremerhaven" },
                 "worksFor": {

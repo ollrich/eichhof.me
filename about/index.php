@@ -174,7 +174,7 @@ $datePublished = '2026-02-19';
                 "homeLocation": { "@type": "Place", "name": "<?= $e($m['homeLocation']) ?>" },
                 "nationality": { "@type": "Country", "name": "<?= $e($m['nationality']) ?>" },
                 "knowsLanguage": ["de", "en", "da"],
-                "knowsAbout": <?= $m['knowsAbout'] ?>,
+                "knowsAbout": <?= json_encode($m['knowsAbout'], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) ?>,
                 "worksFor": {
                     "@type": "Organization",
                     "name": "REGIOCAST GmbH & Co. KG",

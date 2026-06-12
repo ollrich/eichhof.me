@@ -65,7 +65,7 @@ return [
             'photoAlt' => 'Porträt von Oliver Eichhof, Kommunikationsspezialist aus Hamburg',
             // JSON-LD shared
             'jobTitle' => 'Leiter Marketing',
-            'knowsAbout' => '["Marketing", "Markenentwicklung", "Zielgruppenanalyse", "Kampagnenplanung", "Kommunikationsstrategie", "Content-Strategie", "Digitale Kommunikation", "Employer Branding", "B2B-Kommunikation", "Journey Design", "KPI-Frameworks", "GEO/SEO/SEA", "Marketing Automation", "KI-gestützte Workflows", "Radio", "Audio", "Streaming Media", "Musik", "Musikmedien", "Bloggen"]',
+            'knowsAbout' => ['Marketing', 'Markenentwicklung', 'Zielgruppenanalyse', 'Kampagnenplanung', 'Kommunikationsstrategie', 'Content-Strategie', 'Digitale Kommunikation', 'Employer Branding', 'B2B-Kommunikation', 'Journey Design', 'KPI-Frameworks', 'GEO/SEO/SEA', 'Marketing Automation', 'KI-gestützte Workflows', 'Radio', 'Audio', 'Streaming Media', 'Musik', 'Musikmedien', 'Bloggen'],
             // Theme toggle
             'themeDark' => 'Licht aus',
             'themeLight' => 'Licht an',
@@ -100,7 +100,7 @@ return [
             'subtitle' => 'Communication Specialist from Hamburg',
             'photoAlt' => 'Portrait of Oliver Eichhof, Communication Specialist from Hamburg',
             'jobTitle' => 'Marketing Director',
-            'knowsAbout' => '["Marketing", "Brand Development", "Audience Analysis", "Campaign Planning", "Communication Strategy", "Content Strategy", "Digital Communication", "Employer Branding", "B2B Communication", "Journey Design", "KPI Frameworks", "GEO/SEO/SEA", "Marketing Automation", "AI-powered Workflows", "Radio", "Audio", "Streaming Media", "Music", "Music Media", "Blogging"]',
+            'knowsAbout' => ['Marketing', 'Brand Development', 'Audience Analysis', 'Campaign Planning', 'Communication Strategy', 'Content Strategy', 'Digital Communication', 'Employer Branding', 'B2B Communication', 'Journey Design', 'KPI Frameworks', 'GEO/SEO/SEA', 'Marketing Automation', 'AI-powered Workflows', 'Radio', 'Audio', 'Streaming Media', 'Music', 'Music Media', 'Blogging'],
             'themeDark' => 'Lights off',
             'themeLight' => 'Lights on',
             'themeToggleLabel' => 'Toggle color scheme',
@@ -128,7 +128,7 @@ return [
             'subtitle' => 'Kommunikationsspecialist fra Hamborg',
             'photoAlt' => 'Portræt af Oliver Eichhof, Kommunikationsspecialist fra Hamborg',
             'jobTitle' => 'Marketingchef',
-            'knowsAbout' => '["Marketing", "Brandudvikling", "Målgruppeanalyse", "Kampagneplanlægning", "Kommunikationsstrategi", "Content-strategi", "Digital kommunikation", "Employer branding", "B2B-kommunikation", "Journey design", "KPI-frameworks", "GEO/SEO/SEA", "Marketing automation", "AI-drevne workflows", "Radio", "Audio", "Streaming media", "Musik", "Musikmedier", "Blogging"]',
+            'knowsAbout' => ['Marketing', 'Brandudvikling', 'Målgruppeanalyse', 'Kampagneplanlægning', 'Kommunikationsstrategi', 'Content-strategi', 'Digital kommunikation', 'Employer branding', 'B2B-kommunikation', 'Journey design', 'KPI-frameworks', 'GEO/SEO/SEA', 'Marketing automation', 'AI-drevne workflows', 'Radio', 'Audio', 'Streaming media', 'Musik', 'Musikmedier', 'Blogging'],
             'themeDark' => 'Sluk lyset',
             'themeLight' => 'Tænd lyset',
             'themeToggleLabel' => 'Skift farveskema',
