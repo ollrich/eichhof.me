@@ -35,6 +35,7 @@ Pushes to `main` that touch page content automatically update the sitemap's `<la
 ```
 eichhof.me/
 ├── index.php               # Main entry (multilingual routing, Accept-Language 302, meta tags)
+├── 404.php                 # Custom error page (language from URL prefix) — via ErrorDocument
 ├── about/
 │   └── index.php           # Grounding page (crawlable, styled) — consumes i18n.php
 ├── includes/
@@ -49,6 +50,7 @@ eichhof.me/
 │   └── asset.php           # filemtime()-based cache-busting helper
 ├── .htaccess               # URL rewrites (/de/, /en/, /da/, /de/ueber, /en/about, /da/om, etc.)
 ├── robots.txt              # Crawler rules
+├── llms.txt                # Entry point for AI crawlers (key facts + grounding page links)
 ├── sitemap.xml             # Multilingual sitemap with hreflang
 ├── sitemap-images.xml      # Image sitemap
 ├── .github/
