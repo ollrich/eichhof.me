@@ -69,6 +69,10 @@ RewriteRule ^da/om/?$ about/index.php?lang=da [L,QSA]
 # Default: serve index.php (German, with browser detection fallback)
 DirectoryIndex index.php index.html
 
+# Eigene 404-Seite statt Apache-Default. 404.php leitet die Sprache aus
+# dem Präfix der angefragten URL ab (/en/* → EN, /da/* → DA, sonst DE).
+ErrorDocument 404 /404.php
+
 # ============================================================================
 # SECURITY
 # ============================================================================
@@ -112,6 +116,9 @@ DirectoryIndex index.php index.html
 # gültigen Token antwortet es mit 403, bevor ein API-Call passiert. Der
 # Token liegt in .preview-cron-token (Dotfile → oben web-gesperrt).
 <Files "update-previews.php">
+    Require all granted
+</Files>
+<Files "404.php">
     Require all granted
 </Files>
 RedirectMatch 404 /\.git

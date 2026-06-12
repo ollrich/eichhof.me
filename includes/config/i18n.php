@@ -499,4 +499,25 @@ return [
             ],
         ],
     ],
+
+    // ========================================================================
+    // NOTFOUND — nur für 404.php (Apache ErrorDocument)
+    // ========================================================================
+    'notfound' => [
+        'de' => [
+            'title' => 'Seite nicht gefunden – Oliver Eichhof',
+            'notFoundText' => 'Diese Seite existiert nicht (mehr).',
+            'notFoundBack' => 'Zur Startseite',
+        ],
+        'en' => [
+            'title' => 'Page not found – Oliver Eichhof',
+            'notFoundText' => 'This page does not exist (anymore).',
+            'notFoundBack' => 'Back to the homepage',
+        ],
+        'da' => [
+            'title' => 'Siden blev ikke fundet – Oliver Eichhof',
+            'notFoundText' => 'Denne side findes ikke (længere).',
+            'notFoundBack' => 'Til forsiden',
+        ],
+    ],
 ];
