@@ -28,7 +28,7 @@ Pure HTML/CSS/JavaScript – no frameworks. Server-side rendered (PHP) for all b
 
 ### Automation
 
-Every push to `main` automatically updates the sitemap's `<lastmod>` date via GitHub Actions.
+Pushes to `main` that touch page content automatically update the sitemap's `<lastmod>` and the JSON-LD `dateModified` via GitHub Actions. Docs- or config-only pushes are ignored (path allowlist), so the freshness signal stays honest.
 
 ### Structure
 
@@ -53,7 +53,7 @@ eichhof.me/
 ├── sitemap-images.xml      # Image sitemap
 ├── .github/
 │   └── workflows/
-│       └── update-sitemap.yml  # Auto-bumps <lastmod> on every push to main
+│       └── update-sitemap.yml  # Bumps <lastmod> + JSON-LD dateModified on content pushes (path allowlist)
 ├── LICENSE                 # Open-source license
 ├── css/
 │   └── styles.css          # All styles (variables, themes, components)
@@ -120,7 +120,7 @@ Pures HTML/CSS/JavaScript – keine Frameworks. Server-Side Rendering (PHP) für
 
 ### Automatisierung
 
-Bei jedem Push auf `main` wird das `<lastmod>`-Datum der Sitemap automatisch via GitHub Actions aktualisiert.
+Pushes auf `main`, die Seiteninhalt ändern, aktualisieren automatisch das `<lastmod>` der Sitemap und das JSON-LD-`dateModified` via GitHub Actions. Reine Docs-/Config-Pushes werden übersprungen (Pfad-Allowlist), damit das Freshness-Signal ehrlich bleibt.
 
 ---
 
@@ -150,7 +150,7 @@ Ren HTML/CSS/JavaScript – ingen frameworks. Server-side rendering (PHP) for al
 
 ### Automatisering
 
-Ved hvert push til `main` opdateres sitemap'ens `<lastmod>`-dato automatisk via GitHub Actions.
+Push til `main`, der ændrer sideindhold, opdaterer automatisk sitemap'ens `<lastmod>` og JSON-LD-`dateModified` via GitHub Actions. Rene docs-/config-push springes over (sti-allowlist).
 
 ---
 
