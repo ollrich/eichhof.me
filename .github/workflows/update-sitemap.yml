@@ -4,9 +4,20 @@ on:
   push:
     branches:
       - main
-    paths-ignore:
-      - '.github/**'
-      - 'README.md'
+    # Allowlist statt Ignore-Liste: lastmod/dateModified nur bumpen, wenn der
+    # Push tatsächlich den sichtbaren Seiteninhalt betrifft. Pushes, die nur
+    # Docs, Config, .htaccess, robots/sitemap oder Backend-Scripts (deploy.php,
+    # contact.php, update-previews.php) ändern, lösen keinen Bump aus — so
+    # bleibt das Freshness-Signal ehrlich statt bei jedem Commit hochzuzählen.
+    # Hinweis: Der Action-eigene Commit (person.php/sitemap.xml via
+    # GITHUB_TOKEN) triggert keinen neuen Lauf — GitHub unterbindet Rekursion.
+    paths:
+      - 'index.php'
+      - 'about/index.php'
+      - 'includes/**'
+      - 'css/**'
+      - 'js/**'
+      - 'images/oliver-eichhof*'
 
 permissions:
   contents: write
