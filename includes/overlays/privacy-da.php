@@ -65,7 +65,7 @@
 
 <h3>E-mail-udbyder</h3>
 <p>Henvendelser via kontaktformularen og pr. e-mail modtages og opbevares i min e-mail-indbakke. Min e-mail-udbyder er:</p>
-<p>mailbox.org – Heinlein Hosting GmbH<br>Schwedter Straße 8/9b<br>10119 Berlin<br>Tyskland</p>
+<p>mailbox.org – Heinlein Hosting GmbH<br>Schwedter Straße 8/9A<br>10119 Berlin<br>Tyskland</p>
 <p>Udbyderen behandler de personoplysninger, som beskederne indeholder, på mine vegne og er underlagt tysk og europæisk databeskyttelsesret. Behandlingen finder sted i Tyskland; desuden gælder udbyderens egen privatlivspolitik.</p>
 
 <h3>Den registreredes rettigheder</h3>

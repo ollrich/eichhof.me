@@ -65,7 +65,7 @@
 
 <h3>E-Mail-Anbieter</h3>
 <p>Anfragen über das Kontaktformular und per E-Mail werden in meinem E-Mail-Postfach empfangen und gespeichert. Mein E-Mail-Anbieter ist:</p>
-<p>mailbox.org – Heinlein Hosting GmbH<br>Schwedter Straße 8/9b<br>10119 Berlin<br>Deutschland</p>
+<p>mailbox.org – Heinlein Hosting GmbH<br>Schwedter Straße 8/9A<br>10119 Berlin<br>Deutschland</p>
 <p>Der Anbieter verarbeitet die in den Nachrichten enthaltenen personenbezogenen Daten in meinem Auftrag und unterliegt deutschem und europäischem Datenschutzrecht. Die Verarbeitung erfolgt in Deutschland; ergänzend gilt die Datenschutzerklärung des Anbieters.</p>
 
 <h3>Rechte der betroffenen Person</h3>

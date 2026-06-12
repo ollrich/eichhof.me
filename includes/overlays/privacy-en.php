@@ -65,7 +65,7 @@
 
 <h3>Email Provider</h3>
 <p>Inquiries via the contact form and by email are received and stored in my email inbox. My email provider is:</p>
-<p>mailbox.org – Heinlein Hosting GmbH<br>Schwedter Straße 8/9b<br>10119 Berlin<br>Germany</p>
+<p>mailbox.org – Heinlein Hosting GmbH<br>Schwedter Straße 8/9A<br>10119 Berlin<br>Germany</p>
 <p>The provider processes the personal data contained in messages on my behalf and is subject to German and European data protection law. Processing takes place in Germany; the provider's own privacy policy applies in addition.</p>
 
 <h3>Your Rights as a Data Subject</h3>
