@@ -115,29 +115,15 @@ function isGitHubRequest($ip, $ranges) {
 }
 
 /**
- * Get client IP (handles proxies)
+ * Client-IP für die GitHub-Whitelist.
+ *
+ * Bewusst NUR REMOTE_ADDR: Die Seite läuft ohne CDN/Reverse-Proxy direkt
+ * beim Hoster. Proxy-Header wie X-Forwarded-For sind frei spoofbar — würde
+ * man sie auswerten, könnte sich jeder Client per Header als GitHub-IP
+ * ausgeben und die Whitelist aushebeln. (Gleiche Begründung wie in
+ * contact.php; die eigentliche Authentisierung bleibt die HMAC-Signatur.)
  */
 function getClientIP() {
-    $headers = [
-        'HTTP_CF_CONNECTING_IP',     // Cloudflare
-        'HTTP_X_FORWARDED_FOR',      // General proxy
-        'HTTP_X_REAL_IP',            // Nginx proxy
-        'REMOTE_ADDR'                // Direct connection
-    ];
-
-    foreach ($headers as $header) {
-        if (!empty($_SERVER[$header])) {
-            $ip = $_SERVER[$header];
-            // X-Forwarded-For can contain multiple IPs
-            if (strpos($ip, ',') !== false) {
-                $ip = trim(explode(',', $ip)[0]);
-            }
-            if (filter_var($ip, FILTER_VALIDATE_IP)) {
-                return $ip;
-            }
-        }
-    }
-
     return $_SERVER['REMOTE_ADDR'] ?? '0.0.0.0';
 }
 
