@@ -54,6 +54,9 @@
     function fireConfetti() {
         if (confettiTriggered) return;
         if (document.hidden) return;
+        // Respect reduced-motion — covers the auto-fired confetti after
+        // 111s, not just the manual easter egg trigger.
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
         confettiTriggered = true;
 
         const duration = 3000;
@@ -97,6 +100,8 @@
         setTimeout(function() {
             if (confettiTriggered) return;
             if (document.hidden) return;
+            // Don't even load confetti.min.js for reduced-motion users
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
             loadConfetti(fireConfetti);
         }, 111000);
     }
