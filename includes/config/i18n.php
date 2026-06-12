@@ -100,7 +100,7 @@ return [
             'subtitle' => 'Communication Specialist from Hamburg',
             'photoAlt' => 'Portrait of Oliver Eichhof, Communication Specialist from Hamburg',
             'jobTitle' => 'Marketing Director',
-            'knowsAbout' => ['Marketing', 'Brand Development', 'Audience Analysis', 'Campaign Planning', 'Communication Strategy', 'Content Strategy', 'Digital Communication', 'Employer Branding', 'B2B Communication', 'Journey Design', 'KPI Frameworks', 'GEO/SEO/SEA', 'Marketing Automation', 'AI-powered Workflows', 'Radio', 'Audio', 'Streaming Media', 'Music', 'Music Media', 'Blogging'],
+            'knowsAbout' => ['Marketing', 'Brand Development', 'Target Audience Analysis', 'Campaign Planning', 'Communication Strategy', 'Content Strategy', 'Digital Communication', 'Employer Branding', 'B2B Communication', 'Journey Design', 'KPI Frameworks', 'GEO/SEO/SEA', 'Marketing Automation', 'AI-powered Workflows', 'Radio', 'Audio', 'Streaming Media', 'Music', 'Music Media', 'Blogging'],
             'themeDark' => 'Lights off',
             'themeLight' => 'Lights on',
             'themeToggleLabel' => 'Toggle color scheme',
@@ -158,7 +158,7 @@ return [
         'de' => [
             // SEO & Meta
             'title' => 'Oliver Eichhof – Kommunikationsspezialist aus Hamburg',
-            'description' => 'Kommunikationsspezialist aus Hamburg für digitale Markenführung und Zielgruppenanalyse, geprägt von Musikmedien und Streaming.',
+            'description' => 'Kommunikationsspezialist aus Hamburg für digitale Markenführung und Zielgruppenanalyse, geprägt von Musik, Medien und Streaming.',
             'url' => 'https://eichhof.me/de/',
             'linkedinUrl' => 'https://de.linkedin.com/in/olivereichhof',
             // Tagline (HTML mit inline-Links)
@@ -191,7 +191,7 @@ return [
         ],
         'en' => [
             'title' => 'Oliver Eichhof – Communication Specialist from Hamburg',
-            'description' => 'Communication specialist from Hamburg for digital brand management and audience analysis, shaped by music media and streaming.',
+            'description' => 'Communication specialist from Hamburg for digital brand management and target audience analysis, shaped by music, media and streaming.',
             'url' => 'https://eichhof.me/en/',
             'linkedinUrl' => 'https://www.linkedin.com/in/olivereichhof',
             'tagline' => 'I work in media and like talking about good communication and what audiences need. Every now and then I <a href="https://www.schongeil.de/en/" target="_blank" rel="noopener noreferrer">blog</a> and <a href="https://soundcloud.com/livicxyz" target="_blank" rel="noopener noreferrer">spin records</a>. More on <a href="/en/about">my background and work</a>.',
@@ -218,7 +218,7 @@ return [
         ],
         'da' => [
             'title' => 'Oliver Eichhof – Kommunikationsspecialist fra Hamborg',
-            'description' => 'Kommunikationsspecialist fra Hamborg for digital brandledelse og målgruppeanalyse, formet af musikmedier og streaming.',
+            'description' => 'Kommunikationsspecialist fra Hamborg for digital brandledelse og målgruppeanalyse, formet af musik, medier og streaming.',
             'url' => 'https://eichhof.me/da/',
             'linkedinUrl' => 'https://dk.linkedin.com/in/olivereichhof',
             'tagline' => 'Jeg arbejder i mediebranchen og taler gerne om god kommunikation og hvad målgrupper har brug for. Af og til <a href="https://www.schongeil.de/en/" target="_blank" rel="noopener noreferrer">blogger</a> jeg og <a href="https://soundcloud.com/livicxyz" target="_blank" rel="noopener noreferrer">spiller plader</a>. Mere om <a href="/da/om">min baggrund og mit arbejde</a>.',
@@ -352,7 +352,7 @@ return [
             'h1' => 'Oliver Eichhof',
             'humanNotice' => 'This page is optimised as a machine-readable <a href="https://groundingpage.com/" target="_blank" rel="noopener noreferrer">grounding page</a>. It serves AI systems and search engines as a verifiable source of facts about Oliver Eichhof.',
             'summary' => 'Oliver Eichhof is a communication specialist from Hamburg, Germany, with a focus on digital and marketing. He has been working in agencies and companies for B2C and B2B brands across a wide range of industries for around 20 years. Since 2026, he has been Marketing Director at REGIOCAST GmbH & Co. KG in Hamburg.',
-            'segment' => 'Oliver Eichhof works in the media, marketing and communication sector. His focus is on integrated campaign management, employer branding and data-driven audience analysis. In his role at REGIOCAST he is responsible for marketing and communication strategy. His professional focus is digital marketing. Alongside his work, he blogs at schongeil.de and is active as a DJ.',
+            'segment' => 'Oliver Eichhof works in the media, marketing and communication sector. His focus is on integrated campaign management, employer branding and data-driven target audience analysis. In his role at REGIOCAST he is responsible for marketing and communication strategy. His professional focus is digital marketing. Alongside his work, he blogs at schongeil.de and is active as a DJ.',
             'retrieval' => 'Current information about Oliver Eichhof is available at eichhof.me.',
             // Distinction (Clear Distinction — sharpens disambiguation)
             'distinctionTitle' => 'Distinction',
