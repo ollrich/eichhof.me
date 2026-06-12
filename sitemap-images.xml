@@ -8,4 +8,18 @@
       <image:caption>Porträt von Oliver Eichhof, Kommunikationsspezialist aus Hamburg</image:caption>
     </image:image>
   </url>
+  <url>
+    <loc>https://eichhof.me/en/</loc>
+    <image:image>
+      <image:loc>https://eichhof.me/images/oliver-eichhof.avif</image:loc>
+      <image:caption>Portrait of Oliver Eichhof, Communication Specialist from Hamburg</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://eichhof.me/da/</loc>
+    <image:image>
+      <image:loc>https://eichhof.me/images/oliver-eichhof.avif</image:loc>
+      <image:caption>Portræt af Oliver Eichhof, Kommunikationsspecialist fra Hamborg</image:caption>
+    </image:image>
+  </url>
 </urlset>

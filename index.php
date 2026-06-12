@@ -421,7 +421,7 @@ if ($routeKey === 'contact') $openOverlay = 'contact';
                 </svg>
             </button>
             <h2 id="privacy-title"><?= $e($m['privacyTitle']) ?></h2>
-            <?php include __DIR__ . '/includes/overlays/privacy-' . ($lang === 'da' ? 'da' : $lang) . '.php'; ?>
+            <?php include __DIR__ . '/includes/overlays/privacy-' . $lang . '.php'; ?>
         </div>
     </div>
 

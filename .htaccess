@@ -162,6 +162,14 @@ FileETag None
     </FilesMatch>
 </IfModule>
 
+# AVIF-MIME-Type explizit deklarieren. Funktioniert beim aktuellen Hoster
+# auch ohne (globale Server-Config kennt .avif), aber so überlebt die
+# korrekte Auslieferung einen Hoster-Umzug. Ohne image/avif griffe u. a.
+# ExpiresByType image/avif nicht.
+<IfModule mod_mime.c>
+    AddType image/avif .avif
+</IfModule>
+
 # GZIP Kompression
 <IfModule mod_deflate.c>
     AddOutputFilterByType DEFLATE text/html
