@@ -201,18 +201,24 @@ if (!empty($honeypot)) {
     exit;
 }
 
-// Zeitbasierte Prüfung
-$formLoadTime = $data['_t'] ?? 0;
+// Zeitbasierte Prüfung: contact.js setzt _t immer beim Öffnen des Formulars.
+// Fehlendes _t heisst direkter POST am Formular vorbei = Bot. Timestamps aus
+// der Zukunft ergeben eine negative Differenz und fallen ebenfalls durch.
+$formLoadTime = (int) ($data['_t'] ?? 0);
 $submitTime = time();
 
-if ($formLoadTime > 0 && ($submitTime - $formLoadTime) < CONTACT_MIN_SUBMIT_TIME) {
-    // Zu schnell = Bot, Fake-Erfolg
+if ($formLoadTime <= 0 || ($submitTime - $formLoadTime) < CONTACT_MIN_SUBMIT_TIME) {
+    // Fehlender Timestamp oder zu schnell = Bot, Fake-Erfolg
     echo json_encode(['success' => true]);
     exit;
 }
 
 // Formularfelder validieren
 $name = sanitizeInput($data['name'] ?? '', 100);
+// Name fliesst in den Mail-Subject: Zeilenumbrüche entfernen, damit ein
+// präparierter Name dort keine zusätzlichen Header injizieren kann. Neuere
+// PHP-Versionen blocken CRLF im Subject selbst, aber explizit ist robuster.
+$name = trim(str_replace(["\r", "\n"], ' ', $name));
 $email = filter_var(trim($data['email'] ?? ''), FILTER_VALIDATE_EMAIL);
 $message = sanitizeInput($data['message'] ?? '', 5000);
 $lang = in_array($data['lang'] ?? 'de', ['de', 'en', 'da']) ? $data['lang'] : 'de';
