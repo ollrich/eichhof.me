@@ -25,6 +25,9 @@ Desktop.ini
 *.tmp
 *.temp
 
+# Claude Code (lokale Settings + Worktrees)
+.claude/
+
 # Deployment (contains secrets on server)
 deploy-config.php
 .webhook-secret
