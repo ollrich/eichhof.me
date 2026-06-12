@@ -170,6 +170,13 @@ FileETag None
     AddType image/avif .avif
 </IfModule>
 
+# Textdateien (llms.txt, robots.txt) explizit als UTF-8 ausliefern.
+# Ohne charset-Parameter rendern Browser text/plain als Windows-1252 —
+# aus „—" und „–" wird dann „â€¦"-Mojibake.
+<IfModule mod_mime.c>
+    AddCharset utf-8 .txt
+</IfModule>
+
 # GZIP Kompression
 <IfModule mod_deflate.c>
     AddOutputFilterByType DEFLATE text/html
