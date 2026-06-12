@@ -15,6 +15,27 @@
         return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
     }
 
+    // Muss den <meta name="theme-color">-Werten in den <head>s entsprechen
+    // (index.php, about/index.php, 404.php).
+    const THEME_COLORS = { light: '#764ba2', dark: '#0d0d14' };
+
+    /**
+     * Browser-UI-Farbe (mobile Adressleiste) an ein explizit gewähltes
+     * Theme angleichen. Die beiden meta-Tags hängen per media-Attribut an
+     * prefers-color-scheme — ein manueller Toggle ändert das Systemschema
+     * aber nicht. Daher bekommen bei expliziter Wahl beide Tags dieselbe
+     * Farbe; ohne explizite Wahl (System-Modus) bleiben die Defaults aktiv.
+     */
+    function syncThemeColor() {
+        const explicit = document.documentElement.classList.contains('dark-mode') ? 'dark'
+                       : document.documentElement.classList.contains('light-mode') ? 'light'
+                       : null;
+        if (!explicit) return;
+        document.querySelectorAll('meta[name="theme-color"]').forEach(function(meta) {
+            meta.setAttribute('content', THEME_COLORS[explicit]);
+        });
+    }
+
     function applyTheme(theme) {
         document.documentElement.classList.remove('dark-mode', 'light-mode');
         if (theme === 'dark') document.documentElement.classList.add('dark-mode');
@@ -26,12 +47,14 @@
         if (savedTheme === 'dark' || savedTheme === 'light') {
             applyTheme(savedTheme);
         }
+        syncThemeColor();
     }
 
     function toggleTheme() {
         const next = getEffectiveTheme() === 'dark' ? 'light' : 'dark';
         applyTheme(next);
         localStorage.setItem('theme', next);
+        syncThemeColor();
     }
 
     function setupToggleButton(buttonId) {
