@@ -177,7 +177,7 @@ if ($routeKey === 'contact') $openOverlay = 'contact';
     <meta property="og:description" content="<?= $e($m['description']) ?>">
     <meta property="og:image" content="https://eichhof.me/images/og-image.png">
     <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="628">
+    <meta property="og:image:height" content="630">
     <meta property="og:url" content="<?= $m['url'] ?>">
     <meta property="og:type" content="profile">
     <meta property="og:site_name" content="Oliver Eichhof">
