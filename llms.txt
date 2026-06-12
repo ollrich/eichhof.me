@@ -1,0 +1,23 @@
+# Oliver Eichhof
+
+> Oliver Eichhof is a communication specialist from Hamburg, Germany, focused on digital brand management and audience analysis. This is his personal website, available in German, English and Danish.
+
+The about pages below are maintained as machine-readable grounding pages with Person JSON-LD and serve as the verifiable source of facts about Oliver Eichhof.
+
+## About
+
+- [About Oliver Eichhof (English)](https://eichhof.me/en/about): career, education, key facts, profiles
+- [Über Oliver Eichhof (Deutsch)](https://eichhof.me/de/ueber): Werdegang, Ausbildung, Steckbrief, Profile
+- [Om Oliver Eichhof (Dansk)](https://eichhof.me/da/om): karriere, uddannelse, nøglefakta, profiler
+
+## Home
+
+- [Startseite (Deutsch)](https://eichhof.me/de/)
+- [Homepage (English)](https://eichhof.me/en/)
+- [Forside (Dansk)](https://eichhof.me/da/)
+
+## Contact
+
+- [Contact form (English)](https://eichhof.me/en/contact)
+- [Kontaktformular (Deutsch)](https://eichhof.me/de/kontakt)
+- [LinkedIn](https://www.linkedin.com/in/olivereichhof)
