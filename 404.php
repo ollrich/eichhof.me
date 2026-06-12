@@ -51,12 +51,10 @@ require_once __DIR__ . '/includes/asset.php';
     <link rel="stylesheet" href="<?= asset('/css/styles.css') ?>">
 </head>
 <body>
-    <?php include __DIR__ . '/includes/theme-toggle.php'; ?>
-
     <main>
         <div class="container">
             <h1 class="name">404</h1>
-            <p class="tagline"><?= $e($m['notFoundText']) ?> <a href="<?= $homeUrl ?>"><?= $e($m['notFoundBack']) ?></a></p>
+            <p class="tagline"><?= $e($m['notFoundText']) ?><br><a href="<?= $homeUrl ?>"><?= $e($m['notFoundBack']) ?></a></p>
         </div>
     </main>
 
