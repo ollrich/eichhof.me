@@ -32,7 +32,12 @@
 <p>Erhobene Daten: Name, E-Mail-Adresse, Nachrichtentext. Alle Angaben erfolgen freiwillig durch den Nutzer.</p>
 <p>Zweck: Beantwortung der Anfrage.</p>
 <p>Rechtsgrundlage: Art.&nbsp;6 Abs.&nbsp;1 lit.&nbsp;f DSGVO (berechtigtes Interesse an der Kommunikation mit Anfragenden).</p>
-<p>Verarbeitung und Speicherung: Die Eingaben werden per E-Mail an mich weitergeleitet und in meinem E-Mail-Postfach gespeichert. Eine Speicherung in einer Datenbank auf dem Server findet nicht statt. Ich lösche die Daten, sobald sie für die Bearbeitung der Anfrage nicht mehr erforderlich sind, spätestens wenn sich aus der Korrespondenz ergibt, dass der Vorgang abgeschlossen ist, vorbehaltlich gesetzlicher Aufbewahrungspflichten.</p>
+<p>Verarbeitung und Speicherung: Die Eingaben werden per E-Mail an mich weitergeleitet und in meinem E-Mail-Postfach gespeichert (siehe Abschnitt „E-Mail-Anbieter"). Eine Speicherung in einer Datenbank auf dem Server findet nicht statt. Ich lösche die Daten, sobald sie für die Bearbeitung der Anfrage nicht mehr erforderlich sind, spätestens wenn sich aus der Korrespondenz ergibt, dass der Vorgang abgeschlossen ist.</p>
+
+<h3>Kontaktaufnahme per E-Mail</h3>
+<p>Nehmen Sie direkt per E-Mail Kontakt auf, verarbeite ich die von Ihnen übermittelten Angaben (Ihre E-Mail-Adresse, gegebenenfalls Ihr Name sowie der Inhalt Ihrer Nachricht) ausschließlich zur Bearbeitung Ihres Anliegens.</p>
+<p>Rechtsgrundlage: Art.&nbsp;6 Abs.&nbsp;1 lit.&nbsp;f DSGVO (berechtigtes Interesse an der Kommunikation mit Anfragenden).</p>
+<p>Speicherung und Löschung: Die Nachricht wird in meinem E-Mail-Postfach gespeichert (siehe Abschnitt „E-Mail-Anbieter") und gelöscht, sobald sie für die Bearbeitung nicht mehr erforderlich ist.</p>
 
 <h3>Rate-Limit (Spam-Schutz)</h3>
 <p>Beim Absenden des Kontaktformulars speichere ich die IP-Adresse des Absenders ausschließlich als mit Salt versehenen SHA-256-Hash gemeinsam mit einem Zeitstempel in einer serverseitigen Datei. Die IP-Adresse selbst wird zu keinem Zeitpunkt im Klartext gespeichert.</p>
@@ -48,7 +53,7 @@
 <p>Speicherdauer: Dauer der Session, spätestens mit Schließen des Browsers.</p>
 
 <h3>LocalStorage (Theme-Präferenz)</h3>
-<p>Der Browser speichert lokal (im localStorage), ob der Nutzer die helle oder die dunkle Darstellung gewählt hat. Dieser Wert wird ausschließlich im Browser des Nutzers gehalten und nicht an den Server übertragen. Er enthält keine personenbezogenen Daten und ist datenschutzrechtlich nicht relevant. Eine Löschung ist jederzeit über die Einstellungen des jeweiligen Browsers möglich.</p>
+<p>Der Browser speichert lokal (im localStorage), ob der Nutzer die helle oder die dunkle Darstellung gewählt hat. Dieser Wert wird ausschließlich im Browser des Nutzers gehalten, nicht an den Server übertragen und enthält keine personenbezogenen Daten. Das Speichern erfolgt erst auf ausdrückliche Nutzerhandlung (Wahl der Darstellung) und ist im Sinne des §&nbsp;25 Abs.&nbsp;2 Nr.&nbsp;2 TDDDG unbedingt erforderlich; eine Einwilligung ist dafür nicht erforderlich. Eine Löschung ist jederzeit über die Einstellungen des jeweiligen Browsers möglich.</p>
 
 <h3>Externe Links</h3>
 <p>Diese Website enthält Hyperlinks zu externen Plattformen und Angeboten. Mit dem Klick auf einen solchen Link verlassen die Nutzer diese Seite; es gelten dann die Datenschutzbestimmungen des jeweiligen Anbieters. Auf deren Inhalt und Datenverarbeitung habe ich keinen Einfluss.</p>
@@ -57,6 +62,11 @@
 <p>Die Website wird gehostet bei:</p>
 <p>ALL-INKL.COM, Neue Medien Münnich<br>Inh. René Münnich<br>Hauptstraße 68<br>02742 Friedersdorf<br>Deutschland</p>
 <p>Der Hoster verarbeitet personenbezogene Daten in meinem Auftrag als Auftragsverarbeiter im Sinne des Art.&nbsp;28 DSGVO. Ein entsprechender Auftragsverarbeitungsvertrag liegt vor. Server-Logs sind deaktiviert.</p>
+
+<h3>E-Mail-Anbieter</h3>
+<p>Anfragen über das Kontaktformular und per E-Mail werden in meinem E-Mail-Postfach empfangen und gespeichert. Mein E-Mail-Anbieter ist:</p>
+<p>mailbox.org – Heinlein Hosting GmbH<br>Schwedter Straße 8/9b<br>10119 Berlin<br>Deutschland</p>
+<p>Der Anbieter verarbeitet die in den Nachrichten enthaltenen personenbezogenen Daten in meinem Auftrag und unterliegt deutschem und europäischem Datenschutzrecht. Die Verarbeitung erfolgt in Deutschland; ergänzend gilt die Datenschutzerklärung des Anbieters.</p>
 
 <h3>Rechte der betroffenen Person</h3>
 <p>Ihnen stehen nach der DSGVO insbesondere folgende Rechte zu:</p>
@@ -77,4 +87,4 @@
 
 <h3>Aktualität und Änderungen</h3>
 <p>Diese Datenschutzerklärung gilt ab dem unten genannten Datum. Durch die Weiterentwicklung der Website oder aufgrund geänderter rechtlicher Vorgaben kann eine Anpassung erforderlich werden; die jeweils aktuelle Fassung ist unter dieser URL abrufbar.</p>
-<p><em>Stand: 23.04.2026</em></p>
+<p><em>Stand: 12.06.2026</em></p>

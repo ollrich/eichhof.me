@@ -32,7 +32,12 @@
 <p>Data collected: name, email address, message text. All entries are made voluntarily by the user.</p>
 <p>Purpose: responding to the inquiry.</p>
 <p>Legal basis: Art.&nbsp;6(1)(f) GDPR (legitimate interest in communicating with the person making the inquiry).</p>
-<p>Processing and storage: Submissions are forwarded to me by email and stored in my email inbox. No storage in a database on the server takes place. I delete the data as soon as it is no longer required to handle the inquiry, and at the latest when the correspondence indicates that the matter has been concluded, subject to any statutory retention obligations.</p>
+<p>Processing and storage: Submissions are forwarded to me by email and stored in my email inbox (see the "Email Provider" section). No storage in a database on the server takes place. I delete the data as soon as it is no longer required to handle the inquiry, and at the latest when the correspondence indicates that the matter has been concluded.</p>
+
+<h3>Contact by Email</h3>
+<p>If you contact me directly by email, I process the information you provide (your email address, your name where applicable, and the content of your message) solely to handle your request.</p>
+<p>Legal basis: Art.&nbsp;6(1)(f) GDPR (legitimate interest in communicating with the person making the inquiry).</p>
+<p>Storage and deletion: Your message is stored in my email inbox (see the "Email Provider" section) and deleted as soon as it is no longer required to handle the request.</p>
 
 <h3>Rate Limit (Spam Protection)</h3>
 <p>When the contact form is submitted, I store the sender's IP address solely as a salted SHA-256 hash together with a timestamp in a server-side file. The IP address itself is never stored in plain text.</p>
@@ -48,7 +53,7 @@
 <p>Retention period: duration of the session, at the latest until the browser is closed.</p>
 
 <h3>LocalStorage (Theme Preference)</h3>
-<p>The browser stores locally (in localStorage) whether the user has chosen light or dark mode. This value remains exclusively in the user's browser and is not transmitted to the server. It contains no personal data and is not relevant under data protection law. It can be deleted at any time via the respective browser's settings.</p>
+<p>The browser stores locally (in localStorage) whether the user has chosen light or dark mode. This value remains exclusively in the user's browser, is not transmitted to the server and contains no personal data. The storage occurs only upon an explicit user action (choosing the appearance) and is strictly necessary within the meaning of Section&nbsp;25(2) no.&nbsp;2 TDDDG; no consent is required for this. It can be deleted at any time via the respective browser's settings.</p>
 
 <h3>External Links</h3>
 <p>This website contains hyperlinks to external platforms and services. By clicking such a link, users leave this site; the privacy policies of the respective provider then apply. I have no influence on their content or data processing.</p>
@@ -57,6 +62,11 @@
 <p>The website is hosted by:</p>
 <p>ALL-INKL.COM, Neue Medien Münnich<br>Inh. René Münnich<br>Hauptstraße 68<br>02742 Friedersdorf<br>Germany</p>
 <p>The hosting provider processes personal data on my behalf as a processor within the meaning of Art.&nbsp;28 GDPR. A corresponding data processing agreement is in place. Server logs are disabled.</p>
+
+<h3>Email Provider</h3>
+<p>Inquiries via the contact form and by email are received and stored in my email inbox. My email provider is:</p>
+<p>mailbox.org – Heinlein Hosting GmbH<br>Schwedter Straße 8/9b<br>10119 Berlin<br>Germany</p>
+<p>The provider processes the personal data contained in messages on my behalf and is subject to German and European data protection law. Processing takes place in Germany; the provider's own privacy policy applies in addition.</p>
 
 <h3>Your Rights as a Data Subject</h3>
 <p>Under the GDPR you have the following rights in particular:</p>
@@ -77,4 +87,4 @@
 
 <h3>Updates and Changes</h3>
 <p>This privacy policy applies from the date stated below. Further development of the website or changes in the legal framework may make adjustments necessary; the current version is always available at this URL.</p>
-<p><em>Last updated: 23 April 2026</em></p>
+<p><em>Last updated: 12 June 2026</em></p>

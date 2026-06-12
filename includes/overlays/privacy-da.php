@@ -32,7 +32,12 @@
 <p>Indsamlede oplysninger: navn, e-mailadresse, beskedtekst. Oplysningerne afgives frivilligt af brugeren.</p>
 <p>Formål: besvarelse af henvendelsen.</p>
 <p>Retsgrundlag: artikel&nbsp;6, stk.&nbsp;1, litra&nbsp;f, i GDPR (legitim interesse i at kommunikere med den, der henvender sig).</p>
-<p>Behandling og opbevaring: Indtastningerne sendes til mig pr. e-mail og opbevares i min e-mail-indbakke. Der sker ingen opbevaring i en database på serveren. Jeg sletter oplysningerne, så snart de ikke længere er nødvendige for at behandle henvendelsen, og senest når det af korrespondancen fremgår, at sagen er afsluttet, med forbehold for lovpligtige opbevaringskrav.</p>
+<p>Behandling og opbevaring: Indtastningerne sendes til mig pr. e-mail og opbevares i min e-mail-indbakke (se afsnittet „E-mail-udbyder"). Der sker ingen opbevaring i en database på serveren. Jeg sletter oplysningerne, så snart de ikke længere er nødvendige for at behandle henvendelsen, og senest når det af korrespondancen fremgår, at sagen er afsluttet.</p>
+
+<h3>Kontakt via e-mail</h3>
+<p>Tager du direkte kontakt via e-mail, behandler jeg de oplysninger, du angiver (din e-mailadresse, eventuelt dit navn samt indholdet af din besked), udelukkende med henblik på at behandle din henvendelse.</p>
+<p>Retsgrundlag: artikel&nbsp;6, stk.&nbsp;1, litra&nbsp;f, i GDPR (legitim interesse i at kommunikere med den, der henvender sig).</p>
+<p>Opbevaring og sletning: Beskeden opbevares i min e-mail-indbakke (se afsnittet „E-mail-udbyder") og slettes, så snart den ikke længere er nødvendig for behandlingen.</p>
 
 <h3>Rate limit (spambeskyttelse)</h3>
 <p>Når kontaktformularen indsendes, gemmer jeg afsenderens IP-adresse udelukkende som en saltet SHA-256-hash sammen med et tidsstempel i en fil på serveren. IP-adressen selv opbevares på intet tidspunkt i klartekst.</p>
@@ -48,7 +53,7 @@
 <p>Opbevaringsperiode: sessionens varighed, senest når browseren lukkes.</p>
 
 <h3>LocalStorage (tema-præference)</h3>
-<p>Browseren gemmer lokalt (i localStorage), om brugeren har valgt lys eller mørk visning. Denne værdi forbliver udelukkende i brugerens browser og overføres ikke til serveren. Den indeholder ingen personoplysninger og er ikke relevant efter persondataretten. Den kan til enhver tid slettes via den pågældende browsers indstillinger.</p>
+<p>Browseren gemmer lokalt (i localStorage), om brugeren har valgt lys eller mørk visning. Denne værdi forbliver udelukkende i brugerens browser, overføres ikke til serveren og indeholder ingen personoplysninger. Lagringen sker først ved en udtrykkelig brugerhandling (valg af visning) og er strengt nødvendig i henhold til §&nbsp;25, stk.&nbsp;2, nr.&nbsp;2, i den tyske TDDDG; der kræves ikke samtykke hertil. Den kan til enhver tid slettes via den pågældende browsers indstillinger.</p>
 
 <h3>Eksterne links</h3>
 <p>Dette websted indeholder hyperlinks til eksterne platforme og tjenester. Ved at klikke på et sådant link forlader brugeren denne side; herefter gælder den pågældende udbyders privatlivspolitik. Jeg har ingen indflydelse på deres indhold og databehandling.</p>
@@ -57,6 +62,11 @@
 <p>Webstedet hostes hos:</p>
 <p>ALL-INKL.COM, Neue Medien Münnich<br>Inh. René Münnich<br>Hauptstraße 68<br>02742 Friedersdorf<br>Tyskland</p>
 <p>Hostingudbyderen behandler personoplysninger på mine vegne som databehandler i henhold til artikel&nbsp;28 i GDPR. Der er indgået en databehandleraftale. Serverlogfiler er deaktiveret.</p>
+
+<h3>E-mail-udbyder</h3>
+<p>Henvendelser via kontaktformularen og pr. e-mail modtages og opbevares i min e-mail-indbakke. Min e-mail-udbyder er:</p>
+<p>mailbox.org – Heinlein Hosting GmbH<br>Schwedter Straße 8/9b<br>10119 Berlin<br>Tyskland</p>
+<p>Udbyderen behandler de personoplysninger, som beskederne indeholder, på mine vegne og er underlagt tysk og europæisk databeskyttelsesret. Behandlingen finder sted i Tyskland; desuden gælder udbyderens egen privatlivspolitik.</p>
 
 <h3>Den registreredes rettigheder</h3>
 <p>I henhold til GDPR har du navnlig følgende rettigheder:</p>
@@ -77,4 +87,4 @@
 
 <h3>Opdatering og ændringer</h3>
 <p>Denne privatlivspolitik gælder fra nedenstående dato. Videreudvikling af webstedet eller ændrede retlige krav kan gøre tilpasninger nødvendige; den aktuelle version er altid tilgængelig på denne URL.</p>
-<p><em>Opdateret: 23. april 2026</em></p>
+<p><em>Opdateret: 12. juni 2026</em></p>
