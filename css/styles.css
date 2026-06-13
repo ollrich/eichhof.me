@@ -463,10 +463,10 @@ html.dark-mode .theme-tooltip .tooltip-light {
     font-size: 1rem;
     font-weight: 300;
     letter-spacing: 0.3px;
-    /* Abstand zum Profil-Umschalter darunter — bewusst nah am
-       Toggle→Button-Abstand (1.25rem), damit der Toggle optisch
-       zwischen Text und Buttons sitzt statt weit oben zu schweben. */
-    margin-bottom: 1.5rem;
+    /* Abstand zum Profil-Umschalter darunter = Toggle→Button-Abstand
+       (1.25rem), damit der Toggle symmetrisch zwischen Text und Buttons
+       sitzt. Mobile-Override weiter unten hält denselben Wert. */
+    margin-bottom: 1.25rem;
     line-height: 1.5;
 }
 
@@ -1264,7 +1264,7 @@ html.dark-mode .overlay-content::-webkit-scrollbar-thumb:hover {
     }
 
     .tagline {
-        margin-bottom: 2rem;
+        margin-bottom: 1.25rem;
         font-size: 0.9rem;
     }
 
