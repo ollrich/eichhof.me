@@ -691,12 +691,22 @@ html.eu-mode .profile-eu {
     margin: 0 auto 1.25rem;
 }
 
+/* Kurzer Aufmerksamkeits-Puls: ein Ring, der aus dem Toggle-Rand
+   herauswächst und verblasst. Läuft ~2,5s nach dem Laden 3-mal. */
+@keyframes toggle-pulse {
+    0%   { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.55); }
+    60%  { box-shadow: 0 0 0 11px rgba(255, 255, 255, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); }
+}
+
 .profile-toggle-btn {
     position: relative;
     width: 52px;
     height: 28px;
     padding: 0;
-    border: 1px solid var(--card-border);
+    /* Heller als die übrigen Card-Ränder, damit der Toggle bewusster
+       wahrgenommen wird. */
+    border: 1px solid rgba(255, 255, 255, 0.5);
     border-radius: 999px;
     background: var(--card-bg);
     cursor: pointer;
@@ -704,6 +714,9 @@ html.eu-mode .profile-eu {
     transition: opacity 0.3s ease, background 0.3s ease, border-color 0.3s ease;
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
+    /* 3 Puls-Stöße nach kurzer Verzögerung. Die globale
+       prefers-reduced-motion-Regel deaktiviert die Animation automatisch. */
+    animation: toggle-pulse 1.4s ease-out 2.5s 3;
 }
 
 .profile-toggle-knob {
@@ -725,13 +738,13 @@ html.eu-mode .profile-toggle-knob {
 
 html.eu-mode .profile-toggle-btn {
     background: var(--card-hover-bg);
-    border-color: var(--card-hover-border);
+    border-color: rgba(255, 255, 255, 0.6);
 }
 
 .profile-toggle:hover .profile-toggle-btn,
 .profile-toggle-btn:focus-visible {
     opacity: var(--toggle-hover);
-    border-color: var(--card-hover-border);
+    border-color: rgba(255, 255, 255, 0.75);
 }
 
 .profile-toggle-btn:focus-visible {
