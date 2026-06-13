@@ -695,7 +695,7 @@ html.eu-mode .profile-eu {
    herauswächst und verblasst. Läuft ~2s nach dem Laden 2-mal. */
 @keyframes toggle-pulse {
     0%   { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.55); }
-    60%  { box-shadow: 0 0 0 11px rgba(255, 255, 255, 0); }
+    75%  { box-shadow: 0 0 0 11px rgba(255, 255, 255, 0); }
     100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); }
 }
 
@@ -716,7 +716,7 @@ html.eu-mode .profile-eu {
     backdrop-filter: blur(10px);
     /* 2 Puls-Stöße nach kurzer Verzögerung. Die globale
        prefers-reduced-motion-Regel deaktiviert die Animation automatisch. */
-    animation: toggle-pulse 1.4s ease-out 2s 2;
+    animation: toggle-pulse 1.1s ease-out 2s 2;
 }
 
 /* Puls verstummt, sobald der Nutzer den Toggle einmal benutzt hat
