@@ -187,7 +187,6 @@ return [
             'contactPrivacy' => 'Deine Daten werden nur zur Beantwortung verwendet. Zur Spam-Abwehr wird deine IP temporär verarbeitet, aber nicht gespeichert.',
             'contactFallback' => 'Oder direkt per E-Mail:',
             // Kontaktformular (Client-Side Status-Messages)
-            'contactSending' => 'Wird gesendet...',
             'contactSuccess' => 'Vielen Dank! Deine Nachricht wurde gesendet.',
             'contactErrorGeneral' => 'Leider ist ein Fehler aufgetreten. Bitte versuche es später erneut.',
             'contactErrorName' => 'Bitte gib deinen Namen ein (mind. 2 Zeichen).',
@@ -218,7 +217,6 @@ return [
             'contactSubmit' => 'Send message',
             'contactPrivacy' => 'Your data will only be used to respond. Your IP is temporarily processed for spam protection but not stored.',
             'contactFallback' => 'Or email directly:',
-            'contactSending' => 'Sending...',
             'contactSuccess' => 'Thank you! Your message has been sent.',
             'contactErrorGeneral' => 'An error occurred. Please try again later.',
             'contactErrorName' => 'Please enter your name (at least 2 characters).',
@@ -249,7 +247,6 @@ return [
             'contactSubmit' => 'Send besked',
             'contactPrivacy' => 'Dine data bruges kun til at besvare. Din IP behandles midlertidigt til spam-beskyttelse, men gemmes ikke.',
             'contactFallback' => 'Eller send e-mail direkte:',
-            'contactSending' => 'Sender...',
             'contactSuccess' => 'Tak! Din besked er blevet sendt.',
             'contactErrorGeneral' => 'Der opstod en fejl. Prøv venligst igen senere.',
             'contactErrorName' => 'Indtast venligst dit navn (mindst 2 tegn).',
