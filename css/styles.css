@@ -643,22 +643,169 @@ html.dark-mode .link-preview:hover {
     border-color: rgba(255, 140, 0, 0.3);
 }
 
-/* Two-column row for Bluesky and Mastodon */
-.social-row {
+/* European-alternative brand hover colors */
+.link-card.xing:hover {
+    background: rgba(6, 152, 160, 0.15);
+    border-color: rgba(6, 152, 160, 0.3);
+}
+
+.link-card.pixelfed:hover {
+    background: rgba(99, 100, 255, 0.15);
+    border-color: rgba(99, 100, 255, 0.3);
+}
+
+/* ========================================
+   PROFILE MODE: default ↔ European alternatives
+   ========================================
+   Both button sets live in the DOM; html.eu-mode (set pre-paint in
+   theme-init.php) decides which one is visible. No-JS visitors keep
+   the default set — progressive enhancement. */
+.profile-eu {
+    display: none;
+}
+
+html.eu-mode .profile-default {
+    display: none;
+}
+
+html.eu-mode .profile-eu {
     display: flex;
-    gap: 1rem;
 }
 
-.social-row .link-card {
-    flex: 1;
+/* Pixelfed placeholder: no link yet, reads as "coming soon" */
+.profile-eu-soon {
+    cursor: default;
+    opacity: 0.6;
 }
 
-.social-row.mastodon-first #mastodon-btn {
-    order: 1;
+.profile-eu-soon:hover {
+    background: var(--card-bg);
+    border-color: var(--card-border);
+    transform: none;
+    box-shadow: none;
 }
 
-.social-row.mastodon-first #bluesky-btn {
-    order: 2;
+.coming-soon {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 2px 7px;
+    border: 1px solid var(--card-border);
+    border-radius: 999px;
+    color: var(--text-muted);
+}
+
+/* ========================================
+   PROFILE MODE TOGGLE (pill + sliding knob)
+   ========================================
+   Sits above the link cards, centered. Subtle by default, stronger on
+   hover — same visual language as the theme / language controls. */
+.profile-toggle {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    margin: 0 auto 1.25rem;
+}
+
+.profile-toggle-btn {
+    position: relative;
+    width: 52px;
+    height: 28px;
+    padding: 0;
+    border: 1px solid var(--card-border);
+    border-radius: 999px;
+    background: var(--card-bg);
+    cursor: pointer;
+    opacity: var(--toggle-opacity);
+    transition: opacity 0.3s ease, background 0.3s ease, border-color 0.3s ease;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+}
+
+.profile-toggle-knob {
+    position: absolute;
+    top: 50%;
+    left: 4px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--text-muted);
+    transform: translateY(-50%);
+    transition: left 0.25s ease, background 0.25s ease;
+}
+
+html.eu-mode .profile-toggle-knob {
+    left: calc(100% - 24px);
+    background: var(--text-primary);
+}
+
+html.eu-mode .profile-toggle-btn {
+    background: var(--card-hover-bg);
+    border-color: var(--card-hover-border);
+}
+
+.profile-toggle:hover .profile-toggle-btn,
+.profile-toggle-btn:focus-visible {
+    opacity: var(--toggle-hover);
+    border-color: var(--card-hover-border);
+}
+
+.profile-toggle-btn:focus-visible {
+    outline: 2px solid rgba(255, 255, 255, 0.5);
+    outline-offset: 4px;
+}
+
+/* Tooltip to the right of the toggle (same component as github-tooltip) */
+.profile-tooltip {
+    position: absolute;
+    top: 50%;
+    left: calc(100% + 10px);
+    transform: translateY(-50%);
+    background: var(--tooltip-bg);
+    color: white;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 11px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+}
+
+.profile-tooltip::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 100%;
+    transform: translateY(-50%);
+    border: 5px solid transparent;
+    border-right-color: var(--tooltip-bg);
+}
+
+@media (hover: hover) {
+    .profile-toggle:hover .profile-tooltip {
+        opacity: 1;
+    }
+}
+
+.profile-tooltip .profile-tooltip-on {
+    display: none;
+}
+
+html.eu-mode .profile-tooltip .profile-tooltip-off {
+    display: none;
+}
+
+html.eu-mode .profile-tooltip .profile-tooltip-on {
+    display: inline;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .profile-toggle-knob {
+        transition: none;
+    }
 }
 
 /* ========================================

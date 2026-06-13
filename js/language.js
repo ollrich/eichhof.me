@@ -79,17 +79,6 @@
     }
 
     /**
-     * Social-Row-Reihenfolge: Für DE steht Mastodon links, sonst Bluesky.
-     * Rein kosmetisch — kleine lokale Präferenz, die nicht im Markup
-     * dupliziert werden muss.
-     */
-    function applySocialRowOrder() {
-        const socialRow = document.getElementById('social-row');
-        if (!socialRow) return;
-        socialRow.classList.toggle('mastodon-first', currentLang === 'de');
-    }
-
-    /**
      * Befüllt alle E-Mail-Links (Impressum-/Privacy-Overlay, Kontakt-Fallback)
      * mit der zusammengesetzten Adresse. Server rendert sie bewusst leer —
      * so landet die Adresse nicht im rohen HTML für Scraper.
@@ -132,7 +121,6 @@
     }
 
     function init() {
-        applySocialRowOrder();
         fillEmailLinks();
         handleServerOverlay();
     }
