@@ -21,6 +21,7 @@ return [
         'https://bsky.app/profile/ollri.ch',
         'https://norden.social/@olli',
         'https://www.instagram.com/ollri.ch/',
+        'https://pixelfed.de/olli',
         'https://soundcloud.com/livicxyz',
         'https://www.youtube.com/@schongeilDE',
         'https://bandcamp.com/livic',

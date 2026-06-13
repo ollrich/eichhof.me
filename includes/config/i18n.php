@@ -168,7 +168,6 @@ return [
             // Ein = Europäisch). Das Aria-Label oben bleibt handlungsbeschreibend.
             'euTooltipOff' => 'Standard',
             'euTooltipOn' => 'Europäisch',
-            'pixelfedSoon' => 'bald',
             // Tagline (HTML mit inline-Links)
             'tagline' => 'Ich arbeite in der Medienbranche und rede im Job gern über gute Kommunikation und was Zielgruppen brauchen. Ab und zu <a href="https://www.schongeil.de/" target="_blank" rel="noopener noreferrer">blogge</a> ich und <a href="https://soundcloud.com/livicxyz" target="_blank" rel="noopener noreferrer">lege</a> Platten auf. Mehr zu <a href="/de/ueber">meinem Werdegang und meiner Arbeit</a>.',
             // Easter-Egg-Hinweis (nur Hauptseite)
@@ -206,7 +205,6 @@ return [
             'euToggleLabel' => 'Show European profile alternatives',
             'euTooltipOff' => 'Standard',
             'euTooltipOn' => 'European',
-            'pixelfedSoon' => 'soon',
             'tagline' => 'I work in media and like talking about good communication and what audiences need. Every now and then I <a href="https://www.schongeil.de/en/" target="_blank" rel="noopener noreferrer">blog</a> and <a href="https://soundcloud.com/livicxyz" target="_blank" rel="noopener noreferrer">spin records</a>. More on <a href="/en/about">my background and work</a>.',
             'hint' => 'press space',
             'emailText' => 'Email',
@@ -238,7 +236,6 @@ return [
             'euToggleLabel' => 'Vis europæiske profilalternativer',
             'euTooltipOff' => 'Standard',
             'euTooltipOn' => 'Europæisk',
-            'pixelfedSoon' => 'snart',
             'tagline' => 'Jeg arbejder i mediebranchen og taler gerne om god kommunikation og hvad målgrupper har brug for. Af og til <a href="https://www.schongeil.de/en/" target="_blank" rel="noopener noreferrer">blogger</a> jeg og <a href="https://soundcloud.com/livicxyz" target="_blank" rel="noopener noreferrer">spiller plader</a>. Mere om <a href="/da/om">min baggrund og mit arbejde</a>.',
             'hint' => 'tryk mellemrum',
             'emailText' => 'E-Mail',
@@ -340,6 +337,7 @@ return [
                 ['https://bsky.app/profile/ollri.ch', 'Bluesky'],
                 ['https://norden.social/@olli', 'Mastodon'],
                 ['https://www.instagram.com/ollri.ch/', 'Instagram'],
+                ['https://pixelfed.de/olli', 'Pixelfed'],
                 ['https://soundcloud.com/livicxyz', 'SoundCloud'],
                 ['https://www.youtube.com/@schongeilDE', 'YouTube'],
                 ['https://bandcamp.com/livic', 'Bandcamp'],
@@ -421,6 +419,7 @@ return [
                 ['https://bsky.app/profile/ollri.ch', 'Bluesky'],
                 ['https://norden.social/@olli', 'Mastodon'],
                 ['https://www.instagram.com/ollri.ch/', 'Instagram'],
+                ['https://pixelfed.de/olli', 'Pixelfed'],
                 ['https://soundcloud.com/livicxyz', 'SoundCloud'],
                 ['https://www.youtube.com/@schongeilDE', 'YouTube'],
                 ['https://bandcamp.com/livic', 'Bandcamp'],
@@ -502,6 +501,7 @@ return [
                 ['https://bsky.app/profile/ollri.ch', 'Bluesky'],
                 ['https://norden.social/@olli', 'Mastodon'],
                 ['https://www.instagram.com/ollri.ch/', 'Instagram'],
+                ['https://pixelfed.de/olli', 'Pixelfed'],
                 ['https://soundcloud.com/livicxyz', 'SoundCloud'],
                 ['https://www.youtube.com/@schongeilDE', 'YouTube'],
                 ['https://bandcamp.com/livic', 'Bandcamp'],

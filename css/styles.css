@@ -675,29 +675,6 @@ html.eu-mode .profile-eu {
     display: flex;
 }
 
-/* Pixelfed placeholder: no link yet, reads as "coming soon" */
-.profile-eu-soon {
-    cursor: default;
-    opacity: 0.6;
-}
-
-.profile-eu-soon:hover {
-    background: var(--card-bg);
-    border-color: var(--card-border);
-    transform: none;
-    box-shadow: none;
-}
-
-.coming-soon {
-    font-size: 0.7rem;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    padding: 2px 7px;
-    border: 1px solid var(--card-border);
-    border-radius: 999px;
-    color: var(--text-muted);
-}
-
 /* ========================================
    PROFILE MODE TOGGLE (pill + sliding knob)
    ========================================
