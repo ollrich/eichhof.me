@@ -692,7 +692,7 @@ html.eu-mode .profile-eu {
 }
 
 /* Kurzer Aufmerksamkeits-Puls: ein Ring, der aus dem Toggle-Rand
-   herauswächst und verblasst. Läuft ~2,5s nach dem Laden 3-mal. */
+   herauswächst und verblasst. Läuft ~2s nach dem Laden 2-mal. */
 @keyframes toggle-pulse {
     0%   { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.55); }
     60%  { box-shadow: 0 0 0 11px rgba(255, 255, 255, 0); }
@@ -714,9 +714,9 @@ html.eu-mode .profile-eu {
     transition: opacity 0.3s ease, background 0.3s ease, border-color 0.3s ease;
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
-    /* 3 Puls-Stöße nach kurzer Verzögerung. Die globale
+    /* 2 Puls-Stöße nach kurzer Verzögerung. Die globale
        prefers-reduced-motion-Regel deaktiviert die Animation automatisch. */
-    animation: toggle-pulse 1.4s ease-out 2.5s 3;
+    animation: toggle-pulse 1.4s ease-out 2s 2;
 }
 
 /* Puls verstummt, sobald der Nutzer den Toggle einmal benutzt hat
