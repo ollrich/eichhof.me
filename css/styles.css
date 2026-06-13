@@ -719,6 +719,12 @@ html.eu-mode .profile-eu {
     animation: toggle-pulse 1.4s ease-out 2.5s 3;
 }
 
+/* Puls verstummt, sobald der Nutzer den Toggle einmal benutzt hat
+   (Klasse von eu-mode.js gesetzt, persistiert via localStorage). */
+html.profile-toggle-seen .profile-toggle-btn {
+    animation: none;
+}
+
 .profile-toggle-knob {
     position: absolute;
     top: 50%;
