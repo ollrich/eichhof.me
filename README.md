@@ -75,19 +75,15 @@ eichhof.me/
 ├── deploy.php              # GitHub webhook deploy (IP allowlist + HMAC signature, fail-closed)
 ├── DEPLOY-SETUP.md         # Deployment / webhook setup guide
 ├── images/
-│   ├── oliver-eichhof.png  # Profile photo master (920w, lossless — Build-Quelle für WebP/AVIF)
-│   ├── oliver-eichhof.avif # Profile photo (920w, AVIF — primary, ~54 KB)
-│   ├── oliver-eichhof-320.avif # Responsive AVIF (mobile srcset)
-│   ├── oliver-eichhof-640.avif # Responsive AVIF (tablet srcset)
-│   ├── oliver-eichhof.webp # Profile photo (920w, WebP — fallback, ~99 KB)
-│   ├── oliver-eichhof-320.webp # Responsive WebP (mobile srcset)
-│   ├── oliver-eichhof-640.webp # Responsive WebP (tablet srcset)
+│   ├── oliver-eichhof.png  # Profile photo master (920w, lossless — build source)
+│   ├── oliver-eichhof.avif # 920w AVIF (primary, ~54 KB) + 320w/640w responsive srcset
+│   ├── oliver-eichhof.webp # 920w WebP (fallback, ~99 KB) + 320w/640w responsive srcset
 │   ├── og-image.png        # Open Graph image for social sharing
 │   ├── favicons/           # Favicon variants (180, 192, 512)
 │   └── hover/              # Link preview screenshots
 │       ├── update-previews.php  # Screenshot generation script (token-protected, run via cron)
-│       ├── *.webp          # Preview images (server-only, gitignored)
-│       ├── .apiflash-key   # APIFlash API key (server-only, gitignored)
+│       ├── *.webp               # Preview images (server-only, gitignored)
+│       ├── .apiflash-key        # APIFlash API key (server-only, gitignored)
 │       └── .preview-cron-token  # Secret token for HTTP cron trigger (server-only, gitignored)
 │
 │   # Server-only (not in repo, gitignored)
