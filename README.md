@@ -15,6 +15,7 @@ Built with AI assistance as an exploration of modern web development practices. 
 
 - 🌐 Multilingual (DE/EN/DA) with symmetric clean URLs (/de/, /en/, /da/); bare root `/` is a pure Accept-Language router (302 for humans, 301 → /de/ for bots); top-right disclosure language switcher to the right of the theme toggle (hover/tap reveals the other two languages)
 - 🎨 Dark mode with system preference support
+- 🇪🇺 Profile toggle: switches the profile links from mainstream platforms (LinkedIn, Instagram, Bluesky) to European alternatives (XING, Pixelfed, Mastodon); choice stored locally, subtle attention pulse until first use
 - 🔒 Privacy-first: no cookies, no tracking, no analytics
 - 📬 Contact form with spam protection (honeypot, rate limiting, time-based checks)
 - 🔍 SEO: schema.org JSON-LD graph (Person/WebSite/WebPage/BreadcrumbList with `@id` cross-references), hreflang with `x-default` → `/de/`, `noindex` on overlay URLs, audit tools (Lighthouse/PSI/GTmetrix) treated as bots for deterministic reports
@@ -62,6 +63,7 @@ eichhof.me/
 ├── js/
 │   ├── theme.js            # Dark mode toggle
 │   ├── lang-switcher.js    # Disclosure-menu toggle (aria-expanded, outside-click, Escape)
+│   ├── eu-mode.js          # Profile toggle (standard ↔ European alternatives), localStorage + attention pulse
 │   ├── language.js         # Reads inline i18n JSON; email fill, overlay routing
 │   ├── overlay.js          # Legal notice modal
 │   ├── contact.js          # Contact form modal + AJAX
@@ -109,6 +111,7 @@ Mit KI-Unterstützung gebaut als Exploration moderner Webentwicklung. Der Code i
 
 - 🌐 Mehrsprachig (DE/EN/DA) mit symmetrischen Clean URLs (/de/, /en/, /da/); Bare-Root `/` ist ein reiner Accept-Language-Router (302 für Menschen, 301 → /de/ für Bots); Disclosure-Sprachwähler oben rechts, rechts neben dem Theme-Toggle (Hover/Tap blendet die anderen zwei Sprachen ein)
 - 🎨 Dark Mode mit System-Präferenz-Unterstützung
+- 🇪🇺 Profil-Umschalter: wechselt die Profil-Links von Mainstream-Plattformen (LinkedIn, Instagram, Bluesky) zu europäischen Alternativen (XING, Pixelfed, Mastodon); Auswahl lokal gespeichert, dezenter Aufmerksamkeits-Puls bis zur ersten Nutzung
 - 🔒 Privacy-First: keine Cookies, kein Tracking, keine Analytik
 - 📬 Kontaktformular mit Spam-Schutz (Honeypot, Rate Limiting, Zeitprüfung)
 - 🔍 SEO: schema.org-JSON-LD-Graph (Person/WebSite/WebPage/BreadcrumbList mit `@id`-Cross-References), hreflang mit `x-default` → `/de/`, `noindex` auf Overlay-URLs, Audit-Tools (Lighthouse/PSI/GTmetrix) als Bots für deterministische Reports
@@ -139,6 +142,7 @@ Bygget med AI-assistance som en udforskning af moderne webudvikling. Koden er op
 
 - 🌐 Flersproget (DE/EN/DA) med symmetriske clean URLs (/de/, /en/, /da/); bare root `/` er en ren Accept-Language-router (302 for mennesker, 301 → /de/ for bots); disclosure-sprogskifter øverst til højre, til højre for theme-toggle (hover/tap viser de to andre sprog)
 - 🎨 Dark mode med systempræference-support
+- 🇪🇺 Profilskifter: skifter profil-links fra mainstream-platforme (LinkedIn, Instagram, Bluesky) til europæiske alternativer (XING, Pixelfed, Mastodon); valg gemt lokalt, diskret opmærksomheds-puls indtil første brug
 - 🔒 Privacy-first: ingen cookies, ingen tracking, ingen analytics
 - 📬 Kontaktformular med spam-beskyttelse (honeypot, rate limiting, tidscheck)
 - 🔍 SEO: schema.org JSON-LD-graf (Person/WebSite/WebPage/BreadcrumbList med `@id`-krydsreferencer), hreflang med `x-default` → `/de/`, `noindex` på overlay-URL'er, audit-værktøjer (Lighthouse/PSI/GTmetrix) behandles som bots for deterministiske rapporter
