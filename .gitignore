@@ -28,6 +28,9 @@ Desktop.ini
 # Claude Code (lokale Settings + Worktrees)
 .claude/
 
+# Lokales Test-Audit (bewusst nicht im Repo — Projekt bleibt tooling-frei)
+tests/
+
 # Deployment (contains secrets on server)
 deploy-config.php
 .webhook-secret
