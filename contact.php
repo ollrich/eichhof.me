@@ -224,7 +224,11 @@ $name = sanitizeInput(is_string($data['name'] ?? null) ? $data['name'] : '', 100
 $name = trim(str_replace(["\r", "\n"], ' ', $name));
 $email = filter_var(is_string($data['email'] ?? null) ? trim($data['email']) : '', FILTER_VALIDATE_EMAIL);
 $message = sanitizeInput(is_string($data['message'] ?? null) ? $data['message'] : '', 5000);
-$lang = in_array($data['lang'] ?? 'de', ['de', 'en', 'da']) ? $data['lang'] : 'de';
+// $langInput einmal auflösen: ?? gehört in Bedingung UND Wert. Sonst löst ein
+// POST ohne 'lang' (Bedingung coalesct zu 'de' → true, Wert greift rohes
+// $data['lang']) eine Undefined-Key-Warning aus und $lang würde null.
+$langInput = $data['lang'] ?? 'de';
+$lang = in_array($langInput, ['de', 'en', 'da'], true) ? $langInput : 'de';
 
 // Pflichtfelder prüfen
 if (empty($name) || mb_strlen($name) < 2) {
