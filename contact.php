@@ -65,21 +65,21 @@ header('X-Content-Type-Options: nosniff');
  * Angreifer pro Request einen anderen Wert senden und das Rate-Limit
  * trivial umgehen (jede gefälschte IP = neuer Hash-Bucket).
  */
-function getClientIP() {
+function getClientIP(): string {
     return $_SERVER['REMOTE_ADDR'] ?? '0.0.0.0';
 }
 
 /**
  * Generate CSRF Token
  */
-function generateCsrfToken() {
+function generateCsrfToken(): string {
     return bin2hex(random_bytes(32));
 }
 
 /**
  * Check rate limit for IP
  */
-function checkRateLimit($ip, $file, $max, $window) {
+function checkRateLimit(string $ip, string $file, int $max, int $window): bool {
     // Hash IP for privacy (rate limiting doesn't need the actual IP)
     $ipHash = hash('sha256', $ip . 'rate_limit_salt');
     $now = time();
@@ -135,7 +135,7 @@ function checkRateLimit($ip, $file, $max, $window) {
 /**
  * Sanitize input string
  */
-function sanitizeInput($input, $maxLength = 1000) {
+function sanitizeInput(string $input, int $maxLength = 1000): string {
     $input = trim($input);
     $input = strip_tags($input);
     $input = htmlspecialchars($input, ENT_QUOTES, 'UTF-8');
