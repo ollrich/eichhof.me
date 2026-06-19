@@ -213,14 +213,17 @@ if ($formLoadTime <= 0 || ($submitTime - $formLoadTime) < CONTACT_MIN_SUBMIT_TIM
     exit;
 }
 
-// Formularfelder validieren
-$name = sanitizeInput($data['name'] ?? '', 100);
+// Formularfelder validieren. is_string-Guard: schickt ein Client name/message
+// als JSON-Array/Objekt statt String, würde der string-Type-Hint von
+// sanitizeInput sonst einen TypeError (500) werfen. So wird Nicht-String zu ''
+// und läuft sauber in die Mindestlängen-Prüfung unten (400).
+$name = sanitizeInput(is_string($data['name'] ?? null) ? $data['name'] : '', 100);
 // Name fliesst in den Mail-Subject: Zeilenumbrüche entfernen, damit ein
 // präparierter Name dort keine zusätzlichen Header injizieren kann. Neuere
 // PHP-Versionen blocken CRLF im Subject selbst, aber explizit ist robuster.
 $name = trim(str_replace(["\r", "\n"], ' ', $name));
-$email = filter_var(trim($data['email'] ?? ''), FILTER_VALIDATE_EMAIL);
-$message = sanitizeInput($data['message'] ?? '', 5000);
+$email = filter_var(is_string($data['email'] ?? null) ? trim($data['email']) : '', FILTER_VALIDATE_EMAIL);
+$message = sanitizeInput(is_string($data['message'] ?? null) ? $data['message'] : '', 5000);
 $lang = in_array($data['lang'] ?? 'de', ['de', 'en', 'da']) ? $data['lang'] : 'de';
 
 // Pflichtfelder prüfen
