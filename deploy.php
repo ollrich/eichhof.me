@@ -4,9 +4,12 @@
  *
  * Automatisches Deployment via Git Pull bei GitHub Push-Events
  *
- * Security Features:
- * - GitHub IP whitelist validation
- * - Webhook signature verification (SHA256)
+ * Security: Die HMAC-SHA256-Signaturprüfung (fail-closed) ist die alleinige
+ * Authentisierung. Früher gab es zusätzlich eine GitHub-IP-Whitelist — bewusst
+ * entfernt: GitHub rotiert seine Hook-IP-Ranges, eine hartcodierte Liste bricht
+ * Deploys still, sobald sie veraltet, bei kaum Sicherheitsgewinn obendrauf.
+ *
+ * - Webhook signature verification (HMAC-SHA256, fail-closed)
  * - Log rotation (max 100 entries)
  */
 
@@ -19,23 +22,9 @@ $log_file = __DIR__ . '/.deploy-log.txt';
 $max_log_entries = 100;
 
 /**
- * GitHub IP ranges (CIDR notation)
- * Source: https://api.github.com/meta (hooks field)
- * Updated: 2026-02 - verified current
- */
-$github_ip_ranges = [
-    '192.30.252.0/22',
-    '185.199.108.0/22',
-    '140.82.112.0/20',
-    '143.55.64.0/20',
-    '2a0a:a440::/29',
-    '2606:50c0::/32'
-];
-
-/**
  * Log function with rotation
  */
-function writeLog($message) {
+function writeLog(string $message): void {
     global $log_file, $max_log_entries;
 
     $timestamp = date('Y-m-d H:i:s');
@@ -57,73 +46,11 @@ function writeLog($message) {
 }
 
 /**
- * Check if IP is within CIDR range
+ * Client-IP — nur fürs Deploy-Log (Herkunft des Push), nicht für Auth.
+ * Bewusst NUR REMOTE_ADDR: ohne CDN/Reverse-Proxy sind Proxy-Header wie
+ * X-Forwarded-For frei spoofbar und damit wertlos.
  */
-function ipInRange($ip, $cidr) {
-    // Handle IPv6
-    if (strpos($cidr, ':') !== false) {
-        return ipv6InRange($ip, $cidr);
-    }
-
-    list($subnet, $bits) = explode('/', $cidr);
-    $ip = ip2long($ip);
-    $subnet = ip2long($subnet);
-    $mask = -1 << (32 - $bits);
-    $subnet &= $mask;
-
-    return ($ip & $mask) === $subnet;
-}
-
-/**
- * Check if IPv6 is within CIDR range
- */
-function ipv6InRange($ip, $cidr) {
-    list($subnet, $bits) = explode('/', $cidr);
-    $bits = (int) $bits;
-
-    $ipBin = inet_pton($ip);
-    $subnetBin = inet_pton($subnet);
-
-    if ($ipBin === false || $subnetBin === false) {
-        return false;
-    }
-
-    $ipHex = bin2hex($ipBin);
-    $subnetHex = bin2hex($subnetBin);
-
-    $ipBits = '';
-    $subnetBits = '';
-
-    for ($i = 0; $i < strlen($ipHex); $i++) {
-        $ipBits .= str_pad(base_convert($ipHex[$i], 16, 2), 4, '0', STR_PAD_LEFT);
-        $subnetBits .= str_pad(base_convert($subnetHex[$i], 16, 2), 4, '0', STR_PAD_LEFT);
-    }
-
-    return substr($ipBits, 0, $bits) === substr($subnetBits, 0, $bits);
-}
-
-/**
- * Validate request comes from GitHub
- */
-function isGitHubRequest($ip, $ranges) {
-    foreach ($ranges as $range) {
-        if (ipInRange($ip, $range)) {
-            return true;
-        }
-    }
-    return false;
-}
-
-/**
- * Client-IP für die GitHub-Whitelist.
- *
- * Bewusst NUR REMOTE_ADDR: Die Seite läuft ohne CDN/Reverse-Proxy direkt
- * beim Hoster. Proxy-Header wie X-Forwarded-For sind frei spoofbar — würde
- * man sie auswerten, könnte sich jeder Client per Header als GitHub-IP
- * ausgeben und die Whitelist aushebeln. (Gleiche Begründung wie in
- * contact.php; die eigentliche Authentisierung bleibt die HMAC-Signatur.)
- */
-function getClientIP() {
+function getClientIP(): string {
     return $_SERVER['REMOTE_ADDR'] ?? '0.0.0.0';
 }
 
@@ -132,13 +59,6 @@ function getClientIP() {
 // ============================================================================
 
 $clientIP = getClientIP();
-
-// IP Whitelist check
-if (!isGitHubRequest($clientIP, $github_ip_ranges)) {
-    writeLog("ERROR: Request from non-GitHub IP: {$clientIP}");
-    http_response_code(403);
-    die('Forbidden: Invalid source IP');
-}
 
 // Webhook Secret validation (fail-closed: missing secret refuses deployment)
 $payload = file_get_contents('php://input');
