@@ -46,6 +46,7 @@ eichhof.me/
 │   ├── lang-switcher.php   # Top-right disclosure menu (right of theme toggle, current lang as trigger)
 │   ├── theme-toggle.php    # Top-right dark/light toggle (left of lang switcher)
 │   ├── overlays/           # Impressum/Privacy/Contact modal partials
+│   ├── head-meta.php       # SEO/OG/Twitter/canonical/hreflang/JSON-LD (home)
 │   ├── head-favicons.php   # Favicon <link> block
 │   ├── theme-init.php      # Inline no-flash theme bootstrap
 │   └── asset.php           # filemtime()-based cache-busting helper
@@ -72,7 +73,7 @@ eichhof.me/
 │   ├── grounding-email.js  # Email obfuscation on grounding page
 │   └── confetti.min.js     # Canvas-Confetti (lazy-loaded)
 ├── contact.php             # Contact form backend (rate limiting, CSRF, honeypot)
-├── deploy.php              # GitHub webhook deploy (IP allowlist + HMAC signature, fail-closed)
+├── deploy.php              # GitHub webhook deploy (HMAC-SHA256 signature, fail-closed)
 ├── DEPLOY-SETUP.md         # Deployment / webhook setup guide
 ├── images/
 │   ├── oliver-eichhof.png  # Profile photo master (920w, lossless — build source)
