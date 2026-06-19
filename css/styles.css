@@ -758,11 +758,13 @@ html.eu-mode .profile-toggle-btn {
     outline-offset: 4px;
 }
 
-/* Tooltip to the right of the toggle (same component as github-tooltip) */
+/* Tooltip folgt dem Knopf ("Ei"): Standard (Knopf links) → Tooltip links,
+   EU (Knopf rechts) → Tooltip rechts. Der Pfeil zeigt jeweils zum Toggle, so
+   "gehört" das Zustands-Label sichtbar zur aktuellen Knopf-Position. */
 .profile-tooltip {
     position: absolute;
     top: 50%;
-    left: calc(100% + 10px);
+    right: calc(100% + 10px); /* default: links vom Toggle */
     transform: translateY(-50%);
     background: var(--tooltip-bg);
     color: white;
@@ -781,9 +783,22 @@ html.eu-mode .profile-toggle-btn {
     content: '';
     position: absolute;
     top: 50%;
-    right: 100%;
+    left: 100%; /* Pfeil an der rechten Kante, zeigt nach rechts zum Toggle */
     transform: translateY(-50%);
     border: 5px solid transparent;
+    border-left-color: var(--tooltip-bg);
+}
+
+/* EU-Modus (Knopf rechts): Tooltip nach rechts, Pfeil zeigt nach links */
+html.eu-mode .profile-tooltip {
+    right: auto;
+    left: calc(100% + 10px);
+}
+
+html.eu-mode .profile-tooltip::after {
+    left: auto;
+    right: 100%;
+    border-left-color: transparent;
     border-right-color: var(--tooltip-bg);
 }
 
