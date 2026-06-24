@@ -55,6 +55,7 @@
 
     <!-- Identity verification (IndieAuth / rel=me) -->
     <link rel="me" href="https://sifa.id/p/ollri.ch">
+    <link rel="me" href="https://pixelfed.de/olli">
 
     <title><?= $e($m['title']) ?></title>
 

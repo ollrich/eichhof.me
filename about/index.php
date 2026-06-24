@@ -102,6 +102,7 @@ $datePublished = '2026-02-19';
 
     <!-- Identity verification (IndieAuth / rel=me) -->
     <link rel="me" href="https://sifa.id/p/ollri.ch">
+    <link rel="me" href="https://pixelfed.de/olli">
 
     <?php include __DIR__ . '/../includes/head-favicons.php'; ?>
 
