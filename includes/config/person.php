@@ -31,7 +31,5 @@ return [
     'subjectOf' => [
         ['@type' => 'Article', 'url' => 'https://www.testspiel.de/oliver-polak-interview-2/290215/'],
         ['@type' => 'Article', 'url' => 'https://www.testspiel.de/kid-simius-interview/276764/'],
-        ['@type' => 'Article', 'url' => 'https://www.wuv.de/Archiv/Wie-man-mit-Messenger-f%C3%BCr-die-Ehe-f%C3%BCr-alle-wirbt'],
-        ['@type' => 'Article', 'url' => 'https://www.wuv.de/Archiv/So-tickt-die-Zukunft-Dokyo-auf-der-%22The-Next-Web-Conference%22'],
     ],
 ];
