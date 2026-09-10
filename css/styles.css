@@ -100,6 +100,7 @@ html {
     --name-color: white;
     --tagline-color: rgba(255, 255, 255, 0.95);
     --tagline-link: rgba(255, 255, 255, 1);
+    --tagline-underline: rgba(255, 255, 255, 0.55);
     --card-hover-bg: rgba(255, 255, 255, 0.1);
     --card-hover-border: rgba(255, 255, 255, 0.2);
     --footer-color: rgba(255, 255, 255, 0.95);
@@ -144,6 +145,7 @@ html.dark-mode {
     --name-color: rgba(255, 255, 255, 0.95);
     --tagline-color: rgba(255, 255, 255, 0.5);
     --tagline-link: rgba(255, 255, 255, 0.7);
+    --tagline-underline: rgba(255, 255, 255, 0.4);
     --card-hover-bg: rgba(var(--accent-purple), 0.1);
     --card-hover-border: rgba(var(--accent-purple), 0.4);
     --footer-color: rgba(255, 255, 255, 0.5);
@@ -176,6 +178,7 @@ html.dark-mode {
         --name-color: rgba(255, 255, 255, 0.95);
         --tagline-color: rgba(255, 255, 255, 0.5);
         --tagline-link: rgba(255, 255, 255, 0.7);
+        --tagline-underline: rgba(255, 255, 255, 0.4);
         --card-hover-bg: rgba(var(--accent-purple), 0.1);
         --card-hover-border: rgba(var(--accent-purple), 0.4);
         --footer-color: rgba(255, 255, 255, 0.5);
@@ -482,17 +485,26 @@ html.dark-mode .theme-tooltip .tooltip-light {
     line-height: 1.5;
 }
 
+/* Dauerhafte Unterstreichung statt reiner Helligkeitsdifferenz. Vorher trug
+   allein der Farbunterschied zum Fließtext den Link — seit der Fließtext für
+   den Kontrast auf 0.95 liegt, wäre davon nichts mehr übrig. WCAG 1.4.1
+   verlangt ohnehin ein zweites Merkmal neben der Farbe. Die gedämpfte
+   Linienfarbe hält es optisch ruhig, Hover/Fokus zieht sie auf volle
+   Deckkraft — und entspricht dem Muster der übrigen Fließtext-Links
+   (Grounding Page, Overlays). */
 .tagline a {
     color: var(--tagline-link);
-    text-decoration: none;
+    text-decoration: underline;
+    text-decoration-color: var(--tagline-underline);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
     position: relative;
+    transition: text-decoration-color 0.3s ease;
 }
 
 .tagline a:hover,
 .tagline a:focus-visible {
-    text-decoration: underline;
-    text-decoration-color: rgba(255, 255, 255, 0.9);
-    text-underline-offset: 2px;
+    text-decoration-color: var(--tagline-link);
 }
 
 .tagline a:focus-visible {
