@@ -682,6 +682,13 @@ html.dark-mode .link-preview:hover {
     vertical-align: -0.125em;
 }
 
+/* Der Roboterkopf trägt mehr Details (Antenne, zwei Augen) als das Herz und
+   braucht bei 11px Footer-Schrift etwas mehr Fläche, um lesbar zu bleiben. */
+.icon-robot {
+    width: 1.2em;
+    height: 1.2em;
+}
+
 .overlay-email-link {
     color: inherit;
     text-decoration: underline;
