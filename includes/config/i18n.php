@@ -170,7 +170,7 @@ return [
             'url' => 'https://eichhof.me/de/',
             'linkedinUrl' => 'https://de.linkedin.com/in/olivereichhof',
             // Tagline (HTML mit inline-Links)
-            'tagline' => 'Hi, ich bin Olli, Wahlhamburger, der durchs <a href="https://soundcloud.com/livicxyz" target="_blank" rel="noopener noreferrer">Plattenauflegen</a> zum <a href="https://www.schongeil.de/" target="_blank" rel="noopener noreferrer">Bloggen</a> kam und dadurch in der Medienbranche gelandet ist. Seit 20 Jahren erkläre ich professionell das Internet und wie man Zielgruppen erreicht.',
+            'tagline' => 'Hi, ich bin Olli, Wahlhamburger, der vom <a href="https://soundcloud.com/livicxyz" target="_blank" rel="noopener noreferrer">Plattenauflegen</a> übers <a href="https://www.schongeil.de/" target="_blank" rel="noopener noreferrer">Bloggen</a> in der Medienbranche gelandet ist. Seit 20 Jahren erkläre ich professionell das Internet.',
             // Easter-Egg-Hinweis (nur Hauptseite)
             'hint' => 'drücke leertaste',
             // E-Mail
@@ -201,7 +201,7 @@ return [
             'description' => 'Communication specialist from Hamburg for digital brand management and target audience analysis, shaped by music, media and streaming.',
             'url' => 'https://eichhof.me/en/',
             'linkedinUrl' => 'https://www.linkedin.com/in/olivereichhof',
-            'tagline' => 'Hi, I\'m Olli. I made Hamburg my home and went from <a href="https://soundcloud.com/livicxyz" target="_blank" rel="noopener noreferrer">spinning records</a> to <a href="https://www.schongeil.de/en/" target="_blank" rel="noopener noreferrer">blogging</a> — which is how I ended up in media. For 20 years I\'ve been professionally explaining the internet and how to reach an audience.',
+            'tagline' => 'Hi, I\'m Olli. I made Hamburg my home and ended up in the media industry by way of <a href="https://soundcloud.com/livicxyz" target="_blank" rel="noopener noreferrer">spinning records</a> and <a href="https://www.schongeil.de/en/" target="_blank" rel="noopener noreferrer">blogging</a>. For 20 years I\'ve been professionally explaining the internet.',
             'hint' => 'press space',
             'emailText' => 'Email',
             'emailAriaLabel' => 'Send email',
@@ -227,7 +227,7 @@ return [
             'description' => 'Kommunikationsspecialist fra Hamborg for digital brandledelse og målgruppeanalyse, formet af musik, medier og streaming.',
             'url' => 'https://eichhof.me/da/',
             'linkedinUrl' => 'https://dk.linkedin.com/in/olivereichhof',
-            'tagline' => 'Hej, jeg er Olli. Jeg har valgt Hamborg som hjem og gik fra <a href="https://soundcloud.com/livicxyz" target="_blank" rel="noopener noreferrer">at spille plader</a> til <a href="https://www.schongeil.de/en/" target="_blank" rel="noopener noreferrer">at blogge</a> — og endte sådan i mediebranchen. I 20 år har jeg professionelt forklaret internettet og hvordan man når sin målgruppe.',
+            'tagline' => 'Hej, jeg er Olli. Jeg har valgt Hamborg som hjem og endte i mediebranchen via <a href="https://soundcloud.com/livicxyz" target="_blank" rel="noopener noreferrer">at spille plader</a> og <a href="https://www.schongeil.de/en/" target="_blank" rel="noopener noreferrer">at blogge</a>. I 20 år har jeg professionelt forklaret internettet.',
             'hint' => 'tryk mellemrum',
             'emailText' => 'E-Mail',
             'emailAriaLabel' => 'Send e-mail',
