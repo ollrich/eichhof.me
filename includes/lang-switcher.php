@@ -39,7 +39,7 @@ $currentLabel = $switcherOrder[$lang] ?? 'DE';
             aria-haspopup="true"
             aria-expanded="false"
             aria-label="<?= $e($m['langSwitcherLabel']) ?>"><?= $currentLabel ?></button>
-    <ul class="lang-switcher-menu">
+    <ul class="lang-switcher-menu" role="list">
         <?php foreach ($switcherOrder as $code => $label): ?>
             <?php if ($code === $lang) continue; ?>
             <li><a href="<?= $e($routes[$code][$routeKey]) ?>"

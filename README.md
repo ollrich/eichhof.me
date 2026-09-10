@@ -24,7 +24,7 @@ Built with AI assistance as an exploration of modern web development practices. 
 
 ### Tech
 
-Pure HTML/CSS/JavaScript – no frameworks. Server-side rendered (PHP) for all body texts per language. All translations live in a single PHP array (`includes/config/i18n.php`) shared between server templates and browser-side JS via an inline `<script type="application/json">` block – no duplicated translation tables. Uses [Canvas-Confetti](https://github.com/catdad/canvas-confetti) for visual effects and [APIFlash](https://apiflash.com/) for generating link preview screenshots.
+Pure HTML/CSS/JavaScript – no frameworks. Server-side rendered (PHP) for all body texts per language. All translations live in a single PHP array (`includes/config/i18n.php`) – no duplicated translation tables. Every visible text is rendered server-side; only the handful of strings the browser actually needs (contact-form feedback, e-mail prefix) is passed along in an inline `<script type="application/json">` block. Uses [Canvas-Confetti](https://github.com/catdad/canvas-confetti) for visual effects and [APIFlash](https://apiflash.com/) for generating link preview screenshots.
 
 ### Automation
 

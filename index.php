@@ -108,6 +108,15 @@ $e = function($s) { return htmlspecialchars($s, ENT_QUOTES, 'UTF-8'); };
 // fehlendes $e() nicht als Oversight missverstehen.
 $rawHtml = function($s) { return $s; };
 
+// JSON-String inklusive Anführungszeichen — für Werte im JSON-LD-Block.
+// Dort ist htmlspecialchars() das falsche Werkzeug: In <script type="…json">
+// werden HTML-Entities nicht dekodiert, ein Apostroph landete als
+// "&#039;" in den strukturierten Daten. JSON_HEX_TAG verhindert zusätzlich,
+// dass ein "</script>" im Text den Block sprengt.
+$json = function($s) {
+    return json_encode($s, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_HEX_TAG | JSON_HEX_AMP);
+};
+
 // ============================================================================
 // CONTENT LOADING
 // ============================================================================
@@ -130,6 +139,25 @@ $m['aboutUrl']   = $routes[$lang]['about'];
 $icons = require __DIR__ . '/includes/icons.php';
 $m['footerDesktop'] = strtr($m['footerDesktop'], $icons);
 $m['footerMobile']  = strtr($m['footerMobile'], $icons);
+
+// Schlüssel, die das Browser-JS über LanguageManager.getTranslation()
+// tatsächlich abfragt (contact.js: Erfolgs-/Fehlermeldungen; language.js:
+// E-Mail-Prefix). Nur diese landen im Inline-JSON — das komplette $m-Array
+// wären ~5 KB pro Seitenaufruf, von denen 90 % niemand liest, weil alle
+// sichtbaren Texte bereits serverseitig gerendert sind.
+// Wird im JS ein neuer Key gebraucht, muss er hier ergänzt werden;
+// getTranslation() gibt sonst stillschweigend den Key-Namen zurück.
+$jsI18nKeys = [
+    'emailPrefix',
+    'contactSuccess',
+    'contactErrorName',
+    'contactErrorEmail',
+    'contactErrorMessage',
+    'contactErrorRateLimit',
+    'contactErrorGeneral',
+    'contactErrorTimeout',
+];
+$jsI18n = array_intersect_key($m, array_flip($jsI18nKeys));
 
 // Shared Person-Schema-Daten (sameAs, subjectOf) — identisch zwischen Haupt- und About-Seite.
 $person = require __DIR__ . '/includes/config/person.php';
@@ -164,7 +192,7 @@ if ($routeKey === 'contact') $openOverlay = 'contact';
     <?php include __DIR__ . '/includes/theme-init.php'; ?>
 
     <!-- Theme color for browser UI (address bar on mobile) -->
-    <meta name="theme-color" content="#764ba2" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#64408a" media="(prefers-color-scheme: light)">
     <meta name="theme-color" content="#0d0d14" media="(prefers-color-scheme: dark)">
 
 <?php // SEO, Social & Structured Data — auf Spalte 0, damit die 4-Space-
@@ -186,12 +214,13 @@ if ($routeKey === 'contact') $openOverlay = 'contact';
     <!-- Stylesheet -->
     <link rel="stylesheet" href="<?= asset('/css/styles.css') ?>">
 
-    <!-- i18n-Daten für JS (Single Source mit PHP geteilt).
+    <!-- i18n-Daten für JS (Single Source mit PHP geteilt) — bewusst nur die
+         Schlüssel aus $jsI18nKeys, nicht das ganze $m-Array.
          `type="application/json"` ist kein ausführbares Script — keine CSP-Hash
          nötig. `JSON_HEX_TAG | JSON_HEX_AMP` verhindert, dass eingebettetes
-         HTML (z. B. `</script>` im Tagline-Text, falls jemals möglich) den
+         HTML (z. B. `</script>` in einem Text, falls jemals möglich) den
          Parser ausbrechen lässt. -->
-    <script id="i18n-data" type="application/json"><?= json_encode($m, JSON_HEX_TAG | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE) ?></script>
+    <script id="i18n-data" type="application/json"><?= json_encode($jsI18n, JSON_HEX_TAG | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE) ?></script>
 </head>
 <body data-lang="<?= $lang ?>"<?= $openOverlay ? ' data-overlay="' . $openOverlay . '"' : '' ?>>
     <a href="#main" class="skip-link"><?= $e($m['skipLink']) ?></a>
@@ -274,25 +303,33 @@ if ($routeKey === 'contact') $openOverlay = 'contact';
     </div>
 </main>
 
-    <!-- Footer Elements -->
-    <div class="footer-left">
-        <a href="<?= $m['legalUrl'] ?>" id="footer-link"><?= $e($m['legalLink']) ?></a><span class="footer-separator" aria-hidden="true"> • </span><a href="<?= $m['privacyUrl'] ?>" id="footer-privacy-link"><?= $e($m['privacyLink']) ?></a><span class="footer-separator" aria-hidden="true"> • </span><a href="<?= $m['aboutUrl'] ?>"><?= $e($m['groundingLink']) ?></a>
-    </div>
+    <!-- Desktop-Footer als echtes contentinfo-Landmark. Die beiden Hälften
+         sitzen in EINEM fixierten Flex-Balken (statt zweier unabhängiger
+         position:fixed-Boxen) — dadurch können sie sich im schmalen
+         Desktop-Bereich (481–~515px) nicht mehr überlappen. -->
+    <footer class="site-footer">
+        <div class="footer-left">
+            <a href="<?= $m['legalUrl'] ?>" id="footer-link"><?= $e($m['legalLink']) ?></a><span class="footer-separator" aria-hidden="true"> • </span><a href="<?= $m['privacyUrl'] ?>" id="footer-privacy-link"><?= $e($m['privacyLink']) ?></a><span class="footer-separator" aria-hidden="true"> • </span><a href="<?= $m['aboutUrl'] ?>"><?= $e($m['groundingLink']) ?></a>
+        </div>
 
-    <!-- Hidden entity info for crawlers -->
-    <span class="sr-only" id="footer-entity-desktop"><?= $e($m['footerEntity']) ?></span>
+        <!-- Hidden entity info for crawlers. Nur einmal im Dokument: das
+             mobile Pendant steht in .mobile-footer und ist per display:none
+             gegenläufig geschaltet, damit Screenreader den Satz nicht doppelt
+             vorlesen. -->
+        <span class="sr-only footer-entity-desktop" id="footer-entity-desktop"><?= $e($m['footerEntity']) ?></span>
 
-    <div class="footer">
-        <span id="footer-text-desktop"><?= $rawHtml($m['footerDesktop']) ?></span>
-        <span class="github-link-wrapper">•
-            <span class="github-tooltip" id="github-tooltip"><?= $e($m['githubTooltip']) ?></span>
-            <a href="https://github.com/ollrich/eichhof.me" target="_blank" rel="noopener noreferrer" class="footer-link">
-                <svg class="icon-github" viewBox="0 0 16 16" fill="currentColor" aria-label="<?= $e($m['githubAriaLabel']) ?>">
-                    <path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"/>
-                </svg>
-            </a>
-        </span>
-    </div>
+        <div class="footer">
+            <span id="footer-text-desktop"><?= $rawHtml($m['footerDesktop']) ?></span>
+            <span class="github-link-wrapper"><span aria-hidden="true">•</span>
+                <span class="github-tooltip" id="github-tooltip"><?= $e($m['githubTooltip']) ?></span>
+                <a href="https://github.com/ollrich/eichhof.me" target="_blank" rel="noopener noreferrer" class="footer-link" aria-label="<?= $e($m['githubAriaLabel']) ?>">
+                    <svg class="icon-github" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                        <path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"/>
+                    </svg>
+                </a>
+            </span>
+        </div>
+    </footer>
 
     <!-- Hint text for Easter egg discovery -->
     <div class="footer-hint" id="footer-hint"><?= $e($m['hint']) ?></div>
@@ -380,7 +417,9 @@ if ($routeKey === 'contact') $openOverlay = 'contact';
                     <span class="contact-spinner" id="contact-spinner"></span>
                 </button>
 
-                <div class="contact-feedback" id="contact-feedback" role="alert" aria-live="polite"></div>
+<?php // role="alert" impliziert bereits aria-live="assertive"; ein zusätzliches
+      // aria-live="polite" hat das widersprüchlich wieder heruntergestuft. ?>
+                <div class="contact-feedback" id="contact-feedback" role="alert"></div>
             </form>
 
             <div class="contact-fallback">

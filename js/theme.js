@@ -17,7 +17,7 @@
 
     // Muss den <meta name="theme-color">-Werten in den <head>s entsprechen
     // (index.php, about/index.php, 404.php).
-    const THEME_COLORS = { light: '#764ba2', dark: '#0d0d14' };
+    const THEME_COLORS = { light: '#64408a', dark: '#0d0d14' };
 
     /**
      * Browser-UI-Farbe (mobile Adressleiste) an ein explizit gewähltes
@@ -42,8 +42,33 @@
         else if (theme === 'light') document.documentElement.classList.add('light-mode');
     }
 
+    /**
+     * localStorage-Zugriff kapseln: In Browsern mit blockierten Site-Daten
+     * (Safari mit deaktiviertem Speicher, Firefox mit blockierten Cookies,
+     * restriktive Enterprise-Policies) wirft schon der Zugriff auf
+     * window.localStorage eine SecurityError. Ungekapselt hätte das die
+     * gesamte IIFE abgebrochen — der Theme-Button wäre tot und
+     * window.ThemeManager nie definiert gewesen. So bleibt das Umschalten
+     * innerhalb der Sitzung funktionsfähig, nur das Merken entfällt.
+     */
+    function readStored() {
+        try {
+            return localStorage.getItem('theme');
+        } catch (e) {
+            return null;
+        }
+    }
+
+    function writeStored(value) {
+        try {
+            localStorage.setItem('theme', value);
+        } catch (e) {
+            /* Speichern nicht möglich — Theme gilt trotzdem für diese Seite. */
+        }
+    }
+
     function initTheme() {
-        const savedTheme = localStorage.getItem('theme');
+        const savedTheme = readStored();
         if (savedTheme === 'dark' || savedTheme === 'light') {
             applyTheme(savedTheme);
         }
@@ -53,7 +78,7 @@
     function toggleTheme() {
         const next = getEffectiveTheme() === 'dark' ? 'light' : 'dark';
         applyTheme(next);
-        localStorage.setItem('theme', next);
+        writeStored(next);
         syncThemeColor();
     }
 

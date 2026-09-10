@@ -71,30 +71,39 @@
    Using RGB values (without 'rgb()') allows us to add alpha
    transparency later with rgba(var(--color), alpha)
 */
+/* Kontrast-Hinweis für künftige Farbanpassungen:
+   Der helle Verlauf muss dunkel genug bleiben, damit weißer Text WCAG AA
+   (4.5:1) erreicht. Mit dem früheren #667eea kam selbst reines Weiß nur auf
+   3.66:1 — die Alphas darunter lagen bei 2.3–3.0:1. Der aktuelle hellste
+   Stop #576bc7 liefert Weiß 4.85:1; Alpha 0.95 kommt auf 4.55:1.
+   Wer den Verlauf aufhellt, muss die Textwerte gegenrechnen. */
 html {
     --accent-purple: 118, 75, 162;
-    --bg-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --bg-gradient: linear-gradient(135deg, #576bc7 0%, #64408a 100%);
     --text-primary: white;
-    --text-secondary: rgba(255, 255, 255, 0.8);
-    --text-muted: rgba(255, 255, 255, 0.6);
+    --text-secondary: rgba(255, 255, 255, 0.95);
+    --text-muted: rgba(255, 255, 255, 0.95);
     --card-bg: rgba(255, 255, 255, 0.05);
     --card-border: rgba(255, 255, 255, 0.1);
-    --link-color: rgba(255, 255, 255, 0.9);
+    --link-color: rgba(255, 255, 255, 1);
     --link-hover: rgba(255, 255, 255, 1);
-    --toggle-opacity: 0.4;
-    --toggle-hover: 0.7;
+    /* Steuert Theme-Icon UND das Textlabel "DE" des Sprachwählers. Weil
+       darunter echter Text hängt, gilt die Textschwelle 4.5:1, nicht die
+       Icon-Schwelle 3:1 — daher 0.95 statt eines dezenteren Werts. */
+    --toggle-opacity: 0.95;
+    --toggle-hover: 1;
     --tooltip-bg: rgba(0, 0, 0, 0.7);
 
     /* Index-specific variables */
     --photo-border: rgba(255, 255, 255, 0.1);
     --photo-shadow: rgba(0, 0, 0, 0.3);
     --name-color: white;
-    --tagline-color: rgba(255, 255, 255, 0.7);
-    --tagline-link: rgba(255, 255, 255, 0.9);
+    --tagline-color: rgba(255, 255, 255, 0.95);
+    --tagline-link: rgba(255, 255, 255, 1);
     --card-hover-bg: rgba(255, 255, 255, 0.1);
     --card-hover-border: rgba(255, 255, 255, 0.2);
-    --footer-color: rgba(255, 255, 255, 0.6);
-    --footer-link: rgba(255, 255, 255, 0.8);
+    --footer-color: rgba(255, 255, 255, 0.95);
+    --footer-link: rgba(255, 255, 255, 1);
     --footer-link-hover: rgba(255, 255, 255, 1);
     --overlay-bg: rgba(30, 30, 50, 0.92);
     --overlay-content-bg: rgba(255, 255, 255, 0.1);
@@ -125,8 +134,8 @@ html.dark-mode {
     --card-border: rgba(var(--accent-purple), 0.25);
     --link-color: rgba(255, 255, 255, 0.7);
     --link-hover: rgba(255, 255, 255, 0.9);
-    --toggle-opacity: 0.3;
-    --toggle-hover: 0.5;
+    --toggle-opacity: 0.55;
+    --toggle-hover: 0.75;
     --tooltip-bg: rgba(var(--accent-purple), 0.6);
 
     /* Index-specific dark mode variables */
@@ -158,8 +167,8 @@ html.dark-mode {
         --card-border: rgba(var(--accent-purple), 0.25);
         --link-color: rgba(255, 255, 255, 0.7);
         --link-hover: rgba(255, 255, 255, 0.9);
-        --toggle-opacity: 0.3;
-        --toggle-hover: 0.5;
+        --toggle-opacity: 0.55;
+        --toggle-hover: 0.75;
         --tooltip-bg: rgba(var(--accent-purple), 0.6);
 
         --photo-border: rgba(var(--accent-purple), 0.3);
@@ -190,7 +199,12 @@ body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
     background: transparent;
     color: var(--text-primary);
+    /* 100vh ist auf iOS/Android-Safari die GROSSE Viewport-Höhe (Adressleiste
+       ausgeblendet) — bei eingeblendeter Leiste ragt die Seite darunter.
+       100dvh folgt der tatsächlich sichtbaren Höhe; die 100vh-Zeile davor
+       bleibt als Fallback für ältere Browser stehen. */
     min-height: 100vh;
+    min-height: 100dvh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -642,16 +656,32 @@ html.dark-mode .link-preview:hover {
 /* ========================================
    FOOTER ELEMENTS
    ======================================== */
-.footer,
-.footer-left {
+/* Ein fixierter Balken statt zweier unabhängiger position:fixed-Boxen.
+   Vorher konnten sich linke Links und rechter Text im schmalen
+   Desktop-Bereich (481–~515px) überlappen, weil beide nur an ihrer
+   eigenen Kante klebten. Als Flex-Container mit gap ist ein Mindestabstand
+   garantiert; wird es enger, bricht der Text um statt zu überlappen. */
+.site-footer {
     position: fixed;
+    left: 20px;
+    right: 20px;
     bottom: 15px;
-    font-size: 11px;
     z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 0.5rem 1.25rem;
+    font-size: 11px;
+    /* Der leere Raum zwischen den Hälften bleibt klickdurchlässig, damit
+       der Balken nichts abfängt, was darunter liegt. */
+    pointer-events: none;
+}
+
+.site-footer > * {
+    pointer-events: auto;
 }
 
 .footer {
-    right: 20px;
     color: var(--footer-color);
 }
 
@@ -749,10 +779,6 @@ html.dark-mode .link-preview:hover {
 
 .footer-hint.visible {
     opacity: 1;
-}
-
-.footer-left {
-    left: 20px;
 }
 
 .footer-left a {
@@ -1050,8 +1076,7 @@ html.dark-mode .overlay-content::-webkit-scrollbar-thumb:hover {
         font-size: 0.95rem;
     }
 
-    .footer-left,
-    .footer {
+    .site-footer {
         font-size: 10px;
     }
 
@@ -1072,6 +1097,7 @@ html.dark-mode .overlay-content::-webkit-scrollbar-thumb:hover {
 
     .container {
         min-height: calc(100vh - 5rem - 15px);
+        min-height: calc(100dvh - 5rem - 15px);
         display: flex;
         flex-direction: column;
     }
@@ -1105,13 +1131,23 @@ html.dark-mode .overlay-content::-webkit-scrollbar-thumb:hover {
         font-size: 0.9rem;
     }
 
-    .footer, .footer-left {
+    /* Der ganze Desktop-Balken verschwindet — inklusive des sr-only-Satzes
+       darin, dessen mobiles Pendant in .mobile-footer steht. So hört ein
+       Screenreader die Entity-Zeile in jeder Breite genau einmal. */
+    .site-footer {
         display: none;
     }
 
+    /* space-between allein erzeugt nur dann Abstand, wenn Platz übrig ist —
+       auf schmalen Geräten (~375px) reichte die Breite nicht und die drei
+       Elemente klebten zu "ImpressumDatenverarbeitungMit ❤ …" zusammen.
+       gap garantiert den Mindestabstand, flex-wrap den Umbruch statt des
+       Zusammenschiebens. */
     .mobile-footer {
         display: flex;
+        flex-wrap: wrap;
         justify-content: space-between;
+        gap: 0.25rem 0.75rem;
         margin-top: 2rem;
         font-size: 11px;
         color: var(--footer-color);
@@ -1409,11 +1445,26 @@ html.dark-mode .contact-submit:hover:not(:disabled) {
     max-width: 560px;
 }
 
+/* Die Abschnittsüberschriften sind h2 (direkt unter der h1 — keine
+   übersprungene Ebene). Optisch bleiben sie auf dem Niveau der h3 aus den
+   Overlays; die höhere Spezifität schlägt .overlay-content h2 in jeder
+   Breakpoint-Variante, .about-content teilt sich die Klasse mit den Overlays. */
+.about-content .about-section h2 {
+    font-size: 1.25rem;
+    font-weight: 300;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    letter-spacing: 0.5px;
+}
+
 .about-section {
     margin-top: 1.5rem;
 }
 
-.about-section:first-of-type {
+/* :first-child, nicht :first-of-type — der Intro-Block ist ein <div>, die
+   folgenden Blöcke sind <section>. :first-of-type hätte auch die erste
+   <section> ("Abgrenzung") getroffen und ihr den Abstand genommen. */
+.about-section:first-child {
     margin-top: 0;
 }
 

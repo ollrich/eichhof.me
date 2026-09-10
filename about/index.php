@@ -27,6 +27,10 @@ $e = fn($s) => htmlspecialchars($s, ENT_QUOTES, 'UTF-8');
 // Inline-HTML enthalten (<br>, <span class="sr-only">, <a>).
 $rawHtml = fn($s) => $s;
 
+// JSON-String inklusive Anführungszeichen — für Werte im JSON-LD-Block
+// (dort werden HTML-Entities nicht dekodiert, htmlspecialchars wäre falsch).
+$json = fn($s) => json_encode($s, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_HEX_TAG | JSON_HEX_AMP);
+
 // ============================================================================
 // CONTENT LOADING
 // ============================================================================
@@ -74,7 +78,7 @@ $datePublished = '2026-02-19';
 
     <?php include __DIR__ . '/../includes/theme-init.php'; ?>
 
-    <meta name="theme-color" content="#764ba2" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#64408a" media="(prefers-color-scheme: light)">
     <meta name="theme-color" content="#0d0d14" media="(prefers-color-scheme: dark)">
     <title><?= $e($m['title']) ?></title>
     <meta name="description" content="<?= $e($m['description']) ?>">
@@ -135,33 +139,33 @@ $datePublished = '2026-02-19';
             },
             {
                 "@type": "WebPage",
-                "@id": "<?= $m['canonical'] ?>#webpage",
-                "url": "<?= $m['canonical'] ?>",
-                "name": "<?= $e($m['title']) ?>",
-                "description": "<?= $e($m['description']) ?>",
-                "inLanguage": "<?= $m['inLanguage'] ?>",
+                "@id": <?= $json($m['canonical'] . '#webpage') ?>,
+                "url": <?= $json($m['canonical']) ?>,
+                "name": <?= $json($m['title']) ?>,
+                "description": <?= $json($m['description']) ?>,
+                "inLanguage": <?= $json($m['inLanguage']) ?>,
                 "isPartOf": { "@id": "https://eichhof.me/#website" },
                 "about": { "@id": "https://eichhof.me/#person" },
-                "breadcrumb": { "@id": "<?= $m['canonical'] ?>#breadcrumbs" },
+                "breadcrumb": { "@id": <?= $json($m['canonical'] . '#breadcrumbs') ?> },
                 "primaryImageOfPage": "https://eichhof.me/images/oliver-eichhof.webp",
                 "datePublished": "<?= $datePublished ?>",
                 "dateModified": "<?= $person['dateModified'] ?>"
             },
             {
                 "@type": "BreadcrumbList",
-                "@id": "<?= $m['canonical'] ?>#breadcrumbs",
+                "@id": <?= $json($m['canonical'] . '#breadcrumbs') ?>,
                 "itemListElement": [
                     {
                         "@type": "ListItem",
                         "position": 1,
                         "name": "Oliver Eichhof",
-                        "item": "<?= $m['homeUrl'] ?>"
+                        "item": <?= $json($m['homeUrl']) ?>
                     },
                     {
                         "@type": "ListItem",
                         "position": 2,
-                        "name": "<?= $e($m['breadcrumbLabel']) ?>",
-                        "item": "<?= $m['canonical'] ?>"
+                        "name": <?= $json($m['breadcrumbLabel']) ?>,
+                        "item": <?= $json($m['canonical']) ?>
                     }
                 ]
             },
@@ -173,12 +177,12 @@ $datePublished = '2026-02-19';
                 "familyName": "Eichhof",
                 "url": "https://eichhof.me/",
                 "image": "https://eichhof.me/images/oliver-eichhof.webp",
-                "jobTitle": "<?= $e($m['jobTitle']) ?>",
-                "description": "<?= $e($m['personDescription']) ?>",
-                "birthPlace": { "@type": "Place", "name": "<?= $e($m['birthPlace']) ?>" },
+                "jobTitle": <?= $json($m['jobTitle']) ?>,
+                "description": <?= $json($m['personDescription']) ?>,
+                "birthPlace": { "@type": "Place", "name": <?= $json($m['birthPlace']) ?> },
                 "birthDate": "1979",
-                "homeLocation": { "@type": "Place", "name": "<?= $e($m['homeLocation']) ?>" },
-                "nationality": { "@type": "Country", "name": "<?= $e($m['nationality']) ?>" },
+                "homeLocation": { "@type": "Place", "name": <?= $json($m['homeLocation']) ?> },
+                "nationality": { "@type": "Country", "name": <?= $json($m['nationality']) ?> },
                 "knowsLanguage": ["de", "en", "da"],
                 "knowsAbout": <?= json_encode($m['knowsAbout'], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) ?>,
                 "worksFor": {
@@ -198,14 +202,14 @@ $datePublished = '2026-02-19';
                 "hasOccupation": [
                     {
                         "@type": "Occupation",
-                        "name": "<?= $e($m['occupationName']) ?>",
-                        "occupationLocation": { "@type": "Place", "name": "<?= $e($m['occupationLocation']) ?>" },
+                        "name": <?= $json($m['occupationName']) ?>,
+                        "occupationLocation": { "@type": "Place", "name": <?= $json($m['occupationLocation']) ?> },
                         "startDate": "2026"
                     }
                 ],
                 "sameAs": <?= json_encode($person['sameAs'], JSON_UNESCAPED_SLASHES) ?>,
                 "subjectOf": <?= json_encode($person['subjectOf'], JSON_UNESCAPED_SLASHES) ?>,
-                "mainEntityOfPage": { "@id": "<?= $m['canonical'] ?>#webpage" }
+                "mainEntityOfPage": { "@id": <?= $json($m['canonical'] . '#webpage') ?> }
             }
         ]
     }
@@ -249,12 +253,12 @@ $datePublished = '2026-02-19';
             </div>
 
             <section class="about-section">
-                <h3><?= $e($m['distinctionTitle']) ?></h3>
+                <h2><?= $e($m['distinctionTitle']) ?></h2>
                 <p><?= $e($m['distinction']) ?></p>
             </section>
 
             <section class="about-section">
-                <h3><?= $e($m['factsTitle']) ?></h3>
+                <h2><?= $e($m['factsTitle']) ?></h2>
                 <dl class="about-facts">
                     <dt><?= $e($m['dtType']) ?></dt><dd><?= $e($m['ddType']) ?></dd>
                     <dt><?= $e($m['dtSegment']) ?></dt><dd><?= $e($m['ddSegment']) ?></dd>
@@ -268,8 +272,8 @@ $datePublished = '2026-02-19';
             </section>
 
             <section class="about-section">
-                <h3><?= $e($m['careerTitle']) ?></h3>
-                <ul class="about-career">
+                <h2><?= $e($m['careerTitle']) ?></h2>
+                <ul class="about-career" role="list">
 <?php foreach ($m['career'] as $c): ?>
                     <li><strong><?= $e($c[0]) ?></strong> — <?php if (!empty($c[3])): ?><a href="<?= $e($c[3]) ?>"><?= $e($c[1]) ?></a><?php else: ?><?= $e($c[1]) ?><?php endif; ?> <span class="about-year"><?= $e($c[2]) ?></span></li>
 <?php endforeach; ?>
@@ -277,8 +281,8 @@ $datePublished = '2026-02-19';
             </section>
 
             <section class="about-section">
-                <h3><?= $e($m['educationTitle']) ?></h3>
-                <ul class="about-career">
+                <h2><?= $e($m['educationTitle']) ?></h2>
+                <ul class="about-career" role="list">
 <?php foreach ($m['education'] as $edu): ?>
                     <li><strong><?= $e($edu[0]) ?></strong> — <?= $e($edu[1]) ?> <span class="about-year"><?= $e($edu[2]) ?></span></li>
 <?php endforeach; ?>
@@ -286,13 +290,13 @@ $datePublished = '2026-02-19';
             </section>
 
             <section class="about-section">
-                <h3><?= $e($m['skillsTitle']) ?></h3>
+                <h2><?= $e($m['skillsTitle']) ?></h2>
                 <p><?= $e($m['skills']) ?></p>
             </section>
 
             <section class="about-section">
-                <h3><?= $e($m['projectsTitle']) ?></h3>
-                <ul class="about-links">
+                <h2><?= $e($m['projectsTitle']) ?></h2>
+                <ul class="about-links" role="list">
 <?php foreach ($m['projects'] as $p): ?>
                     <li><a href="<?= $e($p[0]) ?>" target="_blank" rel="noopener noreferrer"><?= $e($p[1]) ?></a> — <?= $e($p[2]) ?></li>
 <?php endforeach; ?>
@@ -300,8 +304,8 @@ $datePublished = '2026-02-19';
             </section>
 
             <section class="about-section">
-                <h3><?= $e($m['profilesTitle']) ?></h3>
-                <ul class="about-links">
+                <h2><?= $e($m['profilesTitle']) ?></h2>
+                <ul class="about-links" role="list">
 <?php foreach ($m['profiles'] as $p): ?>
                     <li><a href="<?= $e($p[0]) ?>" target="_blank" rel="noopener noreferrer me"><?= $e($p[1]) ?></a></li>
 <?php endforeach; ?>
@@ -309,8 +313,8 @@ $datePublished = '2026-02-19';
             </section>
 
             <section class="about-section">
-                <h3><?= $e($m['mentionsTitle']) ?></h3>
-                <ul class="about-links">
+                <h2><?= $e($m['mentionsTitle']) ?></h2>
+                <ul class="about-links" role="list">
 <?php foreach ($m['mentions'] as $mention): ?>
                     <li><a href="<?= $e($mention[0]) ?>" target="_blank" rel="noopener noreferrer"><?= $e($mention[1]) ?></a> — <?= $e($mention[2]) ?></li>
 <?php endforeach; ?>
@@ -335,24 +339,26 @@ $datePublished = '2026-02-19';
         </div>
     </main>
 
-    <!-- Footer Elements -->
-    <div class="footer-left">
-        <a href="<?= $m['legalUrl'] ?>" id="footer-link"><?= $e($m['legalLink']) ?></a><span class="footer-separator" aria-hidden="true"> • </span><a href="<?= $m['privacyUrl'] ?>" id="footer-privacy-link"><?= $e($m['privacyLink']) ?></a>
-    </div>
+    <!-- Desktop-Footer als echtes contentinfo-Landmark (siehe index.php). -->
+    <footer class="site-footer">
+        <div class="footer-left">
+            <a href="<?= $m['legalUrl'] ?>" id="footer-link"><?= $e($m['legalLink']) ?></a><span class="footer-separator" aria-hidden="true"> • </span><a href="<?= $m['privacyUrl'] ?>" id="footer-privacy-link"><?= $e($m['privacyLink']) ?></a>
+        </div>
 
-    <span class="sr-only"><?= $e($m['footerEntity']) ?></span>
+        <span class="sr-only footer-entity-desktop"><?= $e($m['footerEntity']) ?></span>
 
-    <div class="footer">
-        <span><?= $rawHtml($m['footerDesktop']) ?></span>
-        <span class="github-link-wrapper">•
-            <span class="github-tooltip"><?= $e($m['githubTooltip']) ?></span>
-            <a href="https://github.com/ollrich/eichhof.me" target="_blank" rel="noopener noreferrer" class="footer-link">
-                <svg class="icon-github" viewBox="0 0 16 16" fill="currentColor" aria-label="<?= $e($m['githubAriaLabel']) ?>">
-                    <path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"/>
-                </svg>
-            </a>
-        </span>
-    </div>
+        <div class="footer">
+            <span><?= $rawHtml($m['footerDesktop']) ?></span>
+            <span class="github-link-wrapper"><span aria-hidden="true">•</span>
+                <span class="github-tooltip"><?= $e($m['githubTooltip']) ?></span>
+                <a href="https://github.com/ollrich/eichhof.me" target="_blank" rel="noopener noreferrer" class="footer-link" aria-label="<?= $e($m['githubAriaLabel']) ?>">
+                    <svg class="icon-github" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                        <path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"/>
+                    </svg>
+                </a>
+            </span>
+        </div>
+    </footer>
 
     <!-- Modal Overlay (Impressum/Legal Notice) -->
     <div class="overlay" id="overlay">
@@ -379,7 +385,7 @@ $datePublished = '2026-02-19';
                 </svg>
             </button>
             <h2 id="privacy-title"><?= $e($m['privacyTitle']) ?></h2>
-            <?php include __DIR__ . '/../includes/overlays/privacy-' . ($lang === 'da' ? 'da' : $lang) . '.php'; ?>
+            <?php include __DIR__ . '/../includes/overlays/privacy-' . $lang . '.php'; ?>
         </div>
     </div>
 

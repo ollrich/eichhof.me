@@ -8,7 +8,8 @@
  *
  * Erwartet aus dem Parent-Scope (index.php):
  *   $m       — Meta-/Content-Array für die aktuelle Sprache
- *   $e       — htmlspecialchars-Closure
+ *   $e       — htmlspecialchars-Closure (für HTML-Attribute)
+ *   $json    — json_encode-Closure inkl. Anführungszeichen (für den JSON-LD-Block)
  *   $overlay — aktiver Overlay-Parameter (für noindex auf Overlay-URLs) oder null
  *   $person  — geteilte Person-Schema-Daten (sameAs, subjectOf, dateModified)
  *
@@ -74,11 +75,11 @@
             },
             {
                 "@type": "WebPage",
-                "@id": "<?= $m['url'] ?>#webpage",
-                "url": "<?= $m['url'] ?>",
-                "name": "<?= $e($m['title']) ?>",
-                "description": "<?= $e($m['description']) ?>",
-                "inLanguage": "<?= $m['lang'] ?>",
+                "@id": <?= $json($m['url'] . '#webpage') ?>,
+                "url": <?= $json($m['url']) ?>,
+                "name": <?= $json($m['title']) ?>,
+                "description": <?= $json($m['description']) ?>,
+                "inLanguage": <?= $json($m['lang']) ?>,
                 "isPartOf": { "@id": "https://eichhof.me/#website" },
                 "about": { "@id": "https://eichhof.me/#person" },
                 "primaryImageOfPage": "https://eichhof.me/images/oliver-eichhof.webp",
@@ -93,8 +94,8 @@
                 "familyName": "Eichhof",
                 "url": "https://eichhof.me/",
                 "image": "https://eichhof.me/images/oliver-eichhof.webp",
-                "jobTitle": "<?= $e($m['jobTitle']) ?>",
-                "description": "<?= $e($m['description']) ?>",
+                "jobTitle": <?= $json($m['jobTitle']) ?>,
+                "description": <?= $json($m['description']) ?>,
                 "knowsAbout": <?= json_encode($m['knowsAbout'], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) ?>,
                 "homeLocation": { "@type": "Place", "name": "Hamburg" },
                 "birthPlace": { "@type": "Place", "name": "Bremerhaven" },
@@ -109,7 +110,7 @@
                 },
                 "sameAs": <?= json_encode($person['sameAs'], JSON_UNESCAPED_SLASHES) ?>,
                 "subjectOf": <?= json_encode($person['subjectOf'], JSON_UNESCAPED_SLASHES) ?>,
-                "mainEntityOfPage": { "@id": "<?= $m['url'] ?>#webpage" }
+                "mainEntityOfPage": { "@id": <?= $json($m['url'] . '#webpage') ?> }
             }
         ]
     }

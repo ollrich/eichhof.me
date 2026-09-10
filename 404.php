@@ -41,7 +41,7 @@ require_once __DIR__ . '/includes/asset.php';
 
     <?php include __DIR__ . '/includes/theme-init.php'; ?>
 
-    <meta name="theme-color" content="#764ba2" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#64408a" media="(prefers-color-scheme: light)">
     <meta name="theme-color" content="#0d0d14" media="(prefers-color-scheme: dark)">
 
     <meta name="robots" content="noindex">
