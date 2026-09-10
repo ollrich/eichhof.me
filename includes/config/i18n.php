@@ -79,6 +79,9 @@ return [
             // Footer
             'legalLink' => 'Impressum',
             'privacyLink' => 'Datenverarbeitung',
+            // Bewusst in allen Sprachen der englische Fachbegriff — "Grounding
+            // Page" ist der etablierte Name für diese Seitenart.
+            'groundingLink' => 'Grounding Page',
             'footerEntity' => 'Oliver Eichhof, Kommunikationsspezialist aus Hamburg',
             'footerDesktop' => 'Mit <span aria-hidden="true">♥</span><span class="sr-only">Liebe</span> und KI in Hamburg erstellt',
             'footerMobile' => 'Mit <span aria-hidden="true">♥</span><span class="sr-only">Liebe</span> und KI realisiert',
@@ -109,6 +112,7 @@ return [
             'closeOverlay' => 'Close',
             'legalLink' => 'Legal Notice',
             'privacyLink' => 'Privacy Policy',
+            'groundingLink' => 'Grounding Page',
             'footerEntity' => 'Oliver Eichhof, Communication Specialist from Hamburg',
             'footerDesktop' => 'Made with <span aria-hidden="true">♥</span><span class="sr-only">love</span> and AI in Hamburg',
             'footerMobile' => 'Made with <span aria-hidden="true">♥</span><span class="sr-only">love</span> and AI',
@@ -137,6 +141,7 @@ return [
             'closeOverlay' => 'Luk',
             'legalLink' => 'Kolofon',
             'privacyLink' => 'Privatlivspolitik',
+            'groundingLink' => 'Grounding Page',
             'footerEntity' => 'Oliver Eichhof, Kommunikationsspecialist fra Hamborg',
             'footerDesktop' => 'Lavet med <span aria-hidden="true">♥</span><span class="sr-only">kærlighed</span> og AI i Hamburg',
             'footerMobile' => 'Lavet med <span aria-hidden="true">♥</span><span class="sr-only">kærlighed</span> og AI',
@@ -162,7 +167,7 @@ return [
             'url' => 'https://eichhof.me/de/',
             'linkedinUrl' => 'https://de.linkedin.com/in/olivereichhof',
             // Tagline (HTML mit inline-Links)
-            'tagline' => 'Ich arbeite in der Medienbranche und rede im Job gern über gute Kommunikation und was Zielgruppen brauchen. Ab und zu <a href="https://www.schongeil.de/" target="_blank" rel="noopener noreferrer">blogge</a> ich und <a href="https://soundcloud.com/livicxyz" target="_blank" rel="noopener noreferrer">lege</a> Platten auf. Mehr zu <a href="/de/ueber">meinem Werdegang und meiner Arbeit</a>.',
+            'tagline' => 'Ich arbeite in der Medienbranche und rede im Job gern über gute Kommunikation und was Zielgruppen brauchen. Ab und zu <a href="https://www.schongeil.de/" target="_blank" rel="noopener noreferrer">blogge</a> ich und <a href="https://soundcloud.com/livicxyz" target="_blank" rel="noopener noreferrer">lege</a> Platten auf.',
             // Easter-Egg-Hinweis (nur Hauptseite)
             'hint' => 'drücke leertaste',
             // E-Mail
@@ -193,7 +198,7 @@ return [
             'description' => 'Communication specialist from Hamburg for digital brand management and target audience analysis, shaped by music, media and streaming.',
             'url' => 'https://eichhof.me/en/',
             'linkedinUrl' => 'https://www.linkedin.com/in/olivereichhof',
-            'tagline' => 'I work in media and like talking about good communication and what audiences need. Every now and then I <a href="https://www.schongeil.de/en/" target="_blank" rel="noopener noreferrer">blog</a> and <a href="https://soundcloud.com/livicxyz" target="_blank" rel="noopener noreferrer">spin records</a>. More on <a href="/en/about">my background and work</a>.',
+            'tagline' => 'I work in media and like talking about good communication and what audiences need. Every now and then I <a href="https://www.schongeil.de/en/" target="_blank" rel="noopener noreferrer">blog</a> and <a href="https://soundcloud.com/livicxyz" target="_blank" rel="noopener noreferrer">spin records</a>.',
             'hint' => 'press space',
             'emailText' => 'Email',
             'emailAriaLabel' => 'Send email',
@@ -219,7 +224,7 @@ return [
             'description' => 'Kommunikationsspecialist fra Hamborg for digital brandledelse og målgruppeanalyse, formet af musik, medier og streaming.',
             'url' => 'https://eichhof.me/da/',
             'linkedinUrl' => 'https://dk.linkedin.com/in/olivereichhof',
-            'tagline' => 'Jeg arbejder i mediebranchen og taler gerne om god kommunikation og hvad målgrupper har brug for. Af og til <a href="https://www.schongeil.de/en/" target="_blank" rel="noopener noreferrer">blogger</a> jeg og <a href="https://soundcloud.com/livicxyz" target="_blank" rel="noopener noreferrer">spiller plader</a>. Mere om <a href="/da/om">min baggrund og mit arbejde</a>.',
+            'tagline' => 'Jeg arbejder i mediebranchen og taler gerne om god kommunikation og hvad målgrupper har brug for. Af og til <a href="https://www.schongeil.de/en/" target="_blank" rel="noopener noreferrer">blogger</a> jeg og <a href="https://soundcloud.com/livicxyz" target="_blank" rel="noopener noreferrer">spiller plader</a>.',
             'hint' => 'tryk mellemrum',
             'emailText' => 'E-Mail',
             'emailAriaLabel' => 'Send e-mail',

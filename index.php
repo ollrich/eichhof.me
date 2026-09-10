@@ -271,7 +271,7 @@ if ($routeKey === 'contact') $openOverlay = 'contact';
 
     <!-- Footer Elements -->
     <div class="footer-left">
-        <a href="<?= $m['legalUrl'] ?>" id="footer-link"><?= $e($m['legalLink']) ?></a><span class="footer-separator" aria-hidden="true"> • </span><a href="<?= $m['privacyUrl'] ?>" id="footer-privacy-link"><?= $e($m['privacyLink']) ?></a>
+        <a href="<?= $m['legalUrl'] ?>" id="footer-link"><?= $e($m['legalLink']) ?></a><span class="footer-separator" aria-hidden="true"> • </span><a href="<?= $m['privacyUrl'] ?>" id="footer-privacy-link"><?= $e($m['privacyLink']) ?></a><span class="footer-separator" aria-hidden="true"> • </span><a href="<?= $m['aboutUrl'] ?>"><?= $e($m['groundingLink']) ?></a>
     </div>
 
     <!-- Hidden entity info for crawlers -->
