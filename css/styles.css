@@ -675,7 +675,8 @@ html.dark-mode .link-preview:hover {
     opacity: 0.9;
 }
 
-.icon-github {
+.icon-github,
+.icon-inline {
     width: 1em;
     height: 1em;
     vertical-align: -0.125em;

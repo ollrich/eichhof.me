@@ -126,6 +126,11 @@ $m['privacyUrl'] = $routes[$lang]['privacy'];
 $m['contactUrl'] = $routes[$lang]['contact'];
 $m['aboutUrl']   = $routes[$lang]['about'];
 
+// Footer-Platzhalter {heart}/{robot} durch einfarbige Inline-SVGs ersetzen.
+$icons = require __DIR__ . '/includes/icons.php';
+$m['footerDesktop'] = strtr($m['footerDesktop'], $icons);
+$m['footerMobile']  = strtr($m['footerMobile'], $icons);
+
 // Shared Person-Schema-Daten (sameAs, subjectOf) — identisch zwischen Haupt- und About-Seite.
 $person = require __DIR__ . '/includes/config/person.php';
 

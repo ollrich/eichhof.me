@@ -83,8 +83,11 @@ return [
             // Page" ist der etablierte Name für diese Seitenart.
             'groundingLink' => 'Grounding Page',
             'footerEntity' => 'Oliver Eichhof, Kommunikationsspezialist aus Hamburg',
-            'footerDesktop' => 'Mit <span aria-hidden="true">❤️</span><span class="sr-only">Liebe</span> und <span aria-hidden="true">🤖 </span><span class="sr-only">KI-</span>Unterstützung in Hamburg gebaut',
-            'footerMobile' => 'Mit <span aria-hidden="true">❤️</span><span class="sr-only">Liebe</span> und <span aria-hidden="true">🤖 </span><span class="sr-only">KI-</span>Unterstützung gebaut',
+            // {heart}/{robot} werden in den Entry-Points durch einfarbige
+            // Inline-SVGs ersetzt (includes/icons.php); die sr-only-Spans
+            // liefern den vorlesbaren Ersatztext.
+            'footerDesktop' => 'Mit {heart}<span class="sr-only">Liebe</span> und {robot} <span class="sr-only">KI-</span>Unterstützung in Hamburg gebaut',
+            'footerMobile' => 'Mit {heart}<span class="sr-only">Liebe</span> und {robot} <span class="sr-only">KI-</span>Unterstützung gebaut',
             'githubTooltip' => 'Quellcode auf GitHub',
             'githubAriaLabel' => 'Quellcode auf GitHub',
             // Impressum overlay
@@ -114,8 +117,8 @@ return [
             'privacyLink' => 'Privacy Policy',
             'groundingLink' => 'Grounding Page',
             'footerEntity' => 'Oliver Eichhof, Communication Specialist from Hamburg',
-            'footerDesktop' => 'Built with <span aria-hidden="true">❤️</span><span class="sr-only">love</span> and <span aria-hidden="true">🤖 </span><span class="sr-only">AI </span>support in Hamburg',
-            'footerMobile' => 'Built with <span aria-hidden="true">❤️</span><span class="sr-only">love</span> and <span aria-hidden="true">🤖 </span><span class="sr-only">AI </span>support',
+            'footerDesktop' => 'Built with {heart}<span class="sr-only">love</span> and {robot} <span class="sr-only">AI </span>support in Hamburg',
+            'footerMobile' => 'Built with {heart}<span class="sr-only">love</span> and {robot} <span class="sr-only">AI </span>support',
             'githubTooltip' => 'View source on GitHub',
             'githubAriaLabel' => 'View source on GitHub',
             'overlayTitle' => 'Legal Notice',
@@ -143,8 +146,8 @@ return [
             'privacyLink' => 'Privatlivspolitik',
             'groundingLink' => 'Grounding Page',
             'footerEntity' => 'Oliver Eichhof, Kommunikationsspecialist fra Hamborg',
-            'footerDesktop' => 'Bygget med <span aria-hidden="true">❤️</span><span class="sr-only">kærlighed</span> og <span aria-hidden="true">🤖 </span><span class="sr-only">AI-</span>støtte i Hamborg',
-            'footerMobile' => 'Bygget med <span aria-hidden="true">❤️</span><span class="sr-only">kærlighed</span> og <span aria-hidden="true">🤖 </span><span class="sr-only">AI-</span>støtte',
+            'footerDesktop' => 'Bygget med {heart}<span class="sr-only">kærlighed</span> og {robot} <span class="sr-only">AI-</span>støtte i Hamborg',
+            'footerMobile' => 'Bygget med {heart}<span class="sr-only">kærlighed</span> og {robot} <span class="sr-only">AI-</span>støtte',
             'githubTooltip' => 'Se kildekoden på GitHub',
             'githubAriaLabel' => 'Se kildekoden på GitHub',
             'overlayTitle' => 'Kolofon',
