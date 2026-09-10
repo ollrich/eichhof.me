@@ -23,7 +23,8 @@ return [
     // (fill-rule=evenodd). Bewusst diese Form statt eines Standard-Icons: Die
     // Antenne bricht die Außenkontur, dadurch bleibt der Kopf auch bei 11px
     // als Roboter erkennbar — ein reiner Blockkopf wird in der Größe zum Klecks.
-    '{robot}' => '<svg class="icon-inline icon-robot" viewBox="0 0 24 24" fill="currentColor" fill-rule="evenodd" aria-hidden="true">'
+    // Gleiche Größe wie das Herz (1em); abweichende Größen machen die Zeile unruhig.
+    '{robot}' => '<svg class="icon-inline" viewBox="0 0 24 24" fill="currentColor" fill-rule="evenodd" aria-hidden="true">'
         . '<circle cx="12" cy="2.6" r="1.6"/>'
         . '<rect x="11.1" y="3.6" width="1.8" height="3.4"/>'
         . '<path d="M6 6h12a4 4 0 0 1 4 4v6a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4v-6a4 4 0 0 1 4-4Zm3 4.6a2.2 2.2 0 1 0 0 4.4 2.2 2.2 0 0 0 0-4.4Zm6 0a2.2 2.2 0 1 0 0 4.4 2.2 2.2 0 0 0 0-4.4Z"/>'
