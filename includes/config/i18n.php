@@ -257,7 +257,7 @@ return [
         'de' => [
             // SEO & Meta
             'title' => 'Über Oliver Eichhof – Kommunikationsspezialist aus Hamburg',
-            'description' => 'Kommunikationsspezialist aus Hamburg mit Schwerpunkt Digital und Marketing. Seit rund 20 Jahren in Agenturen und Unternehmen für B2C- und B2B-Marken tätig.',
+            'description' => 'Kommunikationsspezialist aus Hamburg mit Schwerpunkt Digital und Marketing. Seit rund 20 Jahren in Agenturen und Unternehmen für diverse Marken tätig.',
             'ogDescription' => 'Kommunikationsspezialist aus Hamburg mit Schwerpunkt Digital und Marketing.',
             'url' => 'https://eichhof.me/de/ueber',
             // Person-Context (JSON-LD + Facts)
