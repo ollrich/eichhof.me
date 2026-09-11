@@ -335,7 +335,7 @@ $datePublished = '2026-02-19';
         <div class="mobile-footer">
             <a href="<?= $m['legalUrl'] ?>" id="footer-link-mobile"><?= $e($m['legalLink']) ?></a><span class="footer-separator" aria-hidden="true"> • </span><a href="<?= $m['privacyUrl'] ?>" id="footer-privacy-link-mobile"><?= $e($m['privacyLink']) ?></a>
             <span class="sr-only"><?= $e($m['footerEntity']) ?></span>
-            <span><?= $rawHtml($m['footerMobile']) ?></span>
+            <span class="mobile-footer-note"><?= $rawHtml($m['footerMobile']) ?></span>
         </div>
     </main>
 

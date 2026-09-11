@@ -1165,6 +1165,16 @@ html.dark-mode .overlay-content::-webkit-scrollbar-thumb:hover {
         color: var(--footer-color);
     }
 
+    /* Eigene, zentrierte Zeile unter den beiden Links. Ohne flex-basis fiel
+       sie linksbündig direkt unter "Impressum" und sah dadurch wie ein
+       dritter Link aus; der Abstand nach oben trennt den nicht klickbaren
+       Hinweis sichtbar von den klickbaren Zielen. */
+    .mobile-footer-note {
+        flex-basis: 100%;
+        text-align: center;
+        margin-top: 0.75rem;
+    }
+
     .mobile-footer a {
         color: var(--footer-link);
         text-decoration: none;
