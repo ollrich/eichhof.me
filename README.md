@@ -20,7 +20,7 @@ Built with AI assistance as an exploration of modern web development practices. 
 - 🔍 SEO: schema.org JSON-LD graph (Person/WebSite/WebPage/BreadcrumbList with `@id` cross-references), hreflang with `x-default` → `/de/`, `noindex` on overlay URLs, audit tools (Lighthouse/PSI/GTmetrix) treated as bots for deterministic reports
 - 📄 About / Grounding Page – machine-readable identity page for AI systems and search engines (standalone, styled)
 - 🎊 Easter eggs (try pressing spacebar or double-clicking the photo)
-- ♿ Accessible: keyboard navigation, ARIA labels, reduced motion support
+- ♿ Accessible: keyboard navigation, ARIA labels, reduced motion support, WCAG AA contrast in both themes, `<footer>`/`<main>` landmarks
 
 ### Tech
 
@@ -47,6 +47,7 @@ eichhof.me/
 │   ├── overlays/           # Impressum/Privacy/Contact modal partials
 │   ├── head-meta.php       # SEO/OG/Twitter/canonical/hreflang/JSON-LD (home)
 │   ├── head-favicons.php   # Favicon <link> block
+│   ├── icons.php           # Inline-SVG map ({heart}/{robot}) for the footer line
 │   ├── theme-init.php      # Inline no-flash theme bootstrap
 │   └── asset.php           # filemtime()-based cache-busting helper
 ├── .htaccess               # URL rewrites (/de/, /en/, /da/, /de/ueber, /en/about, /da/om, etc.)
@@ -74,6 +75,7 @@ eichhof.me/
 ├── deploy.php              # GitHub webhook deploy (HMAC-SHA256 signature, fail-closed)
 ├── DEPLOY-SETUP.md         # Deployment / webhook setup guide
 ├── images/
+│   ├── build.sh            # Regenerates the WebP/AVIF variants from the PNG master
 │   ├── oliver-eichhof.png  # Profile photo master (920w, lossless — build source)
 │   ├── oliver-eichhof.avif # 920w AVIF (primary, ~54 KB) + 320w/640w responsive srcset
 │   ├── oliver-eichhof.webp # 920w WebP (fallback, ~99 KB) + 320w/640w responsive srcset
@@ -111,11 +113,11 @@ Mit KI-Unterstützung gebaut als Exploration moderner Webentwicklung. Der Code i
 - 🔍 SEO: schema.org-JSON-LD-Graph (Person/WebSite/WebPage/BreadcrumbList mit `@id`-Cross-References), hreflang mit `x-default` → `/de/`, `noindex` auf Overlay-URLs, Audit-Tools (Lighthouse/PSI/GTmetrix) als Bots für deterministische Reports
 - 📄 About / Grounding Page – maschinenlesbare Identitätsseite für KI-Systeme und Suchmaschinen (Standalone, gestaltet)
 - 🎊 Easter Eggs (Leertaste drücken oder Foto doppelklicken)
-- ♿ Barrierefrei: Tastaturnavigation, ARIA-Labels, Reduced-Motion-Support
+- ♿ Barrierefrei: Tastaturnavigation, ARIA-Labels, Reduced-Motion-Support, WCAG-AA-Kontrast in beiden Themes, `<footer>`/`<main>`-Landmarks
 
 ### Technik
 
-Pures HTML/CSS/JavaScript – keine Frameworks. Server-Side Rendering (PHP) für alle Body-Texte je Sprache. Alle Übersetzungen liegen in einem einzigen PHP-Array (`includes/config/i18n.php`), das sich Server-Templates und Browser-JS über einen Inline-`<script type="application/json">`-Block teilen – keine doppelten Übersetzungs-Tabellen. Nutzt [Canvas-Confetti](https://github.com/catdad/canvas-confetti) für visuelle Effekte und [APIFlash](https://apiflash.com/) für Link-Preview-Screenshots.
+Pures HTML/CSS/JavaScript – keine Frameworks. Server-Side Rendering (PHP) für alle Body-Texte je Sprache. Alle Übersetzungen liegen in einem einzigen PHP-Array (`includes/config/i18n.php`) – keine doppelten Übersetzungs-Tabellen. Jeder sichtbare Text wird serverseitig gerendert; nur die wenigen Strings, die der Browser wirklich braucht (Kontaktformular-Rückmeldungen, E-Mail-Prefix), werden über einen Inline-`<script type="application/json">`-Block mitgegeben. Nutzt [Canvas-Confetti](https://github.com/catdad/canvas-confetti) für visuelle Effekte und [APIFlash](https://apiflash.com/) für Link-Preview-Screenshots.
 
 ### Automatisierung
 
@@ -141,11 +143,11 @@ Bygget med AI-assistance som en udforskning af moderne webudvikling. Koden er op
 - 🔍 SEO: schema.org JSON-LD-graf (Person/WebSite/WebPage/BreadcrumbList med `@id`-krydsreferencer), hreflang med `x-default` → `/de/`, `noindex` på overlay-URL'er, audit-værktøjer (Lighthouse/PSI/GTmetrix) behandles som bots for deterministiske rapporter
 - 📄 About / Grounding Page – maskinlæsbar identitetsside til AI-systemer og søgemaskiner (standalone, styled)
 - 🎊 Easter eggs (tryk mellemrum eller dobbeltklik på billedet)
-- ♿ Tilgængelig: tastaturnavigation, ARIA-labels, reduced-motion support
+- ♿ Tilgængelig: tastaturnavigation, ARIA-labels, reduced-motion support, WCAG AA-kontrast i begge temaer, `<footer>`/`<main>`-landmarks
 
 ### Teknik
 
-Ren HTML/CSS/JavaScript – ingen frameworks. Server-side rendering (PHP) for alle body-tekster per sprog. Alle oversættelser ligger i ét PHP-array (`includes/config/i18n.php`), som server-templates og browser-JS deler via en inline `<script type="application/json">`-blok – ingen duplikerede oversættelsestabeller. Bruger [Canvas-Confetti](https://github.com/catdad/canvas-confetti) til visuelle effekter og [APIFlash](https://apiflash.com/) til link-preview screenshots.
+Ren HTML/CSS/JavaScript – ingen frameworks. Server-side rendering (PHP) for alle body-tekster per sprog. Alle oversættelser ligger i ét PHP-array (`includes/config/i18n.php`) – ingen duplikerede oversættelsestabeller. Al synlig tekst renderes server-side; kun de få strenge, browseren faktisk bruger (kontaktformular-feedback, e-mail-præfiks), sendes med i en inline `<script type="application/json">`-blok. Bruger [Canvas-Confetti](https://github.com/catdad/canvas-confetti) til visuelle effekter og [APIFlash](https://apiflash.com/) til link-preview screenshots.
 
 ### Automatisering
 
@@ -153,4 +155,4 @@ Push til `main`, der ændrer sideindhold, opdaterer automatisk sitemap'ens `<las
 
 ---
 
-Made with ♥ and AI in Hamburg
+Built with ♥ and 🤖 support in Hamburg
