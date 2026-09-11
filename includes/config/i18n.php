@@ -257,7 +257,7 @@ return [
         'de' => [
             // SEO & Meta
             'title' => 'Über Oliver Eichhof – Kommunikationsspezialist aus Hamburg',
-            'description' => 'Kommunikationsspezialist aus Hamburg mit Schwerpunkt Digital und Marketing. Seit rund 20 Jahren in Agenturen und Unternehmen für B2C- und B2B-Marken unterschiedlichster Branchen tätig.',
+            'description' => 'Kommunikationsspezialist aus Hamburg mit Schwerpunkt Digital und Marketing. Seit rund 20 Jahren in Agenturen und Unternehmen für B2C- und B2B-Marken tätig.',
             'ogDescription' => 'Kommunikationsspezialist aus Hamburg mit Schwerpunkt Digital und Marketing.',
             'url' => 'https://eichhof.me/de/ueber',
             // Person-Context (JSON-LD + Facts)
@@ -342,7 +342,7 @@ return [
         ],
         'en' => [
             'title' => 'About Oliver Eichhof – Communication Specialist from Hamburg',
-            'description' => 'Communication specialist from Hamburg with a focus on digital and marketing. Around 20 years of experience in agencies and companies for B2C and B2B brands across a wide range of industries.',
+            'description' => 'Communication specialist from Hamburg with a focus on digital and marketing. Around 20 years of experience in agencies and companies for B2C and B2B brands.',
             'ogDescription' => 'Communication specialist from Hamburg with a focus on digital and marketing.',
             'url' => 'https://eichhof.me/en/about',
             'personDescription' => 'Communication specialist from Hamburg with a focus on digital and marketing. Around 20 years of experience in agencies and companies for B2C and B2B brands across a wide range of industries. Since 2026 Marketing Director at REGIOCAST GmbH & Co. KG.',
@@ -422,7 +422,7 @@ return [
         ],
         'da' => [
             'title' => 'Om Oliver Eichhof – Kommunikationsspecialist fra Hamborg',
-            'description' => 'Kommunikationsspecialist fra Hamborg med fokus på digital og marketing. Omkring 20 års erfaring i bureauer og virksomheder for B2C- og B2B-brands på tværs af mange forskellige brancher.',
+            'description' => 'Kommunikationsspecialist fra Hamborg med fokus på digital og marketing. Omkring 20 års erfaring i bureauer og virksomheder for B2C- og B2B-brands.',
             'ogDescription' => 'Kommunikationsspecialist fra Hamborg med fokus på digital og marketing.',
             'url' => 'https://eichhof.me/da/om',
             'personDescription' => 'Kommunikationsspecialist fra Hamborg med fokus på digital og marketing. Omkring 20 års erfaring i bureauer og virksomheder for B2C- og B2B-brands på tværs af mange forskellige brancher. Siden 2026 marketingchef hos REGIOCAST GmbH & Co. KG.',
