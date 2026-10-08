@@ -181,10 +181,10 @@ $datePublished = '2026-02-19';
                 "image": "https://eichhof.me/images/oliver-eichhof.webp",
                 "jobTitle": <?= $json($m['jobTitle']) ?>,
                 "description": <?= $json($m['personDescription']) ?>,
-                "birthPlace": { "@type": "Place", "name": <?= $json($m['birthPlace']) ?> },
+                "birthPlace": <?= $json($person['birthPlace']) ?>,
                 "birthDate": "1979",
-                "homeLocation": { "@type": "Place", "name": <?= $json($m['homeLocation']) ?> },
-                "nationality": { "@type": "Country", "name": <?= $json($m['nationality']) ?> },
+                "homeLocation": <?= $json($person['homeLocation']) ?>,
+                "nationality": <?= $json($person['nationality']) ?>,
                 "knowsLanguage": ["de", "en", "da"],
                 "knowsAbout": <?= json_encode($m['knowsAbout'], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) ?>,
                 "worksFor": {
@@ -309,7 +309,7 @@ $datePublished = '2026-02-19';
             <section class="about-section">
                 <h2><?= $e($m['profilesTitle']) ?></h2>
                 <ul class="about-links" role="list">
-<?php foreach ($m['profiles'] as $p): ?>
+<?php foreach ($person['profiles'] as $p): ?>
                     <li><a href="<?= $e($p[0]) ?>" target="_blank" rel="noopener noreferrer me"><?= $e($p[1]) ?></a></li>
 <?php endforeach; ?>
                 </ul>
@@ -367,7 +367,7 @@ $datePublished = '2026-02-19';
     <div class="overlay" id="overlay">
         <div class="overlay-content">
             <button class="close-overlay" id="close-overlay-btn" aria-label="<?= $e($m['closeOverlay']) ?>">
-                <svg width="16" height="16" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                <svg aria-hidden="true" width="16" height="16" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
                     <line x1="2" y1="2" x2="12" y2="12"/><line x1="12" y1="2" x2="2" y2="12"/>
                 </svg>
             </button>
@@ -383,7 +383,7 @@ $datePublished = '2026-02-19';
     <div class="overlay" id="privacy-overlay">
         <div class="overlay-content">
             <button class="close-overlay" id="close-privacy-btn" aria-label="<?= $e($m['closeOverlay']) ?>">
-                <svg width="16" height="16" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                <svg aria-hidden="true" width="16" height="16" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
                     <line x1="2" y1="2" x2="12" y2="12"/><line x1="12" y1="2" x2="2" y2="12"/>
                 </svg>
             </button>

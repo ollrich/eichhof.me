@@ -32,13 +32,16 @@ $switcherOrder = [
     'da' => 'DA',
 ];
 $currentLabel = $switcherOrder[$lang] ?? 'DE';
+// aria-label beginnt mit dem sichtbaren Kürzel ("DE, Sprache wechseln"):
+// WCAG 2.5.3 — wer per Sprachsteuerung "klick DE" sagt, muss den Button
+// treffen. Ein reines "Sprache wechseln" enthielt das sichtbare Label nicht.
 ?>
 <div class="lang-switcher" data-expanded="false">
     <button type="button"
             class="lang-switcher-current"
             aria-haspopup="true"
             aria-expanded="false"
-            aria-label="<?= $e($m['langSwitcherLabel']) ?>"><?= $currentLabel ?></button>
+            aria-label="<?= $currentLabel ?>, <?= $e($m['langSwitcherLabel']) ?>"><?= $currentLabel ?></button>
     <ul class="lang-switcher-menu" role="list">
         <?php foreach ($switcherOrder as $code => $label): ?>
             <?php if ($code === $lang) continue; ?>

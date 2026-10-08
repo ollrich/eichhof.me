@@ -81,12 +81,8 @@ html {
     --accent-purple: 118, 75, 162;
     --bg-gradient: linear-gradient(135deg, #576bc7 0%, #64408a 100%);
     --text-primary: white;
-    --text-secondary: rgba(255, 255, 255, 0.95);
-    --text-muted: rgba(255, 255, 255, 0.95);
     --card-bg: rgba(255, 255, 255, 0.05);
     --card-border: rgba(255, 255, 255, 0.1);
-    --link-color: rgba(255, 255, 255, 1);
-    --link-hover: rgba(255, 255, 255, 1);
     /* Steuert Theme-Icon UND das Textlabel "DE" des Sprachwählers. Weil
        darunter echter Text hängt, gilt die Textschwelle 4.5:1, nicht die
        Icon-Schwelle 3:1 — daher 0.95 statt eines dezenteren Werts. */
@@ -129,12 +125,8 @@ html {
 html.dark-mode {
     --bg-gradient: linear-gradient(135deg, #0d0d14 0%, #1a1a2e 100%);
     --text-primary: rgba(255, 255, 255, 0.95);
-    --text-secondary: rgba(255, 255, 255, 0.7);
-    --text-muted: rgba(255, 255, 255, 0.5);
     --card-bg: rgba(255, 255, 255, 0.03);
     --card-border: rgba(var(--accent-purple), 0.25);
-    --link-color: rgba(255, 255, 255, 0.7);
-    --link-hover: rgba(255, 255, 255, 0.9);
     --toggle-opacity: 0.55;
     --toggle-hover: 0.75;
     --tooltip-bg: rgba(var(--accent-purple), 0.6);
@@ -163,12 +155,8 @@ html.dark-mode {
     html:not(.light-mode) {
         --bg-gradient: linear-gradient(135deg, #0d0d14 0%, #1a1a2e 100%);
         --text-primary: rgba(255, 255, 255, 0.95);
-        --text-secondary: rgba(255, 255, 255, 0.7);
-        --text-muted: rgba(255, 255, 255, 0.5);
         --card-bg: rgba(255, 255, 255, 0.03);
         --card-border: rgba(var(--accent-purple), 0.25);
-        --link-color: rgba(255, 255, 255, 0.7);
-        --link-hover: rgba(255, 255, 255, 0.9);
         --toggle-opacity: 0.55;
         --toggle-hover: 0.75;
         --tooltip-bg: rgba(var(--accent-purple), 0.6);

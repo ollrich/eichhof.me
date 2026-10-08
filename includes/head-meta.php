@@ -103,8 +103,8 @@
                 "jobTitle": <?= $json($m['jobTitle']) ?>,
                 "description": <?= $json($m['description']) ?>,
                 "knowsAbout": <?= json_encode($m['knowsAbout'], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) ?>,
-                "homeLocation": { "@type": "Place", "name": "Hamburg" },
-                "birthPlace": { "@type": "Place", "name": "Bremerhaven" },
+                "homeLocation": <?= $json($person['homeLocation']) ?>,
+                "birthPlace": <?= $json($person['birthPlace']) ?>,
                 "worksFor": {
                     "@type": "Organization",
                     "name": "REGIOCAST GmbH & Co. KG",
