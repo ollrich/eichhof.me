@@ -18,9 +18,10 @@ Built with AI assistance as an exploration of modern web development practices. 
 - 🔒 Privacy-first: no cookies, no tracking, no analytics
 - 📬 Contact form with spam protection (honeypot, rate limiting, time-based checks)
 - 🔍 SEO: schema.org JSON-LD graph (Person/WebSite/WebPage/BreadcrumbList with `@id` cross-references), hreflang with `x-default` → `/de/`, `noindex` on overlay URLs, audit tools (Lighthouse/PSI/GTmetrix) treated as bots for deterministic reports
+- 🤖 GEO: `llms.txt` with key facts, Person entity linked to its profiles (`sameAs`, `rel=me` where supported), DJ alias as `alternateName`, places anchored via Wikidata
 - 📄 About / Grounding Page – machine-readable identity page for AI systems and search engines (standalone, styled)
 - 🎊 Easter eggs (try pressing spacebar or double-clicking the photo)
-- ♿ Accessible: keyboard navigation, ARIA labels, reduced motion support, WCAG AA contrast in both themes, `<footer>`/`<main>` landmarks
+- ♿ Accessible: keyboard navigation, localized ARIA labels, reduced motion support, WCAG AA contrast in both themes, `<footer>`/`<main>` landmarks
 
 ### Tech
 
@@ -37,14 +38,14 @@ eichhof.me/
 ├── index.php               # Main entry (multilingual routing, Accept-Language 302, meta tags)
 ├── 404.php                 # Custom error page (language from URL prefix) — via ErrorDocument
 ├── about/
-│   └── index.php           # Grounding page (crawlable, styled) — consumes i18n.php
+│   └── index.php           # Grounding page (crawlable, styled) — consumes i18n.php + person.php
 ├── includes/
 │   ├── config/
 │   │   ├── i18n.php        # Single source of truth for all translations (DE/EN/DA + routes)
-│   │   └── person.php      # Shared schema.org Person data (sameAs, subjectOf)
+│   │   └── person.php      # Person data: profiles (single source for list + sameAs), alias, places (Wikidata), press
 │   ├── lang-switcher.php   # Top-right disclosure menu (right of theme toggle, current lang as trigger)
 │   ├── theme-toggle.php    # Top-right dark/light toggle (left of lang switcher)
-│   ├── overlays/           # Impressum/Privacy/Contact modal partials
+│   ├── overlays/           # Privacy policy partials (DE/EN/DA); legal notice + contact form are inline in index.php
 │   ├── head-meta.php       # SEO/OG/Twitter/canonical/hreflang/JSON-LD (home)
 │   ├── head-favicons.php   # Favicon <link> block
 │   ├── icons.php           # Inline-SVG map ({heart}/{robot}) for the footer line
@@ -111,9 +112,10 @@ Mit KI-Unterstützung gebaut als Exploration moderner Webentwicklung. Der Code i
 - 🔒 Privacy-First: keine Cookies, kein Tracking, keine Analytik
 - 📬 Kontaktformular mit Spam-Schutz (Honeypot, Rate Limiting, Zeitprüfung)
 - 🔍 SEO: schema.org-JSON-LD-Graph (Person/WebSite/WebPage/BreadcrumbList mit `@id`-Cross-References), hreflang mit `x-default` → `/de/`, `noindex` auf Overlay-URLs, Audit-Tools (Lighthouse/PSI/GTmetrix) als Bots für deterministische Reports
+- 🤖 GEO: `llms.txt` mit Kernfakten, Person-Entität mit ihren Profilen verknüpft (`sameAs`, `rel=me` wo unterstützt), DJ-Alias als `alternateName`, Orte über Wikidata verankert
 - 📄 About / Grounding Page – maschinenlesbare Identitätsseite für KI-Systeme und Suchmaschinen (Standalone, gestaltet)
 - 🎊 Easter Eggs (Leertaste drücken oder Foto doppelklicken)
-- ♿ Barrierefrei: Tastaturnavigation, ARIA-Labels, Reduced-Motion-Support, WCAG-AA-Kontrast in beiden Themes, `<footer>`/`<main>`-Landmarks
+- ♿ Barrierefrei: Tastaturnavigation, lokalisierte ARIA-Labels, Reduced-Motion-Support, WCAG-AA-Kontrast in beiden Themes, `<footer>`/`<main>`-Landmarks
 
 ### Technik
 
@@ -141,9 +143,10 @@ Bygget med AI-assistance som en udforskning af moderne webudvikling. Koden er op
 - 🔒 Privacy-first: ingen cookies, ingen tracking, ingen analytics
 - 📬 Kontaktformular med spam-beskyttelse (honeypot, rate limiting, tidscheck)
 - 🔍 SEO: schema.org JSON-LD-graf (Person/WebSite/WebPage/BreadcrumbList med `@id`-krydsreferencer), hreflang med `x-default` → `/de/`, `noindex` på overlay-URL'er, audit-værktøjer (Lighthouse/PSI/GTmetrix) behandles som bots for deterministiske rapporter
+- 🤖 GEO: `llms.txt` med nøglefakta, Person-entitet forbundet med sine profiler (`sameAs`, `rel=me` hvor understøttet), DJ-alias som `alternateName`, steder forankret via Wikidata
 - 📄 About / Grounding Page – maskinlæsbar identitetsside til AI-systemer og søgemaskiner (standalone, styled)
 - 🎊 Easter eggs (tryk mellemrum eller dobbeltklik på billedet)
-- ♿ Tilgængelig: tastaturnavigation, ARIA-labels, reduced-motion support, WCAG AA-kontrast i begge temaer, `<footer>`/`<main>`-landmarks
+- ♿ Tilgængelig: tastaturnavigation, lokaliserede ARIA-labels, reduced-motion support, WCAG AA-kontrast i begge temaer, `<footer>`/`<main>`-landmarks
 
 ### Teknik
 
