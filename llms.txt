@@ -9,6 +9,7 @@ Key facts:
 - Sector: media, marketing and communication
 - Location: Hamburg, Germany
 - Born: 1979 in Bremerhaven, Germany
+- Also known as: livic (DJ name, see SoundCloud)
 - Languages: German (native), English (fluent), Danish (beginner)
 - Experience: around 20 years in agencies and companies, for B2C and B2B brands across a wide range of industries
 - Focus: integrated campaign management, employer branding, data-driven target audience analysis
@@ -35,6 +36,7 @@ The about pages below are maintained as machine-readable grounding pages with Pe
 ## Projects
 
 - [schongeil.de](https://www.schongeil.de/): personal blog (German, with English edition)
+- [YouTube @schongeilDE](https://www.youtube.com/@schongeilDE): video channel of schongeil.de
 - [GitHub](https://github.com/ollrich): open source projects, including the source of this website
 
 ## Profiles
@@ -44,16 +46,11 @@ The about pages below are maintained as machine-readable grounding pages with Pe
 - [Bluesky](https://bsky.app/profile/ollri.ch)
 - [Mastodon](https://norden.social/@olli)
 - [Instagram](https://www.instagram.com/ollri.ch/)
-- [SoundCloud](https://soundcloud.com/livicxyz): DJ sets and mixes
-- [YouTube](https://www.youtube.com/@schongeilDE)
-- [Bandcamp](https://bandcamp.com/livic)
-- [Unsplash](https://unsplash.com/@ollrich): photography
+- [SoundCloud](https://soundcloud.com/livicxyz): DJ sets and mixes as livic
 - [sifa.id](https://sifa.id/p/ollri.ch): identity verification (rel=me)
 
 ## Mentions
 
-- [W&V: DOKYO at The Next Web Conference](https://www.wuv.de/Archiv/So-tickt-die-Zukunft-Dokyo-auf-der-%22The-Next-Web-Conference%22)
-- [W&V: Ben & Jerry's "Marriage for All" campaign](https://www.wuv.de/Archiv/Wie-man-mit-Messenger-f%C3%BCr-die-Ehe-f%C3%BCr-alle-wirbt)
 - [testspiel.de: Oliver Polak interview](https://www.testspiel.de/oliver-polak-interview-2/290215/)
 - [testspiel.de: Kid Simius interview](https://www.testspiel.de/kid-simius-interview/276764/)
 

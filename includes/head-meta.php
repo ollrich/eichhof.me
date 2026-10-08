@@ -54,9 +54,14 @@
     <link rel="alternate" hreflang="da" href="https://eichhof.me/da/">
     <link rel="alternate" hreflang="x-default" href="https://eichhof.me/de/">
 
-    <!-- Identity verification (IndieAuth / rel=me) -->
+    <!-- Identity verification (IndieAuth / rel=me).
+         Hier stehen genau die Profile, die ihre Verifizierung gegen
+         https://eichhof.me prüfen, aber im Body der Startseite keinen
+         rel=me-Link haben. Mastodon fehlte, nachdem es aus der Startseiten-
+         Navigation geflogen war — der Haken in Mastodon war seitdem weg.
+         Wer ein Profil aus der Navigation nimmt: prüfen, ob es hier hin muss. -->
     <link rel="me" href="https://sifa.id/p/ollri.ch">
-    <link rel="me" href="https://pixelfed.de/olli">
+    <link rel="me" href="https://norden.social/@olli">
 
     <title><?= $e($m['title']) ?></title>
 
@@ -92,6 +97,7 @@
                 "name": "Oliver Eichhof",
                 "givenName": "Oliver",
                 "familyName": "Eichhof",
+                "alternateName": <?= $json($person['alternateName']) ?>,
                 "url": "https://eichhof.me/",
                 "image": "https://eichhof.me/images/oliver-eichhof.webp",
                 "jobTitle": <?= $json($m['jobTitle']) ?>,

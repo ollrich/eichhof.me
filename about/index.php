@@ -109,9 +109,10 @@ $datePublished = '2026-02-19';
     <link rel="alternate" hreflang="da" href="https://eichhof.me/da/om">
     <link rel="alternate" hreflang="x-default" href="https://eichhof.me/de/ueber">
 
-    <!-- Identity verification (IndieAuth / rel=me) -->
+    <!-- Identity verification (IndieAuth / rel=me) — identisch zur Startseite,
+         Begründung siehe includes/head-meta.php. -->
     <link rel="me" href="https://sifa.id/p/ollri.ch">
-    <link rel="me" href="https://pixelfed.de/olli">
+    <link rel="me" href="https://norden.social/@olli">
 
     <?php include __DIR__ . '/../includes/head-favicons.php'; ?>
 
@@ -175,6 +176,7 @@ $datePublished = '2026-02-19';
                 "name": "Oliver Eichhof",
                 "givenName": "Oliver",
                 "familyName": "Eichhof",
+                "alternateName": <?= $json($person['alternateName']) ?>,
                 "url": "https://eichhof.me/",
                 "image": "https://eichhof.me/images/oliver-eichhof.webp",
                 "jobTitle": <?= $json($m['jobTitle']) ?>,
@@ -267,6 +269,7 @@ $datePublished = '2026-02-19';
                     <dt><?= $e($m['dtBorn']) ?></dt><dd><?= $e($m['ddBorn']) ?></dd>
                     <dt><?= $e($m['dtNationality']) ?></dt><dd><?= $e($m['ddNationality']) ?></dd>
                     <dt><?= $e($m['dtLanguages']) ?></dt><dd><?= $e($m['ddLanguages']) ?></dd>
+                    <dt><?= $e($m['dtDjName']) ?></dt><dd><a href="https://soundcloud.com/livicxyz" target="_blank" rel="noopener noreferrer me"><?= $e($m['ddDjName']) ?></a></dd>
                     <dt><?= $e($m['dtWebsite']) ?></dt><dd><a href="<?= $e($m['homeUrl']) ?>"><?= $e($m['ddWebsite']) ?></a></dd>
                 </dl>
             </section>

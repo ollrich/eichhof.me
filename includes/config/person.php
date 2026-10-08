@@ -13,6 +13,20 @@ return [
     // Action-Datum gesetzt (siehe .github/workflows/update-sitemap.yml).
     // datePublished ist pro Seite im jeweiligen JSON-LD hinterlegt.
     'dateModified' => '2026-09-11',
+
+    // DJ-Alias. Ohne ihn fehlt die Brücke zum SoundCloud-Profil, das nur
+    // "livic" nennt und weder Klarnamen noch Rücklink trägt.
+    'alternateName' => 'livic',
+
+    // Aufnahmekriterium (Stand Oktober 2026, jedes Profil abgefragt):
+    // Ein Profil gehört hierher, wenn eine Maschine dort etwas liest, das
+    // den Steckbrief stützt, und von dort zur Person zurückfindet — nicht,
+    // wie aktiv es genutzt wird. Deshalb bleibt z. B. XING (einziger
+    // crawlbarer Rollenbeleg, LinkedIn liefert Crawlern HTTP 999).
+    // Bewusst NICHT hier: Markenkanäle (YouTube @schongeilDE steht unter
+    // "Projekte"), reine Fan-Sammlungen (Bandcamp), ruhende Dubletten.
+    // Wer ein Profil ergänzt: auch die Präsenzen-Liste in i18n.php und
+    // llms.txt nachziehen.
     'sameAs' => [
         'https://www.linkedin.com/in/olivereichhof',
         'https://www.xing.com/profile/Oliver_Eichhof2/',
@@ -21,11 +35,7 @@ return [
         'https://bsky.app/profile/ollri.ch',
         'https://norden.social/@olli',
         'https://www.instagram.com/ollri.ch/',
-        'https://pixelfed.de/olli',
         'https://soundcloud.com/livicxyz',
-        'https://www.youtube.com/@schongeilDE',
-        'https://bandcamp.com/livic',
-        'https://unsplash.com/@ollrich',
         'https://sifa.id/p/ollri.ch',
     ],
     'subjectOf' => [
