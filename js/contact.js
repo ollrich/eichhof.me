@@ -182,7 +182,8 @@
             history.pushState({ overlay: 'contact' }, '', getContactUrl());
         }
 
-        // Show overlay
+        // Show overlay (inert aufheben, siehe overlay.js)
+        contactOverlay.inert = false;
         contactOverlay.classList.add('active');
         document.body.style.overflow = 'hidden';
 
@@ -205,6 +206,7 @@
         if (!contactOverlay) return;
 
         contactOverlay.classList.remove('active');
+        contactOverlay.inert = true;
         document.body.style.overflow = '';
 
         // Update URL back to base (unless closing from popstate)

@@ -364,7 +364,7 @@ $datePublished = '2026-02-19';
     </footer>
 
     <!-- Modal Overlay (Impressum/Legal Notice) -->
-    <div class="overlay" id="overlay">
+    <div class="overlay" id="overlay" inert>
         <div class="overlay-content">
             <button class="close-overlay" id="close-overlay-btn" aria-label="<?= $e($m['closeOverlay']) ?>">
                 <svg aria-hidden="true" width="16" height="16" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
@@ -380,7 +380,7 @@ $datePublished = '2026-02-19';
     </div>
 
     <!-- Modal Overlay (Privacy / Datenschutzerklärung) -->
-    <div class="overlay" id="privacy-overlay">
+    <div class="overlay" id="privacy-overlay" inert>
         <div class="overlay-content">
             <button class="close-overlay" id="close-privacy-btn" aria-label="<?= $e($m['closeOverlay']) ?>">
                 <svg aria-hidden="true" width="16" height="16" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">

@@ -119,6 +119,7 @@
             const other = OVERLAYS[activeKey];
             if (other) {
                 other.el.classList.remove('active');
+                other.el.inert = true;
             }
         } else if (!activeKey) {
             // Nur wenn KEIN Overlay offen war, merken wir den Fokus
@@ -133,6 +134,10 @@
             history.pushState({ overlay: key }, '', target.getUrl());
         }
 
+        // Geschlossene Dialoge sind inert (Markup + close): nicht per Tab
+        // erreichbar und für Screenreader ausgeblendet. opacity:0 allein hat
+        // das nicht geleistet.
+        target.el.inert = false;
         target.el.classList.add('active');
         activeKey = key;
 
@@ -153,6 +158,7 @@
         if (!active) return;
 
         active.el.classList.remove('active');
+        active.el.inert = true;
         document.body.style.overflow = '';
 
         if (!skipHistory) {
