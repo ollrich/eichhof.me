@@ -52,6 +52,11 @@ session_set_cookie_params([
 ]);
 session_start();
 
+// Ausdrücklich nicht cachebar: GET liefert einen sitzungsgebundenen
+// CSRF-Token, POST den Status einer Anfrage. Ersetzt den Default aus
+// session_cache_limiter(), damit das nicht von der Server-Konfiguration abhängt.
+header('Cache-Control: no-store, max-age=0');
+
 // CORS Headers für AJAX
 header('Content-Type: application/json; charset=utf-8');
 header('X-Content-Type-Options: nosniff');

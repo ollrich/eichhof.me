@@ -223,7 +223,12 @@ FileETag None
         Header set Cache-Control "public, max-age=31536000"
     </FilesMatch>
     # Note: Font rules removed - site uses system font stack
-    <FilesMatch "\.(html|php)$">
+    # HTML-Seiten sind unpersonalisiert und dürfen kurz gecacht werden.
+    # Ausgenommen sind Endpunkte mit Session- oder Statusantworten: contact.php
+    # liefert einen sitzungsgebundenen CSRF-Token, deploy.php/update-previews.php
+    # Statusmeldungen. Für sie setzt Apache gar nichts, damit kein zweiter,
+    # widersprüchlicher Cache-Control-Header neben PHPs no-store entsteht.
+    <FilesMatch "^(?!(contact|deploy|update-previews)\.php$).*\.(html|php)$">
         Header set Cache-Control "public, max-age=3600, must-revalidate"
     </FilesMatch>
 </IfModule>
