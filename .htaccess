@@ -219,6 +219,15 @@ FileETag None
     <FilesMatch "\.(avif|webp|jpg|jpeg|png|gif|svg|ico)$">
         Header set Cache-Control "public, max-age=31536000"
     </FilesMatch>
+    # Ausnahme: Link-Previews unter /images/hover/ werden per Cron unter
+    # gleichem Namen neu erzeugt (update-previews.php). Mit 1 Jahr Cache sähen
+    # wiederkehrende Besucher lange das alte Bild. Nach einem Tag fragt der
+    # Browser per Last-Modified nach (unverändert: 304). Muss NACH der
+    # allgemeinen Bildregel stehen, damit dieses "set" gewinnt.
+    <FilesMatch "-preview(-en)?\.webp$">
+        Header set Cache-Control "public, max-age=86400"
+        Header unset Expires
+    </FilesMatch>
     <FilesMatch "\.(css|js)$">
         Header set Cache-Control "public, max-age=31536000"
     </FilesMatch>
