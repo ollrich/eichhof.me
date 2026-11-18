@@ -12,10 +12,10 @@
  * - /da/om      → Danish (legacy /dk/om → 301 in .htaccess)
  */
 
-$lang = $_GET['lang'] ?? 'de';
-if (!in_array($lang, ['de', 'en', 'da'], true)) {
-    $lang = 'de';
-}
+// Sprache aus dem Pfad, nicht aus $_GET (QSA würde ein "?lang=" der
+// Nutzer-Query durchreichen, siehe index.php).
+$aboutPath = parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH) ?: '/';
+$lang = preg_match('~^/(de|en|da)/~', $aboutPath, $langMatch) ? $langMatch[1] : 'de';
 
 // ============================================================================
 // TEMPLATE HELPERS

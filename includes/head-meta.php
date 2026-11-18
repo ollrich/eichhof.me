@@ -10,7 +10,7 @@
  *   $m       — Meta-/Content-Array für die aktuelle Sprache
  *   $e       — htmlspecialchars-Closure (für HTML-Attribute)
  *   $json    — json_encode-Closure inkl. Anführungszeichen (für den JSON-LD-Block)
- *   $overlay — aktiver Overlay-Parameter (für noindex auf Overlay-URLs) oder null
+ *   $overlay — Route-Key des Overlays (legal/privacy/contact) für noindex, sonst null
  *   $person  — geteilte Person-Schema-Daten (sameAs, subjectOf, dateModified)
  *
  * Bewusst NICHT geteilt mit about/index.php: die Grounding Page hat ein

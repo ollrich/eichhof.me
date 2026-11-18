@@ -87,13 +87,11 @@ if ($isBareRoot) {
     exit;
 }
 
-// Finale Sprachbestimmung: $_GET['lang'] kommt aus .htaccess-Rewrite
-// (/de/, /en/, /da/, /de/ueber, /en/about, /de/kontakt etc.) — vertrauenswürdig.
-$lang = $_GET['lang'] ?? 'de';
-if (!in_array($lang, ['de', 'en', 'da'], true)) {
-    $lang = 'de';
-}
-$overlay = $_GET['overlay'] ?? null;
+// Sprache aus dem PFAD, nicht aus $_GET. Die .htaccess-Rewrites hängen per
+// QSA die Nutzer-Query an; "/de/?lang=en" überschrieb so den Rewrite-Wert
+// (englischer Inhalt unter deutscher URL). Das Overlay wird weiter unten
+// ebenfalls aus dem Pfad bestimmt.
+$lang = preg_match('~^/(de|en|da)(/|$)~', $parsedPath, $langMatch) ? $langMatch[1] : 'de';
 
 // ============================================================================
 // TEMPLATE HELPERS
@@ -166,15 +164,19 @@ $person = require __DIR__ . '/includes/config/person.php';
 // Asset-Helper für automatische Cache-Busting-Versionierung via filemtime().
 require_once __DIR__ . '/includes/asset.php';
 
-// Normalisierter Route-Key (für Sprachwähler + data-overlay).
+// Route-Key (für Sprachwähler + data-overlay) aus dem Pfad, über die zentrale
+// Routentabelle in i18n.php. Vorher kam er aus $_GET['overlay'] — damit
+// öffnete "/de/?overlay=privacy" den Datenschutz samt noindex auf der
+// Startseiten-URL.
 $routeKey = 'home';
-if ($overlay === 'impressum' || $overlay === 'legal' || $overlay === 'kolofon') {
-    $routeKey = 'legal';
-} elseif ($overlay === 'privacy') {
-    $routeKey = 'privacy';
-} elseif ($overlay === 'contact' || $overlay === 'kontakt') {
-    $routeKey = 'contact';
+foreach (['legal', 'privacy', 'contact'] as $key) {
+    if (rtrim($routes[$lang][$key], '/') === rtrim($parsedPath, '/')) {
+        $routeKey = $key;
+        break;
+    }
 }
+// Für head-meta.php: Overlay-URLs bekommen noindex.
+$overlay = $routeKey === 'home' ? null : $routeKey;
 
 // data-overlay-Wert: normalisiert auf impressum/privacy/contact, damit
 // language.js / overlay.js keine Sprachvarianten kennen müssen.
