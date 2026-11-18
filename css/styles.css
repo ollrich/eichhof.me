@@ -298,25 +298,38 @@ body {
     overflow: hidden;
     opacity: 0;
     pointer-events: none;
-    transition: max-height 0.25s ease, opacity 0.2s ease, transform 0.2s ease;
+    /* visibility statt nur opacity: Geschlossen sind die Links so weder per
+       Tab erreichbar noch für Screenreader sichtbar. Beim Schliessen schaltet
+       visibility erst nach der Animation um (Delay 0.25s). */
+    visibility: hidden;
+    transition: max-height 0.25s ease, opacity 0.2s ease, transform 0.2s ease, visibility 0s linear 0.25s;
 }
 
-/* Expanded — :hover (Desktop), :focus-within (Tastatur), data-expanded (JS). */
+/* Expanded.
+   Mit JS (.is-enhanced) gibt es genau einen Zustand: data-expanded. Er wird
+   von lang-switcher.js für Hover, Klick/Tap und Tastatur gesetzt und immer
+   zusammen mit aria-expanded geändert — Optik und Screenreader-Ansage können
+   nicht mehr auseinanderlaufen. Ohne JS bleibt der reine CSS-Rückfall über
+   :hover und :focus-within, damit der Sprachwechsel auch dann funktioniert. */
 @media (hover: hover) {
-    .lang-switcher:hover .lang-switcher-menu {
+    .lang-switcher:not(.is-enhanced):hover .lang-switcher-menu {
         max-height: 160px;
         opacity: 1;
         pointer-events: auto;
         transform: translateX(-50%) translateY(0);
+        visibility: visible;
+        transition: max-height 0.25s ease, opacity 0.2s ease, transform 0.2s ease, visibility 0s;
     }
 }
 
-.lang-switcher:focus-within .lang-switcher-menu,
+.lang-switcher:not(.is-enhanced):focus-within .lang-switcher-menu,
 .lang-switcher[data-expanded="true"] .lang-switcher-menu {
     max-height: 160px;
     opacity: 1;
     pointer-events: auto;
     transform: translateX(-50%) translateY(0);
+    visibility: visible;
+    transition: max-height 0.25s ease, opacity 0.2s ease, transform 0.2s ease, visibility 0s;
 }
 
 /* ========================================
