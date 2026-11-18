@@ -156,6 +156,7 @@ $jsI18nKeys = [
     'contactErrorRateLimit',
     'contactErrorGeneral',
     'contactErrorTimeout',
+    'contactErrorSession',
 ];
 $jsI18n = array_intersect_key($m, array_flip($jsI18nKeys));
 

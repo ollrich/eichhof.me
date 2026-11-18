@@ -32,7 +32,9 @@
         const lang = getCurrentLang();
         if (lang === 'en') return '/en/';
         if (lang === 'da') return '/da/';
-        return '/';
+        // Nicht "/": das ist nur noch ein Accept-Language-Router und könnte
+        // beim Reload in eine andere Sprache umleiten.
+        return '/de/';
     }
 
     /**
@@ -123,7 +125,7 @@
             previousActiveElement = document.activeElement;
         }
 
-        if (!skipHistory && !document.body.dataset.overlay) {
+        if (!skipHistory) {
             // Nur beim allerersten Öffnen die Ausgangs-URL merken
             if (originalUrl === null) {
                 originalUrl = window.location.pathname;
@@ -250,7 +252,17 @@
         window.addEventListener('popstate', handlePopState);
         window.addEventListener('pagehide', cleanup);
 
-        if (!document.body.dataset.overlay) {
+        // Vom Server angefordertes Overlay (/de/impressum, /en/privacy …) über die
+        // echte Öffnen-Routine starten. Vorher setzte language.js nur die CSS-
+        // Klasse: Das Overlay war sichtbar, aber activeKey blieb leer, sodass
+        // weder X noch Escape noch Backdrop es schließen konnten.
+        const serverKey = { impressum: 'legal', privacy: 'privacy' }[document.body.dataset.overlay];
+        if (serverKey && OVERLAYS[serverKey]) {
+            history.replaceState({ overlay: serverKey }, '', window.location.pathname);
+            openOverlay(serverKey, true);
+            // Verbraucht: spätere Klicks sollen wieder normal URLs schreiben.
+            delete document.body.dataset.overlay;
+        } else if (!document.body.dataset.overlay) {
             history.replaceState({ overlay: null }, '', window.location.pathname);
         }
 

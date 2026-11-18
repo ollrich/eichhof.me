@@ -13,6 +13,7 @@
     let previousActiveElement = null;
     let focusableElements = [];
     let csrfToken = null;
+    let csrfPending = null;   // laufender Token-Abruf, damit Submit darauf warten kann
 
     const FETCH_TIMEOUT_MS = 15000;
 
@@ -49,13 +50,30 @@
         const lang = window.LanguageManager ? window.LanguageManager.getCurrentLang() : 'de';
         if (lang === 'en') return '/en/';
         if (lang === 'da') return '/da/';
-        return '/';
+        // Nicht "/": das ist nur noch ein Accept-Language-Router.
+        return '/de/';
     }
 
     /**
      * Fetch CSRF token from server
      */
-    async function fetchCsrfToken() {
+    function fetchCsrfToken() {
+        csrfPending = requestCsrfToken().finally(function() { csrfPending = null; });
+        return csrfPending;
+    }
+
+    /**
+     * Stellt sicher, dass ein Token vorliegt: wartet auf einen laufenden Abruf
+     * und versucht es sonst einmal neu. Ohne Token würde der Server mit
+     * csrf_invalid antworten.
+     */
+    async function ensureCsrfToken() {
+        if (csrfPending) await csrfPending;
+        if (!csrfToken) await fetchCsrfToken();
+        return !!csrfToken;
+    }
+
+    async function requestCsrfToken() {
         try {
             const response = await fetchWithTimeout('/contact.php', {
                 method: 'GET',
@@ -154,11 +172,13 @@
             timestampInput.value = Math.floor(Date.now() / 1000);
         }
 
-        // Fetch CSRF token from server
+        // Fetch CSRF token from server (alten Wert verwerfen: form.reset() hat
+        // das Hidden-Feld bereits geleert)
+        csrfToken = null;
         fetchCsrfToken();
 
         // Update URL (unless opening from popstate or server-side)
-        if (!skipHistory && document.body.dataset.overlay !== 'contact') {
+        if (!skipHistory) {
             history.pushState({ overlay: 'contact' }, '', getContactUrl());
         }
 
@@ -263,6 +283,7 @@
         email_invalid: 'contactErrorEmail',
         message_invalid: 'contactErrorMessage',
         rate_limit: 'contactErrorRateLimit',
+        csrf_invalid: 'contactErrorSession',
         send_failed: 'contactErrorGeneral',
         timeout: 'contactErrorTimeout',
         general: 'contactErrorGeneral'
@@ -349,6 +370,17 @@
             submitBtn.classList.add('loading');
         }
 
+        // Nie ohne gültigen Token absenden — der Abruf beim Öffnen kann noch
+        // laufen oder fehlgeschlagen sein. Eingaben bleiben dabei erhalten.
+        if (!(await ensureCsrfToken())) {
+            showFeedback(getErrorMessage('general'), false);
+            if (submitBtn) {
+                submitBtn.disabled = false;
+                submitBtn.classList.remove('loading');
+            }
+            return;
+        }
+
         // Collect form data
         const formData = {
             name: document.getElementById('contact-name').value.trim(),
@@ -356,7 +388,7 @@
             message: document.getElementById('contact-message').value.trim(),
             website: document.getElementById('contact-website').value, // Honeypot
             _t: parseInt(document.getElementById('contact-timestamp').value, 10),
-            csrf_token: document.getElementById('contact-csrf').value,
+            csrf_token: csrfToken,
             lang: window.LanguageManager ? window.LanguageManager.getCurrentLang() : 'de'
         };
 
@@ -382,6 +414,13 @@
                 });
             } else {
                 showFeedback(getErrorMessage(result.error), false);
+
+                // Session abgelaufen: frischen Token holen, damit ein erneutes
+                // Absenden ohne Neuladen klappt. Eingaben bleiben stehen.
+                if (result.error === 'csrf_invalid') {
+                    csrfToken = null;
+                    await fetchCsrfToken();
+                }
 
                 if (submitBtn) {
                     submitBtn.disabled = false;
@@ -456,6 +495,16 @@
 
         // Cleanup on page unload
         window.addEventListener('pagehide', cleanup);
+
+        // Vom Server angefordert (/de/kontakt, /en/contact, /da/kontakt): über
+        // openContactForm() öffnen, damit CSRF-Token und Zeitstempel _t gesetzt
+        // werden. Ohne _t verwirft contact.php die Nachricht stillschweigend
+        // mit Fake-Erfolg (Bot-Schutz), ohne Token scheitert sie an csrf_invalid.
+        if (document.body.dataset.overlay === 'contact') {
+            history.replaceState({ overlay: 'contact' }, '', window.location.pathname);
+            openContactForm(true);
+            delete document.body.dataset.overlay;
+        }
 
         // Check URL parameter for auto-open (legacy support)
         const urlParams = new URLSearchParams(window.location.search);

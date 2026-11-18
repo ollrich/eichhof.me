@@ -9,8 +9,11 @@
  *    overlay.js, link-preview.js) Strings abfragen können — ohne doppelte
  *    Übersetzungs-Tabelle, die auseinanderlaufen kann.
  *
- * 2. Es öffnet serverseitig angeforderte Overlays (data-overlay-Attribut am
- *    <body>) und setzt die Social-Row-Reihenfolge (Mastodon-first für DE).
+ * 2. Es befüllt die E-Mail-Links mit der zusammengesetzten Adresse.
+ *
+ * Serverseitig angeforderte Overlays (data-overlay am <body>) öffnen
+ * overlay.js und contact.js selbst — über ihre echten Öffnen-Routinen, damit
+ * Fokus, Escape, Schließen, CSRF-Token und Zeitstempel initialisiert sind.
  *
  * Kein URL-Aufräumen mehr: /de/, /en/, /da/ sind symmetrisch und bereits
  * kanonisch. Bare-Root "/" ist reiner Router in index.php, taucht nie als
@@ -99,30 +102,8 @@
         }
     }
 
-    /**
-     * Öffnet vom Server angefordertes Overlay (/de/impressum, /de/kontakt, /…).
-     * Der kleine Timeout wartet, bis overlay.js / contact.js gebunden haben.
-     */
-    function handleServerOverlay() {
-        const openOverlay = document.body.dataset.overlay;
-        if (!openOverlay) return;
-        setTimeout(function() {
-            if (openOverlay === 'impressum') {
-                const overlay = document.getElementById('overlay');
-                if (overlay) overlay.classList.add('active');
-            } else if (openOverlay === 'privacy') {
-                const privacyOverlay = document.getElementById('privacy-overlay');
-                if (privacyOverlay) privacyOverlay.classList.add('active');
-            } else if (openOverlay === 'contact') {
-                const contactOverlay = document.getElementById('contact-overlay');
-                if (contactOverlay) contactOverlay.classList.add('active');
-            }
-        }, 100);
-    }
-
     function init() {
         fillEmailLinks();
-        handleServerOverlay();
     }
 
     if (document.readyState === 'loading') {

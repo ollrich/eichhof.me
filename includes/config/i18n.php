@@ -195,6 +195,7 @@ return [
             'contactErrorMessage' => 'Bitte gib eine Nachricht ein (mind. 10 Zeichen).',
             'contactErrorRateLimit' => 'Zu viele Anfragen. Bitte warte einige Minuten.',
             'contactErrorTimeout' => 'Zeitüberschreitung. Bitte prüfe deine Verbindung und versuche es erneut.',
+            'contactErrorSession' => 'Deine Sitzung ist abgelaufen. Bitte sende die Nachricht noch einmal.',
         ],
         'en' => [
             'title' => 'Oliver Eichhof – Communication Specialist from Hamburg',
@@ -221,6 +222,7 @@ return [
             'contactErrorMessage' => 'Please enter a message (at least 10 characters).',
             'contactErrorRateLimit' => 'Too many requests. Please wait a few minutes.',
             'contactErrorTimeout' => 'Request timed out. Please check your connection and try again.',
+            'contactErrorSession' => 'Your session has expired. Please send your message again.',
         ],
         'da' => [
             'title' => 'Oliver Eichhof – Kommunikationsspecialist fra Hamborg',
@@ -247,6 +249,7 @@ return [
             'contactErrorMessage' => 'Indtast venligst en besked (mindst 10 tegn).',
             'contactErrorRateLimit' => 'For mange anmodninger. Vent venligst et par minutter.',
             'contactErrorTimeout' => 'Forespørgslen fik timeout. Tjek din forbindelse og prøv igen.',
+            'contactErrorSession' => 'Din session er udløbet. Send venligst beskeden igen.',
         ],
     ],
 
