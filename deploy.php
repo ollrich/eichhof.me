@@ -133,12 +133,17 @@ if ($return_var !== 0) {
     die('Git reset failed');
 }
 
-// Ensure rate limit file exists (may be deleted by git reset)
+// Rate-Limit-Datei: contact.php legt sie bei Bedarf selbst an (fopen 'c+',
+// Rechte 0600), und git reset --hard lässt die gitignorte Datei ohnehin
+// unangetastet. Früher wurde sie hier mit 0666 (weltweit beschreibbar)
+// angelegt. Bestehende Dateien werden deshalb auf 0600 gezogen: chmod
+// gelingt nur, wenn PHP Eigentümer ist — dann bleibt sie für PHP
+// beschreibbar. Sonst ändert sich nichts.
 $ratelimit_file = __DIR__ . '/.contact-ratelimit.json';
-if (!file_exists($ratelimit_file)) {
-    file_put_contents($ratelimit_file, '{}');
-    chmod($ratelimit_file, 0666);
-    writeLog('INFO: Recreated .contact-ratelimit.json');
+if (file_exists($ratelimit_file) && (fileperms($ratelimit_file) & 0777) !== 0600) {
+    if (@chmod($ratelimit_file, 0600)) {
+        writeLog('INFO: .contact-ratelimit.json auf 0600 gesetzt');
+    }
 }
 
 // Log success

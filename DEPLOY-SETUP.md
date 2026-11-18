@@ -29,14 +29,12 @@ For the contact form backend (`contact.php`):
 
 ```bash
 echo '{"recipient_email":"you@example.com","from_email":"noreply@example.com"}' > .contact-config.json
-chmod 644 .contact-config.json
-
-# Rate limiting file (must be writable by webserver)
-echo '{}' > .contact-ratelimit.json
-chmod 666 .contact-ratelimit.json
+chmod 600 .contact-config.json
 ```
 
-Replace with your actual email addresses. Both files are gitignored.
+Replace with your actual email addresses. The file is gitignored.
+
+The rate limiting file `.contact-ratelimit.json` does not need to be created by hand: `contact.php` creates it on first use with permissions `0600`. Do not make it world-writable (`666`) — PHP runs as the account user and only that user needs access. If the file cannot be opened or locked, the contact form refuses requests (HTTP 503) and logs the error instead of silently disabling rate limiting.
 
 ## APIFlash Key (Optional)
 

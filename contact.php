@@ -83,8 +83,11 @@ function generateCsrfToken(): string {
 
 /**
  * Check rate limit for IP
+ *
+ * @return bool|null true = erlaubt, false = Limit erreicht,
+ *                   null = Speicher nicht nutzbar (Aufrufer bricht ab)
  */
-function checkRateLimit(string $ip, string $file, int $max, int $window): bool {
+function checkRateLimit(string $ip, string $file, int $max, int $window): ?bool {
     // Hash IP for privacy (rate limiting doesn't need the actual IP)
     $ipHash = hash('sha256', $ip . 'rate_limit_salt');
     $now = time();
@@ -94,15 +97,23 @@ function checkRateLimit(string $ip, string $file, int $max, int $window): bool {
     // Submits, damit das read-modify-write nicht durch eine Race verloren
     // geht (ohne Lock könnten parallele Requests sich gegenseitig
     // überschreiben und das Limit aushebeln oder die Datei korrumpieren).
+    // umask 0077: legt fopen die Datei neu an, ist sie nur für den PHP-Nutzer
+    // les- und schreibbar (0600). Sie enthält gehashte IPs mit Zeitstempeln.
+    $oldUmask = umask(0077);
     $fh = @fopen($file, 'c+');
+    umask($oldUmask);
+
+    // Speicher nicht nutzbar: NICHT durchwinken. Früher lief hier ein
+    // stilles "return true" — fiel das Rate-Limit aus, merkte das niemand und
+    // die Begrenzung war weg. Jetzt bricht der Aufrufer mit 503 ab und
+    // protokolliert; das Overlay zeigt weiterhin die E-Mail-Adresse als
+    // Ausweichweg an.
     if ($fh === false) {
-        // Datei nicht öffenbar: im Zweifel den Request durchlassen, statt
-        // das Kontaktformular komplett zu blockieren.
-        return true;
+        return null;
     }
     if (!flock($fh, LOCK_EX)) {
         fclose($fh);
-        return true;
+        return null;
     }
 
     $content = stream_get_contents($fh);
@@ -182,7 +193,14 @@ if (!$data) {
 
 // Rate Limiting prüfen
 $clientIP = getClientIP();
-if (!checkRateLimit($clientIP, $rate_limit_file, CONTACT_MAX_REQUESTS, CONTACT_TIME_WINDOW)) {
+$rateAllowed = checkRateLimit($clientIP, $rate_limit_file, CONTACT_MAX_REQUESTS, CONTACT_TIME_WINDOW);
+if ($rateAllowed === null) {
+    error_log('contact.php: Rate-Limit-Speicher nicht nutzbar (' . $rate_limit_file . ') — Anfrage abgelehnt');
+    http_response_code(503);
+    echo json_encode(['success' => false, 'error' => 'unavailable']);
+    exit;
+}
+if (!$rateAllowed) {
     http_response_code(429);
     echo json_encode(['success' => false, 'error' => 'rate_limit']);
     exit;
