@@ -37,7 +37,7 @@ return [
     // Action-Datum gesetzt (siehe .github/workflows/update-sitemap.yml).
     // Format der Zeile nicht ändern — die Action ersetzt sie per sed.
     // datePublished ist pro Seite im jeweiligen JSON-LD hinterlegt.
-    'dateModified' => '2026-11-18',
+    'dateModified' => '2026-11-19',
 
     // DJ-Alias. Ohne ihn fehlt die Brücke zum SoundCloud-Profil, das nur
     // "livic" nennt und weder Klarnamen noch Rücklink trägt.
