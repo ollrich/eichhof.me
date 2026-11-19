@@ -20,7 +20,6 @@
     let currentUrl = null;
     let isOverPreview = false;
     let isOverLink = false;
-    let taglineObserver = null;
 
     // Mobile OS detection: only disable previews on iOS/iPadOS and Android
     // Windows/macOS touchscreens with mouse should still get previews
@@ -90,8 +89,21 @@
 
             // Create new preview image
             const img = document.createElement('img');
+            // Fehlt das Bild (etwa auf einem frisch eingerichteten Server, bevor
+            // der Cron es erzeugt hat), Preview ausblenden statt eines
+            // Broken-Image-Symbols. onerror vor src setzen.
+            img.onerror = function() {
+                preview.classList.remove('active');
+                if (currentPreviewElement === img) {
+                    preview.removeChild(img);
+                    currentPreviewElement = null;
+                    currentUrl = null;
+                }
+            };
             img.src = previewImage;
-            img.alt = 'Preview';
+            // Dekorativ: Der Link selbst benennt das Ziel. Vorher stand hier
+            // in allen Sprachen das englische "Preview".
+            img.alt = '';
             currentPreviewElement = img;
             preview.appendChild(img);
 
@@ -233,25 +245,10 @@
         // Initialize for current links
         initLinkPreviews();
 
-        // Re-initialize when tagline content changes (language switch)
-        // Using MutationObserver to detect changes
-        if (taglineElement) {
-            taglineObserver = new MutationObserver(function() {
-                // Small delay to ensure DOM is updated
-                setTimeout(initLinkPreviews, 100);
-            });
-            taglineObserver.observe(taglineElement, { childList: true, subtree: true });
-        }
-
-        window.addEventListener('pagehide', cleanup);
-    }
-
-    function cleanup() {
-        if (taglineObserver) {
-            taglineObserver.disconnect();
-            taglineObserver = null;
-        }
-        window.removeEventListener('pagehide', cleanup);
+        // Kein MutationObserver mehr: Er stammte aus der Zeit der clientseitigen
+        // Sprachumschaltung. Die Tagline wird heute serverseitig gerendert und
+        // ändert sich nie — der Observer war toter Code, und jeder erneute
+        // initLinkPreviews()-Aufruf hätte doppelte Listener angehängt.
     }
 
     // Initialize when DOM is ready
