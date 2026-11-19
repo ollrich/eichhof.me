@@ -72,6 +72,7 @@ return [
             'themeToggleLabel' => 'Farbschema wechseln',
             // Language switcher
             'langSwitcherLabel' => 'Sprache wechseln',
+            'emailPrefix' => 'hallo',
             // Skip link
             'skipLink' => 'Zum Inhalt springen',
             // Close buttons
@@ -111,6 +112,7 @@ return [
             'themeLight' => 'Lights on',
             'themeToggleLabel' => 'Toggle color scheme',
             'langSwitcherLabel' => 'Switch language',
+            'emailPrefix' => 'hello',
             'skipLink' => 'Skip to content',
             'closeOverlay' => 'Close',
             'legalLink' => 'Legal Notice',
@@ -140,6 +142,7 @@ return [
             'themeLight' => 'Tænd lyset',
             'themeToggleLabel' => 'Skift farveskema',
             'langSwitcherLabel' => 'Skift sprog',
+            'emailPrefix' => 'hej',
             'skipLink' => 'Spring til indhold',
             'closeOverlay' => 'Luk',
             'legalLink' => 'Kolofon',
@@ -176,7 +179,6 @@ return [
             'emailText' => 'E-Mail',
             'emailAriaLabel' => 'E-Mail senden',
             'navLabel' => 'Profile und Kontakt',
-            'emailPrefix' => 'hallo',
             // Link-Preview (nur Hauptseite)
             'closePreview' => 'Vorschau schließen',
             // Kontaktformular (Labels + Body)
@@ -206,7 +208,6 @@ return [
             'emailText' => 'Email',
             'emailAriaLabel' => 'Send email',
             'navLabel' => 'Profiles and contact',
-            'emailPrefix' => 'hello',
             'closePreview' => 'Close preview',
             'contactTitle' => 'Contact',
             'contactName' => 'Your name',
@@ -233,7 +234,6 @@ return [
             'emailText' => 'E-Mail',
             'emailAriaLabel' => 'Send e-mail',
             'navLabel' => 'Profiler og kontakt',
-            'emailPrefix' => 'hej',
             'closePreview' => 'Luk forhåndsvisning',
             'contactTitle' => 'Kontakt',
             'contactName' => 'Dit navn',

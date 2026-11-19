@@ -32,14 +32,6 @@
         domain: ['eichhof', 'me']
     };
 
-    // Minimaler Fallback, falls das inline-JSON fehlt (z. B. auf /de/ueber)
-    // oder korrupt ist. Deckt nur, was JS wirklich braucht.
-    const FALLBACK = {
-        de: { emailPrefix: 'hallo' },
-        en: { emailPrefix: 'hello' },
-        da: { emailPrefix: 'hej' }
-    };
-
     /**
      * Parsen des serverseitigen i18n-JSON (nur auf Seiten mit language.js +
      * Kontakformular vorhanden). Liefert das $m-Dict, wie PHP es hinterlegt.
@@ -64,11 +56,12 @@
 
     const currentLang   = readServerLang();
     const serverI18n    = readServerI18n();
-    // Wenn das inline-JSON fehlt (auf Seiten ohne Kontaktformular), liefert
-    // der FALLBACK wenigstens emailPrefix. Alles andere geben wir als Key
-    // zurück — Konsumenten fragen solche Keys dort eh nicht ab.
-    const translations  = serverI18n || FALLBACK[currentLang] || FALLBACK.de;
-    const emailPrefix   = translations.emailPrefix || 'hallo';
+    // Ohne Inline-JSON (Grounding Page) gibt getTranslation() den Key zurück —
+    // dort fragt niemand Übersetzungen ab.
+    const translations  = serverI18n || {};
+    // E-Mail-Präfix kommt aus i18n.php (data-email-prefix am <body>, auf beiden
+    // Seiten). Vorher stand es zusätzlich hier und in grounding-email.js.
+    const emailPrefix   = (document.body && document.body.dataset.emailPrefix) || 'hallo';
 
     /**
      * Baut die obfuskierte E-Mail-Adresse aus Prefix + Domain-Parts.

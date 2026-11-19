@@ -217,7 +217,7 @@ $datePublished = '2026-02-19';
     }
     </script>
 </head>
-<body class="about-page" data-routes="<?= $e(json_encode($routes[$lang], JSON_UNESCAPED_SLASHES)) ?>">
+<body class="about-page" data-lang="<?= $lang ?>" data-email-prefix="<?= $e($m['emailPrefix']) ?>" data-routes="<?= $e(json_encode($routes[$lang], JSON_UNESCAPED_SLASHES)) ?>">
     <a href="#main" class="skip-link"><?= $e($m['skipLink']) ?></a>
 
     <!-- Theme-Toggle (oben rechts) und Sprachwähler (direkt darunter).
@@ -392,7 +392,7 @@ $datePublished = '2026-02-19';
         </div>
     </div>
 
-    <script src="<?= asset('/js/grounding-email.js') ?>" defer></script>
+    <script src="<?= asset('/js/language.js') ?>" defer></script>
     <script src="<?= asset('/js/theme.js') ?>" defer></script>
     <script src="<?= asset('/js/lang-switcher.js') ?>" defer></script>
     <script src="<?= asset('/js/overlay.js') ?>" defer></script>

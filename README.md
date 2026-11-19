@@ -65,12 +65,11 @@ eichhof.me/
 ├── js/
 │   ├── theme.js            # Dark mode toggle
 │   ├── lang-switcher.js    # Disclosure-menu toggle (aria-expanded, outside-click, Escape)
-│   ├── language.js         # Reads inline i18n JSON; email fill, overlay routing
+│   ├── language.js         # Reads inline i18n JSON; assembles obfuscated e-mail links (both pages)
 │   ├── overlay.js          # Legal notice modal
 │   ├── contact.js          # Contact form modal + AJAX
 │   ├── easter-egg.js       # Animations + confetti
 │   ├── link-preview.js     # Hover previews
-│   ├── grounding-email.js  # Email obfuscation on grounding page
 │   └── confetti.min.js     # Canvas-Confetti (lazy-loaded)
 ├── contact.php             # Contact form backend (rate limiting, CSRF, honeypot)
 ├── deploy.php              # GitHub webhook deploy (HMAC-SHA256 signature, fail-closed)

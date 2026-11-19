@@ -146,7 +146,6 @@ $m['footerMobile']  = strtr($m['footerMobile'], $icons);
 // Wird im JS ein neuer Key gebraucht, muss er hier ergänzt werden;
 // getTranslation() gibt sonst stillschweigend den Key-Namen zurück.
 $jsI18nKeys = [
-    'emailPrefix',
     'contactSuccess',
     'contactErrorName',
     'contactErrorEmail',
@@ -225,7 +224,7 @@ if ($routeKey === 'contact') $openOverlay = 'contact';
          Parser ausbrechen lässt. -->
     <script id="i18n-data" type="application/json"><?= json_encode($jsI18n, JSON_HEX_TAG | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE) ?></script>
 </head>
-<body data-lang="<?= $lang ?>" data-routes="<?= $e(json_encode($routes[$lang], JSON_UNESCAPED_SLASHES)) ?>"<?= $openOverlay ? ' data-overlay="' . $openOverlay . '"' : '' ?>>
+<body data-lang="<?= $lang ?>" data-email-prefix="<?= $e($m['emailPrefix']) ?>" data-routes="<?= $e(json_encode($routes[$lang], JSON_UNESCAPED_SLASHES)) ?>"<?= $openOverlay ? ' data-overlay="' . $openOverlay . '"' : '' ?>>
     <a href="#main" class="skip-link"><?= $e($m['skipLink']) ?></a>
     <main id="main">
     <!-- Theme-Toggle (oben rechts) und Sprachwähler (direkt darunter).
