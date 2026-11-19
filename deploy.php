@@ -27,22 +27,42 @@ $max_log_entries = 100;
 function writeLog(string $message): void {
     global $log_file, $max_log_entries;
 
-    $timestamp = date('Y-m-d H:i:s');
-    $logEntry = "[{$timestamp}] {$message}\n";
+    $logEntry = '[' . date('Y-m-d H:i:s') . '] ' . trim($message);
 
-    // Read existing log
-    $existingLog = file_exists($log_file) ? file($log_file, FILE_IGNORE_NEW_LINES) : [];
-
-    // Add new entry
-    $existingLog[] = trim($logEntry);
-
-    // Rotate if too many entries
-    if (count($existingLog) > $max_log_entries) {
-        $existingLog = array_slice($existingLog, -$max_log_entries);
+    // Gleiches Muster wie checkRateLimit() in contact.php:
+    // - umask 0077: neu angelegt ist das Log nur für den PHP-Nutzer lesbar
+    //   (es enthält Client-IPs).
+    // - Exklusiver Lock: zwei gleichzeitige Webhook-Aufrufe würden sich sonst
+    //   beim read-modify-write gegenseitig Zeilen überschreiben.
+    $oldUmask = umask(0077);
+    $fh = @fopen($log_file, 'c+');
+    umask($oldUmask);
+    if ($fh === false) {
+        return;   // Logging darf den Deploy nicht verhindern
     }
+    if (flock($fh, LOCK_EX)) {
+        $content = stream_get_contents($fh);
+        $lines = $content === '' ? [] : explode("\n", rtrim($content, "\n"));
+        $lines[] = $logEntry;
 
-    // Write back
-    file_put_contents($log_file, implode("\n", $existingLog) . "\n");
+        // Rotate if too many entries
+        if (count($lines) > $max_log_entries) {
+            $lines = array_slice($lines, -$max_log_entries);
+        }
+
+        rewind($fh);
+        ftruncate($fh, 0);
+        fwrite($fh, implode("\n", $lines) . "\n");
+        fflush($fh);
+        flock($fh, LOCK_UN);
+    }
+    fclose($fh);
+
+    // Bestehendes Log aus der Zeit vor dem umask auf 0600 ziehen (gelingt nur,
+    // wenn PHP Eigentümer ist — dann bleibt es für PHP beschreibbar).
+    if ((fileperms($log_file) & 0777) !== 0600) {
+        @chmod($log_file, 0600);
+    }
 }
 
 /**
@@ -125,7 +145,9 @@ if ($return_var !== 0) {
     die('Git fetch failed');
 }
 
-// Git reset
+// Git reset — $output leeren: exec() hängt an ein bestehendes Array an, ein
+// Fehler-Log enthielte sonst auch die Ausgabe von git fetch.
+$output = [];
 exec("git reset --hard origin/{$branch} 2>&1", $output, $return_var);
 if ($return_var !== 0) {
     writeLog('ERROR: git reset failed: ' . implode("\n", $output));

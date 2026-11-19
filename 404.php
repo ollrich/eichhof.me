@@ -13,6 +13,10 @@
  */
 
 http_response_code(404);
+// Fehlerseiten nicht cachen: Ein später angelegter Pfad soll nicht bis zu
+// einer Stunde lang die zwischengespeicherte 404 liefern. Die allgemeine
+// public-Regel der .htaccess nimmt 404.php dafür aus.
+header('Cache-Control: no-store');
 
 // Sprache aus dem Pfad-Präfix der angefragten URL ableiten (Default: DE).
 $requestPath = parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH) ?: '/';
