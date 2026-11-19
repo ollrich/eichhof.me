@@ -7,35 +7,17 @@
 (function() {
     'use strict';
 
-    // Fallback auf document.documentElement.lang, wenn language.js nicht
-    // geladen ist (z. B. auf der Grounding-Page).
-    function getCurrentLang() {
-        if (window.LanguageManager) return window.LanguageManager.getCurrentLang();
-        return document.documentElement.lang || 'de';
-    }
+    // Routen der aktuellen Sprache aus der zentralen Tabelle in i18n.php,
+    // serverseitig als data-routes am <body> mitgegeben — statt sie hier ein
+    // zweites Mal hartzukodieren (so ist #8 entstanden: "/" statt "/de/").
+    const ROUTES = (function() {
+        try { return JSON.parse(document.body.dataset.routes || '{}'); }
+        catch (e) { return {}; }
+    })();
 
-    function getLegalUrl() {
-        const lang = getCurrentLang();
-        if (lang === 'en') return '/en/legal-notice';
-        if (lang === 'da') return '/da/kolofon';
-        return '/de/impressum';
-    }
-
-    function getPrivacyUrl() {
-        const lang = getCurrentLang();
-        if (lang === 'en') return '/en/privacy';
-        if (lang === 'da') return '/da/privatlivspolitik';
-        return '/de/datenverarbeitung';
-    }
-
-    function getBaseUrl() {
-        const lang = getCurrentLang();
-        if (lang === 'en') return '/en/';
-        if (lang === 'da') return '/da/';
-        // Nicht "/": das ist nur noch ein Accept-Language-Router und könnte
-        // beim Reload in eine andere Sprache umleiten.
-        return '/de/';
-    }
+    function getLegalUrl()   { return ROUTES.legal; }
+    function getPrivacyUrl() { return ROUTES.privacy; }
+    function getBaseUrl()    { return ROUTES.home; }
 
     /**
      * Registry aller Overlays.

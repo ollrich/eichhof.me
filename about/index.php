@@ -217,7 +217,7 @@ $datePublished = '2026-02-19';
     }
     </script>
 </head>
-<body class="about-page">
+<body class="about-page" data-routes="<?= $e(json_encode($routes[$lang], JSON_UNESCAPED_SLASHES)) ?>">
     <a href="#main" class="skip-link"><?= $e($m['skipLink']) ?></a>
 
     <!-- Theme-Toggle (oben rechts) und Sprachwähler (direkt darunter).

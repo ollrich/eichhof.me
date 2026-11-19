@@ -31,28 +31,16 @@
         }
     }
 
-    /**
-     * Get the contact URL based on current language
-     * @returns {string} URL path for contact
-     */
-    function getContactUrl() {
-        const lang = window.LanguageManager ? window.LanguageManager.getCurrentLang() : 'de';
-        if (lang === 'en') return '/en/contact';
-        if (lang === 'da') return '/da/kontakt';
-        return '/de/kontakt';
-    }
+    // Routen der aktuellen Sprache aus der zentralen Tabelle in i18n.php,
+    // serverseitig als data-routes am <body> mitgegeben — statt sie hier ein
+    // zweites Mal hartzukodieren (so ist #8 entstanden: "/" statt "/de/").
+    const ROUTES = (function() {
+        try { return JSON.parse(document.body.dataset.routes || '{}'); }
+        catch (e) { return {}; }
+    })();
 
-    /**
-     * Get the base URL for current language
-     * @returns {string} Base URL path
-     */
-    function getBaseUrl() {
-        const lang = window.LanguageManager ? window.LanguageManager.getCurrentLang() : 'de';
-        if (lang === 'en') return '/en/';
-        if (lang === 'da') return '/da/';
-        // Nicht "/": das ist nur noch ein Accept-Language-Router.
-        return '/de/';
-    }
+    function getContactUrl() { return ROUTES.contact; }
+    function getBaseUrl()    { return ROUTES.home; }
 
     /**
      * Fetch CSRF token from server
