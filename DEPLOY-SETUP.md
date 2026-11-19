@@ -88,14 +88,12 @@ Für das Kontaktformular-Backend (`contact.php`):
 
 ```bash
 echo '{"recipient_email":"du@example.com","from_email":"noreply@example.com"}' > .contact-config.json
-chmod 644 .contact-config.json
-
-# Rate-Limiting-Datei (muss vom Webserver beschreibbar sein)
-echo '{}' > .contact-ratelimit.json
-chmod 666 .contact-ratelimit.json
+chmod 600 .contact-config.json
 ```
 
-Ersetze durch deine echten E-Mail-Adressen. Beide Dateien sind gitignored.
+Ersetze durch deine echten E-Mail-Adressen. Die Datei ist gitignored.
+
+Die Rate-Limiting-Datei `.contact-ratelimit.json` muss nicht von Hand angelegt werden: `contact.php` erzeugt sie bei der ersten Anfrage mit den Rechten `0600`. Mach sie nicht für alle beschreibbar (`666`) — PHP läuft als Account-Nutzer, und nur dieser braucht Zugriff. Lässt sich die Datei nicht öffnen oder sperren, lehnt das Kontaktformular Anfragen ab (HTTP 503) und protokolliert den Fehler, statt das Rate-Limiting stillschweigend abzuschalten.
 
 ## APIFlash-Key (Optional)
 
@@ -149,14 +147,12 @@ Til kontaktformular-backend (`contact.php`):
 
 ```bash
 echo '{"recipient_email":"dig@example.com","from_email":"noreply@example.com"}' > .contact-config.json
-chmod 644 .contact-config.json
-
-# Rate limiting-fil (skal være skrivbar af webserveren)
-echo '{}' > .contact-ratelimit.json
-chmod 666 .contact-ratelimit.json
+chmod 600 .contact-config.json
 ```
 
-Erstat med dine rigtige e-mailadresser. Begge filer er gitignored.
+Erstat med dine rigtige e-mailadresser. Filen er gitignored.
+
+Rate limiting-filen `.contact-ratelimit.json` skal ikke oprettes manuelt: `contact.php` opretter den ved første forespørgsel med rettighederne `0600`. Gør den ikke skrivbar for alle (`666`) — PHP kører som kontobrugeren, og kun den har brug for adgang. Kan filen ikke åbnes eller låses, afviser kontaktformularen forespørgsler (HTTP 503) og logger fejlen i stedet for stille at slå rate limiting fra.
 
 ## APIFlash Key (Valgfri)
 
