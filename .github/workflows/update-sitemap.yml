@@ -28,7 +28,11 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        # Per Commit-SHA gepinnt statt @v4: Der Workflow hat Schreibrechte
+        # (contents: write), ein umgehängter Tag könnte sonst fremden Code
+        # mit diesen Rechten ausführen. Aktualisieren: SHA des neuen Tags
+        # eintragen, Versionskommentar anpassen.
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
 
       - name: Update lastmod dates in sitemap
         run: |

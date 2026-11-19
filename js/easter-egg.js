@@ -128,10 +128,11 @@
         const rect = profilePhoto.getBoundingClientRect();
         const computedStyle = window.getComputedStyle(profilePhoto);
         const cssWidth = parseFloat(computedStyle.width);
+        const cssHeight = parseFloat(computedStyle.height);
         const isScaled = rect.width > cssWidth + 1;
 
         const originalWidth = isScaled ? cssWidth : rect.width;
-        const originalHeight = isScaled ? cssWidth : rect.height;
+        const originalHeight = isScaled ? cssHeight : rect.height;
         const offsetX = isScaled ? (rect.width - originalWidth) / 2 : 0;
         const offsetY = isScaled ? (rect.height - originalHeight) / 2 : 0;
 
